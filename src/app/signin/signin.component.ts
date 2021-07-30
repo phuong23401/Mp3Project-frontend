@@ -80,7 +80,6 @@ export class SigninComponent implements OnInit {
         const jwt = res.token;
         sessionStorage.setItem('token', JSON.stringify(jwt));
         sessionStorage.setItem('userId', JSON.stringify(res.id));
-        sessionStorage.setItem('name',JSON.stringify(res.username));
         this.router.navigate(['']);
       } else {
         Swal.fire({
