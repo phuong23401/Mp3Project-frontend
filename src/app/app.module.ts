@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
+import { NavbarComponent } from './share/navbar/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component'
     ProfileComponent,
     PlaymusicComponent,
     SidemenuComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

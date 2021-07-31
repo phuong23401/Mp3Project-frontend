@@ -15,6 +15,9 @@ export class HomepageComponent implements OnInit {
   name: any = '';
   isLogin = false;
   songList: Song[] = [];
+  keyWork = '';
+  searchList:Song[]=[];
+
 
   constructor(private router: Router,
               private tokenService: TokenService,
@@ -25,6 +28,7 @@ export class HomepageComponent implements OnInit {
         this.songList = res;
     })
     this.getNameFromToken();
+    this.searchSong();
   }
 
   getNameFromToken() {
@@ -40,6 +44,13 @@ export class HomepageComponent implements OnInit {
     sessionStorage.removeItem('id');
     sessionStorage.clear();
     this.router.navigate(['']);
+  }
+  searchSong():any{
+    this.songService.searchSong(this.keyWork).subscribe(searchList =>{
+      console.log(this.keyWork);
+      this.searchList = searchList;
+      console.log(this.searchList)
+    })
   }
 
 
