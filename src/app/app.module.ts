@@ -11,23 +11,36 @@ import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component'
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
 import { NavbarComponent } from './share/navbar/navbar/navbar.component';
 import { Navbar1Component } from './share/navbar/navbar1/navbar1.component';
+import { SongComponent } from './song/song.component';
+import { CreatesongComponent } from './createsong/createsong.component';
+import {UploadImgComponent} from "./uploadfile/upload-img/upload-img.component";
+import { UploadUrlComponent} from "./uploadfile/upload-url/upload-url.component";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
+    SongComponent,
+    CreatesongComponent,
     ProfileComponent,
     PlaymusicComponent,
     SidemenuComponent,
     NavbarComponent,
     Navbar1Component,
+    UploadImgComponent,
+    UploadUrlComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
