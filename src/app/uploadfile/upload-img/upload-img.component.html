@@ -1,0 +1,10 @@
+<div>
+  <input type="file" (change)="onFileChaged($event)"><br>
+  <button *ngIf="downloadURL?!selectedFile:selectedFile"  (click)="onUpLoad()">upload
+  </button>
+  <br>
+  <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
+    <img [src]="downloadURL" style="width: 300px; height: auto">
+  </div>
+</div>
+

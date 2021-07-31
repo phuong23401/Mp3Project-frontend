@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {HttpService} from "./http.service";
+import {HttpService} from "../http/http.service";
 import {Observable} from "rxjs";
-import {Song} from "./Song";
-import {environment} from "../../environments/environment";
+import {Song} from "../../model/Song";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
-   API_URL = `${environment.apiUrl}`;
+   API_URL = `${environment.API_URL}`;
 
   constructor(private http: HttpClient,
               private httpService: HttpService) {}

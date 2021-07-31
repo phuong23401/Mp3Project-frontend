@@ -1,8 +1,8 @@
-// @ts-ignore
-import {Users} from './Users';
+
 import {Singers} from './Singers';
 import {Playlist} from './Playlist';
 import {Icategory} from "./Icategory";
+import {User} from "./User";
 
 export interface Song {
   id?: number;
@@ -15,7 +15,7 @@ export interface Song {
   updateTime?: any;
   countLike?: number;
   lyrics?: string;
-  user?: Users;
+  user?: User;
   category?: Icategory;
   singers?: Singers[];
   playlists?: Playlist[];

@@ -10,6 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SongComponent } from './song/song.component';
 import { CreatesongComponent } from './createsong/createsong.component';
+import { AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import { UploadImgComponent } from './uploadfile/upload-img/upload-img.component';
+import { UploadUrlComponent } from './uploadfile/upload-url/upload-url.component';
 
 @NgModule({
   declarations: [
@@ -18,14 +23,18 @@ import { CreatesongComponent } from './createsong/createsong.component';
     SigninComponent,
     HomepageComponent,
     SongComponent,
-    CreatesongComponent
+    CreatesongComponent,
+    UploadImgComponent,
+    UploadUrlComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
