@@ -1,4 +1,4 @@
-<div class="ms_player_wrapper">
+<div class="ms_player_wrapper" id="audioPlayer" #audioPlayer>
   <div class="ms_player_close">
     <i class="fa fa-angle-up" aria-hidden="true"></i>
   </div>
@@ -53,12 +53,20 @@
               <button class="jp-previous" tabindex="0">
                 <i class="ms_play_control"></i>
               </button>
-              <button class="jp-play" tabindex="0">
-                <i class="ms_play_control"></i>
+              <div *ngIf="!isAudioPlaying; then playing else paused"></div>
+              <ng-template #playing>
+                <button class="jp-play" tabindex="0" (click)="play()">
+                  <i class="ms_play_control"></i>
+                </button>
+              </ng-template>
+              
+              <ng-template #paused>
+                <button class="jp-play" (click)="pause()">
+                  <i class="ms_play_control"></i>
               </button>
-<!--              <button class="btn btn-air btn-pill btn-default btn-icon-only" (click)="pause()" *ngIf="isAudioPlaying">-->
-<!--                <i class="ion-md-pause"></i>-->
-<!--              </button>-->
+                </ng-template>
+
+
               <button class="jp-next" tabindex="0">
                 <i class="ms_play_control"></i>
               </button>
