@@ -43,6 +43,9 @@ export class SignupComponent implements OnInit {
     this.loginService.register(user).subscribe(res => {
       if (res.message != null) {
         this.router.navigate(['/signin']);
+        // @ts-ignore
+        document.querySelector('.modal-backdrop').remove()
+        document.body.classList.remove('modal-open')
       } else {
         Swal.fire({
           icon: 'error',

@@ -81,6 +81,9 @@ export class SigninComponent implements OnInit {
         sessionStorage.setItem('token', JSON.stringify(jwt));
         sessionStorage.setItem('userId', JSON.stringify(res.id));
         this.router.navigate(['']);
+        // @ts-ignore
+        document.querySelector('.modal-backdrop').remove()
+        document.body.classList.remove('modal-open')
       } else {
         Swal.fire({
           icon: 'error',
