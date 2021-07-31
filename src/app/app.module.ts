@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
 import { NavbarComponent } from './share/navbar/navbar/navbar.component';
+import { Navbar1Component } from './share/navbar/navbar1/navbar1.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NavbarComponent } from './share/navbar/navbar/navbar.component';
     PlaymusicComponent,
     SidemenuComponent,
     NavbarComponent,
+    Navbar1Component,
   ],
   imports: [
     BrowserModule,

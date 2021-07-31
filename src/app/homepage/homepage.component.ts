@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login/login.service';
 import { TokenService } from '../service/token/token.service';
@@ -64,7 +64,7 @@ export class HomepageComponent implements OnInit {
     console.log(user);
     this.loginService.register(user).subscribe(res => {
       if (res.message != null) {
-        this.router.navigate(['/signin']);
+        this.router.navigate(['']);
 
         // @ts-ignore
        document.querySelector('.modal-backdrop').remove()
@@ -85,15 +85,17 @@ export class HomepageComponent implements OnInit {
     this.loginService.login(data).subscribe(res => {
       // tslint:disable-next-line:triple-equals
       if (res.id != null) {
+        this.isLogin = true;
         const jwt = res.token;
         sessionStorage.setItem('token', JSON.stringify(jwt));
         sessionStorage.setItem('userId', JSON.stringify(res.id));
-        sessionStorage.setItem('name',JSON.stringify(res.username));
         this.router.navigate(['']);
 
         // @ts-ignore
        document.querySelector('.modal-backdrop').remove()
        document.body.classList.remove('modal-open')
+       // @ts-ignore
+       document.querySelector('.modal-content').remove()
       } else {
         Swal.fire({
           icon: 'error',
