@@ -1,30 +1,41 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
+import { LoginService } from '../service/login/login.service';
 import { TokenService } from '../service/token/token.service';
 
+declare var Swal: any;
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  signupForm: FormGroup = new FormGroup({});
+
+  signinForm: FormGroup = new FormGroup({});
+
   name: any = '';
   isLogin = false;
 
   constructor(private router: Router,
-              private tokenService: TokenService) {}
+              private tokenService: TokenService,
+              private formBuilder: FormBuilder,
+              private loginService: LoginService,) {}
 
   ngOnInit(): void {
-    this.getNameFromToken();
-  }
+    this.signupForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
 
-  getNameFromToken() {
-    // if(this.tokenService.getToken()) {
-    //   this.isLogin = true;
-    //   this.name = this.tokenService.getName();
-    // }
-    console.log(this.tokenService.getToken);
+    this.signinForm = this.formBuilder.group({
+      username: [''],
+      password: ['']
+    });
   }
 
   logout(){
@@ -34,4 +45,53 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  register(){
+    const user = {
+      name: this.signupForm.value.name,
+      email: this.signupForm.value.email,
+      username: this.signupForm.value.username,
+      password: this.signupForm.value.password
+    };
+    console.log(user);
+    this.loginService.register(user).subscribe(res => {
+      if (res.message != null) {
+        this.router.navigate(['/signin']);
+
+        // @ts-ignore
+       document.querySelector('.modal-backdrop').remove()
+       document.body.classList.remove('modal-open')
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: res.message,
+        });
+      }
+    });
+  }
+
+  signin() {
+    const data = this.signinForm.value;
+    console.log(data);
+    this.loginService.login(data).subscribe(res => {
+      // tslint:disable-next-line:triple-equals
+      if (res.id != null) {
+        const jwt = res.token;
+        sessionStorage.setItem('token', JSON.stringify(jwt));
+        sessionStorage.setItem('userId', JSON.stringify(res.id));
+        sessionStorage.setItem('name',JSON.stringify(res.username));
+        this.router.navigate(['']);
+
+        // @ts-ignore
+       document.querySelector('.modal-backdrop').remove()
+       document.body.classList.remove('modal-open')
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Đăng nhập thất bại!',
+        });
+      }
+    });
+  }
 }
