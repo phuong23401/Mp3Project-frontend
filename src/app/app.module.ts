@@ -29,7 +29,7 @@ import {environment} from "../environments/environment";
     SidemenuComponent,
     NavbarComponent,
     UploadImgComponent,
-    UploadUrlComponent
+    UploadUrlComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,4 +43,4 @@ import {environment} from "../environments/environment";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule{ }
