@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../model/User';
 import { LoginService } from '../service/login/login.service';
 import { TokenService } from '../service/token/token.service';
+import {Song} from "../model/Song";
+import {SongService} from "../service/song/song.service";
 
 declare var Swal: any;
 @Component({
@@ -19,10 +20,14 @@ export class HomepageComponent implements OnInit {
   name: any = '';
   isLogin = false;
 
+  songList: Song[] = [];
+
+
   constructor(private router: Router,
               private tokenService: TokenService,
               private formBuilder: FormBuilder,
-              private loginService: LoginService,) {}
+              private loginService: LoginService,
+              private songService: SongService) {}
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -30,6 +35,10 @@ export class HomepageComponent implements OnInit {
       email: ['', [Validators.required]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
+    });
+
+    this.songService.getAllSongs().subscribe(res =>{
+        this.songList = res;
     });
 
     this.signinForm = this.formBuilder.group({
