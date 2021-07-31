@@ -1,10 +1,11 @@
 <div>
   <input type="file" (change)="onFileChaged($event)"><br>
-  <button *ngIf="downloadURL?!selectedFile:selectedFile"  (click)="onUpLoad()">upload
+  <button *ngIf="downloadURL?!selectedFile:selectedFile" (click)="onUpLoad()">Upload Avatar
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+         aria-valuemin="0" aria-valuemax="20" style="width: 30%"></div>
   </button>
-  <br>
+
   <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
-    <img [src]="downloadURL" style="width: 300px; height: auto">
+    <img [src]="downloadURL" style="width: 200px; height: auto">
   </div>
 </div>
-

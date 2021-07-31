@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm" (ngSubmit)="register()">
+<form [formGroup]="signupForm" (ngSubmit)="register()" >
 <div class="ms_register_popup">
     <div id="myModal" class="modal  centered-modal" role="dialog">
         <div class="modal-dialog register_dialog">
@@ -43,9 +43,9 @@
                                 <i class=" fa_icon form-lock" aria-hidden="true"></i>
                             </span>
                         </div>
-                        <div>
+                        <!-- <div> -->
                             <button type="submit" class="ms_btn">register now</button>
-                        </div>
+                        <!-- </div> -->
                         <!-- <a class="ms_btn">register now</a> -->
                         <p>Already Have An Account? <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel">login here</a></p>
                     </div>

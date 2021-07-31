@@ -53,8 +53,8 @@ export class CreatesongComponent implements OnInit {
     this.form.avatarUrl = event;
     this.isCheckUploadAvatar = true;
   }
-  // onChangeFile(event:any){
-  //   this.form.mp3Url = event;
-  //   this.isCheckUploadFile = true;
-  // }
+  onChangeFile(event:any){
+    this.form.mp3Url = event;
+    this.isCheckUploadFile = true;
+  }
 }

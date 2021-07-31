@@ -33,7 +33,16 @@
               "src/styles.css"
             ],
             "scripts": [
-
+             "src/assets/js/jquery.js",
+              "src/assets/js/bootstrap.min.js",
+             "src/assets/js/plugins/swiper/js/swiper.min.js",
+             "src/assets/js/plugins/player/jplayer.playlist.min.js",
+             "src/assets/js/plugins/player/jquery.jplayer.min.js",
+              "src/assets/js/plugins/player/audio-player.js",
+             "src/assets/js/plugins/player/volume.js",
+              "src/assets/js/plugins/nice_select/jquery.nice-select.min.js",
+            "src/assets/js/plugins/scroll/jquery.mCustomScrollbar.js",
+             "src/assets/js/custom.js"
             ]
           },
           "configurations": {

@@ -1,1 +1,9 @@
-<p>upload-url works!</p>
+<div>
+  <input type="file" (change)="onFileChaged($event)"><br>
+  <button *ngIf="downloadURL?!selectedFile:selectedFile" (click)="onUpLoad()">Upload File</button>
+  <div *ngIf="downloadURL" style="margin-bottom: 10px; margin-top: 10px">
+    <audio controls>
+      <source [src]="downloadURL" style="width: 350px; height: auto">
+    </audio>
+  </div>
+</div>
