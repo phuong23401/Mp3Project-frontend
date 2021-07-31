@@ -12,6 +12,11 @@ declare var Swal: any;
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup = new FormGroup({});
+  form: any = {
+    username: null,
+    password: null
+  };
+
 
   constructor(private formBuilder: FormBuilder,
               private loginService: LoginService,
