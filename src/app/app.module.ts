@@ -8,6 +8,8 @@ import { SigninComponent } from './signin/signin.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
+import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignupComponent,
     SigninComponent,
     HomepageComponent,
+    PlaymusicComponent,
+    SidemenuComponent,
   ],
   imports: [
     BrowserModule,
