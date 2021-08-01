@@ -43,6 +43,8 @@ export class UploadImgComponent implements OnInit {
       .catch(error=>{
         console.log(`Failed to upload avatar and get link ${error}`);
       })
+    console.log(this.downloadURL)
+
   }
 
 }

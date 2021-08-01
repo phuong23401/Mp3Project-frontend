@@ -1,6 +1,5 @@
-import {Component, OnInit, Output,EventEmitter} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
-
 @Component({
   selector: 'app-upload-url',
   templateUrl: './upload-url.component.html',
@@ -13,12 +12,15 @@ export class UploadUrlComponent implements OnInit {
   checkUploadAvatar = false;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
-  constructor(private afStorage: AngularFireStorage) { }
+  constructor(
+    private afStorage: AngularFireStorage
+  ) { }
 
   ngOnInit(): void {
   }
   //Khi upload file qua the input dưới dạng 1 hoặc nhiều file thì tệp đó thông qua sự kiện (change)$event được kích hoạt. Và tất cả file upload sẽ lưu trữ
   //trong $event.target.files
+
   onFileChaged(event:any){
     this.selectedFile = event.target.files[0];
   }
@@ -39,5 +41,8 @@ export class UploadUrlComponent implements OnInit {
       .catch(error=>{
         console.log(`Failed to upload avatar and get link ${error}`);
       })
+    console.log(this.downloadURL)
+
   }
+
 }
