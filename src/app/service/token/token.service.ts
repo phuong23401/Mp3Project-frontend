@@ -13,9 +13,9 @@ export class TokenService {
   constructor() { }
 
   getToken() {
-    
+
     return window.sessionStorage.getItem(tokenKey);
-    
+
   }
 
   getName() {
