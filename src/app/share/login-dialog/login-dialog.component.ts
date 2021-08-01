@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
 
@@ -10,9 +10,23 @@ declare var Swal: any;
   styleUrls: ['./login-dialog.component.scss']
 })
 export class LoginDialogComponent implements OnInit {
-  loginForm: FormGroup = new FormGroup({});
+  // loginForm: FormGroup = new FormGroup({})
+  loginForm: FormGroup = new FormGroup({
+  username : new FormControl('', Validators.required),
+    password:  new FormControl('', Validators.required)
+  });
+  get username(){ return this.loginForm.get('username')}
+  get password(){ return this.loginForm.get('password')}
 
+  // this.loginForm = this.fb.group({
+  //   username: ['', [Validators.required]],
+  //   pw: this.fb.group({
+  //     password: ['', Validators.required],
+  //     confirmPassword: ['', Validators.required]
+  //   })
+  // });
   isLogin = false;
+
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
@@ -20,8 +34,8 @@ export class LoginDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: [''],
-      password: ['']
+      username: ['',[ Validators.required]],
+      password: ['',[ Validators.required]]
     });
   }
 

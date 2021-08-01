@@ -12,16 +12,23 @@
                 <div class="ms_register_form">
                     <h2>login / Sign in</h2>
                     <div class="form-group">
-                        <input type="text" placeholder="Enter Your Username" class="form-control" formControlName="username">
+                        <input type="text" placeholder="Enter Your Username" class="form-control" formControlName="username"
+                               required minlength="4" maxlength="15">
                         <span class="form_icon">
                             <i class="fa_icon form-envelope" aria-hidden="true"></i>
                         </span>
+                      <div class="text-danger" *ngIf="username.invalid &&(username.dirty || username.touched) ">
+                          Username is require
+                      </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Enter Password" class="form-control" formControlName="password">
+                        <input type="password" placeholder="Enter Password" class="form-control" formControlName="password" required>
                         <span class="form_icon">
                             <i class="fa_icon form-lock" aria-hidden="true"></i>
                         </span>
+                      <div class="text-danger" *ngIf="password.invalid &&(password.dirty || password.touched) ">
+                        Password is require
+                      </div>
                     </div>
                     <div class="remember_checkbox">
                         <label>Keep me signed in
