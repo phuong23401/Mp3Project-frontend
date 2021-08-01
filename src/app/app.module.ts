@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginDialogComponent } from './share/login-dialog/login-dialog.component';
 import { ListSongSearchComponent } from './song/list-song-search/list-song-search.component';
+import { PlaySongComponent } from './song/play-song/play-song.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { ListSongSearchComponent } from './song/list-song-search/list-song-searc
     FeaturedArtistsComponent,
     NewReleaseComponent,
     LoginDialogComponent,
-    ListSongSearchComponent
+    ListSongSearchComponent,
+    PlaySongComponent
   ],
   imports: [
     BrowserModule,
