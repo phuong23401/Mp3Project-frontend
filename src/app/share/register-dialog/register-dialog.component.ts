@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { LoginService } from 'src/app/service/login/login.service';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
 declare var Swal: any;
 
@@ -15,7 +17,8 @@ export class RegisterDialogComponent implements OnInit {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private loginService: LoginService,) { }
+    private loginService: LoginService,
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -36,13 +39,12 @@ export class RegisterDialogComponent implements OnInit {
     console.log(user);
     this.loginService.register(user).subscribe(res => {
       if (res.message != null) {
-        this.router.navigate(['/signin']);
-
+        // @ts-ignore
+        document.querySelector('.register_dialog').remove()
         // @ts-ignore
        document.querySelector('.modal-backdrop').remove()
        document.body.classList.remove('modal-open')
-       // @ts-ignore
-       document.querySelector('.register_dialog').remove()
+       this.modalService.show(LoginDialogComponent);
       } else {
         Swal.fire({
           icon: 'error',
