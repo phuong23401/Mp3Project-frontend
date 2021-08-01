@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {SongService} from "../../service/song/song.service";
 import {Router} from "@angular/router";
 import {query} from "@angular/animations";
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -28,8 +29,12 @@ export class HeaderComponent implements OnInit {
   login() {
     this.modalService.show(LoginDialogComponent)
   }
+
+  register() {
+    this.modalService.show(RegisterDialogComponent)
+  }
+
   search(){
     this.router.navigate(['/search'],{ queryParams: { name: this.searchForm.value.nameSearch } })
   }
-
 }
