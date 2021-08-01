@@ -11,7 +11,7 @@ import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component'
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
 import { NavbarComponent } from './share/navbar/navbar/navbar.component';
 import { SongComponent } from './song/song.component';
-import { CreatesongComponent } from './createsong/createsong.component';
+import { CreatesongComponent } from './song/createsong/createsong.component';
 import {UploadImgComponent} from "./uploadfile/upload-img/upload-img.component";
 import { UploadUrlComponent} from "./uploadfile/upload-url/upload-url.component";
 import {AngularFireStorageModule} from "@angular/fire/storage";
@@ -27,6 +27,7 @@ import { NewReleaseComponent } from './homepage/new-release/new-release.componen
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginDialogComponent } from './share/login-dialog/login-dialog.component';
+import { ListSongSearchComponent } from './song/list-song-search/list-song-search.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { LoginDialogComponent } from './share/login-dialog/login-dialog.componen
     WeeklyTopComponent,
     FeaturedArtistsComponent,
     NewReleaseComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    ListSongSearchComponent
   ],
   imports: [
     BrowserModule,

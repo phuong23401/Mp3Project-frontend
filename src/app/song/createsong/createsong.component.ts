@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {SongService} from "../service/song/song.service";
-import {Song} from "../model/Song";
-import {User} from "../model/User";
+import {SongService} from "../../service/song/song.service";
+import {Song} from "../../model/Song";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-createsong',

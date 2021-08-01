@@ -1,9 +1,12 @@
 <div class="ms_top_left">
     <div class="ms_top_search">
-        <input type="text" class="form-control" placeholder="Search Music Here..">
+      <form [formGroup]="searchForm"  (ngSubmit)="search()">
+        <input type="text" class="form-control" placeholder="Search Music Here.." formControlName="nameSearch">
+      </form>
         <span class="search_icon">
             <img src="../../../assets/images/svg/search.svg" alt="">
         </span>
+
     </div>
     <div class="ms_top_trend">
         <span><a href="#" class="ms_color">Trending Songs :</a></span> <span class="top_marquee"><a href="#">Dream
