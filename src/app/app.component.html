@@ -8,9 +8,9 @@
         <app-sidemenu></app-sidemenu>
     </div>
     <div class="ms_content_wrapper padder_top80">
-        <div class="ms_header">
-            <app-header></app-header>
-        </div>
+        <div class="ms_header" *ngIf="isLogin; then head1 else head"></div>
+        <ng-template #head1><app-header1></app-header1></ng-template>
+        <ng-template #head><app-header></app-header></ng-template>
         <router-outlet></router-outlet>
     </div>
     <div class="ms_footer_wrapper">
