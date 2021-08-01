@@ -16,7 +16,7 @@ export interface Song {
   countLike?: number;
   lyric?: string;
   user?: User;
-  category?: Icategory;
+  categories?: any;
   singer?: Singers[];
   playlist?: Playlist[];
 

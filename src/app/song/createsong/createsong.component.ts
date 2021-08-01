@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SongService} from "../service/song/song.service";
-import {Song} from "../model/Song";
-import {User} from "../model/User";
-import {CategoryService} from "../service/category/category.service";
-import {Icategory} from "../model/Icategory";
+import {SongService} from "../../service/song/song.service";
+import {Song} from "../../model/Song";
+import {User} from "../../model/User";
+import {CategoryService} from "../../service/category/category.service";
+import {Icategory} from "../../model/Icategory";
 
 @Component({
   selector: 'app-createsong',
@@ -24,52 +24,49 @@ export class CreatesongComponent implements OnInit {
   success: any = {
     message: "Done"
   }
-  song: Song = {};
+  song:Song={};
+  categoriess:Icategory[]=[]
 
-  user: User = {};
-  categories: Icategory[] = [];
-
-  constructor(private songService: SongService, private categorySv: CategoryService) {
-    this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
-      this.categories = categorySv;
-      console.log(this.categories)
-    })
+  user:User={};
+  constructor(private songService: SongService,private categorySv:CategoryService) {
+this.categorySv.getAllCategory().subscribe((categorySv:Icategory[])=>{
+  this.categoriess = categorySv
+})
 
   }
 
   ngOnInit(): void {
   }
-
-  ngSubmit() {
+  ngSubmit(){
     this.song.name = this.form.name;
     this.song.description = this.form.description;
-    this.song.tags = "";
+    // this.song.tags = "";
     this.song.avatarUrl = this.form.avatarUrl;
     this.song.fileUrl = this.form.mp3Url;
     this.song.lyric = this.form.lyric;
-    this.song.user = this.user;
-    this.song.category = this.form.category;
-    this.song.singer = this.form.singer;
+    // this.song.user = this.user;
+    this.song.categories = this.form.categories;
+    // this.song.singer = this.form.singer;
     console.log(this.song);
-    this.songService.createSong(this.song).subscribe(data => {
-      if (JSON.stringify(this.error1) == JSON.stringify(data)) {
+    this.songService.createSong(this.song).subscribe(data =>{
+      if(JSON.stringify(this.error1)==JSON.stringify(data)){
         this.status = 'The avatar is required! Please select upload avatar'
       }
-      if (JSON.stringify(this.error2) == JSON.stringify(data)) {
+      if(JSON.stringify(this.error2)==JSON.stringify(data)){
         this.status = 'The file is required! Please select upload file'
       }
-      if (JSON.stringify(this.success) == JSON.stringify(data)) {
+      if(JSON.stringify(this.success)==JSON.stringify(data)){
         this.status = 'Create success!'
       }
+    }, error => {
+      this.status = 'Please login before create Song'
     })
   }
-
-  onChangeAvatar(event: any) {
+  onChangeAvatar(event:any){
     this.form.avatarUrl = event;
     this.isCheckUploadAvatar = true;
   }
-
-  onChangeFile(event: any) {
+  onChangeFile(event:any){
     this.form.mp3Url = event;
     this.isCheckUploadFile = true;
   }

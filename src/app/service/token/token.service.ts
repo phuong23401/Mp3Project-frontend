@@ -13,9 +13,9 @@ export class TokenService {
   constructor() { }
 
   getToken() {
-    
-    console.log(window.sessionStorage.getItem(tokenKey));
-    
+
+    return window.sessionStorage.getItem(tokenKey);
+
   }
 
   getName() {

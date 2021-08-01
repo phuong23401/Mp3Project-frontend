@@ -14,8 +14,6 @@
       <app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>
     </div>
     <br>
-
-
     <br><br>
 
     <form #f="ngForm" (ngSubmit)="f.form.valid" novalidate>
@@ -28,19 +26,16 @@
 
 
         </div>
-        <div class="form-group">
-          <label>Singers: </label><br><span *ngIf="singer.hasError('required')">*The Singer is required!</span>
-          <input type="text" placeholder="Enter Singer" class="form-control" name="singer" [(ngModel)]="form.singer"
-                 #singer="ngModel" required>
-
-
-        </div>
+<!--        <div class="form-group">-->
+<!--          <label>Singers: </label><br><span *ngIf="singer.hasError('required')">*The Singer is required!</span>-->
+<!--          <input type="text" placeholder="Enter Singer" class="form-control" name="singer" [(ngModel)]="form.singer"-->
+<!--                 #singer="ngModel" required>-->
+<!--        </div>-->
         <label>Category: </label>
         <div class="form-group">
-          <select type="text" class="form-control" name="category" [(ngModel)]="form.category" #category="ngModel">
-            <option *ngFor="let item of categories" value="{{item.id}}">{{item.name}}</option>
+          <select type="text" class="form-control" name="categories" [(ngModel)]="form.categories" #categories="ngModel">
+            <option *ngFor="let item of categoriess" value="{{item.id}}">{{item.name}}</option>
           </select>
-
         </div>
         <div class="form-group">
           <label>Lyric: </label><br><span *ngIf="lyric.hasError('required')">The Lyric Song is required!</span>

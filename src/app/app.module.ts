@@ -9,14 +9,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
-import { NavbarComponent } from './share/navbar/navbar/navbar.component';
 import { SongComponent } from './song/song.component';
-import { CreatesongComponent } from './createsong/createsong.component';
-import {UploadImgComponent} from "./uploadfile/upload-img/upload-img.component";
-import { UploadUrlComponent} from "./uploadfile/upload-url/upload-url.component";
-import {AngularFireStorageModule} from "@angular/fire/storage";
-import {AngularFireModule} from "@angular/fire";
-import {environment} from "../environments/environment";
+import { CreatesongComponent } from './song/createsong/createsong.component';
+import { UploadImgComponent } from "./uploadfile/upload-img/upload-img.component";
+import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+import { AngularFireModule } from "@angular/fire";
+import { environment } from "../environments/environment";
+import { HeaderComponent } from './share/header/header.component';
+import { FooterComponent } from './share/footer/footer.component';
+import { PlayerComponent } from './share/player/player.component';
+import { RecentlyPlayedComponent } from './homepage/recently-played/recently-played.component';
+import { WeeklyTopComponent } from './homepage/weekly-top/weekly-top.component';
+import { FeaturedArtistsComponent } from './homepage/featured-artists/featured-artists.component';
+import { NewReleaseComponent } from './homepage/new-release/new-release.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoginDialogComponent } from './share/login-dialog/login-dialog.component';
+import { ListSongSearchComponent } from './song/list-song-search/list-song-search.component';
+import { RegisterDialogComponent } from './share/register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,9 +38,18 @@ import {environment} from "../environments/environment";
     ProfileComponent,
     PlaymusicComponent,
     SidemenuComponent,
-    NavbarComponent,
     UploadImgComponent,
     UploadUrlComponent,
+    HeaderComponent,
+    FooterComponent,
+    PlayerComponent,
+    RecentlyPlayedComponent,
+    WeeklyTopComponent,
+    FeaturedArtistsComponent,
+    NewReleaseComponent,
+    LoginDialogComponent,
+    ListSongSearchComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +58,11 @@ import {environment} from "../environments/environment";
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    BrowserAnimationsModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule{ }
+export class AppModule { }
