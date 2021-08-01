@@ -11,6 +11,7 @@ declare var Amplitude: any;
 export class PlaySongComponent implements OnInit {
   id: number;
   song: Song
+  songList: Song[];
   constructor(private  songService: SongService) { }
 
   ngOnInit(): void {

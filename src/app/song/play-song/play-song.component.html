@@ -1,17 +1,17 @@
 <div class="ms_player_close">
   <i class="fa fa-angle-up" aria-hidden="true"></i>
 </div>
-<div class="player_mid">
+<div class="player_mid" *ngFor="let song of songList">
   <div class="audio-player">
     <div id="jquery_jplayer_1" class="jp-jplayer"></div>
     <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
       <div class="player_left">
-        <div class="ms_play_song">
+        <div class="ms_play_song" >
           <div class="play_song_name">
             <a href="javascript:void(0);" id="playlist-text">
               <div class="jp-now-playing flex-item">
-                <div class="jp-track-name"></div>
-                <div class="jp-artist-name"></div>
+                <div class="jp-track-name">{{song.name}}</div>
+                <div class="jp-artist-name">{{song.tags}}</div>
               </div>
             </a>
           </div>

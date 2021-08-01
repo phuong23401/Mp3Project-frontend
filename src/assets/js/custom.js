@@ -45,7 +45,7 @@ Assigned to: Theme Forest
             $(".play-left-arrow").on('click', function() {
                 $(".player_left").toggleClass('open_list');
             });
-            //On Click Profile 
+            //On Click Profile
             $(".ms_admin_name").on('click', function() {
                 $(".pro_dropdown_menu").toggleClass("open_dropdown");
             });
@@ -116,7 +116,7 @@ Assigned to: Theme Forest
                 },
             });
             // Recent Slider
-            var swiper = new Swiper('.ms_rcnt_slider .swiper-container', {
+            var newRecentSwiper = new Swiper('.ms_rcnt_slider .swiper-container', {
                 slidesPerView: 6,
                 spaceBetween: 30,
                 loop: true,
@@ -154,7 +154,7 @@ Assigned to: Theme Forest
                 },
             });
             // Featured Slider
-            var swiper = new Swiper('.ms_feature_slider.swiper-container', {
+            var newFeateuredSwiper = new Swiper('.ms_feature_slider.swiper-container', {
                 slidesPerView: 6,
                 spaceBetween: 30,
                 loop: true,
@@ -192,7 +192,7 @@ Assigned to: Theme Forest
                 },
             });
             // New released Slider
-            var swiper = new Swiper('.ms_release_slider.swiper-container', {
+            var newReleasedSwiper = new Swiper('.ms_release_slider.swiper-container', {
                 slidesPerView: 4,
                 spaceBetween: 30,
                 speed: 1500,
@@ -230,7 +230,7 @@ Assigned to: Theme Forest
                 },
             });
             // Featured Album Slider
-            var swiper = new Swiper('.ms_album_slider.swiper-container', {
+            var newFeaturedAlbumSwiper = new Swiper('.ms_album_slider.swiper-container', {
                 slidesPerView: 6,
                 spaceBetween: 30,
                 loop: false,
@@ -268,7 +268,7 @@ Assigned to: Theme Forest
                 },
             });
             // Radio Slider
-            var swiper = new Swiper('.ms_radio_slider.swiper-container', {
+            var newRadioSwiper = new Swiper('.ms_radio_slider.swiper-container', {
                 slidesPerView: 6,
                 spaceBetween: 30,
                 loop: true,
@@ -306,7 +306,7 @@ Assigned to: Theme Forest
                 },
             });
             // Testimonial Slider
-            var swiper = new Swiper('.ms_test_slider.swiper-container', {
+            var newTestimonialSwiper = new Swiper('.ms_test_slider.swiper-container', {
                 slidesPerView: 4,
                 spaceBetween: 30,
                 slidesPerColumn: 1,
@@ -328,10 +328,20 @@ Assigned to: Theme Forest
                     },
                 },
             });
+          setTimeout(function () {
+            newReleasedSwiper.update();
+            swiper.update();
+            newRecentSwiper.update();
+            newFeaturedAlbumSwiper.update();
+            newFeateuredSwiper.update();
+            newRadioSwiper.update();
+            newTestimonialSwiper.update();
+
+          }, 500)
         },
         // More
         More: function() {
-            $(".ms_more_icon").on('click', function(e) {
+            $(document).on('click','.ms_more_icon',  function(e) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
                 if (typeof $(this).attr('data-other') != 'undefined') {
@@ -392,7 +402,7 @@ Assigned to: Theme Forest
             });
         },
 
-        // Volume 
+        // Volume
         volume: function() {
             $(".knob-mask .knob").css("transform", "rotateZ(270deg)");
             $(".knob-mask .handle").css("transform", "rotateZ(270deg)");
@@ -402,12 +412,12 @@ Assigned to: Theme Forest
     };
     $(document).ready(function() {
         music.init();
-		
+
 		// Scrollbar
 		$(".ms_nav_wrapper").mCustomScrollbar({
 			theme:"minimal"
 		});
-		
+
 		// Queue Scrollbar
 		$(".jp_queue_list_inner").mCustomScrollbar({
 			theme:"minimal",

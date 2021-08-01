@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Navbar1Component } from './navbar1.component';
+import { RegisterDialogComponent } from './register-dialog.component';
 
-describe('Navbar1Component', () => {
-  let component: Navbar1Component;
-  let fixture: ComponentFixture<Navbar1Component>;
+describe('RegisterDialogComponent', () => {
+  let component: RegisterDialogComponent;
+  let fixture: ComponentFixture<RegisterDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Navbar1Component ]
+      declarations: [ RegisterDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(Navbar1Component);
+    fixture = TestBed.createComponent(RegisterDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

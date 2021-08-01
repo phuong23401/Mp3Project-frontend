@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { User } from 'src/app/model/User';
 
 const API_URL = `${environment.API_URL}`;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +16,7 @@ export class ProfileService {
     return this.httpClient.put(API_URL + "/changeinfor", user);
   }
 
-  changePassword(user: User): Observable<User> {
-    return this.httpClient.put(API_URL + "/changepassword", user);
+  getUserByToken(): Observable<User> {
+    return this.httpClient.get<User>(API_URL + "/profile/getuser");
   }
 }
