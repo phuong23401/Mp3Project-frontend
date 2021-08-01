@@ -20,11 +20,4 @@ export class HomepageComponent implements OnInit {
         this.songList = res;
     });
   }
-
-  logout(){
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('id');
-    sessionStorage.clear();
-    this.router.navigate(['']);
-  }
 }
