@@ -41,6 +41,8 @@ export class RegisterDialogComponent implements OnInit {
         // @ts-ignore
        document.querySelector('.modal-backdrop').remove()
        document.body.classList.remove('modal-open')
+       // @ts-ignore
+       document.querySelector('.register_dialog').remove()
       } else {
         Swal.fire({
           icon: 'error',

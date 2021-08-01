@@ -39,6 +39,8 @@ export class LoginDialogComponent implements OnInit {
         // @ts-ignore
        document.querySelector('.modal-backdrop').remove()
        document.body.classList.remove('modal-open')
+       // @ts-ignore
+       document.querySelector('.login_dialog').remove()
       } else {
         Swal.fire({
           icon: 'error',
