@@ -17,4 +17,5 @@ export class HeaderComponent implements OnInit {
   login() {
     this.modalService.show(LoginDialogComponent)
   }
+
 }
