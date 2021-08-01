@@ -6,9 +6,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./login-dialog.component.scss']
 })
 export class LoginDialogComponent implements OnInit {
-
-  constructor() { }
-
+  
   ngOnInit(): void {
   }
 
