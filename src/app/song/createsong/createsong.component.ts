@@ -37,23 +37,23 @@ export class CreatesongComponent implements OnInit {
     categories: {
       id: 0
     },
-    // singers:[
-    //   {id:0}
-    // ]
+    singer:[
+      {id:0}
+    ]
   };
 
   form: any = {};
   categoriess: Icategory[] = [];
-  singgers:Singers[]=[];
+  singgers: Singers[] = [];
   user: User = {};
 
   constructor(private songService: SongService,
               private categorySv: CategoryService,
-              private singer:SingerService) {
+              private singer: SingerService) {
     this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
       this.categoriess = categorySv;
     })
-    this.singer.getAllSinger().subscribe((singerSv:Singers[])=>{
+    this.singer.getAllSinger().subscribe((singerSv: Singers[]) => {
       this.singgers = singerSv;
     })
 
@@ -69,9 +69,8 @@ export class CreatesongComponent implements OnInit {
     this.song.avatarUrl = this.form.avatarUrl;
     this.song.fileUrl = this.form.fileUrl;
     this.song.lyric = this.form.lyric;
-    // this.song.user = this.user;
     this.song.categories.id = this.form.categories;
-    // this.song.singers = this.form.singers;
+    this.song.singer = this.singgers;
     console.log(this.song);
     this.songService.createSong(this.song).subscribe(data => {
       if (JSON.stringify(this.error1) == JSON.stringify(data)) {
@@ -87,6 +86,7 @@ export class CreatesongComponent implements OnInit {
       this.status = 'Please login before create Song'
     })
     console.log(this.form)
+
   }
 
   onChangeAvatar(event: any) {

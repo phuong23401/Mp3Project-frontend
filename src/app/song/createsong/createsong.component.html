@@ -59,60 +59,66 @@
 <!--</div>-->
 <!--kjsdfhksdjfhksjdhfdskjhfsfsdf-->
 
-
+<br><br>
 <h2 style="text-align: center">Thêm Mới Bài Hát</h2>
 <h4 style="text-align: center">{{status}}</h4>
 
-<div>
 
-  <div  style="padding: 10px 0px 0px 300px">
-    <p *ngIf="!isCheckUploadFile">Please Upload File Song</p>
-    <app-upload-url (giveURLtoCreate)="onChangeFile($event)"></app-upload-url>
+<br>
+
+<form #f="ngForm" (ngSubmit)="f.form.valid" novalidate style="margin-bottom: 50px">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label>Tên Bài Hát: </label><span *ngIf="name.hasError('required')"> *The Name Song is required!</span>
+      <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required
+             placeholder="Name-Song">
+    </div>
+    <div class="form-group col-md-6">
+      <label>Category: </label>
+      <select class="form-control" name="categories" [(ngModel)]="form.categories" #categories="ngModel">
+        <option selected>Choose...</option>
+        <option *ngFor="let cate of categoriess" [value]="cate.id">{{cate.name}}</option>
+      </select>
+    </div>
   </div>
-  <div  style="padding: 10px 0px 0px 300px">
-    <p *ngIf="!isCheckUploadAvatar">Please Upload Avatar Song</p>
-    <app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>
+  <div class="row">
+    <div class="form-group col-md-6">
+      <label>Lyric: </label><span *ngIf="lyric.hasError('required')"> *The Lyric Song is required!</span>
+      <textarea type="text" class="form-control" placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric"
+                #lyric="ngModel" required></textarea>
+    </div>
+    <div class="form-group col-md-6">
+      <label>Description</label>
+      <textarea type="text" class="form-control" placeholder="Description" name="description"
+                [(ngModel)]="form.description" #description="ngModel"></textarea>
+    </div>
   </div>
-</div>
+
+  <div class="form-row">
+          <div class="form-group col-md-6">
+            <label >Singers</label>
+            <select  class="form-control"  name="singersF" [(ngModel)]="form.singersF" #singersF="ngModel"  multiple style="height: 100px">
+              <option selected>Singers...</option>
+              <option *ngFor="let singer of singgers" [value]="singer.id">{{singer.name}}</option>
+            </select>
+          </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">
+      <h6 *ngIf="!isCheckUploadFile">Please Upload File Song</h6>
+      <app-upload-url (giveURLtoCreate)="onChangeFile($event)"></app-upload-url>
+    </div>
+    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">
+      <h6 *ngIf="!isCheckUploadAvatar">Please Upload Avatar Song</h6>
+      <app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>
+    </div>
+
+  </div>
+
   <br>
+  <div style="text-align: center">
+    <button type="submit" class="btn btn-primary" (click)="ngSubmit()">Sign in</button>
+  </div>
+</form>
 
-  <form #f="ngForm" (ngSubmit)="f.form.valid" novalidate>
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label >Tên Bài Hát</label><span *ngIf="name.hasError('required')">*The Name Song is required!</span>
-        <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required placeholder="Name-Song">
-      </div>
-      <div class="form-group col-md-6">
-        <label >Category</label>
-        <select  class="form-control" name="categories" [(ngModel)]="form.categories" #categories="ngModel">
-          <option selected>Choose...</option>
-          <option *ngFor="let cate of categoriess" [value]="cate.id" >{{cate.name}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group col-md-6">
-        <label >Lyric</label><span *ngIf="lyric.hasError('required')">The Lyric Song is required!</span>
-        <textarea  type="text" class="form-control"  placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric" #lyric="ngModel" required></textarea>
-      </div>
-      <div class="form-group col-md-6">
-        <label >Description</label>
-        <textarea type="text" class="form-control"  placeholder="Description" name="description"  [(ngModel)]="form.description" #description="ngModel" ></textarea>
-      </div>
-    </div>
-
-    <div class="form-row">
-
-<!--      <div class="form-group col-md-6">-->
-<!--        <label >Singers</label>-->
-<!--        <select  class="form-control"  name="singersF" [(ngModel)]="form.singersF" #singersF="ngModel"  multiple style="height: 100px">-->
-<!--          <option selected>Singers...</option>-->
-<!--          <option *ngFor="let singer of singgers" [value]="singer.id">{{singer.name}}</option>-->
-<!--        </select>-->
-<!--      </div>-->
-    </div>
-    <div style="text-align: center">
-      <button type="submit" class="btn btn-primary" (click)="ngSubmit()">Sign in</button>
-    </div>
-  </form>
 

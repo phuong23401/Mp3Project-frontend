@@ -25,6 +25,10 @@ export class Header1Component implements OnInit {
   profile() {
     this.router.navigate(['/profile']);
   }
+
+  createSong() {
+    this.router.navigate(['/createsong']);
+  }
   
   logout(){
     sessionStorage.removeItem('token');
