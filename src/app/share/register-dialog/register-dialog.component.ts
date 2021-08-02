@@ -10,9 +10,12 @@ declare var Swal: any;
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.css']
 })
+
+
+
 export class RegisterDialogComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
-
+message:any;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,) { }
@@ -35,7 +38,8 @@ export class RegisterDialogComponent implements OnInit {
     };
     console.log(user);
     this.loginService.register(user).subscribe(res => {
-      if (res.message != null) {
+      console.log(res)
+      if (res != null) {
         this.router.navigate(['/signin']);
 
         // @ts-ignore
@@ -44,11 +48,8 @@ export class RegisterDialogComponent implements OnInit {
        // @ts-ignore
        document.querySelector('.register_dialog').remove()
       } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: res.message,
-        });
+        console.log("saicmnr")
+        this.message = res;
       }
     });
   }
