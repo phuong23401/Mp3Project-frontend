@@ -60,7 +60,7 @@ this.categorySv.getAllCategory().subscribe((categorySv:Icategory[])=>{
     this.song.lyric = this.form.lyric;
     // this.song.user = this.user;
     this.song.categories.id = this.form.categories;
-    // this.song.singer = this.form.singer;
+    // this.song.singers = this.form.singers;
     console.log(this.song);
     this.songService.createSong(this.song).subscribe(data =>{
       if(JSON.stringify(this.error1)==JSON.stringify(data)){
