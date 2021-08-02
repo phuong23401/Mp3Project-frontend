@@ -20,7 +20,6 @@
 		
 		//Editor Plugin
 		"dbaeumer.vscode-eslint",
-		"tabnine.tabnine-vscode",
 		"visualstudioexptteam.vscodeintellicode",
 		"christian-kohler.npm-intellisense",
 		"steoates.autoimport",
@@ -28,13 +27,10 @@
 
 		//Live server to reload
 		"ritwickdey.liveserver",
-
-		//Live share for pair programming
-		"ms-vsliveshare.vsliveshare-pack"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [5500, 4200],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
