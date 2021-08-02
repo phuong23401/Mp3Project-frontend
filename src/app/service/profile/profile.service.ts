@@ -19,4 +19,8 @@ export class ProfileService {
   getUserByToken(): Observable<User> {
     return this.httpClient.get<User>(API_URL + "/profile/getuser");
   }
+
+  changePassword(data: any): Observable<any>{
+    return this.httpClient.put(API_URL + "/profile/changepassword", data);
+  }
 }

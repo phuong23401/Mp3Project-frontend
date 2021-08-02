@@ -13,6 +13,9 @@ declare var Swal: any;
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.css']
 })
+
+
+
 export class RegisterDialogComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
 
@@ -26,6 +29,7 @@ export class RegisterDialogComponent implements OnInit {
 
   newUser: ResgisterUser;
 
+// message:any;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
