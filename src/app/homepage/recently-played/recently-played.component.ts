@@ -9,13 +9,18 @@ import {Song} from "../../model/Song";
 })
 export class RecentlyPlayedComponent implements OnInit {
   songList: Song[];
+  isPlaying: boolean;
   constructor(private songService: SongService,
               ) { }
 
   ngOnInit(): void {
+    this.isPlaying = false;
     this.songService.getAllSongs().subscribe(res =>{
       this.songList = res;
     })
   }
 
+  play() {
+    this.isPlaying = true;
+  }
 }
