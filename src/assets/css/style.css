@@ -758,7 +758,7 @@ span.nav_text {
 .ms_top_right .ms_top_lang:hover {
 	color: #3bc8e7;
 }
-.ms_top_right .ms_top_lang:after {
+/* .ms_top_right .ms_top_lang:after {
 	position: absolute;
 	background-color: #cdcdcd;
 	height: 30px;
@@ -766,7 +766,7 @@ span.nav_text {
 	content: "";
 	right: 6px;
 	top: 6px;
-}
+} */
 .ms_btn {
 	background-color: #3bc8e7;
 	color: #fff;
@@ -777,7 +777,7 @@ span.nav_text {
 	text-align: center;
 	line-height: 32px;
 	border-radius: 20px;
-	margin-left: 15px;
+	margin-right: 20px;
 	transition: all 0.4s ease-in-out;
 	-webkit-transition: all 0.4s ease-in-out;
 	-moz-transition: all 0.4s ease-in-out;
@@ -3496,7 +3496,7 @@ button.save_btn:hover {
 .ms_admin_name:hover:after {
 	border-top: 4px solid #3bc8e7;
 }
-.ms_admin_name:before {
+/* .ms_admin_name:before {
 	position: absolute;
 	background-color: #cdcdcd;
 	height: 30px;
@@ -3504,7 +3504,7 @@ button.save_btn:hover {
 	content: "";
 	left: -21px;
 	top: 6px;
-}
+} */
 .ms_main_wrapper.ms_profile .ms_top_right .ms_top_lang:after {
 	right: 19px;
 }
@@ -3632,8 +3632,8 @@ ul.pro_dropdown_menu {
 	background-color: #fff;
 	max-width: 150px;
 	width: 100%;
-	right: 0;
-	top: 157%;
+	right: 10px;
+	top: 100%;
 	position: absolute;
 	padding: 0px;
 	list-style: none;
