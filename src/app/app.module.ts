@@ -16,7 +16,7 @@ import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component
 import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "../environments/environment";
-import { HeaderComponent } from './share/header/header.component';
+import { HeaderComponent } from './share/headerr/header/header.component';
 import { FooterComponent } from './share/footer/footer.component';
 import { PlayerComponent } from './share/player/player.component';
 import { RecentlyPlayedComponent } from './homepage/recently-played/recently-played.component';
@@ -28,8 +28,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginDialogComponent } from './share/login-dialog/login-dialog.component';
 import { ListSongSearchComponent } from './song/list-song-search/list-song-search.component';
 import { RegisterDialogComponent } from './share/register-dialog/register-dialog.component';
+import { Header1Component } from './share/headerr/header1/header1.component';
 
-import { PlaySongComponent } from './song/play-song/play-song.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,8 +51,7 @@ import { PlaySongComponent } from './song/play-song/play-song.component';
     LoginDialogComponent,
     ListSongSearchComponent,
     RegisterDialogComponent,
-    ListSongSearchComponent,
-    PlaySongComponent
+    Header1Component
   ],
   imports: [
     BrowserModule,

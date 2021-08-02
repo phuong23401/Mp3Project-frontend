@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
+import { TokenService } from 'src/app/service/token/token.service';
 
 declare var Swal: any;
 @Component({
@@ -12,17 +13,26 @@ declare var Swal: any;
 export class LoginDialogComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
 
-  isLogin = false;
+  get username(){ return this.loginForm.get('username')}
+  get password(){ return this.loginForm.get('password')}
+
+  name: string;
+
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: [''],
-      password: ['']
+      username: ['',[ Validators.required]],
+      password: ['',[ Validators.required]]
     });
+
+    if(this.tokenService.getToken()) {
+      this.name = this.tokenService.getName();
+    }
   }
 
   login() {
@@ -30,17 +40,19 @@ export class LoginDialogComponent implements OnInit {
     console.log(data);
     this.loginService.login(data).subscribe(res => {
       // tslint:disable-next-line:triple-equals
-      if (res.id != null) {
-        const jwt = res.token;
-        sessionStorage.setItem('token', JSON.stringify(jwt));
-        sessionStorage.setItem('userId', JSON.stringify(res.id));
-        this.router.navigate(['']);
+      if (res.token != undefined) {
+        this.tokenService.setToken(res.token);
+        this.tokenService.setName(res.name);
+        this.name = this.tokenService.getName();
+        this.router.navigate(['']).then(() => {
+          window.location.reload();
+        });
 
         // @ts-ignore
-       document.querySelector('.modal-backdrop').remove()
-       document.body.classList.remove('modal-open')
-       // @ts-ignore
-       document.querySelector('.login_dialog').remove()
+        document.querySelector('.modal-backdrop').remove()
+        document.body.classList.remove('modal-open')
+        // @ts-ignore
+        document.querySelector('.login_dialog').remove()
       } else {
         Swal.fire({
           icon: 'error',
