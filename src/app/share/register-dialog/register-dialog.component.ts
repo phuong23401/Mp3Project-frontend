@@ -49,7 +49,7 @@ export class RegisterDialogComponent implements OnInit {
       password: this.registerForm.value.password
     };
     console.log(this.newUser);
-    if(this.confirmPassword == this.password) {
+    if(this.confirmPassword.value == this.password.value) {
       this.loginService.register(this.newUser).subscribe(res => {
         this.message = res;
         console.log(this.message);

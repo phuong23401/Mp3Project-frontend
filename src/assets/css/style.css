@@ -40,7 +40,7 @@ Author: Kamleshyadav
 html,
 body {
 	margin: 0;
-	font-family: 'Josefin Sans', sans-serif;
+	font-family: 'Josefin Sans';
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 24px;
@@ -732,14 +732,14 @@ span.nav_text {
 }
 .ms_top_trend {
 	float: left;
-	line-height: 40px;
+	line-height: 50px;
 	padding-left: 50px;
 }
 .ms_top_trend a {
 	color: #fff;
 }
 .ms_top_right {
-	line-height: 40px;
+	line-height: 50px;
 	display: flex;
 	place-content: flex-end;
 }
@@ -3513,6 +3513,9 @@ button.save_btn:hover {
 }
 .ms_main_wrapper.ms_profile .ms_top_lang {
 	padding-right: 34px;
+}
+.ms_pro_name {
+	background-color: #3bc8e7;
 }
 .ms_admin_name span.ms_pro_name {
 	width: 50px;
