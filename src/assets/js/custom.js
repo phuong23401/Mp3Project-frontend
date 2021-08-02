@@ -46,7 +46,7 @@ Assigned to: Theme Forest
                 $(".player_left").toggleClass('open_list');
             });
             //On Click Profile 
-            $(".ms_admin_name").on('click', function() {
+            $(span).on('click', '.ms_pro_name', function() {
                 $(".pro_dropdown_menu").toggleClass("open_dropdown");
             });
         },
