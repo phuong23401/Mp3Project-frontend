@@ -11,14 +11,16 @@ export interface Song {
   tags?: string;
   avatarUrl?: string;
   fileUrl?: string;
-  createTime?: any;
-  updateTime?: any;
+  createdTime?: any;
+  updatedTime?: any;
   countLike?: number;
-  lyrics?: string;
+  lyric?: string;
   user?: User;
-  category?: Icategory;
+  categories?: any;
   singers?: Singers[];
-  playlists?: Playlist[];
+  playlist?: Playlist[];
+  numberOfView?: number;
+
 
 
 }

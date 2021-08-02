@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
 import {User} from "../../model/User";
+import {CategoryService} from "../../service/category/category.service";
+import {Icategory} from "../../model/Icategory";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-createsong',
@@ -9,10 +12,11 @@ import {User} from "../../model/User";
   styleUrls: ['./createsong.component.css']
 })
 export class CreatesongComponent implements OnInit {
+
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
-  form: any = {};
+
   error1: any = {
     message: "noavatar"
   }
@@ -20,24 +24,44 @@ export class CreatesongComponent implements OnInit {
     message: "nomp3url"
   }
   success: any = {
-    message: "yes"
+    message: "Done"
   }
-  song:Song={};
+  song:Song={
+    name :"",
+    description:"",
+    avatarUrl:"",
+    fileUrl:"",
+    lyric:"",
+    categories:{
+      id:0
+    }
+  };
+
+  form: any = {};
+  categoriess:Icategory[]=[]
 
   user:User={};
-  constructor(private songService: SongService) {
+  constructor(private songService: SongService,private categorySv:CategoryService) {
+this.categorySv.getAllCategory().subscribe((categorySv:Icategory[])=>{
+  this.categoriess = categorySv;
 
+})
 
   }
 
   ngOnInit(): void {
   }
   ngSubmit(){
-   this.song.name = this.form.name;
-   this.song.lyrics = this.form.lyrics;
-   this.song.category = this.form.category;
-   this.song.singers = this.form.singers;
-   this.song.user = this.user;
+
+    this.song.name = this.form.name;
+    this.song.description = this.form.description;
+    this.song.avatarUrl = this.form.avatarUrl;
+    this.song.fileUrl = this.form.fileUrl;
+    this.song.lyric = this.form.lyric;
+    // this.song.user = this.user;
+    this.song.categories.id = this.form.categories;
+    // this.song.singer = this.form.singer;
+    console.log(this.song);
     this.songService.createSong(this.song).subscribe(data =>{
       if(JSON.stringify(this.error1)==JSON.stringify(data)){
         this.status = 'The avatar is required! Please select upload avatar'
@@ -51,13 +75,15 @@ export class CreatesongComponent implements OnInit {
     }, error => {
       this.status = 'Please login before create Song'
     })
+    console.log(this.form)
   }
   onChangeAvatar(event:any){
     this.form.avatarUrl = event;
     this.isCheckUploadAvatar = true;
   }
   onChangeFile(event:any){
-    this.form.mp3Url = event;
+    this.form.fileUrl = event;
     this.isCheckUploadFile = true;
   }
+
 }

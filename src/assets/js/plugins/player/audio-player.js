@@ -10,8 +10,8 @@ $(function() {
 			image : 'assets/images/weekly/song1.jpg',
             title: "Cro Magnon Man",
             artist: "Mushroom Records",
-            mp3: "http://www.jplayer.org/audio/mp3/TSP-01-Cro_magnon_man.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/TSP-01-Cro_magnon_man.ogg",
+            mp3: "https://firebasestorage.googleapis.com/v0/b/mtv-k-94311.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=4e3ba764-5f49-4026-80bc-b5622115bd65",
+            oga: "https://firebasestorage.googleapis.com/v0/b/mtv-k-94311.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=4e3ba764-5f49-4026-80bc-b5622115bd65",
 			option : myPlayListOtion
         }, {
 			image : 'assets/images/weekly/song2.jpg',
