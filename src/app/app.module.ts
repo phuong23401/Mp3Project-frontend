@@ -30,6 +30,7 @@ import { ListSongSearchComponent } from './song/list-song-search/list-song-searc
 import { RegisterDialogComponent } from './share/register-dialog/register-dialog.component';
 import { Header1Component } from './share/headerr/header1/header1.component';
 import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
+import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { ListNewSongComponent } from './song/list-new-song/list-new-song.compone
     ListSongSearchComponent,
     RegisterDialogComponent,
     Header1Component,
-    ListNewSongComponent
+    ListNewSongComponent,
+    TwoMostListenedComponent
   ],
   imports: [
     BrowserModule,

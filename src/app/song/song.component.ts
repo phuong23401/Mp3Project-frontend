@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SongService} from "../service/song/song.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-song',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SongComponent implements OnInit {
 
-  constructor() { }
+  constructor(private songService: SongService, private router: Router) { }
 
   ngOnInit(): void {
   }

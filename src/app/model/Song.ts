@@ -19,6 +19,8 @@ export interface Song {
   categories?: any;
   singers?: Singers[];
   playlist?: Playlist[];
+  numberOfView?: number;
+
 
 
 }
