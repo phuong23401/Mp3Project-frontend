@@ -24,6 +24,7 @@
 		"christian-kohler.npm-intellisense",
 		"steoates.autoimport",
 		"ecmel.vscode-html-css",
+		"streetsidesoftware.code-spell-checker",
 
 		//Live server to reload
 		"ritwickdey.liveserver",
