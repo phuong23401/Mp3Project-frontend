@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProfileService } from "../../service/profile/profile.service";
+import { Password } from "../../model/Password";
+import { Message } from "../../model/Message";
 
 @Component({
   selector: 'app-changepassword',
@@ -8,9 +11,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ChangepasswordComponent implements OnInit {
   changePasswordForm: FormGroup = new FormGroup({});
-  constructor(private formBuilder: FormBuilder) {
+  requestPassword: Password;
+  messageResponse: Message;
+  constructor(private formBuilder: FormBuilder,
+              private profileSerive: ProfileService) {
 
   }
+
 
   ngOnInit(): void {
     this.changePasswordForm = this.formBuilder.group({
@@ -23,4 +30,18 @@ export class ChangepasswordComponent implements OnInit {
   get  newPassword(){ return this.changePasswordForm.get('newPassword')};
   get   confirmPassword(){ return this.changePasswordForm.get('confirmPassword')};
 
+  changePassword(){
+    const data = this.changePasswordForm.value;
+    console.log(data);
+    this.requestPassword=({
+      password: data.currentPassword,
+      newPassword: data.newPassword
+    });
+    this.profileSerive.changePassword(this.requestPassword).subscribe(mes=>{
+      this.messageResponse ={
+        message: mes
+      }
+      alert(mes.message);
+    });
+  }
 }

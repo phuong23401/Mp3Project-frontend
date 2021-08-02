@@ -1,4 +1,4 @@
-export interface Icategory {
+export interface Password {
   password: string;
   newPassword: string;
 }
