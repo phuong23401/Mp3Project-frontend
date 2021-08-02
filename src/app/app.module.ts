@@ -31,8 +31,7 @@ import { RegisterDialogComponent } from './share/register-dialog/register-dialog
 import { Header1Component } from './share/headerr/header1/header1.component';
 import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
-import { ChangepasswordComponent } from './profile/changepassword/changepassword.component';
-import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
+
 
 @NgModule({
   declarations: [
@@ -58,7 +57,6 @@ import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
     Header1Component,
     ListNewSongComponent,
     TwoMostListenedComponent,
-    ChangepasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +69,7 @@ import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
     BrowserAnimationsModule,
     ModalModule.forRoot()
   ],
-  providers: [httpInterceptorProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
