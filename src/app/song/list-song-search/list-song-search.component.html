@@ -4,8 +4,8 @@
 </div>
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <div class="swiper-slide" >
-      <div class="ms_rcnt_box" *ngFor="let song of songLists">
+    <div class="swiper-slide" *ngFor="let song of songLists">
+      <div class="ms_rcnt_box" >
         <div class="ms_rcnt_box_img">
           <img src="../../../assets/images/music/r_music1.jpg" alt="">
           <div class="ms_main_overlay">
@@ -33,8 +33,8 @@
           </div>
         </div>
         <div class="ms_rcnt_box_text">
-          <h3><a href="#">{{song.name}}</a></h3>
-          <p>{{song.singer}}</p>
+          <h3><a [routerLink]= "['/song',song.id]" >{{song.name}}</a></h3>
+          <p>{{song.singers}}</p>
         </div>
       </div>
     </div>
@@ -43,3 +43,4 @@
 <!-- Add Arrows -->
 <div class="swiper-button-next slider_nav_next"></div>
 <div class="swiper-button-prev slider_nav_prev"></div>
+

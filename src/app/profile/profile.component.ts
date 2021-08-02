@@ -39,7 +39,6 @@ export class ProfileComponent implements OnInit {
   getUserCurrent() {
     this.profileService.getUserByToken().subscribe(u => {
       this.userCurrent = u;
-      console.log(u);
       console.log(this.userCurrent);
     })
   }
