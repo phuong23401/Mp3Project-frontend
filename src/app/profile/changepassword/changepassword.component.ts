@@ -1,3 +1,4 @@
+import { TokenService } from 'src/app/service/token/token.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileService } from "../../service/profile/profile.service";
@@ -14,7 +15,8 @@ export class ChangepasswordComponent implements OnInit {
   requestPassword: Password;
   messageResponse: Message;
   constructor(private formBuilder: FormBuilder,
-              private profileSerive: ProfileService) {
+              private profileSerive: ProfileService,
+              private tokenService: TokenService) {
 
   }
 
@@ -25,6 +27,8 @@ export class ChangepasswordComponent implements OnInit {
     newPassword: ['', [Validators.required]],
     confirmPassword: ['', [Validators.required]]
   });
+    console.log(this.tokenService.getName());
+
   }
   get  currentPassword(){ return this.changePasswordForm.get('currentPassword')};
   get  newPassword(){ return this.changePasswordForm.get('newPassword')};
@@ -34,6 +38,7 @@ export class ChangepasswordComponent implements OnInit {
     const data = this.changePasswordForm.value;
     console.log(data);
     this.requestPassword=({
+      id: this.tokenService.getName(),
       password: data.currentPassword,
       newPassword: data.newPassword
     });

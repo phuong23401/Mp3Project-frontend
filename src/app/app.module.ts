@@ -1,3 +1,4 @@
+import { httpInterceptorProviders } from './service/auth/auth.interceptor';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -70,7 +71,7 @@ import { ChangepasswordComponent } from './profile/changepassword/changepassword
     BrowserAnimationsModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
