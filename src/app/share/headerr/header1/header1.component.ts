@@ -16,12 +16,11 @@ export class Header1Component implements OnInit {
   constructor(private modalService: BsModalService,
     private formBuilder: FormBuilder,
     private router: Router,
-              private tokenService: TokenService) {
-    this.nameuser = this.tokenService.getUsername();
-    console.log(this.nameuser);
-  }
+              private tokenService: TokenService) {}
 
   ngOnInit(): void {
+    this.nameuser = this.tokenService.getUsername();
+    console.log(this.nameuser);
   }
 
   search() {
