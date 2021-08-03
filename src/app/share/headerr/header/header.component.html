@@ -1,16 +1,18 @@
-<div class="ms_header">
+<div class="ms_header" xmlns:searchfilter="http://www.w3.org/1999/xhtml"
+     xmlns:searchfilter="http://www.w3.org/1999/xhtml" xmlns:searchfilter="http://www.w3.org/1999/xhtml">
     <div class="ms_top_left">
         <div class="ms_top_search">
-        <form [formGroup]="searchForm"  (ngSubmit)="search()">
-            <input type="text" class="form-control" placeholder="Search Music Here.." formControlName="nameSearch">
-        </form>
+<!--        <form [formGroup]="searchForm"  (ngSubmit)="search()">-->
+            <input  type="text" class="form-control" placeholder="Search Music Here.."  [(ngModel)]="name">
+<!--        </form>-->
+<!--          {{name}}-->
             <span class="search_icon">
                 <img src="../../../assets/images/svg/search.svg" alt="">
             </span>
 
         </div>
         <div class="ms_top_trend">
-            <span><a href="#" class="ms_color">Trending Songs :</a></span> 
+            <span><a href="#" class="ms_color">Trending Songs :</a></span>
             <span class="top_marquee"><a href="#">Dream your moments, Until I Met You, Gimme Some Courage, Dark Alley (+8 More)</a></span>
         </div>
     </div>
@@ -25,3 +27,6 @@
         </div>
     </div>
 </div>
+
+
+

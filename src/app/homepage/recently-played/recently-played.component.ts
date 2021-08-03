@@ -12,7 +12,8 @@ export class RecentlyPlayedComponent implements OnInit {
   isPlaying = false;
   audio : any;
   song: Song;
-  constructor(private songService: SongService,
+  name:string;
+  constructor(private songService: SongService
               ) { }
 
   ngOnInit(): void {

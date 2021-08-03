@@ -14,6 +14,7 @@ import { RegisterDialogComponent } from '../../register-dialog/register-dialog.c
 })
 export class HeaderComponent implements OnInit {
   searchForm: FormGroup;
+  name: any;
 
   constructor(private modalService: BsModalService,
               private songService: SongService,
