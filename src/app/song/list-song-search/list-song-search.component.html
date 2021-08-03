@@ -7,11 +7,12 @@
     <div class="swiper-slide" *ngFor="let song of songLists">
       <div class="ms_rcnt_box" >
         <div class="ms_rcnt_box_img">
-          <img src="../../../assets/images/music/r_music1.jpg" alt="">
+          <img src="{{song.avatarUrl}}" alt="">
           <div class="ms_main_overlay">
             <div class="ms_box_overlay"></div>
             <div class="ms_more_icon">
               <img src="../../../assets/images/svg/more.svg" alt="">
+              <i class="fas fa-headphones" style="font-size: 20px">{{song.numberOfView}}</i>
             </div>
             <ul class="more_option">
               <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To
@@ -27,8 +28,21 @@
               <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>
               </li>
             </ul>
-            <div class="ms_play_icon">
-              <img src="../../../assets/images/svg/play.svg" alt="">
+            <div style="display: none">
+              <audio controls loop id="track">
+                <source src="{{song.fileUrl}}" type="audio/mpeg">
+                <source src="{{song.fileUrl}}" type="audio/ogg">
+              </audio>
+            </div>
+            <div class="ms_play_icon" *ngIf="!isPlaying"
+                 (click)="listenCount(song)" >
+
+              <img src="assets/images/svg/play.svg" alt="">
+
+            </div>
+            <div class="ms_play_icon" *ngIf="isPlaying"
+                 (click)="changePause()" >
+              <img src="assets/images/svg/pause.svg" alt="">
             </div>
           </div>
         </div>

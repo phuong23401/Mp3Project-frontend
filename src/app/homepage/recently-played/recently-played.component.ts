@@ -9,7 +9,9 @@ import {Song} from "../../model/Song";
 })
 export class RecentlyPlayedComponent implements OnInit {
   songList: Song[];
-  isPlaying: boolean;
+  isPlaying = false;
+  audio : any;
+  song: Song;
   constructor(private songService: SongService,
               ) { }
 
@@ -20,7 +22,19 @@ export class RecentlyPlayedComponent implements OnInit {
     })
   }
 
-  play() {
-    this.isPlaying = true;
+  listenCount(song:Song){
+   this.isPlaying = !this.isPlaying;
+    this.audio = new Audio();
+    this.audio.src = song.fileUrl;
+    this.audio.load();
+    this.audio.play();
+    this.songService.getListenSongById(song.id).subscribe(data=>{
+      this.song = data;
+    })
+
+  }
+  changePause(){
+    this.isPlaying = !this.isPlaying;
+    this.audio.pause();
   }
 }
