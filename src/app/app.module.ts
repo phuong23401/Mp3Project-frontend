@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
-import { SongComponent } from './song/song.component';
+import { SongComponent } from './song/song-manager/song.component';
 import { CreatesongComponent } from './song/createsong/createsong.component';
 import { UploadImgComponent } from "./uploadfile/upload-img/upload-img.component";
 import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component";
@@ -33,6 +33,7 @@ import { ListNewSongComponent } from './song/list-new-song/list-new-song.compone
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
 import { ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
 import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
+import { PlayMysongComponent } from './song/song-manager/play-mysong/play-mysong.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
     Header1Component,
     ListNewSongComponent,
     TwoMostListenedComponent,
-    ChangepasswordComponent
+    ChangepasswordComponent,
+    PlayMysongComponent
   ],
   imports: [
     BrowserModule,
