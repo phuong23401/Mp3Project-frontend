@@ -38,12 +38,9 @@ export class LoginDialogComponent implements OnInit {
     this.loginService.login(data).subscribe(res => {
       // tslint:disable-next-line:triple-equals
       if (res.token != undefined) {
-        console.log("aaaaaaa");
-        console.log(res);
         this.tokenService.setToken(res.token);
         this.tokenService.setId(res.id);
-        this.tokenService.setUsername(res.user);
-        alert(res.user)
+        this.tokenService.setUsername(res.username);
         // this.name = this.tokenService.getName();
         this.router.navigate(['']).then(() => {
           window.location.reload();
