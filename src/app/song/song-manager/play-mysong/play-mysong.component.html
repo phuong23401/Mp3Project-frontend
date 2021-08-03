@@ -1,0 +1,12 @@
+
+<div style="margin-top: 200px">
+  <div *ngIf="song; else tmpl">
+    <h6>Song name: {{song.name}}</h6>
+    <iframe width="560" height="315" [src]="getSrc()" frameborder="0" allow="autoplay; encrypted-media"
+            allowfullscreen></iframe>
+  </div>
+
+  <ng-template #tmpl>
+    <h2>Nothing to play</h2>
+  </ng-template>
+</div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {SongService} from "../service/song/song.service";
+import {SongService} from "../../service/song/song.service";
 import {Router} from "@angular/router";
+import {Song} from "../../model/Song";
 
 @Component({
   selector: 'app-song',
@@ -9,7 +10,12 @@ import {Router} from "@angular/router";
 })
 export class SongComponent implements OnInit {
 
-  constructor(private songService: SongService, private router: Router) { }
+  listSong:Song[]=[];
+  constructor(private songService: SongService) {
+    this.songService.getAllSongs().subscribe((data:Song[])=>{
+      this.listSong = data;
+    })
+  }
 
   ngOnInit(): void {
   }
