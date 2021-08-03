@@ -97,11 +97,19 @@
   <div class="form-row">
           <div class="form-group col-md-6">
             <label >Singers</label>
-            <select  class="form-control"  name="singersF" [(ngModel)]="form.singersF" #singersF="ngModel"  multiple style="height: 100px">
-              <option selected>Singers...</option>
-              <option *ngFor="let singer of singgers" [value]="singer.id">{{singer.name}}</option>
-            </select>
+<!--            <select  class="form-control"  name="singersF" [(ngModel)]="form.singersF" #singersF="ngModel" multiple style="height: 100px">-->
+<!--              <option selected>Singers...</option>-->
+<!--              <option *ngFor="let singer of singgers" [value]="singer.id">{{singer.name}}</option>-->
+<!--            </select>-->
+            <div>
+              <input #Value type="text" class="form-control" (change)="onchage(Value.value)"  aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div *ngFor="let item of singgersOnchage">
+              <p>{{ item.name }}</p>
+            </div>
+
           </div>
+
   </div>
   <div class="row">
     <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">
@@ -117,8 +125,9 @@
 
   <br>
   <div style="text-align: center">
-    <button type="submit" class="btn btn-primary" (click)="ngSubmit()">Sign in</button>
+    <button type="submit" class="btn btn-primary" (click)="ngSubmit()">Create</button>
   </div>
 </form>
+
 
 

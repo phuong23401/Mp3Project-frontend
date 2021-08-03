@@ -16,19 +16,19 @@ export class SingerService {
   }
 
   createSinger(singer:Singers):Observable<Singers>{
-    return this.httpClient.post<Singers>(this.API_URL+"singers/create",singer)
+    return this.httpClient.post<Singers>(this.API_URL+"/singers/create",singer)
   }
 
   updateSinger(id:number,singer:Singers):Observable<Singers>{
-    return this.httpClient.put<Singers>(this.API_URL+"singers/"+id,singer)
+    return this.httpClient.put<Singers>(this.API_URL+"/singers/"+id,singer)
   }
 
   deleteSinger(id:number):Observable<Singers>{
-    return this.httpClient.delete<Singers>(this.API_URL+"singers/"+id)
+    return this.httpClient.delete<Singers>(this.API_URL+"/singers/"+id)
   }
 
   findSingerByName(name:String):Observable<Singers>{
-    return this.httpClient.get<Singers>(this.API_URL+"singers/singer"+name)
+    return this.httpClient.post<Singers>(this.API_URL+"/singers/test",name)
   }
 
 
