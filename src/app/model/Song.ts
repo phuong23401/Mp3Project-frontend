@@ -20,6 +20,7 @@ export interface Song {
   singers?: Singers[];
   playlist?: Playlist[];
   numberOfView?: number;
+  author?:string;
 
 
 
