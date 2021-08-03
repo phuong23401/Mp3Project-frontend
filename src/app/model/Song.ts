@@ -17,7 +17,7 @@ export interface Song {
   lyric?: string;
   user?: User;
   categories?: any;
-  singers?: Singers[];
+  singer?: any[];
   playlist?: Playlist[];
   numberOfView?: number;
 

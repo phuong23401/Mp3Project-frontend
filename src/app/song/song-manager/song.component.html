@@ -1,0 +1,27 @@
+<div class="col" style="margin-top: 100px">
+<!--  <div class="swiper-wrapper">-->
+
+<!--    <div *ngIf="song; else tmpl">-->
+<!--      <h2>Song name: {{song.name}}</h2>-->
+<!--      <iframe width="560" height="315" [src]="getSrc()" frameborder="0" allow="autoplay; encrypted-media"-->
+<!--              allowfullscreen></iframe>-->
+<!--    </div>-->
+
+<!--    <ng-template #tmpl>-->
+<!--      <h2>Nothing to play</h2>-->
+<!--    </ng-template>-->
+
+
+    <div>
+      <ul>
+        <li *ngFor="let song of listSong">
+          <a [routerLink]="['/playmysong',song.id]" >{{song.name}}</a>
+        </li>
+      </ul>
+    </div>
+
+
+<!--  </div>-->
+</div>
+
+
