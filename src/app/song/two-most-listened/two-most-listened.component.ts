@@ -12,7 +12,7 @@ export class TwoMostListenedComponent implements OnInit {
   isPlaying: boolean;
   songList: Song[] = [];
   i =0;
-  song: Song[];
+  song: Song;
   songs: Song[];
   msbapDisplayTitle = false;
   msbapDisplayVolumeControls = true;
@@ -48,14 +48,14 @@ export class TwoMostListenedComponent implements OnInit {
     console.log('even',$event)
   }
   listenCount(id: number){
-    this.isPlaying = !this.isPlaying
-    this.songService.topSongsView().subscribe(data=>{
+    this.isPlaying = true;
+    this.songService.getListenSongById(id).subscribe(data=>{
       this.song = data;
       console.log('data',data)
     })
   }
   changePause(){
-    this.isPlaying = !this.isPlaying;
+    this.isPlaying = true;
   }
 
 }
