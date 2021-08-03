@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { BsModalService } from 'ngx-bootstrap/modal';
+import { FormGroup } from '@angular/forms';
+import { TokenService } from 'src/app/service/token/token.service';
 
 @Component({
   selector: 'app-header1',
@@ -11,9 +11,13 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 export class Header1Component implements OnInit {
   searchForm: FormGroup;
 
-  constructor(private modalService: BsModalService,
-    private formBuilder: FormBuilder,
-    private router: Router) { }
+  usernameCurrent: string;
+
+  constructor(private tokenService: TokenService,
+              private router: Router) {
+    this.usernameCurrent = this.tokenService.getUsername();
+    console.log(this.usernameCurrent);
+  }
 
   ngOnInit(): void {
   }

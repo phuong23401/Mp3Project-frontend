@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/model/User';
+import { EditProfile } from 'src/app/model/EditProfile';
 
 const API_URL = `${environment.API_URL}`;
 @Injectable({
@@ -13,11 +14,11 @@ export class ProfileService {
   constructor(private httpClient: HttpClient) { }
 
   updateProfile(data: any): Observable<any> {
-    return this.httpClient.put(API_URL + "profile/changeinfor", data);
+    return this.httpClient.put(API_URL + "/profile/changeinfor", data);
   }
 
-  getUserCurrent(): Observable<User> {
-    return this.httpClient.get<User>(API_URL + "/profile/getuser");
+  getUserCurrent(): Observable<EditProfile> {
+    return this.httpClient.get<EditProfile>(API_URL + "/profile/getuser");
   }
 
   changePassword(data: any): Observable<any>{

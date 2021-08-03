@@ -1,3 +1,4 @@
+import { User } from 'src/app/model/User';
 import { Message } from './../model/Message';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,7 @@ export class ProfileComponent implements OnInit {
   get hobbies() { return this.userForm.get('hobbies')};
   get avatarUrl() { return this.userForm.get('avatarUrl')};
 
-  userCurrent: EditProfile;
+  userCurrent: EditProfile = {};
   messageResponse: Message;
 
   constructor(private profileService: ProfileService, 
@@ -35,12 +36,14 @@ export class ProfileComponent implements OnInit {
       hobbies: ['', [Validators.required]],
       avatarUrl: ['', [Validators.required]]
     })
-    // console.log(this.tokenService.getName());
+    this.profileService.getUserCurrent().subscribe(data => {
+      this.userCurrent = data;
+    });
+    console.log(this.userCurrent.name);
   }
 
   updateProfile() {
     const data = this.userForm.value;
-    console.log(data);
     this.userCurrent = ({
       name: data.name,
       gender: data.gender,
