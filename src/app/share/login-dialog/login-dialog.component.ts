@@ -1,8 +1,10 @@
+import { BsModalService } from 'ngx-bootstrap/modal';
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
 import { TokenService } from 'src/app/service/token/token.service';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
 declare var Swal: any;
 @Component({
@@ -22,7 +24,8 @@ export class LoginDialogComponent implements OnInit {
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -42,7 +45,7 @@ export class LoginDialogComponent implements OnInit {
       // tslint:disable-next-line:triple-equals
       if (res.token != undefined) {
         this.tokenService.setToken(res.token);
-        this.tokenService.setName(res.name);
+        this.tokenService.setName(res.id);
         this.name = this.tokenService.getName();
         this.router.navigate(['']).then(() => {
           window.location.reload();
@@ -53,13 +56,16 @@ export class LoginDialogComponent implements OnInit {
         document.body.classList.remove('modal-open')
         // @ts-ignore
         document.querySelector('.login_dialog').remove()
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Đăng nhập thất bại!',
-        });
       }
     });
+  }
+
+  transferRegister() {
+    // @ts-ignore
+    document.querySelector('.modal-backdrop').remove()
+    document.body.classList.remove('modal-open')
+    // @ts-ignore
+    document.querySelector('.login_dialog').remove()
+    this.modalService.show(RegisterDialogComponent);
   }
 }
