@@ -10,8 +10,8 @@ $(function() {
 			image : 'assets/images/weekly/song1.jpg',
             title: "Cro Magnon Man",
             artist: "Mushroom Records",
-            mp3: "https://firebasestorage.googleapis.com/v0/b/mtv-k-94311.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=4e3ba764-5f49-4026-80bc-b5622115bd65",
-            oga: "https://firebasestorage.googleapis.com/v0/b/mtv-k-94311.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=4e3ba764-5f49-4026-80bc-b5622115bd65",
+            mp3: "https://firebasestorage.googleapis.com/v0/b/instaclone-76674.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=e268a1b5-6aca-4b95-a900-fc0c6fbf61a7",
+            oga: "https://firebasestorage.googleapis.com/v0/b/instaclone-76674.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=e268a1b5-6aca-4b95-a900-fc0c6fbf61a7",
 			option : myPlayListOtion
         }, {
 			image : 'assets/images/weekly/song2.jpg',
