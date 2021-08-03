@@ -10,6 +10,7 @@ import {Song} from "../../model/Song";
 export class RecentlyPlayedComponent implements OnInit {
   songList: Song[];
   isPlaying: boolean;
+
   constructor(private songService: SongService,
               ) { }
 

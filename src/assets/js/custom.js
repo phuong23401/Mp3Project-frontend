@@ -328,16 +328,15 @@ Assigned to: Theme Forest
                     },
                 },
             });
-          setTimeout(function () {
-            newReleasedSwiper.update();
-            swiper.update();
-            newRecentSwiper.update();
-            newFeaturedAlbumSwiper.update();
-            newFeateuredSwiper.update();
-            newRadioSwiper.update();
-            newTestimonialSwiper.update();
-
-          }, 500)
+          // setTimeout(function () {
+          //   newReleasedSwiper.update();
+          //   newRecentSwiper.update();
+          //   newFeaturedAlbumSwiper.update();
+          //   newFeateuredSwiper.update();
+          //   newRadioSwiper.update();
+          //   newTestimonialSwiper.update();
+          //
+          // }, 500)
         },
         // More
         More: function() {

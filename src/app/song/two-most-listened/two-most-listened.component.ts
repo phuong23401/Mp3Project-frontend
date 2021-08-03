@@ -11,6 +11,18 @@ import {Router} from "@angular/router";
 export class TwoMostListenedComponent implements OnInit {
   isPlaying: boolean;
   songList: Song[] = [];
+  i =0;
+  song: Song[];
+  songs: Song[];
+  msbapDisplayTitle = false;
+  msbapDisplayVolumeControls = true;
+  msaapDisplayTitle = true;
+  msaapDisplayPlayList = true;
+  msaapDisplayVolumeControls = true;
+  likeCounter = 0;
+  checkPause = 0;
+  listenCounter = 0;
+  id: any;
   constructor(private songService: SongService, private router: Router) { }
 
   ngOnInit(): void {
@@ -24,6 +36,26 @@ export class TwoMostListenedComponent implements OnInit {
   }
   play() {
     this.isPlaying = true;
+  }
+  onClick($event){
+
+    console.log('even',$event);
+
+    if($event.isTrusted==true){
+      this.i = this.i + 1;
+      console.log('dem',this.i);
+    }
+    console.log('even',$event)
+  }
+  listenCount(id: number){
+    this.isPlaying = !this.isPlaying
+    this.songService.topSongsView().subscribe(data=>{
+      this.song = data;
+      console.log('data',data)
+    })
+  }
+  changePause(){
+    this.isPlaying = !this.isPlaying;
   }
 
 }
