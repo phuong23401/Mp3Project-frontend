@@ -1,0 +1,32 @@
+<div style="margin: 200px 0px 0px 100px">
+  <div style=" margin: 30px 0px 10px 60px">
+  <img src="{{song.avatarUrl}}" alt="orrer" width="200" height="250">
+  </div>
+  <div style=" margin: 10px 0px 10px 30px">
+    <h6>Song name:{{song.name}} </h6>
+  </div>
+  <div style=" margin: 30px 0px 50px 0px">
+    <audio controls>
+      <source [src]="song.fileUrl" type="audio/ogg">
+      <source [src]="song.fileUrl" type="audio/mpeg">
+      <source [src]="song.fileUrl" type="audio/wav">
+    </audio>
+  </div>
+
+
+  <table style="text-align: center;color: white">
+
+    <tr>
+      <th scope="col" colspan="20">Name</th>
+      <th colspan="3"></th>
+    </tr>
+
+    <tr *ngFor="let item of listSong">
+      <td colspan="20">{{item.name}}</td>
+      <td colspan="2"><a (click)="playSong(item.id)">play</a></td>
+      <td colspan="2"><a (click)="deleteSong(item.id)">delete</a></td>
+
+    </tr>
+  </table>
+</div>
+

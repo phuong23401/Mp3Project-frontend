@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
+import { SongComponent } from './song/song-manager/song.component';
 import { CreatesongComponent } from './song/createsong/createsong.component';
 import { UploadImgComponent } from "./uploadfile/upload-img/upload-img.component";
 import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component";
@@ -28,11 +29,16 @@ import { LoginDialogComponent } from './share/login-dialog/login-dialog.componen
 import { ListSongSearchComponent } from './song/list-song-search/list-song-search.component';
 import { RegisterDialogComponent } from './share/register-dialog/register-dialog.component';
 import { Header1Component } from './share/headerr/header1/header1.component';
+import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
+import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
+import { ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
+import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
+    SongComponent,
     CreatesongComponent,
     ProfileComponent,
     PlaymusicComponent,
@@ -50,6 +56,9 @@ import { Header1Component } from './share/headerr/header1/header1.component';
     ListSongSearchComponent,
     RegisterDialogComponent,
     Header1Component,
+    ListNewSongComponent,
+    TwoMostListenedComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +71,7 @@ import { Header1Component } from './share/headerr/header1/header1.component';
     BrowserAnimationsModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

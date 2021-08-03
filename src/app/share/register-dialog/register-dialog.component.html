@@ -2,9 +2,6 @@
     <div class="register_dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal">
-                <i class="fa_icon form_close"></i>
-            </button>
             <div class="modal-body">
                 <div class="ms_register_img">
                     <img src="../../../assets/images/register_img.png" alt="" class="img-fluid" />
@@ -17,9 +14,10 @@
                         <span class="form_icon">
                             <i class="fa_icon form-user" aria-hidden="true"></i>
                         </span>
-                        <div class="text-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-                            Name is required
+                        <div class="text-danger" *ngIf="name.invalid ">
+                            Name is required *
                         </div>
+
                     </div>
                     <div class="form-group">
                         <input type="text" placeholder="Enter Your Username" class="form-control" formControlName="username"
@@ -27,58 +25,75 @@
                         <span class="form_icon">
                             <i class="fa_icon form-user" aria-hidden="true"></i>
                         </span>
-                        <div class="text-danger" *ngIf="username.invalid && (username.dirty || username.touched)">
+                        <div class="text-danger" *ngIf="username.invalid">
                             <div *ngIf="username.errors?.required">
-                                Username is required
+                                Username is required *
                               </div>
                               <div *ngIf="username.errors?.minlength">
-                                Username must be at least 6 characters
+                                Username must be at least 6 characters *
                               </div>
                               <div *ngIf="username.errors?.maxlength">
-                                Username must be no more than 15 characters
+                                Username must be no more than 15 characters *
                               </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Enter Your Email" class="form-control" formControlName="email"
-                            required>
+                        <input type="email" placeholder="Enter Your Email" class="form-control" formControlName="email"
+                            required  >
                         <span class="form_icon">
                             <i class="fa_icon form-envelope" aria-hidden="true"></i>
                         </span>
+                      <div class="text-danger" *ngIf="email.invalid ">
+                        Email is required or malformed *
+                      </div>
                     </div>
                     <div class="form-group">
                         <input type="password" placeholder="Enter Password" class="form-control" formControlName="password"
-                            required minlength="6">
+                            required minlength="6"
+                               [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                         <span class="form_icon">
                             <i class="fa_icon form-lock" aria-hidden="true"></i>
                         </span>
-                        <div class="text-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+<!--                      <div class="text-danger" *ngIf="password.invalid "></div>-->
+                        <div class="text-danger" *ngIf="password.invalid">
+<!--                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">-->
+<!--                            <div *ngIf="f.password.errors.required">Password is required</div>-->
+<!--                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>-->
+<!--                          </div>-->
                             <div *ngIf="password.errors?.required">
-                                Password is required
+                                Password is required *
                               </div>
                               <div *ngIf="password.errors?.minlength">
-                                Password must be at least 6 characters
+                                Password must be at least 6 characters *
                               </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <input type="password" placeholder="Confirm Password" class="form-control" formControlName="confirmPassword"
-                            required>
+                            required
+                               [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
                         <span class="form_icon">
                             <i class=" fa_icon form-lock" aria-hidden="true"></i>
                         </span>
+                      <div class="text-danger" *ngIf="confirmPassword.invalid">
+                        <div *ngIf="confirmPassword.errors?.required">
+                          Confirm Password is required *
+                        </div>
+                      </div>
+                      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+<!--                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>-->
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                      </div>
                         <div class="text-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
                             <div *ngIf="confirmPassword != password">
-                                Password does not match
+                                Password does not match *
                             </div>
                         </div>
                     </div>
                     <div>
-                        <button type="submit">register
-                            <!-- <a class="ms_btn" target="_blank">register now</a> -->
-                        </button>
-                    </div>  
-                    <p>Already Have An Account? <a href="#myModal1" data-toggle="modal" class="ms_modal hideCurrentModel">login here</a></p>
+                        <button type="submit">register</button>
+                    </div>
+                    <p>Already Have An Account? <a data-toggle="modal" class="ms_modal hideCurrentModel">login here</a></p>
                 </div>
             </div>
         </div>
