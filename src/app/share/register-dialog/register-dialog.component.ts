@@ -29,16 +29,27 @@ export class RegisterDialogComponent implements OnInit {
 
   newUser: ResgisterUser;
 
+
+
 // message:any;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private modalService: BsModalService) { }
 
+  // isControlHasError(controlName: string, validationType: string): boolean {
+  //   const control = this.registerForm.controls[controlName];
+  //   if (!control) {
+  //     return false;
+  //   }
+  //   const result = control.hasError(validationType) && (control.touched || control.dirty);
+  //   return result;
+  // }
+
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
@@ -97,6 +108,10 @@ export class RegisterDialogComponent implements OnInit {
             document.body.classList.remove('modal-open')
             this.modalService.show(LoginDialogComponent);
           }
+        },error => {
+          this.message = "Loi cmnr";
+          console.log(this.message);
+          this.modalService.show(RegisterDialogComponent);
         });
       }
     }
