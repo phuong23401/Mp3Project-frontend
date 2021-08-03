@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
-import { SongComponent } from './song/song.component';
 import { CreatesongComponent } from './song/createsong/createsong.component';
 import { UploadImgComponent } from "./uploadfile/upload-img/upload-img.component";
 import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component";
@@ -34,7 +33,6 @@ import { Header1Component } from './share/headerr/header1/header1.component';
   declarations: [
     AppComponent,
     HomepageComponent,
-    SongComponent,
     CreatesongComponent,
     ProfileComponent,
     PlaymusicComponent,
@@ -51,7 +49,7 @@ import { Header1Component } from './share/headerr/header1/header1.component';
     LoginDialogComponent,
     ListSongSearchComponent,
     RegisterDialogComponent,
-    Header1Component
+    Header1Component,
   ],
   imports: [
     BrowserModule,
