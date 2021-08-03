@@ -32,6 +32,7 @@ import { Header1Component } from './share/headerr/header1/header1.component';
 import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
 import { ChangepasswordComponent } from './profile/changepassword/changepassword.component';
+import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { ChangepasswordComponent } from './profile/changepassword/changepassword
     BrowserAnimationsModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

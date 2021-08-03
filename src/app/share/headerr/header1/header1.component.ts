@@ -23,7 +23,11 @@ export class Header1Component implements OnInit {
   }
 
   profile() {
-    this.router.navigate(['/profile']);
+    this.router.navigate(['/updateProfile']);
+  }
+
+  changePassword() {
+    this.router.navigate(['/changepassword']);
   }
 
   createSong() {
@@ -34,6 +38,8 @@ export class Header1Component implements OnInit {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('userId');
     sessionStorage.clear();
-    this.router.navigate(['']);
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
 }

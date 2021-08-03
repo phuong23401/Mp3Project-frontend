@@ -1,34 +1,35 @@
-<div class="ms_profile_wrapper">
-    <h1>Edit Profile</h1>
-    <div class="ms_profile_box">
-        <div class="ms_pro_img">
-            <img src="images/pro_img.jpg" alt="" class="img-fluid">
-            <div class="pro_img_overlay">
-                <i class="fa_icon edit_icon"></i>
-            </div>
-        </div>
-        <div class="ms_pro_form">
-            <div class="form-group">
-                <label>Your Name *</label>
-                <input type="text" placeholder={{userCurrent.name}} class="form-control">
-              <div *ngIf=""></div>
-            </div>
-            <div class="form-group">
-                <label>Your Gender *</label>
-                <input type="text" placeholder={{userCurrent.gender}} class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Your Hobbies *</label>
-                <input type="password" placeholder={{userCurrent.hobbies}} class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Your Avatars *</label>
-                <input type="password" placeholder={{userCurrent.avatarUrl}} class="form-control">
-            </div>
-            <div class="pro-form-btn text-center marger_top15">
-                <a href="#" class="ms_btn">save</a>
-                <a href="#" class="ms_btn">cancel</a>
+<form [formGroup]="userForm" (ngSubmit)="updateProfile()">
+    <div class="ms_profile_wrapper">
+        <h1>Edit Profile</h1>
+        <div class="ms_profile_box">
+            <div class="ms_pro_img">
+                <img src="images/pro_img.jpg" alt="" class="img-fluid">
+                <div class="pro_img_overlay">
+                    <i class="fa_icon edit_icon"></i>
+                </div>
+                </div>
+                <div class="ms_pro_form">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder={{userCurrent.name}} class="form-control" formControlName="name">
+                </div>
+                <div class="form-group">
+                    <label>Your Gender</label>
+                    <input type="text" placeholder={{userCurrent.gender}} class="form-control" formControlName="gender">
+                </div>
+                <div class="form-group">
+                    <label>Your Hobbies</label>
+                    <input type="password" placeholder={{userCurrent.hobbies}} class="form-control" formControlName="hobbies">
+                </div>
+                <div class="form-group">
+                    <label>Your Avatars</label>
+                    <input type="password" placeholder={{userCurrent.avatarUrl}} class="form-control" formControlName="avatar">
+                </div>
+                <div class="pro-form-btn text-center marger_top15">
+                    <button type="submit" class="ms_btn">save</button>
+                    <button class="ms_btn" (click)="backHome()">cancel</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>

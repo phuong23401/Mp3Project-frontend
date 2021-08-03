@@ -12,11 +12,11 @@ export class ProfileService {
 
   constructor(private httpClient: HttpClient) { }
 
-  updateProfile(user: User): Observable<User> {
-    return this.httpClient.put(API_URL + "/changeinfor", user);
+  updateProfile(data: any): Observable<any> {
+    return this.httpClient.put(API_URL + "profile/changeinfor", data);
   }
 
-  getUserByToken(): Observable<User> {
+  getUserCurrent(): Observable<User> {
     return this.httpClient.get<User>(API_URL + "/profile/getuser");
   }
 
