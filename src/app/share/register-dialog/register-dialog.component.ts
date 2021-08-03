@@ -13,6 +13,9 @@ declare var Swal: any;
   templateUrl: './register-dialog.component.html',
   styleUrls: ['./register-dialog.component.css']
 })
+
+
+
 export class RegisterDialogComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
 
@@ -26,6 +29,7 @@ export class RegisterDialogComponent implements OnInit {
 
   newUser: ResgisterUser;
 
+// message:any;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
@@ -49,7 +53,7 @@ export class RegisterDialogComponent implements OnInit {
       password: this.registerForm.value.password
     };
     console.log(this.newUser);
-    if(this.confirmPassword == this.password) {
+    if(this.confirmPassword.value == this.password.value) {
       this.loginService.register(this.newUser).subscribe(res => {
         this.message = res;
         console.log(this.message);
