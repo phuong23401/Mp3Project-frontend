@@ -13,7 +13,7 @@ audio:any;
 song:Song={};
   listSong:Song[]=[];
   constructor(private songService: SongService) {
-    this.songService.getAllSongs().subscribe((data:Song[])=>{
+    this.songService.getAllSongs().subscribe((data)=>{
       this.listSong = data;
     })
   }
