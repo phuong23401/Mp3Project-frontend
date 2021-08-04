@@ -3172,7 +3172,7 @@ span.ms_frequency {
 	display: inline-block;
 }
 .modal-dialog button {
-	/* position: absolute; */
+	position: absolute;
 	right: -12px;
 	z-index: 1;
 	top: -15px;
@@ -3565,7 +3565,7 @@ button.save_btn:hover {
 .ms_account_wrapper {
 	text-align: center;
 	margin-top: 60px;
-	padding-left: 80px;
+	padding-left: 0;
 }
 .ms_pro_form .form-group {
 	margin-bottom: 25px;

@@ -33,6 +33,7 @@ import { ListNewSongComponent } from './song/list-new-song/list-new-song.compone
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
 import { ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
 import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
+import { SearchfilterPipe } from './share/searchfilter.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
     ListNewSongComponent,
     TwoMostListenedComponent,
     ChangepasswordComponent,
+    SearchfilterPipe
   ],
   imports: [
     BrowserModule,

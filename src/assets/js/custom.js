@@ -118,8 +118,11 @@ Assigned to: Theme Forest
                         slidesPerView: 1,
                         spaceBetween: 0,
                     }
-                },observer:true,
+                },
+              observer:true,
               observeParents:true,
+
+
             });
             // Recent Slider
             var newRecentSwiper = new Swiper('.ms_rcnt_slider .swiper-container', {
@@ -157,7 +160,8 @@ Assigned to: Theme Forest
                         slidesPerView: 1,
                         spaceBetween: 0,
                     }
-                },observer:true,
+                },
+              observer:true,
               observeParents:true,
             });
             // Featured Slider
@@ -196,7 +200,8 @@ Assigned to: Theme Forest
                         slidesPerView: 1,
                         spaceBetween: 0,
                     }
-                },observer:true,
+                },
+              observer:true,
               observeParents:true,
             });
             // New released Slider
@@ -235,7 +240,8 @@ Assigned to: Theme Forest
                         slidesPerView: 1,
                         spaceBetween: 0,
                     }
-                },observer:true,
+                },
+              observer:true,
               observeParents:true,
             });
             // Featured Album Slider
@@ -274,7 +280,8 @@ Assigned to: Theme Forest
                         slidesPerView: 1,
                         spaceBetween: 0,
                     }
-                },observer:true,
+                },
+              observer:true,
               observeParents:true,
             });
             // Radio Slider
@@ -313,7 +320,8 @@ Assigned to: Theme Forest
                         slidesPerView: 1,
                         spaceBetween: 0,
                     }
-                },observer:true,
+                },
+              observer:true,
               observeParents:true,
             });
             // Testimonial Slider
@@ -337,19 +345,13 @@ Assigned to: Theme Forest
                     767: {
                         slidesPerView: 1,
                     },
-                },observer:true,
+                },
+              observer:true,
               observeParents:true,
             });
-          // setTimeout(function () {
-          //   newReleasedSwiper.update();
-          //   newRecentSwiper.update();
-          //   newFeaturedAlbumSwiper.update();
-          //   newFeateuredSwiper.update();
-          //   newRadioSwiper.update();
-          //   newTestimonialSwiper.update();
-          //
-          // }, 500)
+
         },
+
         // More
         More: function() {
             $(document).on('click','.ms_more_icon',  function(e) {

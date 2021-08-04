@@ -17,7 +17,7 @@ export class LoginDialogComponent implements OnInit {
 
   get username(){ return this.loginForm.get('username')}
   get password(){ return this.loginForm.get('password')}
-
+  message:string;
   name: string;
 
   constructor(private router: Router,
@@ -52,6 +52,9 @@ export class LoginDialogComponent implements OnInit {
         // @ts-ignore
         document.querySelector('.login_dialog').remove()
       }
+    }, error =>{
+      this.message = " meo dang nhap dc";
+      alert(this.message);
     });
   }
 

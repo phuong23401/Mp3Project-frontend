@@ -1,13 +1,20 @@
-<form [formGroup]="registerForm" (ngSubmit)="register()">
+<form [formGroup]="registerForm" >
     <div class="register_dialog">
         <!-- Modal content-->
-        <div class="modal-content">
+
+      <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal">
+        <i class="fa_icon form_close"></i>
+      </button>
             <div class="modal-body">
                 <div class="ms_register_img">
                     <img src="../../../assets/images/register_img.png" alt="" class="img-fluid" />
                 </div>
                 <div class="ms_register_form">
                     <h2>Register / Sign Up</h2>
+                  <div *ngIf="this.check" class="text-danger">
+                    Register information is incorrect, please re-enter
+                </div>
                     <div class="form-group">
                         <input type="text" placeholder="Enter Your Name" class="form-control" formControlName="name"
                             required>
@@ -25,6 +32,9 @@
                         <span class="form_icon">
                             <i class="fa_icon form-user" aria-hidden="true"></i>
                         </span>
+                      <div *ngIf="check1" class="text-danger">
+                        {{this.error1}}
+                      </div>
                         <div class="text-danger" *ngIf="username.invalid">
                             <div *ngIf="username.errors?.required">
                                 Username is required *
@@ -43,6 +53,9 @@
                         <span class="form_icon">
                             <i class="fa_icon form-envelope" aria-hidden="true"></i>
                         </span>
+                      <div *ngIf="check2" class="text-danger">
+                        {{this.error2}}
+                      </div>
                       <div class="text-danger" *ngIf="email.invalid ">
                         Email is required or malformed *
                       </div>
@@ -54,12 +67,7 @@
                         <span class="form_icon">
                             <i class="fa_icon form-lock" aria-hidden="true"></i>
                         </span>
-<!--                      <div class="text-danger" *ngIf="password.invalid "></div>-->
                         <div class="text-danger" *ngIf="password.invalid">
-<!--                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">-->
-<!--                            <div *ngIf="f.password.errors.required">Password is required</div>-->
-<!--                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>-->
-<!--                          </div>-->
                             <div *ngIf="password.errors?.required">
                                 Password is required *
                               </div>
@@ -81,7 +89,7 @@
                         </div>
                       </div>
                       <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-<!--                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>-->
+
                         <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
                       </div>
                         <div class="text-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
@@ -90,9 +98,10 @@
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button type="submit">register</button>
+                    <div style="color: white">
+                        <a class="ms_btn"  (click)="register()">Register</a>
                     </div>
+
                     <p>Already Have An Account? <a data-toggle="modal" class="ms_modal hideCurrentModel">login here</a></p>
                 </div>
             </div>
