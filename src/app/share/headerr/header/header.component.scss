@@ -1,0 +1,17 @@
+.autocomplete-suggestions {
+    width: 612px;
+    position: absolute;
+    display: none;
+    overflow: auto;
+    z-index: 999;
+    background-color: white;
+    max-height: 300px;
+    margin-left: -2px;
+    margin-top: 10px;
+  }
+  
+  .autocomplete-suggestions img {
+    height: 150px;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+  }
