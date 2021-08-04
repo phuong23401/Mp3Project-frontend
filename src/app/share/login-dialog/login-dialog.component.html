@@ -17,7 +17,7 @@
                         <span class="form_icon">
                             <i class="fa_icon form-envelope" aria-hidden="true"></i>
                         </span>
-                      <div class="text-danger" *ngIf="username.invalid">
+                      <div class="text-danger" *ngIf="username.invalid && (username.touched || username.dirty)">
                         <div *ngIf="username.errors?.required">
                           Username is required !!
                         </div>
@@ -35,7 +35,7 @@
                         <span class="form_icon">
                             <i class="fa_icon form-lock" aria-hidden="true"></i>
                         </span>
-                      <div class="text-danger" *ngIf="password.invalid">
+                      <div class="text-danger" *ngIf="password.invalid && (password.touched || password.dirty)">
                         <div *ngIf="password.errors?.required">
                           Password is required
                         </div>

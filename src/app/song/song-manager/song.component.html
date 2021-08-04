@@ -1,4 +1,45 @@
-<div class="ms_weekly_inner" style="margin: 50px">
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--  <a class="navbar-brand" href="#">Brand-Logo</a>-->
+<!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-nav-bar" aria-controls="my-nav-bar" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
+<!--  <div class="collapse navbar-collapse" id="my-nav-bar"><ul class="navbar-nav">-->
+
+<!--    &lt;!&ndash;Kích hoạt phần tử&ndash;&gt;-->
+<!--    <li class="nav-item active">-->
+<!--      <a class="nav-link" href="#">Trang chủ</a>-->
+<!--    </li>-->
+
+<!--    <li class="nav-item">-->
+<!--      <a class="nav-link" href="#">Học HTML</a>-->
+<!--    </li>-->
+
+<!--    <li class="nav-item">-->
+<!--      &lt;!&ndash;Disenable phần tử&ndash;&gt;-->
+<!--      <a class="nav-link disabled" href="#">Gửi bài</a>-->
+<!--    </li>-->
+
+<!--    &lt;!&ndash;MENU DROPDOWN&ndash;&gt;-->
+<!--    <li class="nav-item dropdown">-->
+<!--      <a class="nav-link dropdown-toggle" href="#" id="mydropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--        Menu đổ xuống-->
+<!--      </a>-->
+<!--      <div class="dropdown-menu" aria-labelledby="mydropdown">-->
+<!--        <a class="dropdown-item" href="#">Mục 1</a>-->
+<!--        <a class="dropdown-item" href="#">Mục 2 abc</a>-->
+<!--        <a class="dropdown-item" href="#">Mục 3 zyz abc</a>-->
+<!--      </div>-->
+<!--    </li>-->
+<!--  </ul>-->
+
+
+
+<!--  </div>-->
+<!--</nav>-->
+
+
+
+<div  style="margin: 50px">
   <div class="row">
     <div class="col-lg-12">
       <div class="ms_heading">
@@ -13,11 +54,11 @@
                     </span>
           <div class="w_top_song">
             <div class="w_tp_song_img">
-              <img src="{{item.avatarUrl}}" alt="" class="img-fluid">
+              <img src="{{item.avatarUrl}}" alt="" >
               <div class="ms_song_overlay">
               </div>
               <div class="ms_play_icon" *ngIf="!isPlaying"
-                   (click)="listenCount(item)">
+                   (click)="listen(item)">
                 <img src="assets/images/svg/play.svg" alt="">
               </div>
               <div class="ms_play_icon" *ngIf="isPlaying"
@@ -38,8 +79,9 @@
                     </span>
         </div>
         <ul class="more_option">
-          <li><a href="{{item.id}}"><span class="opt_icon"><i class="far fa-trash-alt"></i></span>Delete</a></li>
-          <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>update</a></li>
+          <li><button class="btn btn-primary" type="button" (click)="deleteSong(item.id)"><span class="opt_icon"><i class="far fa-trash-alt"></i></span> Delete</button></li>
+          <br>
+          <li><button class="btn btn-primary" type="button" (click)="updateSong(item.id)" ><i class="fas fa-plus"></i>update</button></li>
         </ul>
         <div style="display: none">
           <audio controls loop id="track">

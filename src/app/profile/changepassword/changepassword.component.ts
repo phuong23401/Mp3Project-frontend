@@ -46,29 +46,31 @@ export class ChangepasswordComponent implements OnInit {
       password: data.currentPassword,
       newPassword: data.newPassword
     });
-    this.profileService.changePassword(this.requestPassword).subscribe(mes => {
-      this.messageResponse = {
-        message: mes
-      }
-      this.messageAlert = this.messageResponse.message.message;
+    if(this.requestPassword.newPassword.length < 6) {
       Swal.fire({
-        title: "CHANGE PASSWORD SUCCESSFULLY !", 
-        icon: "success",
-        confirmButtonColor: "#3bc8e7"
-      });
-      this.router.navigate(['']);
-    }, error => {
-      this.messageResponse = {
-        message: error
-      }
-      this.messageAlert = this.messageResponse.message.message;
-      Swal.fire({
-        title: "CHANGE PASSWORD FAILED",
-        text: "Please check your infor !",
+        title: "PASSWORD MUST BE AT LEAST 6 CHARACTERS !", 
         icon: "error",
         confirmButtonColor: "#3bc8e7"
       });
-    });
+    } else {
+      this.profileService.changePassword(this.requestPassword).subscribe(mes => {
+        this.messageAlert = mes.message;
+        Swal.fire({
+          title: this.messageAlert, 
+          icon: "success",
+          confirmButtonColor: "#3bc8e7"
+        });
+        this.router.navigate(['']);
+      }, error => {
+        this.messageAlert = error.error.message;
+        Swal.fire({
+          title: this.messageAlert,
+          text: "Please check your infor !",
+          icon: "error",
+          confirmButtonColor: "#3bc8e7"
+        });
+      });
+    }
   }
 
   ch(e:any){

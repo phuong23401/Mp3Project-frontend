@@ -1,37 +1,35 @@
-<app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>
-<form [formGroup]="userForm" (ngSubmit)="updateProfile()">
-    <div class="ms_profile_wrapper">
-        <h1>Edit Profile</h1>
-        <div class="ms_profile_box">
-            <div class="ms_pro_img">
-                <img src="{{userCurrent.avatarUrl}}" alt="" class="img-fluid">
-                    <div class="pro_img_overlay">
-                        <i class="fa_icon edit_icon"></i>
-                    </div>
+
+<div class="ms_profile_wrapper">
+    <h1>Edit Profile</h1>
+    <div class="ms_profile_box">
+        <div class="ms_pro_img">
+            <div *ngIf="checkAvt; then img else img1"></div>
+            <ng-template #img><img src="{{downloadURL}}" alt="" class="img-fluid" style="margin-bottom: 20px;"></ng-template>
+            <ng-template #img1><img src="{{userCurrent.avatarUrl}}" alt="" class="img-fluid" style="margin-bottom: 20px;"></ng-template>
+            <br/>
+            <input type="file" (change)="onChangeAvatar($event)" style="height: 40px; width: 140px; line-height: 43px; margin-left: 15px;">
+        </div>
+        <form [formGroup]="userForm">
+            <div class="ms_pro_form">
+                <div class="form-group">
+                    <label>Your Full Name</label>
+                    <input type="text" value={{userCurrent.name}} class="form-control" formControlName="name">
                 </div>
-                <div class="ms_pro_form">
-                    <div class="form-group">
-                        <label>Your Name</label>
-                        <input type="text" value={{userCurrent.name}} class="form-control" formControlName="name">
-                </div>
+                <br>
                 <div class="form-group">
                     <label>Your Gender</label>
                     <input type="text" value={{userCurrent.gender}} class="form-control" formControlName="gender">
                 </div>
+                <br>
                 <div class="form-group">
                     <label>Your Hobbies</label>
                     <input type="text" value={{userCurrent.hobbies}} class="form-control" formControlName="hobbies">
                 </div>
-                <div class="form-group">
-                    <label>Your Avatars</label>
-                    <!-- <input type="text" value={{userCurrent.avatarUrl}} class="form-control" formControlName="avatarUrl"> -->
-                    
-                </div>
                 <div class="pro-form-btn text-center marger_top15">
-                    <button type="submit" class="ms_btn">save</button>
-                    <button class="ms_btn" (click)="backHome()">cancel</button>
+                    <a href="javascript:" class="ms_btn" (click)="updateProfile()">save</a>
+                    <a href="javascript:" class="ms_btn" (click)="backHome()">cancel</a>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-</form>
+</div>
