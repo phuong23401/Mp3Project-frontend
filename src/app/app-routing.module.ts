@@ -9,7 +9,6 @@ import {ListSongSearchComponent} from "./song/list-song-search/list-song-search.
 import {PlaySongComponent} from "./song/play-song/play-song.component";
 import {ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
 import {SongComponent} from "./song/song-manager/song.component";
-import {PlayMysongComponent} from "./song/song-manager/play-mysong/play-mysong.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -22,7 +21,6 @@ const routes: Routes = [
   {path: 'song/:id', component: PlaySongComponent },
   { path: 'changepassword', component: ChangepasswordComponent},
   { path: 'song', component: SongComponent},
-  { path: 'playmysong/:id', component:PlayMysongComponent},
 
 ];
 
