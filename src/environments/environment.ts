@@ -3,16 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+ production: false,
   API_URL:"http://localhost:8080",
   firebaseConfig : {
-    apiKey: "AIzaSyBeBdXwF3qeQ2YSf43vkrBFrmLkq8ttpkk",
-    authDomain: "ok-karaok.firebaseapp.com",
-    projectId: "ok-karaok",
-    storageBucket: "ok-karaok.appspot.com",
-    messagingSenderId: "854710186859",
-    appId: "1:854710186859:web:946b32f0990d5571b4522e",
-    measurementId: "G-9RF6QBBKTE"
+    apiKey: "AIzaSyC8v2weOWVoTV0-aiyoAJdaLRhoJItkpBU",
+    authDomain: "karaokeonline-a05e6.firebaseapp.com",
+    projectId: "karaokeonline-a05e6",
+    storageBucket: "karaokeonline-a05e6.appspot.com",
+    messagingSenderId: "670416248290",
+    appId: "1:670416248290:web:8befaed8070e7ca6c0edbb"
   }
 };
 
