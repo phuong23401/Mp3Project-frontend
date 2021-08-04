@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
+import { DataService } from 'src/app/share/dataTrans/data.service';
 
 @Component({
   selector: 'app-recently-played',
@@ -13,7 +14,9 @@ export class RecentlyPlayedComponent implements OnInit {
   audio : any;
   song: Song;
   name:string;
-  constructor(private songService: SongService
+
+  constructor(private songService: SongService,
+    private data: DataService,
               ) { }
 
   ngOnInit(): void {
