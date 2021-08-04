@@ -457,6 +457,16 @@ Assigned to: Theme Forest
             $('.gotop').removeClass('goto');
         }
     });
+    $(window).scroll(function() {
+        var wh = window.innerWidth;
+        //Go to top
+        if ($(this).scrollTop() > 100) {
+            $('.autocomplete-suggestions .gotop').addClass('.autocomplete-suggestions .goto');
+        } else {
+            $('.autocomplete-suggestions .gotop').removeClass('.autocomplete-suggestions .goto');
+        }
+    });
+
     $(".gotop").on("click", function() {
         $("html, body").animate({
             scrollTop: 0

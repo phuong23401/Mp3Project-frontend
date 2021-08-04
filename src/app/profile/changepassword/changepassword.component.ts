@@ -39,7 +39,6 @@ export class ChangepasswordComponent implements OnInit {
 
   changePassword() {
     const data = this.changePasswordForm.value;
-    console.log(data);
     this.requestPassword = ({
       password: data.currentPassword,
       newPassword: data.newPassword
