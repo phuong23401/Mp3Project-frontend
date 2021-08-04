@@ -19,7 +19,7 @@ export class CreatesongComponent implements OnInit {
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
-
+ formavt:any={};
   error1: any = {
     message: "noavatar"
   }
@@ -67,14 +67,13 @@ export class CreatesongComponent implements OnInit {
 
   }
 
-
   ngOnInit(): void {
   }
 
   ngSubmit() {
     this.song.name = this.form.name;
     this.song.description = this.form.description;
-    this.song.avatarUrl = this.form.avatarUrl;
+    this.song.avatarUrl = this.formavt.avatarUrl;
     this.song.fileUrl = this.form.fileUrl;
     this.song.lyric = this.form.lyric;
     this.song.categories.id = this.form.categories;
@@ -105,7 +104,7 @@ export class CreatesongComponent implements OnInit {
   }
 
   onChangeAvatar(event: any) {
-    this.form.avatarUrl = event;
+    this.formavt.avatarUrl = event;
     // this.isCheckUploadAvatar = true;
   }
 
