@@ -5,7 +5,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { ResgisterUser } from 'src/app/model/ResgisterUser';
 import { LoginService } from 'src/app/service/login/login.service';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
-import {Message} from "../../model/Message";
+
 
 declare var Swal: any;
 
@@ -94,7 +94,7 @@ export class RegisterDialogComponent implements OnInit {
 
   register(){
     this.submitted = true;
-    // if (this.registerForm.invalid) {
+
       this.newUser = {
         name: this.registerForm.value.name,
         email: this.registerForm.value.email,
@@ -114,7 +114,6 @@ export class RegisterDialogComponent implements OnInit {
             this.modalService.show(LoginDialogComponent);
           }
         },error => {
-          // this.error = "Login information is incorrect, please re-enter";
           this.check = true;
             this.errorRegis = error.error.message;
             if(this.errorRegis == this.error1){
