@@ -78,14 +78,14 @@
         </div>
         <ul class="more_option">
           <li>
-            <button class="btn btn-primary" type="button" (click)="deleteSong(item.id)"><span class="opt_icon"><i
+            <a href="javascript:" class="ms_btn" (click)="deleteSong(item.id)"><span class="opt_icon"><i
               class="far fa-trash-alt"></i></span>Delete
-            </button>
+            </a>
           </li>
           <br>
           <li>
-            <button class="btn btn-primary" type="button" (click)="updateSong(item.id)"><i class="fas fa-plus"></i>update
-            </button>
+            <a href="javascript:" class="ms_btn" [routerLink]="['/updatesong',item.id]" ><i class="fas fa-plus"></i>update
+            </a>
           </li>
         </ul>
         <div style="display: none">
