@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   userCurrent: EditProfile = {};
   messageResponse: Message;
 
-  constructor(private profileService: ProfileService, 
+  constructor(private profileService: ProfileService,
               private formBuilder: FormBuilder,
               private tokenService: TokenService,
               private router: Router) {
@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
       this.messageResponse = {
         message: mes
       }
-      alert(this.messageResponse.message);
+      alert(this.messageResponse.message.message);
     });
   }
 

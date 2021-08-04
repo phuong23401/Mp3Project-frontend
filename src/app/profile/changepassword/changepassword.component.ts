@@ -32,8 +32,9 @@ export class ChangepasswordComponent implements OnInit {
       currentPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
+    },{
+      validator: this.MustMatch('newPassword', 'confirmPassword')
     });
-    // console.log(this.tokenService.getName());
   }
 
   changePassword() {
@@ -47,8 +48,36 @@ export class ChangepasswordComponent implements OnInit {
       this.messageResponse = {
         message: mes
       }
-      alert(this.messageResponse.message);
+      alert(this.messageResponse.message.message);
     });
+  }
+
+  ch(e:any){
+    if(e.checked){
+      this.changePasswordForm.controls['password'].setValidators([Validators.required])
+      this.changePasswordForm.controls['password'].updateValueAndValidity()
+    }
+    else{
+      this.changePasswordForm.controls['password'].setValidators(null)
+      this.changePasswordForm.controls['password'].updateValueAndValidity()
+    }
+  }
+
+  submitted:boolean = false;
+  get f() { return this.changePasswordForm.controls; };
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
   }
 
   backHome() {

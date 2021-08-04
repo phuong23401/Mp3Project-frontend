@@ -67,12 +67,7 @@
                         <span class="form_icon">
                             <i class="fa_icon form-lock" aria-hidden="true"></i>
                         </span>
-<!--                      <div class="text-danger" *ngIf="password.invalid "></div>-->
                         <div class="text-danger" *ngIf="password.invalid">
-<!--                          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">-->
-<!--                            <div *ngIf="f.password.errors.required">Password is required</div>-->
-<!--                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>-->
-<!--                          </div>-->
                             <div *ngIf="password.errors?.required">
                                 Password is required *
                               </div>
@@ -94,7 +89,7 @@
                         </div>
                       </div>
                       <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-<!--                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>-->
+
                         <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
                       </div>
                         <div class="text-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
