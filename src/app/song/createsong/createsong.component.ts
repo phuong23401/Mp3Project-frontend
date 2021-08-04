@@ -61,6 +61,7 @@ export class CreatesongComponent implements OnInit {
     })
     this.singer.getAllSinger().subscribe((singerSv: Singers[]) => {
       this.singgers = singerSv;
+
     })
 
   }
@@ -86,12 +87,18 @@ export class CreatesongComponent implements OnInit {
         this.status = 'The file is required! Please select upload file'
       }
       if (JSON.stringify(this.success) == JSON.stringify(data)) {
-        this.status = 'Create success!'
+        this.status = 'Create success!';
+        this.form = {};
+        this.isCheckUploadAvatar = false;
+        this.isCheckUploadFile =false;
+
       }
     }, error => {
       this.status = 'Please login before create Song'
     })
-    console.log(this.form)
+    console.log(this.form);
+
+
 
   }
 

@@ -2,9 +2,10 @@
     <h1>Recently Played</h1>
     <span class="veiw_all"><a href="#">view more</a></span>
 </div>
+<input  type="text" class="form-control" placeholder="Search Music Here.."  [(ngModel)]="name" hidden>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide" *ngFor="let song of songList">
+        <div class="swiper-slide" *ngFor="let song of songList|searchfilter:name">
             <div class="ms_rcnt_box">
                 <div class="ms_rcnt_box_img">
                     <img src="{{song.avatarUrl}}" alt="">
