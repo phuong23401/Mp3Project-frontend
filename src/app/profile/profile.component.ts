@@ -1,8 +1,11 @@
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/model/User';
+import { Message } from './../model/Message';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from '../service/profile/profile.service';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { User } from '../model/User';
+import { Router } from '@angular/router';
+import { EditProfile } from '../model/EditProfile';
+import { TokenService } from '../service/token/token.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,14 +14,20 @@ import { User } from '../model/User';
 })
 export class ProfileComponent implements OnInit {
   userForm: FormGroup = new FormGroup({});
-  id: any;
-  token: any;
-  userCurrent: User = {};
+
+  get name() { return this.userForm.get('name')};
+  get gender() { return this.userForm.get('gender')};
+  get hobbies() { return this.userForm.get('hobbies')};
+  get avatarUrl() { return this.userForm.get('avatarUrl')};
+
+  userCurrent: EditProfile = {};
+  messageResponse: Message;
 
   constructor(private profileService: ProfileService, 
-    private formBuilder: FormBuilder) {
-    this.getUserCurrent();
-   }
+              private formBuilder: FormBuilder,
+              private tokenService: TokenService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -27,20 +36,29 @@ export class ProfileComponent implements OnInit {
       hobbies: ['', [Validators.required]],
       avatarUrl: ['', [Validators.required]]
     })
+    this.profileService.getUserCurrent().subscribe(data => {
+      this.userCurrent = data;
+    });
+    console.log(this.userCurrent.name);
   }
 
   updateProfile() {
     const data = this.userForm.value;
-    this.profileService.updateProfile(data).subscribe(() => {
-      alert('Profile updated successfully!');
-    })
+    this.userCurrent = ({
+      name: data.name,
+      gender: data.gender,
+      hobbies: data.hobbies,
+      avatarUrl: data.avatarUrl,
+    });
+    this.profileService.updateProfile(this.userCurrent).subscribe(mes => {
+      this.messageResponse = {
+        message: mes
+      }
+      alert(this.messageResponse.message);
+    });
   }
 
-  getUserCurrent() {
-    this.profileService.getUserByToken().subscribe(u => {
-      this.userCurrent = u;
-      console.log(this.userCurrent);
-    })
+  backHome() {
+    this.router.navigate(['']);
   }
-
 }

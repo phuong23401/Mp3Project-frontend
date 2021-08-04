@@ -20,7 +20,6 @@ export class LoginDialogComponent implements OnInit {
 
   name: string;
 
-
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
@@ -32,21 +31,17 @@ export class LoginDialogComponent implements OnInit {
       username: ['',[ Validators.required]],
       password: ['',[ Validators.required]]
     });
-
-    if(this.tokenService.getToken()) {
-      this.name = this.tokenService.getName();
-    }
   }
 
   login() {
     const data = this.loginForm.value;
-    console.log(data);
     this.loginService.login(data).subscribe(res => {
       // tslint:disable-next-line:triple-equals
       if (res.token != undefined) {
         this.tokenService.setToken(res.token);
-        this.tokenService.setName(res.id);
-        this.name = this.tokenService.getName();
+        this.tokenService.setId(res.id);
+        this.tokenService.setUsername(res.username);
+        // this.name = this.tokenService.getName();
         this.router.navigate(['']).then(() => {
           window.location.reload();
         });

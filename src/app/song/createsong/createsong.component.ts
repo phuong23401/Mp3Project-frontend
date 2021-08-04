@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
 import {User} from "../../model/User";
 import {CategoryService} from "../../service/category/category.service";
 import {Icategory} from "../../model/Icategory";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {SingerService} from "../../service/singer/singer.service";
+import {Singers} from "../../model/Singers";
+import {Message} from "../../model/Message";
 
 @Component({
   selector: 'app-createsong',
@@ -23,67 +26,106 @@ export class CreatesongComponent implements OnInit {
   error2: any = {
     message: "nomp3url"
   }
+  error3: any = {
+    message: "noObj"
+  }
   success: any = {
     message: "Done"
   }
-  song:Song={
-    name :"",
-    description:"",
-    avatarUrl:"",
-    fileUrl:"",
-    lyric:"",
-    categories:{
-      id:0
-    }
+  song: Song = {
+    name: "",
+    description: "",
+    avatarUrl: "",
+    fileUrl: "",
+    lyric: "",
+    categories: {
+      id: 0
+    },
+    singer: [
+      {id: 0}
+    ]
   };
-
+  mes: Message = {}
   form: any = {};
-  categoriess:Icategory[]=[]
+  categoriess: Icategory[] = [];
+  singgers: Singers[] = [];
+  user: User = {};
+  singgersOnchage: Singers[] = [];
+  newSinger: Singers;
 
-  user:User={};
-  constructor(private songService: SongService,private categorySv:CategoryService) {
-this.categorySv.getAllCategory().subscribe((categorySv:Icategory[])=>{
-  this.categoriess = categorySv;
+  constructor(private songService: SongService,
+              private categorySv: CategoryService,
+              private singer: SingerService) {
+    this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
+      this.categoriess = categorySv;
+    })
+    this.singer.getAllSinger().subscribe((singerSv: Singers[]) => {
+      this.singgers = singerSv;
 
-})
+    })
 
   }
+
 
   ngOnInit(): void {
   }
-  ngSubmit(){
 
+  ngSubmit() {
     this.song.name = this.form.name;
     this.song.description = this.form.description;
     this.song.avatarUrl = this.form.avatarUrl;
     this.song.fileUrl = this.form.fileUrl;
     this.song.lyric = this.form.lyric;
-    // this.song.user = this.user;
     this.song.categories.id = this.form.categories;
-    // this.song.singer = this.form.singer;
+    this.song.singer = this.singgersOnchage;
     console.log(this.song);
-    this.songService.createSong(this.song).subscribe(data =>{
-      if(JSON.stringify(this.error1)==JSON.stringify(data)){
+    this.songService.createSong(this.song).subscribe(data => {
+      if (JSON.stringify(this.error1) == JSON.stringify(data)) {
         this.status = 'The avatar is required! Please select upload avatar'
       }
-      if(JSON.stringify(this.error2)==JSON.stringify(data)){
+      if (JSON.stringify(this.error2) == JSON.stringify(data)) {
         this.status = 'The file is required! Please select upload file'
       }
-      if(JSON.stringify(this.success)==JSON.stringify(data)){
-        this.status = 'Create success!'
+      if (JSON.stringify(this.success) == JSON.stringify(data)) {
+        this.status = 'Create success!';
+        this.form = {};
+        this.isCheckUploadAvatar = false;
+        this.isCheckUploadFile =false;
+
       }
     }, error => {
       this.status = 'Please login before create Song'
     })
-    console.log(this.form)
+    console.log(this.form);
+
+
+
   }
-  onChangeAvatar(event:any){
+
+  onChangeAvatar(event: any) {
     this.form.avatarUrl = event;
     this.isCheckUploadAvatar = true;
   }
-  onChangeFile(event:any){
+
+  onChangeFile(event: any) {
     this.form.fileUrl = event;
     this.isCheckUploadFile = true;
   }
 
+  onchage(value: any) {
+
+    this.singer.findSingerByName(value).subscribe(data => {
+      this.singgersOnchage.push(data);
+      console.log(this.newSinger)
+    }, error => {
+      this.newSinger = {
+        name: value,
+        description: "Ca sỹ"
+      }
+      this.singer.createSinger(this.newSinger).subscribe((obj) => {
+        this.singgersOnchage.push(obj);
+        console.log(this.newSinger)
+      })
+    })
+  }
 }

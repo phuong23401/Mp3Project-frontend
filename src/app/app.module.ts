@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
-import { SongComponent } from './song/song.component';
+import { SongComponent } from './song/song-manager/song.component';
 import { CreatesongComponent } from './song/createsong/createsong.component';
 import { UploadImgComponent } from "./uploadfile/upload-img/upload-img.component";
 import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component";
@@ -31,8 +31,9 @@ import { RegisterDialogComponent } from './share/register-dialog/register-dialog
 import { Header1Component } from './share/headerr/header1/header1.component';
 import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
-import { ChangepasswordComponent } from './profile/changepassword/changepassword.component';
+import { ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
 import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
+import { PlayMysongComponent } from './song/song-manager/play-mysong/play-mysong.component';
 import { SearchfilterPipe } from './share/searchfilter.pipe';
 
 @NgModule({
@@ -60,6 +61,7 @@ import { SearchfilterPipe } from './share/searchfilter.pipe';
     ListNewSongComponent,
     TwoMostListenedComponent,
     ChangepasswordComponent,
+    PlayMysongComponent,
     SearchfilterPipe
   ],
   imports: [
