@@ -15,8 +15,6 @@ declare var Swal: any;
   styleUrls: ['./register-dialog.component.css']
 })
 
-
-
 export class RegisterDialogComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
 
