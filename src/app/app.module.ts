@@ -34,6 +34,8 @@ import { TwoMostListenedComponent } from './song/two-most-listened/two-most-list
 import { ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
 import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
 import { SearchfilterPipe } from './share/searchfilter.pipe';
+import  {PlaySongComponent} from "./song/play-song/play-song.component";
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -60,10 +62,13 @@ import { SearchfilterPipe } from './share/searchfilter.pipe';
     ListNewSongComponent,
     TwoMostListenedComponent,
     ChangepasswordComponent,
-    SearchfilterPipe
+    SearchfilterPipe,
+    PlayerComponent,
+    PlaySongComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule, 
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
