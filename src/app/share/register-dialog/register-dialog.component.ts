@@ -138,4 +138,12 @@ export class RegisterDialogComponent implements OnInit {
     document.body.classList.remove('modal-open');
     this.modalService.show(LoginDialogComponent);
   }
+
+  closeModal() {
+    // @ts-ignore
+    document.querySelector('.register_dialog').remove();
+    // @ts-ignore
+    document.querySelector('.modal-backdrop').remove();
+    document.body.classList.remove('modal-open');
+  }
 }
