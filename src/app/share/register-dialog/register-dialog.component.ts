@@ -104,8 +104,8 @@ export class RegisterDialogComponent implements OnInit {
       console.log(this.newUser);
       if(this.confirmPassword.value == this.password.value) {
         this.loginService.register(this.newUser).subscribe(res => {
-          this.message = res;
-          console.log(this.message);
+          this.message = res.message;
+          alert(this.message);
           if (res.message != null) {
             // @ts-ignore
             document.querySelector('.register_dialog').remove();
