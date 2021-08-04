@@ -102,12 +102,12 @@ export class CreatesongComponent implements OnInit {
 
   onChangeAvatar(event: any) {
     this.form.avatarUrl = event;
-    this.isCheckUploadAvatar = true;
+    // this.isCheckUploadAvatar = true;
   }
 
   onChangeFile(event: any) {
     this.form.fileUrl = event;
-    this.isCheckUploadFile = true;
+    // this.isCheckUploadFile = true;
   }
 
   onchage(value: any) {
