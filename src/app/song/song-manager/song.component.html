@@ -5,7 +5,7 @@
         <h1>List Song</h1>
       </div>
     </div>
-    <div class="col-lg-4 col-md-12 padding_right40" *ngFor="let item of listSong, index as i">
+    <div class="col-lg-4 col-md-12 padding_right40" *ngFor="let item of songList, index as i">
       <div class="ms_weekly_box">
         <div class="weekly_left">
                     <span class="w_top_no">
@@ -16,8 +16,13 @@
               <img src="{{item.avatarUrl}}" alt="" class="img-fluid">
               <div class="ms_song_overlay">
               </div>
-              <div class="ms_play_icon">
-                <img src="../../../assets/images/svg/play.svg" alt="">
+              <div class="ms_play_icon" *ngIf="!isPlaying"
+                   (click)="listenCount(item)">
+                <img src="assets/images/svg/play.svg" alt="">
+              </div>
+              <div class="ms_play_icon" *ngIf="isPlaying"
+                   (click)="changePause()">
+                <img src="assets/images/svg/pause.svg" alt="">
               </div>
             </div>
             <div class="w_tp_song_name">
@@ -36,8 +41,15 @@
           <li><a href="{{item.id}}"><span class="opt_icon"><i class="far fa-trash-alt"></i></span>Delete</a></li>
           <li><a href="#"><span class="opt_icon"><span class="icon icon_queue"></span></span>update</a></li>
         </ul>
+        <div style="display: none">
+          <audio controls loop id="track">
+            <source src="{{item.fileUrl}}" type="audio/mpeg">
+            <source src="{{item.fileUrl}}" type="audio/ogg">
+          </audio>
+        </div>
       </div>
-<!--      <div class="ms_divider"></div>-->
+      <div class="ms_divider"></div>
     </div>
   </div>
 </div>
+
