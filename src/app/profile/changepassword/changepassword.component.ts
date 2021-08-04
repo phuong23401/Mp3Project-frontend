@@ -5,6 +5,7 @@ import { ProfileService } from "../../service/profile/profile.service";
 import { Password } from "../../model/Password";
 import { Message } from "../../model/Message";
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-changepassword',
@@ -20,6 +21,8 @@ export class ChangepasswordComponent implements OnInit {
 
   requestPassword: Password;
   messageResponse: Message;
+
+  messageAlert: string;
 
   constructor(private formBuilder: FormBuilder,
               private profileService: ProfileService,
@@ -43,12 +46,31 @@ export class ChangepasswordComponent implements OnInit {
       password: data.currentPassword,
       newPassword: data.newPassword
     });
-    this.profileService.changePassword(this.requestPassword).subscribe(mes => {
-      this.messageResponse = {
-        message: mes
-      }
-      alert(this.messageResponse.message.message);
-    });
+    if(this.requestPassword.newPassword.length < 6) {
+      Swal.fire({
+        title: "PASSWORD MUST BE AT LEAST 6 CHARACTERS !", 
+        icon: "error",
+        confirmButtonColor: "#3bc8e7"
+      });
+    } else {
+      this.profileService.changePassword(this.requestPassword).subscribe(mes => {
+        this.messageAlert = mes.message;
+        Swal.fire({
+          title: this.messageAlert, 
+          icon: "success",
+          confirmButtonColor: "#3bc8e7"
+        });
+        this.router.navigate(['']);
+      }, error => {
+        this.messageAlert = error.error.message;
+        Swal.fire({
+          title: this.messageAlert,
+          text: "Please check your infor !",
+          icon: "error",
+          confirmButtonColor: "#3bc8e7"
+        });
+      });
+    }
   }
 
   ch(e:any){

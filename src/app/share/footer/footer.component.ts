@@ -2,6 +2,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { Component, OnInit } from '@angular/core';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { TokenService } from 'src/app/service/token/token.service';
+import { Router } from '@angular/router';
 import { SingerService } from 'src/app/service/singer/singer.service';
 import { Singers } from 'src/app/model/Singers';
 
@@ -17,6 +18,7 @@ export class FooterComponent implements OnInit {
 
   constructor(private modalService: BsModalService,
               private tokenService: TokenService,
+              private router: Router,
               private singerService: SingerService) {
     this.token = this.tokenService.getToken();
     if(this.token != null) {
@@ -32,5 +34,9 @@ export class FooterComponent implements OnInit {
 
   login() {
     this.modalService.show(LoginDialogComponent);
+  }
+
+  home() {
+    this.router.navigate(['']);
   }
 }

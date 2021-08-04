@@ -5,9 +5,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { ResgisterUser } from 'src/app/model/ResgisterUser';
 import { LoginService } from 'src/app/service/login/login.service';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
-
-
-declare var Swal: any;
+import {Message} from "../../model/Message";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-dialog',
@@ -33,13 +32,20 @@ export class RegisterDialogComponent implements OnInit {
   check1:boolean = false;
   check2:boolean = false;
 
-
-
-// message:any;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService) { 
+      this.registerForm = this.formBuilder.group({
+        name: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        username: ['', [Validators.required]],
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]]
+      },{
+        validator: this.MustMatch('password', 'confirmPassword')
+      });
+    }
 
   // isControlHasError(controlName: string, validationType: string): boolean {
   //   const control = this.registerForm.controls[controlName];
@@ -50,17 +56,8 @@ export class RegisterDialogComponent implements OnInit {
   //   return result;
   // }
 
-  ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      username: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      confirmPassword: ['', [Validators.required]]
-    },{
-      validator: this.MustMatch('password', 'confirmPassword')
-    });
-  }
+  ngOnInit(): void {}
+
   submitted:boolean = false;
   get f() { return this.registerForm.controls; };
   MustMatch(controlName: string, matchingControlName: string) {
@@ -89,38 +86,64 @@ export class RegisterDialogComponent implements OnInit {
     }
   }
 
-
   register(){
     this.submitted = true;
-
-      this.newUser = {
-        name: this.registerForm.value.name,
-        email: this.registerForm.value.email,
-        username: this.registerForm.value.username,
-        password: this.registerForm.value.password
-      };
-      if(this.confirmPassword.value == this.password.value) {
-        this.loginService.register(this.newUser).subscribe(res => {
-          this.message = res.message;
-          alert(this.message);
-          if (res.message != null) {
-            // @ts-ignore
-            document.querySelector('.register_dialog').remove();
-            // @ts-ignore
-            document.querySelector('.modal-backdrop').remove();
-            document.body.classList.remove('modal-open');
-            this.modalService.show(LoginDialogComponent);
-          }
-        },error => {
-          this.check = true;
-            this.errorRegis = error.error.message;
-            if(this.errorRegis == this.error1){
-              this.check1 = true;
-            };
-            if(this.errorRegis == this.error2){
-              this.check2 = true;
-            }
+    this.newUser = {
+      name: this.registerForm.value.name,
+      email: this.registerForm.value.email,
+      username: this.registerForm.value.username,
+      password: this.registerForm.value.password
+    };
+    if(this.confirmPassword.value == this.password.value) {
+      this.loginService.register(this.newUser).subscribe(res => {
+        this.message = res.message;
+        Swal.fire({
+          title: this.message,
+          text: "Login and enjoy !",
+          icon: "success",
+          confirmButtonColor: "#3bc8e7"
         });
-      }
+        if (res.message != null) {
+          // @ts-ignore
+          document.querySelector('.register_dialog').remove();
+          // @ts-ignore
+          document.querySelector('.modal-backdrop').remove();
+          document.body.classList.remove('modal-open');
+          this.modalService.show(LoginDialogComponent);
+        }
+      },error => {
+        this.check = true;
+        this.errorRegis = error.error.message;
+        if(this.errorRegis == this.error1){
+          this.check1 = true;
+        };
+        if(this.errorRegis == this.error2){
+          this.check2 = true;
+        }
+        Swal.fire({
+          title: "REGISTER FAILED",
+          text: "Please check your infor !",
+          icon: "error",
+          confirmButtonColor: "#3bc8e7"
+        });
+      });
     }
+  }
+
+  transferLogin() {
+    // @ts-ignore
+    document.querySelector('.register_dialog').remove();
+    // @ts-ignore
+    document.querySelector('.modal-backdrop').remove();
+    document.body.classList.remove('modal-open');
+    this.modalService.show(LoginDialogComponent);
+  }
+
+  closeModal() {
+    // @ts-ignore
+    document.querySelector('.register_dialog').remove();
+    // @ts-ignore
+    document.querySelector('.modal-backdrop').remove();
+    document.body.classList.remove('modal-open');
+  }
 }

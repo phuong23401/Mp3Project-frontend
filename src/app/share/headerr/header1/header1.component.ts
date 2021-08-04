@@ -4,6 +4,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {TokenService} from 'src/app/service/token/token.service';
 import {Song} from 'src/app/model/Song';
 import {SongService} from "../../../service/song/song.service";
+import { EditProfile } from 'src/app/model/EditProfile';
+import { ProfileService } from 'src/app/service/profile/profile.service';
 
 @Component({
   selector: 'app-header1',
@@ -20,11 +22,13 @@ export class Header1Component implements OnInit {
   searchValue: any;
   listFilterResult: Song[];
 
+  userCurrent: EditProfile = {};
 
   constructor(
     private tokenService: TokenService,
     private router: Router,
-    private songService: SongService) {
+    private songService: SongService,
+    private profileService: ProfileService,) {
     this.usernameCurrent = this.tokenService.getUsername();
     console.log(this.usernameCurrent);
     this.searchForm = new FormGroup({
@@ -36,6 +40,9 @@ export class Header1Component implements OnInit {
     this.songService.getAllSongs().subscribe(res => {
       this.songList = res;
     })
+    this.profileService.getUserCurrent().subscribe(data => {
+      this.userCurrent = data;
+    });
   }
 
 
