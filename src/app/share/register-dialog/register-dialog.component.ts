@@ -97,12 +97,12 @@ export class RegisterDialogComponent implements OnInit {
     if(this.confirmPassword.value == this.password.value) {
       this.loginService.register(this.newUser).subscribe(res => {
         this.message = res.message;
-        Swal.fire({
-          title: this.message,
-          text: "Login and enjoy !",
-          icon: "success",
-          confirmButtonColor: "#3bc8e7"
-        });
+        // Swal.fire({
+        //   title: this.message,
+        //   text: "Login and enjoy !",
+        //   icon: "success",
+        //   confirmButtonColor: "#3bc8e7"
+        // });
         if (res.message != null) {
           // @ts-ignore
           document.querySelector('.register_dialog').remove();
@@ -120,12 +120,12 @@ export class RegisterDialogComponent implements OnInit {
         if(this.errorRegis == this.error2){
           this.check2 = true;
         }
-        Swal.fire({
-          title: "REGISTER FAILED",
-          text: "Please check your infor !",
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
+        // Swal.fire({
+        //   title: "REGISTER FAILED",
+        //   text: "Please check your infor !",
+        //   icon: "error",
+        //   confirmButtonColor: "#3bc8e7"
+        // });
       });
     }
   }
