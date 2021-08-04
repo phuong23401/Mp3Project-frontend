@@ -27,7 +27,7 @@ export class UploadImgComponent implements OnInit {
     this.selectedFile = event.target.files[0];
   }
   onUpLoad(){
-    this.checkUploadAvatar = true;
+    // this.checkUploadAvatar = true;
     const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
     this.ref = this.afStorage.ref(id);
     this.ref.put(this.selectedFile).then(snapshot => {
@@ -36,7 +36,7 @@ export class UploadImgComponent implements OnInit {
       .then(downloadURL => { //cHUYEN Value tu component cha sang con
         this.downloadURL = downloadURL;
         this.giveURLtoCreate.emit(this.downloadURL);
-        this.checkUploadAvatar = false;
+        // this.checkUploadAvatar = false;
         return downloadURL;
       })
       .catch(error=>{
