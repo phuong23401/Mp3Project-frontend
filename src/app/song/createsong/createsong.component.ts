@@ -4,7 +4,6 @@ import {Song} from "../../model/Song";
 import {User} from "../../model/User";
 import {CategoryService} from "../../service/category/category.service";
 import {Icategory} from "../../model/Icategory";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SingerService} from "../../service/singer/singer.service";
 import {Singers} from "../../model/Singers";
 import {Message} from "../../model/Message";
@@ -90,7 +89,7 @@ export class CreatesongComponent implements OnInit {
         this.status = 'Create success!';
         this.form = {};
         this.isCheckUploadAvatar = false;
-        this.isCheckUploadFile =false;
+        this.isCheckUploadFile = false;
 
       }
     }, error => {
@@ -99,17 +98,16 @@ export class CreatesongComponent implements OnInit {
     console.log(this.form);
 
 
-
   }
 
   onChangeAvatar(event: any) {
     this.form.avatarUrl = event;
-    this.isCheckUploadAvatar = true;
+    // this.isCheckUploadAvatar = true;
   }
 
   onChangeFile(event: any) {
     this.form.fileUrl = event;
-    this.isCheckUploadFile = true;
+    // this.isCheckUploadFile = true;
   }
 
   onchage(value: any) {

@@ -8,10 +8,10 @@ $(function() {
             cssSelectorAncestor: "#jp_container_1"
         }, [{
 			image : 'assets/images/weekly/song1.jpg',
-            title: "Cro Magnon Man",
+            title: "Rapper So 1",
             artist: "Mushroom Records",
-            mp3: "https://firebasestorage.googleapis.com/v0/b/instaclone-76674.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=e268a1b5-6aca-4b95-a900-fc0c6fbf61a7",
-            oga: "https://firebasestorage.googleapis.com/v0/b/instaclone-76674.appspot.com/o/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3?alt=media&token=e268a1b5-6aca-4b95-a900-fc0c6fbf61a7",
+            mp3: "https://firebasestorage.googleapis.com/v0/b/karaokeonline-a05e6.appspot.com/o/ICDRapperNUMERONE1.mp3?alt=media&token=a616b012-ba9f-48d0-aa32-ab36d29eb26e",
+            oga: "https://firebasestorage.googleapis.com/v0/b/karaokeonline-a05e6.appspot.com/o/ICDRapperNUMERONE1.mp3?alt=media&token=a616b012-ba9f-48d0-aa32-ab36d29eb26e",
 			option : myPlayListOtion
         }, {
 			image : 'assets/images/weekly/song2.jpg',
