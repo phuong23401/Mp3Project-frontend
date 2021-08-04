@@ -101,7 +101,6 @@ export class RegisterDialogComponent implements OnInit {
         username: this.registerForm.value.username,
         password: this.registerForm.value.password
       };
-      console.log(this.newUser);
       if(this.confirmPassword.value == this.password.value) {
         this.loginService.register(this.newUser).subscribe(res => {
           this.message = res.message;
@@ -118,7 +117,6 @@ export class RegisterDialogComponent implements OnInit {
           // this.error = "Login information is incorrect, please re-enter";
           this.check = true;
             this.errorRegis = error.error.message;
-            console.log(this.errorRegis);
             if(this.errorRegis == this.error1){
               this.check1 = true;
             };
