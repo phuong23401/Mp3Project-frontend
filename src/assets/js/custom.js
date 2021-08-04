@@ -119,6 +119,10 @@ Assigned to: Theme Forest
                         spaceBetween: 0,
                     }
                 },
+              observer:true,
+              observeParents:true,
+
+
             });
             // Recent Slider
             var newRecentSwiper = new Swiper('.ms_rcnt_slider .swiper-container', {
@@ -157,6 +161,8 @@ Assigned to: Theme Forest
                         spaceBetween: 0,
                     }
                 },
+              observer:true,
+              observeParents:true,
             });
             // Featured Slider
             var newFeateuredSwiper = new Swiper('.ms_feature_slider.swiper-container', {
@@ -195,6 +201,8 @@ Assigned to: Theme Forest
                         spaceBetween: 0,
                     }
                 },
+              observer:true,
+              observeParents:true,
             });
             // New released Slider
             var newReleasedSwiper = new Swiper('.ms_release_slider.swiper-container', {
@@ -233,6 +241,8 @@ Assigned to: Theme Forest
                         spaceBetween: 0,
                     }
                 },
+              observer:true,
+              observeParents:true,
             });
             // Featured Album Slider
             var newFeaturedAlbumSwiper = new Swiper('.ms_album_slider.swiper-container', {
@@ -271,6 +281,8 @@ Assigned to: Theme Forest
                         spaceBetween: 0,
                     }
                 },
+              observer:true,
+              observeParents:true,
             });
             // Radio Slider
             var newRadioSwiper = new Swiper('.ms_radio_slider.swiper-container', {
@@ -309,6 +321,8 @@ Assigned to: Theme Forest
                         spaceBetween: 0,
                     }
                 },
+              observer:true,
+              observeParents:true,
             });
             // Testimonial Slider
             var newTestimonialSwiper = new Swiper('.ms_test_slider.swiper-container', {
@@ -332,17 +346,12 @@ Assigned to: Theme Forest
                         slidesPerView: 1,
                     },
                 },
+              observer:true,
+              observeParents:true,
             });
-          // setTimeout(function () {
-          //   newReleasedSwiper.update();
-          //   newRecentSwiper.update();
-          //   newFeaturedAlbumSwiper.update();
-          //   newFeateuredSwiper.update();
-          //   newRadioSwiper.update();
-          //   newTestimonialSwiper.update();
-          //
-          // }, 500)
+
         },
+
         // More
         More: function() {
             $(document).on('click','.ms_more_icon',  function(e) {

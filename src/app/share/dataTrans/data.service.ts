@@ -18,6 +18,7 @@ export class DataService {
   // thêm bài hát vào album
   addSongToAlbumSourse = new BehaviorSubject<any>('');
   currentSongAdd = this.addSongToAlbumSourse.asObservable();
+ 
 
 
   constructor() { }

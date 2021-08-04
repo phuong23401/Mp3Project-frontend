@@ -5,6 +5,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { ResgisterUser } from 'src/app/model/ResgisterUser';
 import { LoginService } from 'src/app/service/login/login.service';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import {Message} from "../../model/Message";
 
 declare var Swal: any;
 
@@ -26,8 +27,13 @@ export class RegisterDialogComponent implements OnInit {
   get confirmPassword() {return this.registerForm.get('confirmPassword')}
 
   message: string;
-
   newUser: ResgisterUser;
+  errorRegis: string;
+  error1: string = "Tài khoản đã tồn tại!";
+  error2: string = "Email đã được sử dụng!";
+  check:boolean =false;
+  check1:boolean = false;
+  check2:boolean = false;
 
 
 
@@ -95,25 +101,29 @@ export class RegisterDialogComponent implements OnInit {
         username: this.registerForm.value.username,
         password: this.registerForm.value.password
       };
-      console.log(this.newUser);
       if(this.confirmPassword.value == this.password.value) {
         this.loginService.register(this.newUser).subscribe(res => {
-          this.message = res;
-          console.log(this.message);
+          this.message = res.message;
+          alert(this.message);
           if (res.message != null) {
             // @ts-ignore
-            document.querySelector('.register_dialog').remove()
+            document.querySelector('.register_dialog').remove();
             // @ts-ignore
-            document.querySelector('.modal-backdrop').remove()
-            document.body.classList.remove('modal-open')
+            document.querySelector('.modal-backdrop').remove();
+            document.body.classList.remove('modal-open');
             this.modalService.show(LoginDialogComponent);
           }
         },error => {
-          this.message = "Loi cmnr";
-          console.log(this.message);
-          this.modalService.show(RegisterDialogComponent);
+          // this.error = "Login information is incorrect, please re-enter";
+          this.check = true;
+            this.errorRegis = error.error.message;
+            if(this.errorRegis == this.error1){
+              this.check1 = true;
+            };
+            if(this.errorRegis == this.error2){
+              this.check2 = true;
+            }
         });
       }
     }
-  // }
 }
