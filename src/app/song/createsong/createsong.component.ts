@@ -90,6 +90,7 @@ export class CreatesongComponent implements OnInit {
         this.form = {};
         this.isCheckUploadAvatar = false;
         this.isCheckUploadFile = false;
+        this.singgersOnchage.length=0;
 
       }
     }, error => {
