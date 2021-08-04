@@ -1,12 +1,12 @@
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/service/login/login.service';
 import { TokenService } from 'src/app/service/token/token.service';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
+import Swal from 'sweetalert2';
 
-declare var Swal: any;
 @Component({
   selector: 'app-login-dialog',
   templateUrl: './login-dialog.component.html',
@@ -17,6 +17,7 @@ export class LoginDialogComponent implements OnInit {
 
   get username(){ return this.loginForm.get('username')}
   get password(){ return this.loginForm.get('password')}
+
   message:string;
   name: string;
 
@@ -24,14 +25,14 @@ export class LoginDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private tokenService: TokenService,
-    private modalService: BsModalService) { }
+    private modalService: BsModalService) {
+      this.loginForm = this.formBuilder.group({
+        username: ['',[ Validators.required]],
+        password: ['',[ Validators.required]]
+      });
+    }
 
-  ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      username: ['',[ Validators.required]],
-      password: ['',[ Validators.required]]
-    });
-  }
+  ngOnInit(): void {}
 
   login() {
     const data = this.loginForm.value;
@@ -41,20 +42,19 @@ export class LoginDialogComponent implements OnInit {
         this.tokenService.setToken(res.token);
         this.tokenService.setId(res.id);
         this.tokenService.setUsername(res.username);
-        // this.name = this.tokenService.getName();
+
         this.router.navigate(['']).then(() => {
           window.location.reload();
         });
-
-        // @ts-ignore
-        document.querySelector('.modal-backdrop').remove()
-        document.body.classList.remove('modal-open')
-        // @ts-ignore
-        document.querySelector('.login_dialog').remove()
       }
     }, error =>{
-      this.message = " meo dang nhap dc";
-      alert(this.message);
+      this.message = "LOGIN FAILED";
+      Swal.fire({
+        title: this.message,
+        text: "Please check your infor !",
+        icon: "error",
+        confirmButtonColor: "#3bc8e7"
+      });
     });
   }
 

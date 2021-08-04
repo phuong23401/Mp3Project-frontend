@@ -29,19 +29,15 @@ export class HeaderComponent implements OnInit {
               private formBuilder: FormBuilder,
               private router: Router,
               private data: DataService) {
-                this.searchForm = new FormGroup({
-                  name: new FormControl(),
-               });
-               }
+    this.searchForm = new FormGroup({
+      name: new FormControl(),
+    });
+  }
 
   ngOnInit(): void {
-    // this.searchForm = this.formBuilder.group({
-    //   nameSearch: ['']
-    // });
     this.songService.getAllSongs().subscribe(res =>{
       this.songList = res;
     })
-
   }
 
   login() {
@@ -50,10 +46,6 @@ export class HeaderComponent implements OnInit {
 
   register() {
     this.modalService.show(RegisterDialogComponent)
-  }
-
-  search(){
-    // this.router.navigate(['/search'],{ queryParams: { name: this.searchForm.value.nameSearch } })
   }
 
   filterKeyWord() {

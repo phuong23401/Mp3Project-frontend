@@ -1,7 +1,6 @@
 <form [formGroup]="registerForm" >
-    <div class="register_dialog">
+    <div class="modal-dialog register_dialog">
         <!-- Modal content-->
-
       <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal">
         <i class="fa_icon form_close"></i>
@@ -99,10 +98,10 @@
                         </div>
                     </div>
                     <div style="color: white">
-                        <a class="ms_btn"  (click)="register()">Register</a>
+                        <a class="ms_btn" type="submit" (click)="register()">Register</a>
                     </div>
 
-                    <p>Already Have An Account? <a data-toggle="modal" class="ms_modal hideCurrentModel">login here</a></p>
+                    <p>Already Have An Account? <a href="javascript:" data-toggle="modal" class="ms_modal hideCurrentModel" (click)="transferLogin()">login here</a></p>
                 </div>
             </div>
         </div>
