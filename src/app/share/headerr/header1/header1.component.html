@@ -1,7 +1,7 @@
 <div class="ms_header">
     <div class="ms_top_left">
         <div class="ms_top_search">
-            <form [formGroup]="searchForm">
+            <form [formGroup]="searchForm" class="body1" >
                 <div>
                  <input class="form-control" type="text"  placeholder="Search Music Here.." formControlName="name" (keyup)="filterKeyWord()" [(ngModel)]="searchValue">
                  
@@ -30,7 +30,7 @@
                  <span class="search_icon">
                      <img src="../../../assets/images/svg/search.svg" alt="">
                  </span>
-     </form> 
+             </form> 
             <span class="search_icon">
                 <img src="../../../assets/images/svg/search.svg" alt="">
             </span>

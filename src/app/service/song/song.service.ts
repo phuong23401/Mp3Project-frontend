@@ -54,4 +54,8 @@ export class SongService {
   deleteSongById(id:number):Observable<any> {
     return this.http.delete<any>(this.API_URL + "/song/" + id);
   }
+
+  updateSong(id:number,song:Song):Observable<any>{
+    return this.http.put<any>(this.API_URL+"/song/"+id,song)
+  }
 }

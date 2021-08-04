@@ -20,7 +20,7 @@ export class UpdateSongComponent implements OnInit {
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
-  formavt: any = {};
+  // formavt: any = {};
   error1: any = {
     message: "noavatar"
   }
@@ -82,33 +82,16 @@ export class UpdateSongComponent implements OnInit {
   }
 
   ngSubmit() {
-    this.song.id = this.id;
     this.song.name = this.form.name;
     this.song.description = this.form.description;
-    this.song.avatarUrl = this.formavt.avatarUrl;
+    this.song.avatarUrl = this.form.avatarUrl;
     this.song.fileUrl = this.form.fileUrl;
     this.song.lyric = this.form.lyric;
     this.song.categories.id = this.form.categories;
     this.song.singer = this.singgersOnchage;
     this.song.author = this.form.author;
     console.log(this.song);
-    this.songService.createSong(this.song).subscribe(data => {
-      if (JSON.stringify(this.error1) == JSON.stringify(data)) {
-        this.status = 'The avatar is required! Please select upload avatar'
-        Swal.fire({
-          title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
-      }
-      if (JSON.stringify(this.error2) == JSON.stringify(data)) {
-        this.status = 'The file is required! Please select upload file'
-        Swal.fire({
-          title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
-      }
+    this.songService.updateSong(this.id,this.song).subscribe(data => {
       if (JSON.stringify(this.success) == JSON.stringify(data)) {
         this.status = 'Create success!';
         Swal.fire({
@@ -116,21 +99,22 @@ export class UpdateSongComponent implements OnInit {
           icon: "success",
           confirmButtonColor: "#3bc8e7"
         });
-        this.form = {};
-        this.isCheckUploadAvatar = false;
-        this.isCheckUploadFile = false;
-        this.singgersOnchage.splice(0, this.singgersOnchage.length);
+        this.router.navigate(['/song']);
 
       }
     }, error => {
-      this.status = 'Please login before create Song'
+      this.status = 'Orrer 500';
+      Swal.fire({
+        title: this.status,
+        icon: "error",
+        confirmButtonColor: "#3bc8e7"
+      });
     })
     console.log(this.form);
-
   }
 
   onChangeAvatar(event: any) {
-    this.formavt.avatarUrl = event;
+    this.form.avatarUrl = event;
     // this.isCheckUploadAvatar = true;
   }
 
