@@ -8,6 +8,9 @@
                 </div>
                 <div class="ms_register_form">
                     <h2>Register / Sign Up</h2>
+                  <div *ngIf="this.check" class="text-danger">
+                    Login information is incorrect, please re-enter
+                </div>
                     <div class="form-group">
                         <input type="text" placeholder="Enter Your Name" class="form-control" formControlName="name"
                             required>
@@ -25,6 +28,9 @@
                         <span class="form_icon">
                             <i class="fa_icon form-user" aria-hidden="true"></i>
                         </span>
+                      <div *ngIf="check1" class="text-danger">
+                        {{this.errorRegis}}
+                      </div>
                         <div class="text-danger" *ngIf="username.invalid">
                             <div *ngIf="username.errors?.required">
                                 Username is required *
@@ -43,6 +49,9 @@
                         <span class="form_icon">
                             <i class="fa_icon form-envelope" aria-hidden="true"></i>
                         </span>
+                      <div *ngIf="check2" class="text-danger">
+                        {{this.errorRegis}}
+                      </div>
                       <div class="text-danger" *ngIf="email.invalid ">
                         Email is required or malformed *
                       </div>
@@ -93,6 +102,7 @@
                     <div>
                         <button type="submit">register</button>
                     </div>
+
                     <p>Already Have An Account? <a data-toggle="modal" class="ms_modal hideCurrentModel">login here</a></p>
                 </div>
             </div>
