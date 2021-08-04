@@ -7,6 +7,7 @@ import {Icategory} from "../../model/Icategory";
 import {SingerService} from "../../service/singer/singer.service";
 import {Singers} from "../../model/Singers";
 import {Message} from "../../model/Message";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-createsong',
@@ -42,7 +43,8 @@ export class CreatesongComponent implements OnInit {
     },
     singer: [
       {id: 0}
-    ]
+    ],
+    author:""
   };
   mes: Message = {}
   form: any = {};
@@ -54,7 +56,7 @@ export class CreatesongComponent implements OnInit {
 
   constructor(private songService: SongService,
               private categorySv: CategoryService,
-              private singer: SingerService) {
+              private singer: SingerService, private router: Router) {
     this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
       this.categoriess = categorySv;
     })
@@ -77,6 +79,7 @@ export class CreatesongComponent implements OnInit {
     this.song.lyric = this.form.lyric;
     this.song.categories.id = this.form.categories;
     this.song.singer = this.singgersOnchage;
+    this.song.author = this.form.author;
     console.log(this.song);
     this.songService.createSong(this.song).subscribe(data => {
       if (JSON.stringify(this.error1) == JSON.stringify(data)) {
@@ -90,7 +93,7 @@ export class CreatesongComponent implements OnInit {
         this.form = {};
         this.isCheckUploadAvatar = false;
         this.isCheckUploadFile = false;
-        this.singgersOnchage.length=0;
+        this.singgersOnchage.splice(0, this.singgersOnchage.length);
 
       }
     }, error => {
