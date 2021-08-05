@@ -20,6 +20,9 @@ export class SongService {
   getAllSongs(): Observable<Song[]> {
     return this.http.get<Song[]>(this.API_URL + '/song/songs');
   }
+  getAllPageSongs(): Observable<any> {
+    return this.http.get<any>(this.API_URL + '/song/page/song');
+  }
 
   createSong(song: Song): Observable<Song> {
     return this.http.post<Song>(this.API_URL + '/song/create', song);
@@ -47,5 +50,12 @@ export class SongService {
   }
   getSongsById(id: number): Observable<Song> {
     return this.http.get<Song>(`${this.API_Song}/${id}`);
+  }
+  deleteSongById(id:number):Observable<any> {
+    return this.http.delete<any>(this.API_URL + "/song/" + id);
+  }
+
+  updateSong(id:number,song:Song):Observable<any>{
+    return this.http.put<any>(this.API_URL+"/song/"+id,song)
   }
 }

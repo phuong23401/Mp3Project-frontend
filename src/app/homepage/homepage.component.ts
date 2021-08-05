@@ -11,6 +11,7 @@ export class HomepageComponent implements OnInit {
   name: any = '';
 
   songList: Song[] = [];
+  randomSong : Song;
 
   constructor(private router: Router,
               private songService: SongService) {}
@@ -18,6 +19,8 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.songService.getAllSongs().subscribe(res =>{
         this.songList = res;
+      this.randomSong = this.songList[Math.floor(Math.random() * this.songList.length)]
+      console.log(this.randomSong)
     });
   }
 }

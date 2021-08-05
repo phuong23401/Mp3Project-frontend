@@ -1,16 +1,40 @@
-<div class="ms_header">
+<div class="ms_header" xmlns:searchfilter="http://www.w3.org/1999/xhtml"
+     xmlns:searchfilter="http://www.w3.org/1999/xhtml" xmlns:searchfilter="http://www.w3.org/1999/xhtml">
     <div class="ms_top_left">
         <div class="ms_top_search">
-        <form [formGroup]="searchForm"  (ngSubmit)="search()">
-            <input type="text" class="form-control" placeholder="Search Music Here.." formControlName="nameSearch">
-        </form>
+       <form [formGroup]="searchForm">
+           <div>
+            <input class="form-control" type="text"  placeholder="Search Music Here.." formControlName="name" (keyup)="filterKeyWord()" [(ngModel)]="searchValue">
+
+            </div>
+            <div style="display: block;border-radius: 20px 20px;background: #14182a;" class="autocomplete-suggestions gotop" [hidden]="isCheck">
+
+                <p [hidden]="conditsion" style="background:#14182a; border-radius: 20px 10px; color: #e95c5c; ">No matching songs found!</p>
+                <div [routerLink]="['/song',song.id]" class="row" style="width: 100%"
+                     *ngFor="let song of listFilterResult">
+                  <div class="col-4">
+                    <img [src]="song.avatarUrl" *ngIf="song.avatarUrl != null" alt="">
+                  </div>
+                  <div class="col-8" style="margin-top: 15px">
+                    <div style="display: inline-grid; position: relative">
+                      <div class="product__discount__item__text" style="text-align: left; padding-top: 0px">
+                        <h5><a href=""></a>{{song.name}}</h5>
+
+                      </div>
+                    </div>
+                  </div>
+                  <hr width="80%" size="5px" align="center" color="#cccccc"
+                      style="padding-top: 0px; margin-bottom: 16px"/>
+                </div>
+              </div>
+<!--          {{name}}-->
             <span class="search_icon">
                 <img src="../../../assets/images/svg/search.svg" alt="">
             </span>
-
+</form>
         </div>
         <div class="ms_top_trend">
-            <span><a href="#" class="ms_color">Trending Songs :</a></span> 
+            <span><a href="#" class="ms_color">Trending Songs :</a></span>
             <span class="top_marquee"><a href="#">Dream your moments, Until I Met You, Gimme Some Courage, Dark Alley (+8 More)</a></span>
         </div>
     </div>
@@ -25,3 +49,6 @@
         </div>
     </div>
 </div>
+
+
+

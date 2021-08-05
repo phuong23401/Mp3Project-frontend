@@ -5,6 +5,7 @@ import { ProfileService } from "../../service/profile/profile.service";
 import { Password } from "../../model/Password";
 import { Message } from "../../model/Message";
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-changepassword',
@@ -21,6 +22,8 @@ export class ChangepasswordComponent implements OnInit {
   requestPassword: Password;
   messageResponse: Message;
 
+  messageAlert: string;
+
   constructor(private formBuilder: FormBuilder,
               private profileService: ProfileService,
               private tokenService: TokenService,
@@ -32,23 +35,70 @@ export class ChangepasswordComponent implements OnInit {
       currentPassword: ['', [Validators.required]],
       newPassword: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
+    },{
+      validator: this.MustMatch('newPassword', 'confirmPassword')
     });
-    // console.log(this.tokenService.getName());
   }
 
   changePassword() {
     const data = this.changePasswordForm.value;
-    console.log(data);
     this.requestPassword = ({
       password: data.currentPassword,
       newPassword: data.newPassword
     });
-    this.profileService.changePassword(this.requestPassword).subscribe(mes => {
-      this.messageResponse = {
-        message: mes
+    if(this.requestPassword.newPassword.length < 6) {
+      Swal.fire({
+        title: "PASSWORD MUST BE AT LEAST 6 CHARACTERS !", 
+        icon: "error",
+        confirmButtonColor: "#3bc8e7"
+      });
+    } else {
+      this.profileService.changePassword(this.requestPassword).subscribe(mes => {
+        this.messageAlert = mes.message;
+        Swal.fire({
+          title: this.messageAlert, 
+          icon: "success",
+          confirmButtonColor: "#3bc8e7"
+        });
+        this.router.navigate(['']);
+      }, error => {
+        this.messageAlert = error.error.message;
+        Swal.fire({
+          title: this.messageAlert,
+          text: "Please check your infor !",
+          icon: "error",
+          confirmButtonColor: "#3bc8e7"
+        });
+      });
+    }
+  }
+
+  ch(e:any){
+    if(e.checked){
+      this.changePasswordForm.controls['password'].setValidators([Validators.required])
+      this.changePasswordForm.controls['password'].updateValueAndValidity()
+    }
+    else{
+      this.changePasswordForm.controls['password'].setValidators(null)
+      this.changePasswordForm.controls['password'].updateValueAndValidity()
+    }
+  }
+
+  submitted:boolean = false;
+  get f() { return this.changePasswordForm.controls; };
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        return;
       }
-      alert(this.messageResponse.message);
-    });
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
   }
 
   backHome() {
