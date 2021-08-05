@@ -1,27 +1,26 @@
 import {Component, OnInit} from '@angular/core';
-import {SongService} from "../../service/song/song.service";
-import {Song} from "../../model/Song";
-import {User} from "../../model/User";
-import {CategoryService} from "../../service/category/category.service";
-import {Icategory} from "../../model/Icategory";
-import {SingerService} from "../../service/singer/singer.service";
-import {Singers} from "../../model/Singers";
 import {Message} from "../../model/Message";
-import {Router} from "@angular/router";
-import Swal from 'sweetalert2';
-
+import {Icategory} from "../../model/Icategory";
+import {Singers} from "../../model/Singers";
+import {User} from "../../model/User";
+import {SongService} from "../../service/song/song.service";
+import {CategoryService} from "../../service/category/category.service";
+import {SingerService} from "../../service/singer/singer.service";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {Song} from "../../model/Song";
+import Swal from "sweetalert2";
 
 @Component({
-  selector: 'app-createsong',
-  templateUrl: './createsong.component.html',
-  styleUrls: ['./createsong.component.css']
+  selector: 'app-update-song',
+  templateUrl: './update-song.component.html',
+  styleUrls: ['./update-song.component.css']
 })
-export class CreatesongComponent implements OnInit {
+export class UpdateSongComponent implements OnInit {
 
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
- formavt:any={};
+  // formavt: any = {};
   error1: any = {
     message: "noavatar"
   }
@@ -34,6 +33,8 @@ export class CreatesongComponent implements OnInit {
   success: any = {
     message: "Done"
   }
+  songImage: Song;
+
   song: Song = {
     name: "",
     description: "",
@@ -46,7 +47,7 @@ export class CreatesongComponent implements OnInit {
     singer: [
       {id: 0}
     ],
-    author:""
+    author: ""
   };
   mes: Message = {}
   form: any = {};
@@ -55,51 +56,42 @@ export class CreatesongComponent implements OnInit {
   user: User = {};
   singgersOnchage: Singers[] = [];
   newSinger: Singers;
+  id: any;
+  check = false;
 
   constructor(private songService: SongService,
               private categorySv: CategoryService,
-              private singer: SingerService, private router: Router) {
+              private singer: SingerService, private router: Router, private activeRouter: ActivatedRoute) {
     this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
       this.categoriess = categorySv;
-    })
+    });
     this.singer.getAllSinger().subscribe((singerSv: Singers[]) => {
       this.singgers = singerSv;
-
-    })
-
+    });
+    this.activeRouter.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = paramMap.get('id');
+    });
+    this.songService.getSongById(this.id).subscribe((data: Song) => {
+      this.songImage = data;
+    });
   }
 
+
   ngOnInit(): void {
+
   }
 
   ngSubmit() {
     this.song.name = this.form.name;
     this.song.description = this.form.description;
-    this.song.avatarUrl = this.formavt.avatarUrl;
+    this.song.avatarUrl = this.form.avatarUrl;
     this.song.fileUrl = this.form.fileUrl;
     this.song.lyric = this.form.lyric;
     this.song.categories.id = this.form.categories;
     this.song.singer = this.singgersOnchage;
     this.song.author = this.form.author;
     console.log(this.song);
-    this.songService.createSong(this.song).subscribe(data => {
-      if (JSON.stringify(this.error1) == JSON.stringify(data)) {
-        this.status = 'The avatar is required! Please select upload avatar';
-        Swal.fire({
-          title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
-
-      }
-      if (JSON.stringify(this.error2) == JSON.stringify(data)) {
-        this.status = 'The file is required! Please select upload file';
-        Swal.fire({
-          title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
-      }
+    this.songService.updateSong(this.id,this.song).subscribe(data => {
       if (JSON.stringify(this.success) == JSON.stringify(data)) {
         this.status = 'Create success!';
         Swal.fire({
@@ -107,23 +99,22 @@ export class CreatesongComponent implements OnInit {
           icon: "success",
           confirmButtonColor: "#3bc8e7"
         });
-        this.form = {};
-        this.isCheckUploadAvatar = false;
-        this.isCheckUploadFile = false;
-        this.singgersOnchage.splice(0, this.singgersOnchage.length);
+        this.router.navigate(['/song']);
 
       }
-    }
-      //   error => {
-      // this.status = 'Please login before create Song'
-    )
+    }, error => {
+      this.status = 'Orrer 500';
+      Swal.fire({
+        title: this.status,
+        icon: "error",
+        confirmButtonColor: "#3bc8e7"
+      });
+    })
     console.log(this.form);
-
-
   }
 
   onChangeAvatar(event: any) {
-    this.formavt.avatarUrl = event;
+    this.form.avatarUrl = event;
     // this.isCheckUploadAvatar = true;
   }
 
@@ -133,7 +124,6 @@ export class CreatesongComponent implements OnInit {
   }
 
   onchage(value: any) {
-
     this.singer.findSingerByName(value).subscribe(data => {
       this.singgersOnchage.push(data);
       console.log(this.newSinger)
@@ -144,7 +134,7 @@ export class CreatesongComponent implements OnInit {
       }
       this.singer.createSinger(this.newSinger).subscribe((obj) => {
         this.singgersOnchage.push(obj);
-        console.log(this.newSinger)
+        console.log(this.newSinger);
       })
     })
   }
