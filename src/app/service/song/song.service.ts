@@ -10,52 +10,52 @@ import {environment} from "../../../environments/environment";
 })
 export class SongService {
   API_URL = `${environment.API_URL}`;
-  private API_Count_Listen_Song = this.API_URL+'/song/count-listen-song';
-  private API_Song = this.API_URL+'/song/songs';
+  private API_Count_Listen_Song = this.API_URL+'/api/songs/count-listen-song';
+  private API_Song = this.API_URL+'/api/songs/songs';
 
   constructor(private http: HttpClient,
               private httpService: HttpService) {
   }
 
   getAllSongs(): Observable<Song[]> {
-    return this.http.get<Song[]>(this.API_URL + '/song/songs');
+    return this.http.get<Song[]>(this.API_URL + '/api/songs/songs');
   }
   getAllPageSongs(): Observable<any> {
-    return this.http.get<any>(this.API_URL + '/song/page/song');
+    return this.http.get<any>(this.API_URL + '/api/songs/page');
   }
 
   createSong(song: Song): Observable<Song> {
-    return this.http.post<Song>(this.API_URL + '/song/create', song);
+    return this.http.post<Song>(this.API_URL + '/api/songs', song);
   }
 
   searchSong(nameSong: String): Observable<Song[]> {
-    return this.http.get<Song[]>(this.API_URL + 'song/search-song' + nameSong);
+    return this.http.get<Song[]>(this.API_URL + '/api/songs/search-song' + nameSong);
   }
 
   getSongByName(name: string): Observable<Song[]> {
-    return this.http.post<Song[]>(this.API_URL + '/song/search', name);
+    return this.http.post<Song[]>(this.API_URL + '/api/songs/search', name);
   }
   getSongById(id: number): Observable<Song> {
-    return this.http.get<Song>(this.API_URL + '/song/song/' + id);
+    return this.http.get<Song>(this.API_URL + '/api/songs/' + id);
   }
   getAllSongsNew(): Observable<Song[]>{
     return this.http.get<Song[]>(this.API_URL + '/home/song/new');
   }
   topSongsView(): Observable<Song[]> {
-    return this.http.get<Song[]>(this.API_URL + '/song/top2mostlistened');
+    return this.http.get<Song[]>(this.API_URL + '/api/songs/top2mostlistened');
   }
   getListenSongById(id: number): Observable<Song>{
     console.log('id service',id)
     return this.http.get<Song>(`${this.API_Count_Listen_Song}/${id}`)
   }
-  getSongsById(id: number): Observable<Song> {
-    return this.http.get<Song>(`${this.API_Song}/${id}`);
-  }
+  // getSongsById(id: number): Observable<Song> {
+  //   return this.http.get<Song>(`${this.API_Song}/${id}`);
+  // }
   deleteSongById(id:number):Observable<any> {
-    return this.http.delete<any>(this.API_URL + "/song/" + id);
+    return this.http.delete<any>(this.API_URL + "/api/songs/" + id);
   }
 
   updateSong(id:number,song:Song):Observable<any>{
-    return this.http.put<any>(this.API_URL+"/song/"+id,song)
+    return this.http.put<any>(this.API_URL+"/api/songs/"+id,song)
   }
 }
