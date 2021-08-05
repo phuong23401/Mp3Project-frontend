@@ -18,7 +18,7 @@ export class SongComponent implements OnInit {
   song: Song;
   constructor(private songService: SongService,
   ) {  this.isPlaying = false;
-    this.songService.getAllSongs().subscribe(data =>{
+    this.songService.getMySong().subscribe(data =>{
       this.songList = data;
     })}
 

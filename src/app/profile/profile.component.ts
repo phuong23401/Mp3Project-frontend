@@ -52,8 +52,8 @@ export class ProfileComponent implements OnInit {
 
   onChangeAvatar(event: any) {
     this.form = event.target.files[0];
-    
-    const id = Math.random().toString(36).substring(2) 
+
+    const id = Math.random().toString(36).substring(2)
     this.ref = this.afStorage.ref(id);
     this.ref.put(this.form).then(snapshot => {
       return snapshot.ref.getDownloadURL();
@@ -83,7 +83,7 @@ export class ProfileComponent implements OnInit {
     if(this.userRequest.avatarUrl === "") {
       this.userRequest.avatarUrl = this.userCurrent.avatarUrl;
     }
-    if(!this.checkName.match('^[\D]+')) {
+    if(!this.checkName.match('^[\\D]+')) {
       Swal.fire({
         title: "NAME CAN'T HAS NUMBER",
         text: "Please check your infor !",
@@ -94,7 +94,7 @@ export class ProfileComponent implements OnInit {
       this.profileService.updateProfile(this.userRequest).subscribe(mes => {
         this.messageAlert = mes.message;
         Swal.fire({
-          title: this.messageAlert, 
+          title: this.messageAlert,
           icon: "success",
           confirmButtonColor: "#3bc8e7"
         });
