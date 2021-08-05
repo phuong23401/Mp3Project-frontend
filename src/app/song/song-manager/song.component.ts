@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-song',
@@ -27,13 +28,13 @@ export class SongComponent implements OnInit {
   }
 
   listen(song:Song){
-    this.songService.getListenSongById(song.id).subscribe(data=>{
+    this.songService.getSongById(song.id).subscribe(data=>{
       this.song = data;
       if (this.song!=null){
         this.isPlaying = !this.isPlaying;
         this.audio = new Audio();
         this.audio.src = song.fileUrl;
-        this.audio.load();
+        // this.audio.load();
         this.audio.play();
       }
     })
@@ -48,6 +49,11 @@ export class SongComponent implements OnInit {
     this.songService.deleteSongById(id).subscribe(data=>{
       if (JSON.stringify(this.success) == JSON.stringify(data)){
         this.status = "Success!";
+        Swal.fire({
+          title: this.status,
+          icon: "success",
+          confirmButtonColor: "#3bc8e7"
+        });
         this.songService.getAllSongs().subscribe(data =>{
           this.songList = data;
         })

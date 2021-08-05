@@ -84,8 +84,8 @@ export class UpdateSongComponent implements OnInit {
   ngSubmit() {
     this.song.name = this.form.name;
     this.song.description = this.form.description;
-    this.song.avatarUrl = this.form.avatarUrl;
-    this.song.fileUrl = this.form.fileUrl;
+    this.song.avatarUrl = this.songImage.avatarUrl;
+    this.song.fileUrl = this.songImage.fileUrl;
     this.song.lyric = this.form.lyric;
     this.song.categories.id = this.form.categories;
     this.song.singer = this.singgersOnchage;
@@ -112,16 +112,16 @@ export class UpdateSongComponent implements OnInit {
     })
     console.log(this.form);
   }
+  //
+  // onChangeAvatar(event: any) {
+  //   this.form.avatarUrl = event;
+  //   // this.isCheckUploadAvatar = true;
+  // }
 
-  onChangeAvatar(event: any) {
-    this.form.avatarUrl = event;
-    // this.isCheckUploadAvatar = true;
-  }
-
-  onChangeFile(event: any) {
-    this.form.fileUrl = event;
-    // this.isCheckUploadFile = true;
-  }
+  // onChangeFile(event: any) {
+  //   this.form.fileUrl = event;
+  //   // this.isCheckUploadFile = true;
+  // }
 
   onchage(value: any) {
     this.singer.findSingerByName(value).subscribe(data => {
