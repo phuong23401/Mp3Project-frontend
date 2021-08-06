@@ -1,13 +1,9 @@
-import {Song} from './Song';
-// @ts-ignore
-import {Users} from './Users';
+import { Song } from "./Song";
 
 export interface Playlist {
-  id?: number;
-  name?: string;
-  avatarUrl?: string;
-  dateCreated?: string;
-  countLike?: number;
-  songs?: Song[];
-  user?: Users;
+    name?: string;
+    avatarUrl?: string;
+    countLike?: number;
+    listen?: number;
+    songs?: Song[];
 }

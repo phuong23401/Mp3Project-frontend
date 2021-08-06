@@ -59,9 +59,12 @@ export class UpdateSongComponent implements OnInit {
   id: any;
   check = false;
 
+
+
   constructor(private songService: SongService,
               private categorySv: CategoryService,
               private singer: SingerService, private router: Router, private activeRouter: ActivatedRoute) {
+
     this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
       this.categoriess = categorySv;
     });
@@ -80,6 +83,11 @@ export class UpdateSongComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+
+
+
+
 
   ngSubmit() {
     this.song.name = this.form.name;
@@ -112,16 +120,6 @@ export class UpdateSongComponent implements OnInit {
     })
     console.log(this.form);
   }
-  //
-  // onChangeAvatar(event: any) {
-  //   this.form.avatarUrl = event;
-  //   // this.isCheckUploadAvatar = true;
-  // }
-
-  // onChangeFile(event: any) {
-  //   this.form.fileUrl = event;
-  //   // this.isCheckUploadFile = true;
-  // }
 
   onchage(value: any) {
     this.singer.findSingerByName(value).subscribe(data => {

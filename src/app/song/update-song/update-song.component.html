@@ -52,7 +52,7 @@
                       [(ngModel)]="form.description" #description="ngModel">
               </textarea>
           </div>
-          <button class="ms_btn" (click)="ngSubmit()">Create</button>
+          <button class="ms_btn" (click)="ngSubmit()">Update</button>
         </div>
       </div>
     </form>
@@ -61,77 +61,65 @@
 </div>
 
 
-<!--<div style="margin: 100px 0px 0px 10px; text-align: center">-->
-<!--    <h4>Update Song: {{songImage.name}}</h4>-->
-<!--</div>-->
-<!--<br>-->
-<!--<br>-->
-
-<!--<h2 style="text-align: center">fill in the Form!</h2>-->
-<!--<br><br>-->
-<!--<form #f="ngForm" (ngSubmit)="f.form.valid" novalidate style="margin-bottom: 50px">-->
-<!--  <div class="form-row">-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label>Tên Bài Hát: </label><span *ngIf="name.hasError('required')"> *The Name Song is required!</span>-->
-<!--      <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required-->
-<!--             placeholder="Name-Song">-->
-<!--    </div>-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label>Category: </label>-->
-<!--      <select class="form-control" name="categories" [(ngModel)]="form.categories" #categories="ngModel">-->
-<!--        <option selected>Choose...</option>-->
-<!--        <option *ngFor="let cate of categoriess" [value]="cate.id">{{cate.name}}</option>-->
-<!--      </select>-->
-<!--    </div>-->
-<!--  </div>-->
+<!--<div style="margin: 50px">-->
 <!--  <div class="row">-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label>Lyric: </label><span *ngIf="lyric.hasError('required')"> *The Lyric Song is required!</span>-->
-<!--      <textarea type="text" class="form-control" placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric"-->
-<!--                #lyric="ngModel" required></textarea>-->
-<!--    </div>-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label>Description</label>-->
-<!--      <textarea type="text" class="form-control" placeholder="Description" name="description"-->
-<!--                [(ngModel)]="form.description" #description="ngModel"></textarea>-->
-<!--    </div>-->
-<!--  </div>-->
 
-<!--  <div class="form-row">-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label>Singers</label>-->
-<!--<div>-->
-<!--      <input #Value type="text" class="form-control" (change)="onchage(Value.value)" aria-label="Username"-->
-<!--             aria-describedby="basic-addon1" placeholder="Singer">-->
-<!--</div>-->
-<!--      <div *ngFor="let item of singgersOnchage">-->
-<!--        <p>{{ item.name }}</p>-->
+<!--    <div class="col-lg-12">-->
+<!--      <div class="ms_heading">-->
+<!--        <h1>List Song</h1>-->
 <!--      </div>-->
 <!--    </div>-->
-<!--    <div class="form-group col-md-6">-->
-<!--      <label>Author: </label>-->
-<!--      <input type="text" class="form-control" name="author" [(ngModel)]="form.author" #author="ngModel"-->
-<!--             placeholder="Author" aria-describedby="basic-addon1">-->
+<!--    <div class="row">-->
+<!--<div class="col-lg-6 col-md-12 padding_right20"  >-->
+<!--  <div class="ms_weekly_box">-->
+<!--    <div class="weekly_left">-->
+<!--                    <span class="w_top_no">-->
+<!--                        1-->
+<!--                    </span>-->
+<!--      <div class="w_top_song">-->
+<!--        <div class="w_tp_song_img">-->
+<!--          <img src="" alt="">-->
+<!--          <div class="ms_song_overlay">-->
+<!--          </div>-->
+<!--          <div class="ms_play_icon" *ngIf="!isPlaying"-->
+<!--               (click)="listen(songImage)">-->
+<!--            <img src="assets/images/svg/play.svg" alt="">-->
+<!--          </div>-->
+<!--          <div class="ms_play_icon" *ngIf="isPlaying"-->
+<!--               (click)="changePause()">-->
+<!--            <img src="assets/images/svg/pause.svg" alt="">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="w_tp_song_name">-->
+<!--          <h3><a href="#">{{songImage.name}}</a></h3>-->
+<!--          <p>Singer</p>-->
+<!--        </div>-->
+<!--      </div>-->
 <!--    </div>-->
-
-<!--  </div>-->
-<!--  <div class="row">-->
-<!--    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">-->
-<!--      <h6 *ngIf="!isCheckUploadFile">Please Upload FileSong</h6>-->
-<!--      <app-upload-url (giveURLtoCreate)="onChangeFile($event)"></app-upload-url>-->
+<!--    <div class="weekly_right">-->
+<!--      <span class="w_song_time">3:10</span>-->
+<!--      <span class="ms_more_icon" data-other="1">-->
+<!--                        <img src="../../../assets/images/svg/more.svg" alt="">-->
+<!--                    </span>-->
 <!--    </div>-->
-<!--    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">-->
-<!--      <h6 *ngIf="!isCheckUploadAvatar">Please Upload Avatar Song</h6>-->
-<!--      <app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>-->
+<!--    <ul class="more_option">-->
+<!--      <li>-->
+<!--        <a href="javascript:" class="ms_btn" ><span class="opt_icon"><i-->
+<!--          class="far fa-trash-alt"></i></span>Delete-->
+<!--        </a>-->
+<!--      </li>-->
+<!--      <br>-->
+<!--      <li>-->
+<!--        <a href="javascript:" class="ms_btn" [routerLink]="['/updatesong',songImage.id]" ><i class="fas fa-plus"></i>update-->
+<!--        </a>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--    <div style="display: none">-->
+<!--      <audio controls loop id="track">-->
+<!--        <source src="{{songImage.fileUrl}}" type="audio/mpeg">-->
+<!--        <source src="{{songImage.fileUrl}}" type="audio/ogg">-->
+<!--      </audio>-->
 <!--    </div>-->
-
 <!--  </div>-->
-
-<!--  <br>-->
-<!--  <div style="text-align: center">-->
-<!--    <a href="javascript:" class="ms_btn" (click)="ngSubmit()">Update</a>-->
-<!--  </div>-->
-<!--</form>-->
-
-
-<!--<br>-->
+<!--  <div class="ms_divider"></div>-->
+<!--</div>-->

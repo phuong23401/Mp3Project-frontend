@@ -11,6 +11,9 @@ import {ChangepasswordComponent} from "./profile/changepassword/changepassword.c
 import {SongComponent} from "./song/song-manager/song.component";
 import {UpdateSongComponent} from "./song/update-song/update-song.component";
 import {DetailSongComponent} from "./song/detail-song/detail-song.component";
+import {MyplaylistComponent} from "./myplaylist/myplaylist.component";
+import {PlaylistdetailsComponent} from "./myplaylist/playlistdetails/playlistdetails.component";
+import {CreatepPlaylistComponent} from "./myplaylist/createp-playlist/createp-playlist.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -24,7 +27,9 @@ const routes: Routes = [
   { path: 'changepassword', component: ChangepasswordComponent},
   { path: 'song', component: SongComponent},
   { path: 'updatesong/:id', component: UpdateSongComponent},
-
+  { path: 'myplaylist', component: MyplaylistComponent},
+  { path: 'myplaylist/details/:id', component: PlaylistdetailsComponent},
+  { path: 'createplaylist', component: CreatepPlaylistComponent},
 ];
 
 @NgModule({

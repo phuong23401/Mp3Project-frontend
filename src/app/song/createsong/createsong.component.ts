@@ -102,24 +102,31 @@ export class CreatesongComponent implements OnInit {
       }
       if (JSON.stringify(this.success) == JSON.stringify(data)) {
         this.status = 'Create success!';
-        Swal.fire({
-          title: this.status,
-          icon: "success",
-          confirmButtonColor: "#3bc8e7"
-        });
-        this.form = {};
-        this.isCheckUploadAvatar = false;
-        this.isCheckUploadFile = false;
-        this.singgersOnchage.splice(0, this.singgersOnchage.length);
+        alert(this.status);
+        // Swal.fire({
+        //   title: this.status,
+        //   icon: "success",
+        //   confirmButtonColor: "#3bc8e7"
+        // });
+
+        this.router.navigate(['/song'])
+        // this.form = {};
+        // this.isCheckUploadAvatar = false;
+        // this.isCheckUploadFile = false;
+        // this.singgersOnchage.splice(0, this.singgersOnchage.length);
 
       }
     }
-      //   error => {
-      // this.status = 'Please login before create Song'
-    )
+    ,error => {
+      this.status = 'Fill in the form!';
+      Swal.fire({
+        title: this.status,
+        icon: "error",
+        confirmButtonColor: "#3bc8e7"
+      });
+        }
+        )
     console.log(this.form);
-
-
   }
 
   onChangeAvatar(event: any) {
