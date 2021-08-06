@@ -108,7 +108,8 @@ export class CreatesongComponent implements OnInit {
         //   icon: "success",
         //   confirmButtonColor: "#3bc8e7"
         // });
-        this.router.navigate(['/home'])
+
+        this.router.navigate(['/song'])
         // this.form = {};
         // this.isCheckUploadAvatar = false;
         // this.isCheckUploadFile = false;
