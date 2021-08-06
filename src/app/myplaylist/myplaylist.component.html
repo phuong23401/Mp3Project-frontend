@@ -6,23 +6,22 @@
           <h1>My Playlist</h1>
         </div>
       </div>
+      <div *ngFor="let item of listPlaylist, let i = index" >
       <div class="col-lg-2 col-md-6">
         <div class="ms_rcnt_box marger_bottom30">
           <div class="ms_rcnt_box_img">
-            <img src="images/radio/img1.jpg" alt="" class="img-fluid">
+            <img src="{{item.avatarUrl}}}" alt="" class="img-fluid">
             <div class="ms_main_overlay">
               <div class="ms_box_overlay"></div>
-              <div class="ms_play_icon">
-                <img src="images/svg/play.svg" alt="">
-              </div>
             </div>
           </div>
           <div class="ms_rcnt_box_text">
-            <h3><a href="#">Top Trendings</a></h3>
-            <p>20 songs</p>
+            <h3><a [routerLink]="['/myplaylist/details/'+ item.id]" routerLinkActive="$router_link-active$">{{item.name}}</a></h3>
+            <p>{{listPlaylist[i].songs.length}}</p>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </div>

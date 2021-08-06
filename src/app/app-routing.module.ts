@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'song', component: SongComponent},
   { path: 'updatesong/:id', component: UpdateSongComponent},
   { path: 'myplaylist', component: MyplaylistComponent},
-  { path: 'myplaylist/details', component: PlaylistdetailsComponent},
+  { path: 'myplaylist/details/:id', component: PlaylistdetailsComponent},
   { path: 'createplaylist', component: CreatepPlaylistComponent},
 ];
 
