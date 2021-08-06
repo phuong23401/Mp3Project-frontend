@@ -1,104 +1,27 @@
 $(function() {
+	const myPlayListOption = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
+    const currentSong = localStorage.getItem('currentSong') ?
+        JSON.parse(localStorage.getItem('currentSong')) :
+        {
+            image : '',
+            title: '',
+            artist: '',
+            mp3: '',
+        };
+
+    const songList = [{
+        ...currentSong,
+        option : myPlayListOption
+    }];
+    console.log(songList);
+
     "use strict";
     if ($('.audio-player').length) {
-		var myPlayListOtion = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
 
         var myPlaylist = new jPlayerPlaylist({
             jPlayer: "#jquery_jplayer_1",
             cssSelectorAncestor: "#jp_container_1"
-        }, [{
-			image : 'assets/images/weekly/song1.jpg',
-            title: "Rapper So 1",
-            artist: "Mushroom Records",
-            mp3: "https://firebasestorage.googleapis.com/v0/b/karaokeonline-a05e6.appspot.com/o/ICDRapperNUMERONE1.mp3?alt=media&token=a616b012-ba9f-48d0-aa32-ab36d29eb26e",
-            oga: "https://firebasestorage.googleapis.com/v0/b/karaokeonline-a05e6.appspot.com/o/ICDRapperNUMERONE1.mp3?alt=media&token=a616b012-ba9f-48d0-aa32-ab36d29eb26e",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song2.jpg',
-            title: "Your Face",
-            artist: "Ministry",
-            mp3: "http://www.jplayer.org/audio/mp3/TSP-05-Your_face.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/TSP-05-Your_face.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song3.jpg',
-            title: "Sai Gon Toang",
-            artist: "You Am I",
-            mp3: "http://www.jplayer.org/audio/mp3/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/SaiGonDauLongQua-HuaKimTuyenHoangDuyen-6992977.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song4.jpg',
-            title: "Tempered Song",
-            artist: "Shelter",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-01-Tempered-song.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-01-Tempered-song.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song5.jpg',
-            title: "Hidden",
-            artist: "Bad Religion",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-02-Hidden.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-02-Hidden.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song6.jpg',
-            title: "Lentement",
-            artist: "Apollo 440",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-03-Lentement.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-03-Lentement.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song7.jpg',
-            title: "Lismore",
-            artist: "Bloodhound Gang",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-04-Lismore.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-04-Lismore.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song8.jpg',
-            title: "The Separation",
-            artist: "Friendly Fires ",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-05-The-separation.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-05-The-separation.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song9.jpg',
-            title: "Beside Me",
-            artist: "Friendly Fires ",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-06-Beside-me.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-06-Beside-me.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song2.jpg',
-            title: "Bubble",
-            artist: "Skunkhour",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-07-Bubble.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-07-Bubble.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song2.jpg',
-            title: "Stirring of a fool",
-            artist: "The Meanies",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-08-Stirring-of-a-fool.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-08-Stirring-of-a-fool.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song2.jpg',
-            title: "Partir",
-            artist: "The Living End",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-09-Partir.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-09-Partir.ogg",
-			option : myPlayListOtion
-        }, {
-			image : 'assets/images/weekly/song2.jpg',
-            title: "Thin Ice",
-            artist: "Screaming Trees",
-            mp3: "http://www.jplayer.org/audio/mp3/Miaow-10-Thin-ice.mp3",
-            oga: "http://www.jplayer.org/audio/ogg/Miaow-10-Thin-ice.ogg",
-			option : myPlayListOtion
-
-        }], {
+        }, songList, {
             swfPath: "js/plugins",
             supplied: "oga, mp3",
             wmode: "window",
@@ -107,17 +30,37 @@ $(function() {
             smoothPlayBar: true,
             keyEnabled: true,
             playlistOptions: {
-                autoPlay: false
+            autoPlay: false
             }
         });
-        $("#jquery_jplayer_1").on($.jPlayer.event.ready + ' ' + $.jPlayer.event.play, function(event) {
+        $("#jquery_jplayer_1").on($.jPlayer.event.play, function(event) {
+            
+            const _myPlayListOption = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
+            const _currentSong = localStorage.getItem('currentSong') ?
+                JSON.parse(localStorage.getItem('currentSong')) :
+                {
+                    image : '',
+                    title: '',
+                    artist: '',
+                    mp3: '',
+                };
+
+            const _songList = [{
+                ..._currentSong,
+                option : _myPlayListOption
+            }];
+
+            console.log(_songList);
             var current = myPlaylist.current;
-            var playlist = myPlaylist.playlist;
+            var playlist = _songList;
+
+            $(this).jPlayer("setMedia", _currentSong);
             $.each(playlist, function(index, obj) {
                 if (index == current) {
                     $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img src='"+obj.image+"'></span><div class='que_data'>" + obj.title + " <div class='jp-artist-name'>" + obj.artist + "</div></div></div>");
                 }
             });
+
 			$('.knob-wrapper').mousedown(function() {
                 $(window).mousemove(function(e) {
                     var angle1 = getRotationDegrees($('.knob')),
@@ -153,10 +96,6 @@ $(function() {
 				} else { var angle = 0; }
 				return (angle < 0) ? angle + 360 : angle;
 			}
-
-
-
-
 
             var timeDrag = false;
             $('.jp-play-bar').mousedown(function(e) {

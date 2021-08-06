@@ -4,6 +4,8 @@ import {Song} from "../../model/Song";
 import Swal from "sweetalert2";
 import {ProfileService} from "../../service/profile/profile.service";
 import {User} from "../../model/User";
+import { SingerService } from 'src/app/service/singer/singer.service';
+import { Singers } from 'src/app/model/Singers';
 
 @Component({
   selector: 'app-song',
@@ -14,13 +16,23 @@ export class SongComponent implements OnInit {
   success: any = {
     message: "Done"
   }
+
   status="Empty...!";
+
   songList: Song[];
+
   isPlaying = false;
+
   audio : any;
+
   song: Song;
+
   userCurrent: User;
+
   check = false;
+
+  singers: any[];
+
   constructor(private songService: SongService,
               private profileService:ProfileService) {
     this.isPlaying = false;
@@ -48,7 +60,6 @@ export class SongComponent implements OnInit {
         this.audio.play();
       }
     })
-
   }
   changePause(){
     this.isPlaying = !this.isPlaying;
