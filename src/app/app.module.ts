@@ -39,6 +39,7 @@ import { CommonModule } from '@angular/common';
 import { UpdateSongComponent } from './song/update-song/update-song.component';
 import { MyplaylistComponent } from './myplaylist/myplaylist.component';
 import { PlaylistdetailsComponent } from './myplaylist/playlistdetails/playlistdetails.component';
+import { CreatepPlaylistComponent } from './myplaylist/createp-playlist/createp-playlist.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { PlaylistdetailsComponent } from './myplaylist/playlistdetails/playlistd
     PlaySongComponent,
     UpdateSongComponent,
     MyplaylistComponent,
-    PlaylistdetailsComponent
+    PlaylistdetailsComponent,
+    CreatepPlaylistComponent
   ],
   imports: [
     BrowserModule,
