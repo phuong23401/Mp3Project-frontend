@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
 import Swal from "sweetalert2";
+import {ProfileService} from "../../service/profile/profile.service";
+import {EditProfile} from "../../model/EditProfile";
+import {User} from "../../model/User";
 
 @Component({
   selector: 'app-song',
@@ -17,11 +20,17 @@ export class SongComponent implements OnInit {
   isPlaying = false;
   audio : any;
   song: Song;
+  userCurrent: User;
   constructor(private songService: SongService,
-  ) {  this.isPlaying = false;
+              private profileService:ProfileService) {
+    this.isPlaying = false;
     this.songService.getMySong().subscribe(data =>{
       this.songList = data;
-    })}
+    });
+    this.profileService.getUserCurrent().subscribe(data => {
+      this.userCurrent = data;
+    });
+  }
 
   ngOnInit(): void {
 

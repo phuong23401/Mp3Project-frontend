@@ -24,5 +24,23 @@ export class PlaylistService {
     return this.httpClient.put<Playlist>(API_URL + "/playlist/edit" + id, playlist);
   }
 
+  deletePlaylist(id: number): Observable<Playlist> {
+    return this.httpClient.delete<Playlist>(API_URL + "/playlist/" + id);
+  }
 
+  getPlaylistById(id: number): Observable<Playlist> {
+    return this.httpClient.get<Playlist>(API_URL + "/playlist/" + id);
+  }
+
+  getTopListened(): Observable<Playlist[]> {
+    return this.httpClient.get<Playlist[]>(API_URL + "/home/topListened");
+  }
+
+  getTopLiked(): Observable<Playlist[]> {
+    return this.httpClient.get<Playlist[]>(API_URL + "/home/topLiked");
+  }
+
+  getNewlestCreated(): Observable<Playlist[]> {
+    return this.httpClient.get<Playlist[]>(API_URL + "/home/newlestCreated");
+  }
 }

@@ -1,7 +1,11 @@
+
+import { LikeService } from './../../service/like/like.service';
 import { Component, OnInit } from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
 import { DataService } from 'src/app/share/dataTrans/data.service';
+import Swal from 'sweetalert2';
+import { LikeSong } from 'src/app/model/LikeSong';
 
 @Component({
   selector: 'app-recently-played',
@@ -10,13 +14,17 @@ import { DataService } from 'src/app/share/dataTrans/data.service';
 })
 export class RecentlyPlayedComponent implements OnInit {
   songList: Song[];
+  likeSongs: LikeSong[]=[];
   isPlaying = false;
   audio : any;
   song: Song;
   name:string;
+  isCheckLikeSong = false;
+  isCheckInfoLike = false;
 
   constructor(private songService: SongService,
     private data: DataService,
+    private likeSongService: LikeService
               ) { }
 
   ngOnInit(): void {
@@ -25,6 +33,37 @@ export class RecentlyPlayedComponent implements OnInit {
       this.songList = res;
     })
   }
+
+  likeCount(song:Song) {
+      this.songService.getLikeSongUpById(song.id).subscribe(data => {
+            console.log('data',data)
+            this.song = data;
+            setTimeout(()=>{                           //<<<---using ()=> syntax
+              this.isCheckInfoLike = true;
+         }, 1000);
+            
+          },
+          error => {
+            alert('Please login before click like!')
+          }
+        );
+    }
+
+    checkLikeSong(){ //Thay doi trang thai nut bam LIKE
+      this.likeSongService.getListLikeSongByUser().subscribe(data =>{
+        this.likeSongs = data;
+        console.log('listLike',data)
+        console.log('lenglike',this.songList.length)
+        console.log('nameSong: ',this.song.name)
+        for(let i=0; i<this.songList.length;i++){
+          console.log('i = ',i,' likesong.nameSong = ',this.likeSongs[i].nameSong)
+          if(JSON.stringify(this.song.name)==JSON.stringify(this.likeSongs[i].nameSong)){
+            this.isCheckLikeSong = true;
+            console.log('isCheckLikeSong',this.isCheckLikeSong)
+          }
+        }
+      })
+      }
 
   listenCount(song:Song){
    this.isPlaying = !this.isPlaying;
@@ -35,7 +74,6 @@ export class RecentlyPlayedComponent implements OnInit {
     this.songService.getListenSongById(song.id).subscribe(data=>{
       this.song = data;
     })
-
   }
   changePause(){
     this.isPlaying = !this.isPlaying;
