@@ -21,4 +21,8 @@ export class SidemenuComponent implements OnInit {
   createSong() {
     this.router.navigate(['/createsong']);
   }
+
+  createPlaylist() {
+    this.router.navigate(['/createplaylist']);
+  }
 }
