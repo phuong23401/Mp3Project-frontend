@@ -12,6 +12,7 @@ import {SongComponent} from "./song/song-manager/song.component";
 import {UpdateSongComponent} from "./song/update-song/update-song.component";
 import {MyplaylistComponent} from "./myplaylist/myplaylist.component";
 import {PlaylistdetailsComponent} from "./myplaylist/playlistdetails/playlistdetails.component";
+import {CreatepPlaylistComponent} from "./myplaylist/createp-playlist/createp-playlist.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'updatesong/:id', component: UpdateSongComponent},
   { path: 'myplaylist', component: MyplaylistComponent},
   { path: 'myplaylist/details', component: PlaylistdetailsComponent},
+  { path: 'createplaylist', component: CreatepPlaylistComponent},
 ];
 
 @NgModule({
