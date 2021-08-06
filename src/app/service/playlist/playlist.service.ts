@@ -12,11 +12,11 @@ export class PlaylistService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllPlaylist(): Observable<Playlist> { 
+  getAllPlaylist(): Observable<Playlist> {
     return this.httpClient.get<Playlist>(API_URL + "/playlist/getAll");
   }
 
-  creatPlaylist(playlist: Playlist): Observable<Playlist> {
+  creatPlaylist(playlist: { avatarUrl: string; name: any }): Observable<Playlist> {
     return this.httpClient.post<Playlist>(API_URL + "/playlist/create", playlist);
   }
 

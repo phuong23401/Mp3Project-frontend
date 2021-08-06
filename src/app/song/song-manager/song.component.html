@@ -10,7 +10,7 @@
     <ul>
       <li><a [routerLink]="['/home']">Home</a></li>
       <li><a [routerLink]="['/song']">My Song</a></li>
-      <li><a>My playlist</a></li>
+      <li><a [routerLink]="['/myplaylist']">My playlist</a></li>
       <li><a [routerLink]="['/createsong']">Create Song</a></li>
     </ul>
   </div>
@@ -78,12 +78,11 @@
     <div *ngIf="!check">
       <h6>{{status}}</h6>
     </div>
-      <div *ngIf="!check">
-        <h6>{{status}}</h6>
-      </div>
+    <div *ngIf="!check">
+      <h6>{{status}}</h6>
     </div>
-
   </div>
+
 </div>
 
 

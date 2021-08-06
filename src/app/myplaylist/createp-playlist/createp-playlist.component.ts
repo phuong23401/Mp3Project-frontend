@@ -17,7 +17,7 @@ export class CreatepPlaylistComponent implements OnInit {
   ref?: AngularFireStorageReference;
   downloadURL?: string;
   messageAlert:string;
-  playlistReq: Playlist;
+  playlistReq: { avatarUrl: string; name: any };
 
   checkAvt: boolean;
   checkName: any;
