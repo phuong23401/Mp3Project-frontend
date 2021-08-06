@@ -23,7 +23,7 @@ export class PlaySongComponent implements OnInit {
   ngOnInit(): void {
     this.routes.paramMap.subscribe(paramMap =>{
       const id = +paramMap.get('id')
-      this.songService.getSongById(id).subscribe(res =>{
+      this.songService.getListenSongById(id).subscribe(res =>{
       this.song = res;
       if(this.song != null){
         this.audio.src = this.song.fileUrl;
@@ -44,7 +44,7 @@ export class PlaySongComponent implements OnInit {
   }
   listenCount(song:Song){
     this.isPlaying = !this.isPlaying;
-    this.songService.getListenSongById(song.id).subscribe(data=>{
+    this.songService.getSongById(song.id).subscribe(data=>{
       this.song = data;
     })
   }

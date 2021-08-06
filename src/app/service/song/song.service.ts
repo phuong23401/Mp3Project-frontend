@@ -10,7 +10,7 @@ import {environment} from "../../../environments/environment";
 })
 export class SongService {
   API_URL = `${environment.API_URL}`;
-  private API_Count_Listen_Song = this.API_URL+'/song/count-listen-song';
+  private API_Count_Listen_Song = this.API_URL+'/home/count-listen-song';
   private API_Song = this.API_URL+'/song/songs';
 
   constructor(private http: HttpClient,
@@ -46,7 +46,7 @@ export class SongService {
     return this.http.get<Song[]>(this.API_URL + '/home/song/new');
   }
   topSongsView(): Observable<Song[]> {
-    return this.http.get<Song[]>(this.API_URL + '/song/top2mostlistened');
+    return this.http.get<Song[]>(this.API_URL + '/home/top2mostlistened');
   }
   getListenSongById(id: number): Observable<Song>{
     console.log('id service',id)

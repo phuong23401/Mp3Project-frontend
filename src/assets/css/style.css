@@ -880,6 +880,7 @@ ul.ms_lang_box:after {
 /*====Recent Music Slider====*/
 .ms_rcnt_slider {
 	position: relative;
+	
 }
 .ms_heading {
 	width: 100%;

@@ -134,6 +134,7 @@ Assigned to: Theme Forest
                     nextEl: '.swiper-button-next5',
                     prevEl: '.swiper-button-prev5',
                 },
+            
                 breakpoints: {
                     1800: {
                         slidesPerView: 4,
@@ -349,6 +350,7 @@ Assigned to: Theme Forest
               observer:true,
               observeParents:true,
             });
+            
 
         },
 
