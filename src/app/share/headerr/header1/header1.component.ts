@@ -57,6 +57,9 @@ export class Header1Component implements OnInit {
   createSong() {
     this.router.navigate(['/createsong']);
   }
+  myPlaylist(){
+    this.router.navigate(['/myplaylist'])
+  }
 
   logout() {
     sessionStorage.removeItem('token');

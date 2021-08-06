@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import {PlaylistService} from "../../service/playlist/playlist.service";
 import {Playlist} from "../../model/Playlist";
 import {Router} from "@angular/router";
+import {PlaylistReq} from "../../model/PlaylistReq";
 
 @Component({
   selector: 'app-createp-playlist',
@@ -17,7 +18,7 @@ export class CreatepPlaylistComponent implements OnInit {
   ref?: AngularFireStorageReference;
   downloadURL?: string;
   messageAlert:string;
-  playlistReq: { avatarUrl: string; name: any };
+  playlistReq: PlaylistReq;
 
   checkAvt: boolean;
   checkName: any;

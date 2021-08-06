@@ -49,7 +49,8 @@
             <a href="javascript:" class="ms_admin_name">Hello {{usernameCurrent}}
                     <img style="border-radius: 100%;" src="{{userCurrent.avatarUrl}}"></a>
             <ul class="pro_dropdown_menu">
-                <li><a [routerLink]="['/song']">My Music</a></li>
+                <li><a [routerLink]="['/song']">My songs</a></li>
+                <li><a href="javascript:" (click)="myPlaylist()">My Playlists</a></li>
                 <li><a href="javascript:" (click)="profile()">Edit Profile</a></li>
                 <li><a href="javascript:" (click)="changePassword()">Change Password</a></li>
                 <li><a href="javascript:" (click)="logout()">Logout</a></li>
