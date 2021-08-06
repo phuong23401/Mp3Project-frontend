@@ -31,5 +31,7 @@ export class SingerService {
     return this.httpClient.post<Singers>(this.API_URL+"/singers/test",name)
   }
 
-
+  getSingerBySongId(id: number): Observable<Singers[]> {
+    return this.httpClient.get<Singers[]>(this.API_URL+"/singers/getSingerBySongId/" + id);
+  }
 }
