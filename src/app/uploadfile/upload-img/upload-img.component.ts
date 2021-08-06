@@ -25,14 +25,12 @@ export class UploadImgComponent implements OnInit {
 
   onFileChaged(event:any){
     this.selectedFile = event.target.files[0];
-  }
-  onUpLoad(){
     // this.checkUploadAvatar = true;
     const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
     this.ref = this.afStorage.ref(id);
     this.ref.put(this.selectedFile).then(snapshot => {
       return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
-      })
+    })
       .then(downloadURL => { //cHUYEN Value tu component cha sang con
         this.downloadURL = downloadURL;
         this.giveURLtoCreate.emit(this.downloadURL);
@@ -43,5 +41,23 @@ export class UploadImgComponent implements OnInit {
         console.log(`Failed to upload avatar and get link ${error}`);
       })
     console.log(this.downloadURL)
+  }
+  onUpLoad(){
+    // // this.checkUploadAvatar = true;
+    // const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
+    // this.ref = this.afStorage.ref(id);
+    // this.ref.put(this.selectedFile).then(snapshot => {
+    //   return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
+    //   })
+    //   .then(downloadURL => { //cHUYEN Value tu component cha sang con
+    //     this.downloadURL = downloadURL;
+    //     this.giveURLtoCreate.emit(this.downloadURL);
+    //     // this.checkUploadAvatar = false;
+    //     return downloadURL;
+    //   })
+    //   .catch(error=>{
+    //     console.log(`Failed to upload avatar and get link ${error}`);
+    //   })
+    // console.log(this.downloadURL)
   }
 }
