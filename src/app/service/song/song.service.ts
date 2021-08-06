@@ -22,7 +22,7 @@ export class SongService {
   }
 
   getMySong(): Observable<Song[]>{
-    return this.http.get<Song[]>(this.API_URL+'/song/mysong');
+    return this.http.get<Song[]>(this.API_URL+'/song/getmysong');
   }
   getAllPageSongs(): Observable<any> {
     return this.http.get<any>(this.API_URL + '/song/page/song');
