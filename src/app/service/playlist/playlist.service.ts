@@ -35,15 +35,19 @@ export class PlaylistService {
   }
 
   getTopListened(): Observable<Playlist[]> {
-    return this.httpClient.get<Playlist[]>(API_URL + "/home/topListened");
+    return this.httpClient.get<Playlist[]>(API_URL + "/home/topListenedPlaylist");
   }
 
   getTopLiked(): Observable<Playlist[]> {
-    return this.httpClient.get<Playlist[]>(API_URL + "/home/topLiked");
+    return this.httpClient.get<Playlist[]>(API_URL + "/home/topLikedPlaylist");
   }
 
   getNewlestCreated(): Observable<Playlist[]> {
-    return this.httpClient.get<Playlist[]>(API_URL + "/home/newlestCreated");
+    return this.httpClient.get<Playlist[]>(API_URL + "/home/newlestCreatedPlaylist");
+  }
+
+  countSongInPlaylist(id: number): Observable<Number>{
+    return this.httpClient.get<Number>(API_URL + "/countSongInPlaylist/" + id);
   }
 
   getSongOfPlaylist(id: any): Observable<Song[]>{
