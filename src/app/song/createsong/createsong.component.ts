@@ -103,17 +103,7 @@ export class CreatesongComponent implements OnInit {
       if (JSON.stringify(this.success) == JSON.stringify(data)) {
         this.status = 'Create success!';
         alert(this.status);
-        // Swal.fire({
-        //   title: this.status,
-        //   icon: "success",
-        //   confirmButtonColor: "#3bc8e7"
-        // });
         this.router.navigate(['/song'])
-        // this.form = {};
-        // this.isCheckUploadAvatar = false;
-        // this.isCheckUploadFile = false;
-        // this.singgersOnchage.splice(0, this.singgersOnchage.length);
-
       }
     }
     ,error => {
@@ -127,17 +117,14 @@ export class CreatesongComponent implements OnInit {
         )
     console.log(this.form);
   }
-
   onChangeAvatar(event: any) {
     this.formavt.avatarUrl = event;
     // this.isCheckUploadAvatar = true;
   }
-
   onChangeFile(event: any) {
     this.form.fileUrl = event;
     // this.isCheckUploadFile = true;
   }
-
   onchage(value: any) {
 
     this.singer.findSingerByName(value).subscribe(data => {
