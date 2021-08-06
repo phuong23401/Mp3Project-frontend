@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Playlist } from 'src/app/model/Playlist';
 import {PlaylistResponse} from "../../model/PlaylistResponse";
+import {Song} from "../../model/Song";
 
 const API_URL = `${environment.API_URL}`;
 @Injectable({
@@ -47,5 +48,13 @@ export class PlaylistService {
 
   countSongInPlaylist(id: number): Observable<Number>{
     return this.httpClient.get<Number>(API_URL + "/countSongInPlaylist/" + id);
+  }
+
+  getSongOfPlaylist(id: any): Observable<Song[]>{
+    return this.httpClient.get<Song[]>(API_URL+ "/playlist/getallsong/" + id);
+  }
+
+  getPlaylist(id:any): Observable<PlaylistResponse>{
+    return this.httpClient.get<PlaylistResponse>(API_URL+"/playlist/get/" +id);
   }
 }
