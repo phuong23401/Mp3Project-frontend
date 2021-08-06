@@ -22,6 +22,4 @@ export interface Song {
   numberOfView?: number;
   author?:string;
 
-
-
 }
