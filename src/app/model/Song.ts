@@ -1,8 +1,8 @@
 
 import {Singers} from './Singers';
-import {Playlist} from './Playlist';
 import {Icategory} from "./Icategory";
 import {User} from "./User";
+import { Playlist } from "./Playlist";
 
 export interface Song {
   id?: number;

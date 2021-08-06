@@ -37,6 +37,9 @@ import { SearchfilterPipe } from './share/searchfilter.pipe';
 import  {PlaySongComponent} from "./song/play-song/play-song.component";
 import { CommonModule } from '@angular/common';
 import { UpdateSongComponent } from './song/update-song/update-song.component';
+import { TopListenedPlaylistComponent } from './top-listened-playlist/top-listened-playlist.component';
+import { MyplaylistComponent } from './myplaylist/myplaylist.component';
+import { PlaylistdetailsComponent } from './myplaylist/playlistdetails/playlistdetails.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,10 @@ import { UpdateSongComponent } from './song/update-song/update-song.component';
     SearchfilterPipe,
     PlayerComponent,
     PlaySongComponent,
-    UpdateSongComponent
+    UpdateSongComponent,
+    TopListenedPlaylistComponent,
+    MyplaylistComponent,
+    PlaylistdetailsComponent
   ],
   imports: [
     BrowserModule,

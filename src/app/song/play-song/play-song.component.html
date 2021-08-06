@@ -33,14 +33,15 @@
             <!-- style="display: none" -->
             <div   >
               <audio controls loop id="track">
-                <source [src]="song.fileUrl" type="audio/mpeg">
-                <source [src]="song.fileUrl" type="audio/ogg">
+                <source src="{{song.fileUrl}}" type="audio/mpeg">
+                <source src="{{song.fileUrl}}" type="audio/ogg">
               </audio>
             </div>
             <div class="ms_play_icon" *ngIf="!isPlaying"
                  (click)="listenCount(song)" >
 
-              <img src="assets/images/svg/play.svg" alt="">
+              <img src="assets/images/svg/play.svg"  alt="">
+               
 
             </div>
             <div class="ms_play_icon" *ngIf="isPlaying"

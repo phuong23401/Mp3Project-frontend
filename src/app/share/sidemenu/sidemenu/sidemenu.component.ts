@@ -15,6 +15,7 @@ export class SidemenuComponent implements OnInit {
 
   homePage() {
     this.router.navigate(['']);
+    window.location.reload
   }
 
   createSong() {

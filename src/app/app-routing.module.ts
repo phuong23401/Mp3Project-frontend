@@ -10,6 +10,8 @@ import {PlaySongComponent} from "./song/play-song/play-song.component";
 import {ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
 import {SongComponent} from "./song/song-manager/song.component";
 import {UpdateSongComponent} from "./song/update-song/update-song.component";
+import {MyplaylistComponent} from "./myplaylist/myplaylist.component";
+import {PlaylistdetailsComponent} from "./myplaylist/playlistdetails/playlistdetails.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -19,11 +21,12 @@ const routes: Routes = [
   { path: 'img', component: UploadImgComponent },
   { path: 'url', component: UploadUrlComponent },
   { path: 'search', component: ListSongSearchComponent },
-  {path: 'song/:id', component: PlaySongComponent },
+  { path: 'song/:id', component: PlaySongComponent },
   { path: 'changepassword', component: ChangepasswordComponent},
   { path: 'song', component: SongComponent},
   { path: 'updatesong/:id', component: UpdateSongComponent},
-
+  { path: 'myplaylist', component: MyplaylistComponent},
+  { path: 'myplaylist/details', component: PlaylistdetailsComponent},
 ];
 
 @NgModule({
