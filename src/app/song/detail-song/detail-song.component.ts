@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
 import { ActivatedRoute } from '@angular/router';
-declare var Amplitude: any;
 
 @Component({
-  selector: 'app-play-song',
-  templateUrl: './play-song.component.html',
-  styleUrls: ['./play-song.component.css']
+  selector: 'app-detail-song',
+  templateUrl: './detail-song.component.html',
+  styleUrls: ['./detail-song.component.css']
 })
-export class PlaySongComponent implements OnInit {
+export class DetailSongComponent implements OnInit {
 
   id: number;
   song: Song;
@@ -47,5 +46,6 @@ export class PlaySongComponent implements OnInit {
      this.isPlaying = !this.isPlaying;
      this.audio.pause();
    }
+
 
 }
