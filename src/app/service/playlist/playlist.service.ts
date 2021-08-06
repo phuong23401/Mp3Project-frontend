@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Playlist } from 'src/app/model/Playlist';
+import {PlaylistResponse} from "../../model/PlaylistResponse";
 
 const API_URL = `${environment.API_URL}`;
 @Injectable({
@@ -12,8 +13,8 @@ export class PlaylistService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllPlaylist(): Observable<Playlist> { 
-    return this.httpClient.get<Playlist>(API_URL + "/playlist/getAll");
+  getAllPlaylist(): Observable<Playlist> {
+    return this.httpClient.get<Playlist>(API_URL + "/home/getAll");
   }
 
   creatPlaylist(playlist: Playlist): Observable<Playlist> {
@@ -28,8 +29,8 @@ export class PlaylistService {
     return this.httpClient.delete<Playlist>(API_URL + "/playlist/" + id);
   }
 
-  getPlaylistById(id: number): Observable<Playlist> {
-    return this.httpClient.get<Playlist>(API_URL + "/playlist/" + id);
+  getPlaylistByUser(): Observable<PlaylistResponse[]> {
+    return this.httpClient.get<PlaylistResponse[]>(API_URL + "/playlist");
   }
 
   getTopListened(): Observable<Playlist[]> {
