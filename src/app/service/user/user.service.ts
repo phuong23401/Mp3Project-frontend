@@ -10,7 +10,7 @@ import {User} from "../../model/User";
 })
 export class UserService {
   API_URL = `${environment.API_URL}`;
-  private API_GET_USER = this.API_URL+'/profile/get/';
+  private API_GET_USER = this.API_URL+'/profile/get';
   constructor(private http: HttpClient,
               private httpService: HttpService) { }
 
