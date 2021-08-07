@@ -44,9 +44,8 @@ import { CreatepPlaylistComponent } from './myplaylist/createp-playlist/createp-
 import { CommentComponent } from './share/comment/comment-song/comment.component';
 import { DetailSongComponent } from './song/detail-song/detail-song.component';
 import { TestplayerComponent } from './testplayer/testplayer.component';
-import { AngMusicPlayerModule } from "ang-music-player";
-import { TopLikePlaylistComponent } from './top-like-playlist/top-like-playlist.component';
 import { CommentPlayListComponent } from './share/comment/comment-play-list/comment-play-list.component';
+import {AngMusicPlayerModule} from "ang-music-player";
 
 @NgModule({
   declarations: [
@@ -85,8 +84,7 @@ import { CommentPlayListComponent } from './share/comment/comment-play-list/comm
     CommentComponent,
     DetailSongComponent,
     TestplayerComponent,
-    TopLikePlaylistComponent,
-    CommentPlayListComponent
+    CommentPlayListComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,7 +97,7 @@ import { CommentPlayListComponent } from './share/comment/comment-play-list/comm
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     ModalModule.forRoot(),
-    AngMusicPlayerModule
+    AngMusicPlayerModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

@@ -6,7 +6,6 @@ import { CreatesongComponent } from "./song/createsong/createsong.component";
 import { UploadImgComponent } from "./uploadfile/upload-img/upload-img.component";
 import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component";
 import {ListSongSearchComponent} from "./song/list-song-search/list-song-search.component";
-import {PlaySongComponent} from "./song/play-song/play-song.component";
 import {ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
 import {SongComponent} from "./song/song-manager/song.component";
 import {UpdateSongComponent} from "./song/update-song/update-song.component";
@@ -24,7 +23,7 @@ const routes: Routes = [
   { path: 'img', component: UploadImgComponent },
   { path: 'url', component: UploadUrlComponent },
   { path: 'search', component: ListSongSearchComponent },
-  { path: 'song/:id', component: DetailSongComponent  },
+  {path: 'song/:id', component: DetailSongComponent  },
   { path: 'changepassword', component: ChangepasswordComponent},
   { path: 'song', component: SongComponent},
   { path: 'updatesong/:id', component: UpdateSongComponent},
