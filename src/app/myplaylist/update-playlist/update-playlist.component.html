@@ -1,0 +1,26 @@
+<div class="ms_profile_wrapper">
+  <h1>Create Playlist</h1>
+  <div class="ms_profile_box">
+    <div class="ms_pro_img">
+      <div *ngIf="checkPlaylist; then img else img1"></div>
+      <ng-template #img><img src="{{playlist.avatarUrl}}" alt="" class="img-fluid" style="margin-bottom: 20px;"></ng-template>
+      <ng-template #img1><img src="{{oldPlaylist.avatarUrl}}" alt="" class="img-fluid" style="margin-bottom: 20px;"></ng-template>
+      <br/>
+      <input type="file" (change)="onChangeAvatar($event)" style="height: 40px; width: 140px; line-height: 43px; margin-left: 15px;">
+    </div>
+    <form [formGroup]="formCreatePlaylist" >
+      <div class="ms_pro_form">
+        <div class="form-group">
+          <label>Name Playlist</label>
+          <input type="text"  class="form-control" formControlName="name">
+        </div>
+        <br>
+        <div class="pro-form-btn text-center marger_top15">
+          <a href="javascript:" class="ms_btn" (click)="updatePlaylist()">save</a>
+          <a href="javascript:" class="ms_btn" (click)="cant()">cancel</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

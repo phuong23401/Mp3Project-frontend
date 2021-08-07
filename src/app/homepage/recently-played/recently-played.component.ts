@@ -74,6 +74,17 @@ export class RecentlyPlayedComponent implements OnInit {
     this.songService.getListenSongById(song.id).subscribe(data=>{
       this.song = data;
     })
+
+    if(song !== undefined) {
+      localStorage.setItem("currentSong", JSON.stringify({
+        image : song.avatarUrl,
+        title: song.name,
+        artist: song.author,
+        mp3: song.fileUrl
+      }));
+
+      document.getElementById("jquery_jplayer_1").dispatchEvent(new Event("jPlayer_play"));
+    }
   }
   changePause(){
     this.isPlaying = !this.isPlaying;

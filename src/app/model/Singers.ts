@@ -5,5 +5,4 @@ export interface Singers {
   name?: string;
   description?: string;
   avatarUrl?: string;
-
 }

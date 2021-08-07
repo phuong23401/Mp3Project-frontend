@@ -41,6 +41,9 @@ import { TopListenedPlaylistComponent } from './top-listened-playlist/top-listen
 import { MyplaylistComponent } from './myplaylist/myplaylist.component';
 import { PlaylistdetailsComponent } from './myplaylist/playlistdetails/playlistdetails.component';
 import { CreatepPlaylistComponent } from './myplaylist/createp-playlist/createp-playlist.component';
+import { CommentComponent } from './share/comment/comment.component';
+import { DetailSongComponent } from './song/detail-song/detail-song.component';
+import { UpdatePlaylistComponent } from './myplaylist/update-playlist/update-playlist.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,11 @@ import { CreatepPlaylistComponent } from './myplaylist/createp-playlist/createp-
     TopListenedPlaylistComponent,
     MyplaylistComponent,
     PlaylistdetailsComponent,
-    CreatepPlaylistComponent
+    CreatepPlaylistComponent,
+    UpdateSongComponent,
+    CommentComponent,
+    DetailSongComponent,
+    UpdatePlaylistComponent
   ],
   imports: [
     BrowserModule,
