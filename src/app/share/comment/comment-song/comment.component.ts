@@ -10,6 +10,7 @@ import {HttpService} from "../../../service/http/http.service";
 import {ActivatedRoute} from "@angular/router";
 import {SongService} from "../../../service/song/song.service";
 import {UserService} from "../../../service/user/user.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-comment',
@@ -76,6 +77,18 @@ export class CommentComponent implements OnInit {
         console.log("this song id",this.song.id)
         this.commentSong = data;
         this.form.reset();
+      })
+      Swal.fire({
+        title: "Comment Success",
+        icon: 'success',
+        showCancelButton: true,
+
+      })
+    },error => {
+      Swal.fire({
+        title: "Comment Fails",
+        icon: 'warning',
+        showCancelButton: true,
       })
     })
   }

@@ -14,6 +14,7 @@ import {CommentPlayList} from "../../../model/CommentPlayList";
 import {CommentPlayListService} from "../../../service/comment/comment-play-list/comment-play-list.service";
 import {Playlist} from "../../../model/Playlist";
 import {PlaylistService} from "../../../service/playlist/playlist.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-comment-play-list',
@@ -86,7 +87,20 @@ export class CommentPlayListComponent implements OnInit {
         this.commentPlayList = data;
         this.form.reset();
       })
+      Swal.fire({
+        title: "Comment Success",
+        icon: 'success',
+        showCancelButton: true,
+
+      })
+    },error => {
+      Swal.fire({
+        title: "Comment Fails",
+        icon: 'warning',
+        showCancelButton: true,
+      })
     })
+
   }
 
 
