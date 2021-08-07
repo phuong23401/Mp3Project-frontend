@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
 import {PlaylistReq} from "../../model/PlaylistReq";
@@ -22,28 +22,29 @@ export class UpdatePlaylistComponent implements OnInit {
 
   checkAvt: boolean;
   checkName: any;
-  id:any;
-  oldPlaylist:PlaylistResponse;
-  checkPlaylist =true;
-  error2:any={
-    massage:"successfully"
+  id: any;
+  oldPlaylist: PlaylistResponse;
+  checkPlaylist = true;
+  error1: any = {
+    massage: "successfully"
   }
-  error1:any={
-    massage:"NoAvatar"
+  error2: any = {
+    massage: "NoAvatar"
   }
-status ="";
+  status = "";
+
   constructor(private afStorage: AngularFireStorage,
               private formBuilder: FormBuilder,
               private playlistService: PlaylistService,
               private router: Router,
-              private activerouter:ActivatedRoute) {
-    this.activerouter.paramMap.subscribe((paraMap:ParamMap)=>{
+              private activerouter: ActivatedRoute) {
+    this.activerouter.paramMap.subscribe((paraMap: ParamMap) => {
       this.id = paraMap.get('id');
     })
     this.formCreatePlaylist = this.formBuilder.group({
       name: ['', [Validators.required]],
     })
-    this.playlistService.getPlaylist(this.id).subscribe((data:PlaylistResponse)=>{
+    this.playlistService.getPlaylist(this.id).subscribe((data: PlaylistResponse) => {
       this.oldPlaylist = data;
     })
     this.checkPlaylist = false;
@@ -51,6 +52,7 @@ status ="";
 
   ngOnInit(): void {
   }
+
   onChangeAvatar(event: any) {
     this.checkPlaylist = true;
     this.form = event.target.files[0];
@@ -65,43 +67,69 @@ status ="";
         return downloadURL;
 
       })
-      .catch(error=>{
+      .catch(error => {
         console.log(`Failed to upload avatar and get link ${error}`);
       })
   }
-  updatePlaylist(){
+
+  updatePlaylist() {
     const data = this.formCreatePlaylist.value;
     console.log(this.downloadURL)
     this.playlist = ({
       name: data.name,
       avatarUrl: this.downloadURL
     });
-    this.playlistService.updatePlaylist(this.id,this.playlist).subscribe(data => {
-      if (JSON.stringify(this.error2) == JSON.stringify(data)) {
-        this.status = "Successfully!"
+    this.playlistService.updatePlaylist(this.id, this.playlist).subscribe(data => {
+        this.status = "Successflly!"
         Swal.fire({
           title: this.status,
           icon: "success",
           confirmButtonColor: "#3bc8e7"
-        });
-        this.router.navigate(['/myplaylist']);
-      }
-      if (JSON.stringify(data)==JSON.stringify(this.error1)){
-        this.status = "pleases fill in the avatar!"
-        Swal.fire({
-          title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
-      }
+        })
+      this.router.navigate(['/myplaylist'])
     }, error => {
-      this.status = "Please check your infor !"
+      this.status = "Please check your infor !";
       Swal.fire({
         title: this.status,
         icon: "error",
         confirmButtonColor: "#3bc8e7"
-      });
-    });
+      })
+    })
   }
+
+
+  // updatePlaylist(){
+  //   const data = this.formCreatePlaylist.value;
+  //   console.log(this.downloadURL)
+  //   this.playlist = ({
+  //     name: data.name,
+  //     avatarUrl: this.downloadURL
+  //   });
+  //  this.playlistService.updatePlaylist(this.id,this.playlist).subscribe(data=>{
+  //    if (JSON.stringify(this.error1)==JSON.stringify(data)){
+  //      this.status = "Successflly!"
+  //     Swal.fire({
+  //       title:this.status,
+  //       icon:"success",
+  //       confirmButtonColor:"#3bc8e7"
+  //     })
+  //    }
+  //    if (JSON.stringify(this.error2)==JSON.stringify(data)){
+  //      this.status = " fill in the AvatarUrl!";
+  //      Swal.fire({
+  //        title:this.status,
+  //        icon:"error",
+  //        confirmButtonColor:"#3bc8e7"
+  //      })
+  //    }
+  //  },error => {
+  //    this.status = "Please check your infor !";
+  //    Swal.fire({
+  //      title:this.status,
+  //      icon:"error",
+  //      confirmButtonColor:"#3bc8e7"
+  //    })
+  //  })
+  // }
 
 }
