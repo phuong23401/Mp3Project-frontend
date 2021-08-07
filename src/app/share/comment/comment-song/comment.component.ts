@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Song} from "../../model/Song";
-import {ProfileService} from "../../service/profile/profile.service";
-import {User} from "../../model/User";
-import {TokenService} from "../../service/token/token.service";
-import {Commentsong} from "../../model/CommentSong";
+import {Song} from "../../../model/Song";
+import {ProfileService} from "../../../service/profile/profile.service";
+import {User} from "../../../model/User";
+import {TokenService} from "../../../service/token/token.service";
+import {Commentsong} from "../../../model/CommentSong";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {CommentSongService} from "../../service/comment/comment-song.service";
-import {HttpService} from "../../service/http/http.service";
+import {CommentSongService} from "../../../service/comment/comment-song/comment-song.service";
+import {HttpService} from "../../../service/http/http.service";
 import {ActivatedRoute} from "@angular/router";
-import {SongService} from "../../service/song/song.service";
-import {UserService} from "../../service/user/user.service";
+import {SongService} from "../../../service/song/song.service";
+import {UserService} from "../../../service/user/user.service";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-comment',
@@ -76,6 +77,18 @@ export class CommentComponent implements OnInit {
         console.log("this song id",this.song.id)
         this.commentSong = data;
         this.form.reset();
+      })
+      Swal.fire({
+        title: "Comment Success",
+        icon: 'success',
+        showCancelButton: true,
+
+      })
+    },error => {
+      Swal.fire({
+        title: "Comment Fails",
+        icon: 'warning',
+        showCancelButton: true,
       })
     })
   }

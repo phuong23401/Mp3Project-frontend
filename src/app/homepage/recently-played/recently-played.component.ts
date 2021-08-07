@@ -38,10 +38,10 @@ export class RecentlyPlayedComponent implements OnInit {
       this.songService.getLikeSongUpById(song.id).subscribe(data => {
             console.log('data',data)
             this.song = data;
-            setTimeout(()=>{                           //<<<---using ()=> syntax
+            setTimeout(()=>{
               this.isCheckInfoLike = true;
          }, 1000);
-            
+
           },
           error => {
             alert('Please login before click like!')
