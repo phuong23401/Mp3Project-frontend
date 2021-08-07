@@ -45,6 +45,7 @@ import { CommentComponent } from './share/comment/comment-song/comment.component
 import { DetailSongComponent } from './song/detail-song/detail-song.component';
 import { TestplayerComponent } from './testplayer/testplayer.component';
 import { CommentPlayListComponent } from './share/comment/comment-play-list/comment-play-list.component';
+import {AngMusicPlayerModule} from "ang-music-player";
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { CommentPlayListComponent } from './share/comment/comment-play-list/comm
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     ModalModule.forRoot(),
+    AngMusicPlayerModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

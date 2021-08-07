@@ -71,15 +71,15 @@
       </div>
       <ul class="more_option">
         <li>
-          <a href="javascript:" [routerLink]="['/myplaylist/details/'+ item.id]"><span class="opt_icon"><i
-            class="far fa-trash-alt"></i></span>Detail
+          <a href="javascript:" [routerLink]="['/myplaylist/details/'+ item.id]"><span class="opt_icon"><i class="fas fa-folder-open"></i>
+</span>Detail
           </a>
         </li>
-        <li>
-          <a href="javascript:" [routerLink]="['/updateplaylist/'+ item.id]"><span class="opt_icon"><i
-            class="fas fa-plus"></i></span>update
-          </a>
-        </li>
+<!--        <li>-->
+<!--          <a href="javascript:" [routerLink]="['/updateplaylist/'+ item.id]"><span class="opt_icon"><i-->
+<!--            class="fas fa-plus"></i></span>update-->
+<!--          </a>-->
+<!--        </li>-->
         <li>
           <a href="javascript:" (click)="deletePlaylist(item.id)"><span class="opt_icon"><i
             class="far fa-trash-alt"></i></span>Delete
