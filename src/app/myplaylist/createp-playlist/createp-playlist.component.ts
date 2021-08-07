@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
 import Swal from "sweetalert2";
@@ -17,11 +17,12 @@ export class CreatepPlaylistComponent implements OnInit {
   form: File;
   ref?: AngularFireStorageReference;
   downloadURL?: string;
-  messageAlert:string;
+  messageAlert: string;
   playlistReq: PlaylistReq;
 
   checkAvt: boolean;
   checkName: any;
+
   constructor(private afStorage: AngularFireStorage,
               private formBuilder: FormBuilder,
               private playlistService: PlaylistService,
@@ -33,6 +34,7 @@ export class CreatepPlaylistComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   onChangeAvatar(event: any) {
     this.form = event.target.files[0];
 
@@ -46,11 +48,12 @@ export class CreatepPlaylistComponent implements OnInit {
         this.downloadURL = downloadURL;
         return downloadURL;
       })
-      .catch(error=>{
+      .catch(error => {
         // console.log(`Failed to upload avatar and get link ${error}`);
       })
   }
-  cretePlaylist(){
+
+  cretePlaylist() {
     const data = this.formCreatePlaylist.value;
     console.log(this.downloadURL)
     this.playlistReq = ({
@@ -58,23 +61,23 @@ export class CreatepPlaylistComponent implements OnInit {
       avatarUrl: this.downloadURL
     });
 
-      this.playlistService.creatPlaylist(this.playlistReq).subscribe(mes => {
-        Swal.fire({
-          title: "Compete",
-          icon: "success",
-          confirmButtonColor: "#3bc8e7"
-        });
-        this.router.navigate(['']);
-      }, error => {
-        this.messageAlert = error.message;
-        Swal.fire({
-          title: "Error",
-          text: "Please check your infor !",
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
+    this.playlistService.creatPlaylist(this.playlistReq).subscribe(mes => {
+      Swal.fire({
+        title: "Compete",
+        icon: "success",
+        confirmButtonColor: "#3bc8e7"
       });
-    }
+      this.router.navigate(['']);
+    }, error => {
+      this.messageAlert = error.message;
+      Swal.fire({
+        title: "Error",
+        text: "Please check your infor !",
+        icon: "error",
+        confirmButtonColor: "#3bc8e7"
+      });
+    });
+  }
 
   backHome() {
     this.router.navigate(['']);

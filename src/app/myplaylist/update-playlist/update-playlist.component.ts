@@ -25,11 +25,11 @@ export class UpdatePlaylistComponent implements OnInit {
   id:any;
   oldPlaylist:PlaylistResponse;
   checkPlaylist =true;
-  message1:any={
-    name:"successfully!"
+  error2:any={
+    massage:"successfully"
   }
-  message2:any={
-    name:"NoAvatar"
+  error1:any={
+    massage:"NoAvatar"
   }
 status ="";
   constructor(private afStorage: AngularFireStorage,
@@ -52,6 +52,7 @@ status ="";
   ngOnInit(): void {
   }
   onChangeAvatar(event: any) {
+    this.checkPlaylist = true;
     this.form = event.target.files[0];
     const id = Math.random().toString(36).substring(2)
     this.ref = this.afStorage.ref(id);
@@ -62,6 +63,7 @@ status ="";
         this.checkAvt = true;
         this.downloadURL = downloadURL;
         return downloadURL;
+
       })
       .catch(error=>{
         console.log(`Failed to upload avatar and get link ${error}`);
@@ -74,20 +76,18 @@ status ="";
       name: data.name,
       avatarUrl: this.downloadURL
     });
-    this.playlistService.updatePlaylist(this.id,this.playlist).subscribe(mes => {
-      if (JSON.stringify(this.message1) == JSON.stringify(mes)) {
-        this.checkPlaylist = true;
-        this.status = 'Successfully !';
+    this.playlistService.updatePlaylist(this.id,this.playlist).subscribe(data => {
+      if (JSON.stringify(this.error2) == JSON.stringify(data)) {
+        this.status = "Successfully!"
         Swal.fire({
           title: this.status,
           icon: "success",
           confirmButtonColor: "#3bc8e7"
         });
-
         this.router.navigate(['/myplaylist']);
       }
-      if (JSON.stringify(this.message2) == JSON.stringify(mes)) {
-        this.status = 'please fill in avatar !';
+      if (JSON.stringify(data)==JSON.stringify(this.error1)){
+        this.status = "pleases fill in the avatar!"
         Swal.fire({
           title: this.status,
           icon: "error",
@@ -95,10 +95,9 @@ status ="";
         });
       }
     }, error => {
-      this.status = "Please check your infor !";
+      this.status = "Please check your infor !"
       Swal.fire({
-        title: "Error",
-        text: this.status,
+        title: this.status,
         icon: "error",
         confirmButtonColor: "#3bc8e7"
       });

@@ -3,7 +3,7 @@
   <div class="ms_profile_box">
     <div class="ms_pro_img">
       <div *ngIf="checkPlaylist; then img else img1"></div>
-      <ng-template #img><img src="{{playlist.avatarUrl}}" alt="" class="img-fluid" style="margin-bottom: 20px;"></ng-template>
+      <ng-template #img><img src="{{downloadURL}}" alt="" class="img-fluid" style="margin-bottom: 20px;"></ng-template>
       <ng-template #img1><img src="{{oldPlaylist.avatarUrl}}" alt="" class="img-fluid" style="margin-bottom: 20px;"></ng-template>
       <br/>
       <input type="file" (change)="onChangeAvatar($event)" style="height: 40px; width: 140px; line-height: 43px; margin-left: 15px;">
