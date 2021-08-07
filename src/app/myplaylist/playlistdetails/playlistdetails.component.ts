@@ -107,11 +107,23 @@ export class PlaylistdetailsComponent implements OnInit {
     this.likePlayListService.getLikeSongUpById(playlist.id).subscribe(data => {
         console.log('data',data)
         this.playlist = data
-      },
-      error => {
-        alert('Please login before click like!')
+        Swal.fire({
+          title: "Like Success",
+          icon: 'success',
+          showCancelButton: true,
+
+        })
       }
-    );
+      ,
+      error => {
+        Swal.fire({
+          title: "Like fails",
+          icon: 'warning',
+          showCancelButton: true,
+
+        })
+      }
+    )
   }
 
 
