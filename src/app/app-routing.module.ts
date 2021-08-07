@@ -14,6 +14,7 @@ import {DetailSongComponent} from "./song/detail-song/detail-song.component";
 import {MyplaylistComponent} from "./myplaylist/myplaylist.component";
 import {PlaylistdetailsComponent} from "./myplaylist/playlistdetails/playlistdetails.component";
 import {CreatepPlaylistComponent} from "./myplaylist/createp-playlist/createp-playlist.component";
+import {TestplayerComponent} from "./testplayer/testplayer.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -23,13 +24,14 @@ const routes: Routes = [
   { path: 'img', component: UploadImgComponent },
   { path: 'url', component: UploadUrlComponent },
   { path: 'search', component: ListSongSearchComponent },
-  {path: 'song/:id', component: DetailSongComponent  },
+  { path: 'song/:id', component: DetailSongComponent  },
   { path: 'changepassword', component: ChangepasswordComponent},
   { path: 'song', component: SongComponent},
   { path: 'updatesong/:id', component: UpdateSongComponent},
   { path: 'myplaylist', component: MyplaylistComponent},
   { path: 'myplaylist/details/:id', component: PlaylistdetailsComponent},
   { path: 'createplaylist', component: CreatepPlaylistComponent},
+  { path: 'check', component: TestplayerComponent},
 ];
 
 @NgModule({
