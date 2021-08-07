@@ -3,9 +3,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {environment} from "../../../environments/environment";
-import {HttpService} from "../http/http.service";
-import {Commentsong} from "../../model/CommentSong";
+import {environment} from "../../../../environments/environment";
+import {HttpService} from "../../http/http.service";
+import {Commentsong} from "../../../model/CommentSong";
 const API_URL = `${environment.API_URL}`;
 @Injectable({
   providedIn: 'root'
