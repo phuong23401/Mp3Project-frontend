@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {Song} from "../../model/Song";
-import {ProfileService} from "../../service/profile/profile.service";
-import {User} from "../../model/User";
-import {TokenService} from "../../service/token/token.service";
-import {Commentsong} from "../../model/CommentSong";
+import {Song} from "../../../model/Song";
+import {ProfileService} from "../../../service/profile/profile.service";
+import {User} from "../../../model/User";
+import {TokenService} from "../../../service/token/token.service";
+import {Commentsong} from "../../../model/CommentSong";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {CommentSongService} from "../../service/comment/comment-song.service";
-import {HttpService} from "../../service/http/http.service";
+import {CommentSongService} from "../../../service/comment/comment-song/comment-song.service";
+import {HttpService} from "../../../service/http/http.service";
 import {ActivatedRoute} from "@angular/router";
-import {SongService} from "../../service/song/song.service";
-import {UserService} from "../../service/user/user.service";
+import {SongService} from "../../../service/song/song.service";
+import {UserService} from "../../../service/user/user.service";
 
 @Component({
   selector: 'app-comment',
