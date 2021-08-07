@@ -31,10 +31,10 @@ import { RegisterDialogComponent } from './share/register-dialog/register-dialog
 import { Header1Component } from './share/headerr/header1/header1.component';
 import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
-import { ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
-import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
+import { ChangepasswordComponent } from "./profile/changepassword/changepassword.component";
+import { httpInterceptorProviders } from "./service/auth/auth.interceptor";
 import { SearchfilterPipe } from './share/searchfilter.pipe';
-import  {PlaySongComponent} from "./song/play-song/play-song.component";
+import { PlaySongComponent } from "./song/play-song/play-song.component";
 import { CommonModule } from '@angular/common';
 import { UpdateSongComponent } from './song/update-song/update-song.component';
 import { TopListenedPlaylistComponent } from './top-listened-playlist/top-listened-playlist.component';
@@ -83,8 +83,8 @@ import {AngMusicPlayerModule} from "ang-music-player";
     UpdateSongComponent,
     CommentComponent,
     DetailSongComponent,
+    TestplayerComponent,
     CommentPlayListComponent,
-    TestplayerComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +97,7 @@ import {AngMusicPlayerModule} from "ang-music-player";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
     ModalModule.forRoot(),
-    AngMusicPlayerModule
+    AngMusicPlayerModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

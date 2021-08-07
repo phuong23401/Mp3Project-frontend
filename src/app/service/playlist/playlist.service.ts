@@ -25,7 +25,7 @@ export class PlaylistService {
   }
 
   updatePlaylist(id: number, playlist: Playlist): Observable<Playlist> {
-    return this.httpClient.put<Playlist>(API_URL + "/playlist/edit" + id, playlist);
+    return this.httpClient.put<Playlist>(API_URL + "/playlist/" + id, playlist);
   }
 
   upPlaylist(playlist: Playlist): Observable<any> {
@@ -33,7 +33,7 @@ export class PlaylistService {
   }
 
   deletePlaylist(id: number): Observable<Playlist> {
-    return this.httpClient.delete<Playlist>(API_URL + "/playlist/" + id);
+    return this.httpClient.post<Playlist>(API_URL + "/playlist/delete",id);
   }
 
   getPlaylistByUser(): Observable<PlaylistResponse[]> {
