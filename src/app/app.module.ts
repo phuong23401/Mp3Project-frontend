@@ -31,10 +31,10 @@ import { RegisterDialogComponent } from './share/register-dialog/register-dialog
 import { Header1Component } from './share/headerr/header1/header1.component';
 import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
-import { ChangepasswordComponent} from "./profile/changepassword/changepassword.component";
-import {httpInterceptorProviders} from "./service/auth/auth.interceptor";
+import { ChangepasswordComponent } from "./profile/changepassword/changepassword.component";
+import { httpInterceptorProviders } from "./service/auth/auth.interceptor";
 import { SearchfilterPipe } from './share/searchfilter.pipe';
-import  {PlaySongComponent} from "./song/play-song/play-song.component";
+import { PlaySongComponent } from "./song/play-song/play-song.component";
 import { CommonModule } from '@angular/common';
 import { UpdateSongComponent } from './song/update-song/update-song.component';
 import { TopListenedPlaylistComponent } from './top-listened-playlist/top-listened-playlist.component';
@@ -43,6 +43,9 @@ import { PlaylistdetailsComponent } from './myplaylist/playlistdetails/playlistd
 import { CreatepPlaylistComponent } from './myplaylist/createp-playlist/createp-playlist.component';
 import { CommentComponent } from './share/comment/comment-song/comment.component';
 import { DetailSongComponent } from './song/detail-song/detail-song.component';
+import { TestplayerComponent } from './testplayer/testplayer.component';
+import { AngMusicPlayerModule } from "ang-music-player";
+import { TopLikePlaylistComponent } from './top-like-playlist/top-like-playlist.component';
 import { CommentPlayListComponent } from './share/comment/comment-play-list/comment-play-list.component';
 
 @NgModule({
@@ -81,6 +84,8 @@ import { CommentPlayListComponent } from './share/comment/comment-play-list/comm
     UpdateSongComponent,
     CommentComponent,
     DetailSongComponent,
+    TestplayerComponent,
+    TopLikePlaylistComponent,
     CommentPlayListComponent
   ],
   imports: [
@@ -93,7 +98,8 @@ import { CommentPlayListComponent } from './share/comment/comment-play-list/comm
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AngMusicPlayerModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

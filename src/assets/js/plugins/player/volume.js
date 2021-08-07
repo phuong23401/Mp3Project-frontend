@@ -1,5 +1,5 @@
-/* 
-Rotative knob, as used in Open Stage Control 
+/*
+Rotative knob, as used in Open Stage Control
 https://github.com/jean-emmanuel/Open-Stage-Control
 (copyleft © jean-emmanuel // GNU/GPL3)
 
@@ -8,7 +8,7 @@ This is just just a sample showing the knob widget. It's meant to be used in a c
 
 
 (function($) {
-    
+
         $.event.special.drag = {
         setup: function() {
             var element = $(this),
@@ -31,8 +31,8 @@ This is just just a sample showing the knob widget. It's meant to be used in a c
                 $document.off("mouseup")
                 $document.off("mousemove")
 
-                e.pageX = e.pageX || e.layerX 
-                e.pageY = e.pageY || e.layerY 
+                e.pageX = e.pageX || e.layerX
+                e.pageY = e.pageY || e.layerY
                 e.speedX = e.pageX - previousEvent.pageX
                 e.speedY = e.pageY - previousEvent.pageY
                 e.deltaX = e.deltaX + previousEvent.deltaX
@@ -272,8 +272,8 @@ This is just just a sample showing the knob widget. It's meant to be used in a c
             return value
 
         }
-    
+
     }
-    
+
     init()
 })(jQuery)
