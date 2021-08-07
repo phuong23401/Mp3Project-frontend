@@ -17,7 +17,7 @@
         <br>
         <div class="pro-form-btn text-center marger_top15">
           <a href="javascript:" class="ms_btn" (click)="updatePlaylist()">save</a>
-          <a href="javascript:" class="ms_btn" (click)="cant()">cancel</a>
+          <a href="javascript:" class="ms_btn" [routerLink]="['/myplaylist']" routerLinkActive="$router_link-active$">cancel</a>
         </div>
       </div>
     </form>

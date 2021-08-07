@@ -18,7 +18,6 @@ export class UpdatePlaylistComponent implements OnInit {
   form: File;
   ref?: AngularFireStorageReference;
   downloadURL?: string;
-  messageAlert:string;
   playlist: PlaylistReq;
 
   checkAvt: boolean;
@@ -54,7 +53,6 @@ status ="";
   }
   onChangeAvatar(event: any) {
     this.form = event.target.files[0];
-
     const id = Math.random().toString(36).substring(2)
     this.ref = this.afStorage.ref(id);
     this.ref.put(this.form).then(snapshot => {
@@ -66,7 +64,7 @@ status ="";
         return downloadURL;
       })
       .catch(error=>{
-        // console.log(`Failed to upload avatar and get link ${error}`);
+        console.log(`Failed to upload avatar and get link ${error}`);
       })
   }
   updatePlaylist(){
@@ -78,14 +76,15 @@ status ="";
     });
     this.playlistService.updatePlaylist(this.id,this.playlist).subscribe(mes => {
       if (JSON.stringify(this.message1) == JSON.stringify(mes)) {
+        this.checkPlaylist = true;
         this.status = 'Successfully !';
         Swal.fire({
           title: this.status,
           icon: "success",
           confirmButtonColor: "#3bc8e7"
         });
-        this.checkPlaylist = true;
-        this.router.navigate(['/playlist']);
+
+        this.router.navigate(['/myplaylist']);
       }
       if (JSON.stringify(this.message2) == JSON.stringify(mes)) {
         this.status = 'please fill in avatar !';
@@ -105,7 +104,5 @@ status ="";
       });
     });
   }
-  cant(){
-this.router.navigate(['/playlist'])
-  }
+
 }
