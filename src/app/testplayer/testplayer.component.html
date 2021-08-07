@@ -1,0 +1,8 @@
+<div style="margin-top: 50px">
+<ang-music-player [audioList] = audioList></ang-music-player>
+</div>
+<div *ngFor="let item of audioList, let i = index">
+  <div>
+    {{item.title}}
+  </div>
+</div>
