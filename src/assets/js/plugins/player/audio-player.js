@@ -1,19 +1,5 @@
 $(function() {
-	const myPlayListOption = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
-    const currentSong = localStorage.getItem('currentSong') ?
-        JSON.parse(localStorage.getItem('currentSong')) :
-        {
-            image : '',
-            title: '',
-            artist: '',
-            mp3: '',
-        };
-
-    const songList = [{
-        ...currentSong,
-        option : myPlayListOption
-    }];
-    console.log(songList);
+    const playlist = localStorage.getItem('playlist') ? JSON.parse(localStorage.getItem('playlist')) : [];
 
     "use strict";
     if ($('.audio-player').length) {
@@ -21,7 +7,7 @@ $(function() {
         var myPlaylist = new jPlayerPlaylist({
             jPlayer: "#jquery_jplayer_1",
             cssSelectorAncestor: "#jp_container_1"
-        }, songList, {
+        }, playlist, {
             swfPath: "js/plugins",
             supplied: "oga, mp3",
             wmode: "window",
@@ -33,28 +19,29 @@ $(function() {
             autoPlay: false
             }
         });
+
+        $("#jquery_jplayer_1").on($.jPlayer.event.ready + ' ' + $.jPlayer.event.play, function(event) {
+            console.log("aaaaaaa"); 
+            $(this).jPlayer("setMedia", {
+                mp3: 'https://firebasestorage.googleapis.com/v0/b/mp3-project-620b7.appspot.com/o/SaiGonToangMixtape.mp3?alt=media&token=694bf876-9179-49b4-972f-05a1f8474e21'
+              }).jPlayer("play"); 
+        })
+        
         $("#jquery_jplayer_1").on($.jPlayer.event.play, function(event) {
-            
-            const _myPlayListOption = '<ul class="more_option"><li><a href="#"><span class="opt_icon" title="Add To Favourites"><span class="icon icon_fav"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Queue"><span class="icon icon_queue"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Download Now"><span class="icon icon_dwn"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Add To Playlist"><span class="icon icon_playlst"></span></span></a></li><li><a href="#"><span class="opt_icon" title="Share"><span class="icon icon_share"></span></span></a></li></ul>';
-            const _currentSong = localStorage.getItem('currentSong') ?
-                JSON.parse(localStorage.getItem('currentSong')) :
-                {
-                    image : '',
-                    title: '',
-                    artist: '',
-                    mp3: '',
-                };
+            const currentSong = localStorage.getItem('currentSong') ? JSON.parse(localStorage.getItem('currentSong')) : {
+                id : 0,
+                image : '',
+                title: '',
+                artist: '',
+                mp3: ''
+            };
+            const _songList = localStorage.getItem('playlist') ? JSON.parse(localStorage.getItem('playlist')) : [];
+            const songIndex = _songList.findIndex(s => s.id === currentSong.id);
+            const current = songIndex ?? myPlaylist.current;
+            const playlist = _songList;
+            // $("#jquery_jplayer_1").jPlayer("setMedia", {mp3: _songList[songIndex].mp3}).jPlayer("play");
 
-            const _songList = [{
-                ..._currentSong,
-                option : _myPlayListOption
-            }];
-
-            console.log(_songList);
-            var current = myPlaylist.current;
-            var playlist = _songList;
-
-            $(this).jPlayer("setMedia", _currentSong);
+            console.log(current);
             $.each(playlist, function(index, obj) {
                 if (index == current) {
                     $(".jp-now-playing").html("<div class='jp-track-name'><span class='que_img'><img src='"+obj.image+"'></span><div class='que_data'>" + obj.title + " <div class='jp-artist-name'>" + obj.artist + "</div></div></div>");

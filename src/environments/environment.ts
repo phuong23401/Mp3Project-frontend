@@ -6,13 +6,13 @@ export const environment = {
  production: false,
   API_URL:"http://localhost:8080",
   firebaseConfig : {
-    apiKey: "AIzaSyBOBfXNon1RhM8yS2X8KUD7hYCjBd5mIaQ",
-    authDomain: "karaoke-83c88.firebaseapp.com",
-    projectId: "karaoke-83c88",
-    storageBucket: "karaoke-83c88.appspot.com",
-    messagingSenderId: "8026212474",
-    appId: "1:8026212474:web:1a377f54eaf3274d8c93c3",
-    measurementId: "G-TTKQ5E2F9E"
+    apiKey: "AIzaSyB2gYKET9EVRXkbQiCrKluMTmxcv054CRc",
+    authDomain: "mp3-project2.firebaseapp.com",
+    projectId: "mp3-project2",
+    storageBucket: "mp3-project2.appspot.com",
+    messagingSenderId: "427088596906",
+    appId: "1:427088596906:web:3cfe4fe22260549ebb25d3",
+    measurementId: "G-SZDNYTTBYL"
   }
 };
 
