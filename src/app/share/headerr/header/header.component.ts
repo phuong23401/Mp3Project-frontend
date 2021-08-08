@@ -8,6 +8,9 @@ import {query} from "@angular/animations";
 import { RegisterDialogComponent } from '../../register-dialog/register-dialog.component';
 import { DataService } from '../../dataTrans/data.service';
 import { Song } from 'src/app/model/Song';
+import { User } from 'src/app/model/User';
+import { Singers } from 'src/app/model/Singers';
+import { UserService } from 'src/app/service/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -20,6 +23,8 @@ export class HeaderComponent implements OnInit {
   songList: Song[];
   searchValue: any;
   listFilterResult : Song[];
+  listFilterUserResult : User[];
+  listFilterSingerResult : Singers[];
 
   searchForm: FormGroup;
 
@@ -28,7 +33,8 @@ export class HeaderComponent implements OnInit {
               private songService: SongService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private data: DataService) {
+              private data: DataService,
+              private userService: UserService) {
     this.searchForm = new FormGroup({
       name: new FormControl(),
     });
@@ -38,6 +44,7 @@ export class HeaderComponent implements OnInit {
     this.songService.getAllSongs().subscribe(res =>{
       this.songList = res;
     })
+
   }
 
   login() {
