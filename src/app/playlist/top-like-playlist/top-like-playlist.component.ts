@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Playlist} from "../model/Playlist";
-import {PlaylistService} from "../service/playlist/playlist.service";
+import {Playlist} from "../../model/Playlist";
+import {PlaylistService} from "../../service/playlist/playlist.service";
 
 @Component({
   selector: 'app-top-like-playlist',
