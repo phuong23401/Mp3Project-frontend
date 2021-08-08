@@ -3,13 +3,10 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {PlaylistService} from "../../service/playlist/playlist.service";
 import {PlaylistResponse} from "../../model/PlaylistResponse";
 import {PlaylistReq} from "../../model/PlaylistReq";
-import {Playlist} from "../../model/Playlist";
-import Swal from "sweetalert2";
 import {Song} from "../../model/Song";
 import {AddSongDialogService} from "../../service/dialogsong/add-song-dialog.service";
 import {SongService} from "../../service/song/song.service";
-import {User} from "../../model/User";
-import {Singers} from "../../model/Singers";
+import {AddSongToPlaylistReq} from "../../model/AddSongToPlaylistReq";
 
 @Component({
   selector: 'app-add-song-dialog',
@@ -22,12 +19,14 @@ export class AddSongDialogComponent implements OnInit {
   playlist: PlaylistReq;
   playlistSongCurrent: PlaylistResponse;
   listSong: Song[] = [];
-  song:Song = {};
+  song: Song = {};
   id: any;
+  addSongToPlaylists: AddSongToPlaylistReq = {}
+
   constructor(private playlistService: PlaylistService,
               private formBuilder: FormBuilder,
               private dialogService: AddSongDialogService,
-              private songService:SongService) {
+              private songService: SongService) {
     this.getAllPlaylistByUser();
     this.formCreatePlaylist = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -56,31 +55,15 @@ export class AddSongDialogComponent implements OnInit {
 
   }
 
-  getPlaylistCurrentAddSong(id: number) {
-    this.getSongById();
-    console.log("song"+this.song)
-    this.playlistService.getPlaylist(id).subscribe((data: PlaylistResponse) => {
-      this.playlistSongCurrent = data;
-      console.log("playlist"+this.playlistSongCurrent.name)
-    })
-    this.listSong = this.playlistSongCurrent.songs;
-    this.listSong.push(this.song);
-    console.log(this.listSong);
-    this.playlistSongCurrent.songs=this.listSong;
-    this.playlistService.updatePlaylist(this.id,this.playlistSongCurrent).subscribe(data=>{
-
-      document.querySelector('.modal-backdrop').remove()
-      document.body.classList.remove('modal-open')
-      document.querySelector('.modal-dialog').remove()
-    })
-
+  addSongToPlaylist(id: number) {
+    this.addSongToPlaylists = {
+      idSong: this.id,
+      idPlaylist: id
+    }
+    this.playlistService.addSongToPlaylist(this.addSongToPlaylists).subscribe(data => {
+      alert(data.message);
+    });
   }
-  getSongById(){
-    console.log("id song :"+this.id)
-    this.songService.getSongById(this.id).subscribe((data:Song)=>{
-      console.log("data: "+data)
-      this.song = data;
-      console.log("Thiss Song :"+ this.song)
-    })
-  }
+
+
 }

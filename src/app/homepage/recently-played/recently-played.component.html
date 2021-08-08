@@ -28,13 +28,10 @@
               <li (click)="likeCount(song)" *ngIf="isCheckLikeSong"><a><span class="opt_icon"><span
                 class="icon icon_fav"></span></span>Add to Favourites</a>
               </li>
-              <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To
-                Queue</a>
-              </li>
-
-
-
-              <li><a href="#"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To
+<!--              <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To-->
+<!--                Queue</a>-->
+<!--              </li>-->
+              <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To
                 Playlist</a>
               </li>
             </ul>

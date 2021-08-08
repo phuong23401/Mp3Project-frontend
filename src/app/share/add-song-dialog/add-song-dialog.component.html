@@ -17,7 +17,7 @@
 
       <h5> Your Playlist !</h5>
       <ul *ngFor="let item of playlistByUser">
-        <li ><a href="javascript:" (click)="getPlaylistCurrentAddSong(item.id)">{{item.name}}</a></li>
+        <li ><a href="javascript:" (click)="addSongToPlaylist(item.id)">{{item.name}}</a></li>
       </ul>
 
   </div>
