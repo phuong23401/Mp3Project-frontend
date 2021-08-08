@@ -134,7 +134,7 @@ Assigned to: Theme Forest
                     nextEl: '.swiper-button-next5',
                     prevEl: '.swiper-button-prev5',
                 },
-            
+
                 breakpoints: {
                     1800: {
                         slidesPerView: 4,
@@ -350,7 +350,7 @@ Assigned to: Theme Forest
               observer:true,
               observeParents:true,
             });
-            
+
 
         },
 
@@ -475,4 +475,9 @@ Assigned to: Theme Forest
         }, 600);
         return false
     });
+
+
+  // $(document).ready(function(){ jQuery(document).ready(function(){jQuery("#jquery-accordion-menu").jqueryAccordionMenu(); jQuery(".colors a").click(function(){if($(this).attr("class") !="default"){$("#jquery-accordion-menu").removeClass(); $("#jquery-accordion-menu").addClass("jquery-accordion-menu").addClass($(this).attr("class"));}else{$("#jquery-accordion-menu").removeClass(); $("#jquery-accordion-menu").addClass("jquery-accordion-menu");}});}); });
 })(jQuery);
+
+
