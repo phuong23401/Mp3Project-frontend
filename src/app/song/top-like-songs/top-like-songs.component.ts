@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Song } from 'src/app/model/Song';
-import { SongService } from 'src/app/service/song/song.service';
+import { Song } from '../../model/Song';
+import { SongService } from '../../service/song/song.service';
 
 @Component({
   selector: 'app-top-like-songs',
