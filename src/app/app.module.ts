@@ -48,6 +48,7 @@ import { TestplayerComponent } from "./testplayer/testplayer.component";
 import { AngMusicPlayerModule } from "ang-music-player";
 import { LatestPlaylistComponent } from './playlist/latest-playlist/latest-playlist.component';
 import { TopLikePlaylistComponent } from './playlist/top-like-playlist/top-like-playlist.component';
+import { TopLikeSongsComponent } from './song/top-like-songs/top-like-songs.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { TopLikePlaylistComponent } from './playlist/top-like-playlist/top-like-
     TestplayerComponent,
     CommentPlayListComponent,
     LatestPlaylistComponent,
-    TopLikePlaylistComponent
+    TopLikePlaylistComponent,
+    TopLikeSongsComponent
   ],
   imports: [
     BrowserModule,
