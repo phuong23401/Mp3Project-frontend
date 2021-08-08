@@ -40,7 +40,7 @@ export class TestplayerComponent implements OnInit {
 
 
     // console.log("list au diooooo",this.audioList);
-console.log(this.randomSong.fileUrl)
+// console.log(this.randomSong.fileUrl)
     this.audioList = [
       {
         url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",

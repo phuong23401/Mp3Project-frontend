@@ -1,0 +1,33 @@
+<div class="ms_top_artist">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ms_heading">
+          <h1>Top Like Playlist</h1>
+        </div>
+      </div>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="col-lg-2 col-md-6" *ngFor="let playlist of playlistList, let i = index">
+            <div class="ms_rcnt_box marger_bottom30">
+              <div class="ms_rcnt_box_img">
+                <img src="{{playlist.avatarUrl}}" alt="" class="img-fluid">
+                <div class="ms_main_overlay">
+                  <div class="ms_box_overlay"></div>
+                  <div class="ms_play_icon">
+                  </div>
+                </div>
+              </div>
+              <div class="ms_rcnt_box_text">
+                <h3><a href="javascript:">{{playlist.name}}</a></h3>
+                <p>{{playlistList[i].songs.length}} songs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="swiper-button-next2 slider_nav_next"></div>
+<div class="swiper-button-prev2 slider_nav_prev"></div>
