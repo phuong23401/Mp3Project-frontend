@@ -46,6 +46,7 @@ import { DetailSongComponent } from './song/detail-song/detail-song.component';
 import { TestplayerComponent } from './testplayer/testplayer.component';
 import { CommentPlayListComponent } from './share/comment/comment-play-list/comment-play-list.component';
 import {AngMusicPlayerModule} from "ang-music-player";
+import { AddSongDialogComponent } from './share/add-song-dialog/add-song-dialog.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import {AngMusicPlayerModule} from "ang-music-player";
     DetailSongComponent,
     TestplayerComponent,
     CommentPlayListComponent,
+    AddSongDialogComponent,
   ],
   imports: [
     BrowserModule,
