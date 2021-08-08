@@ -20,7 +20,7 @@ export class LoginDialogComponent implements OnInit {
 
   message:string;
   name: string;
-
+  // check:boolean =false;
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
@@ -36,6 +36,7 @@ export class LoginDialogComponent implements OnInit {
 
   login() {
     const data = this.loginForm.value;
+    let checkName = data.name;
     this.loginService.login(data).subscribe(res => {
       // tslint:disable-next-line:triple-equals
       if (res.token != undefined) {
@@ -49,9 +50,10 @@ export class LoginDialogComponent implements OnInit {
       }
     }, error =>{
       this.message = "LOGIN FAILED";
+      console.log(error.error.message);
       Swal.fire({
         title: this.message,
-        text: "Please check your infor !",
+        text: error.error.message,
         icon: "error",
         confirmButtonColor: "#3bc8e7"
       });
