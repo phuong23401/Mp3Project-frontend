@@ -102,8 +102,15 @@ export class CreatesongComponent implements OnInit {
       }
       if (JSON.stringify(this.success) == JSON.stringify(data)) {
         this.status = 'Create success!';
-        alert(this.status);
-        this.router.navigate(['/song'])
+        Swal.fire({
+          title: this.status,
+          icon: "success",
+          confirmButtonColor: "#3bc8e7"
+        }).then(function (){
+          this.router.navigate(['/song']);
+        });
+        // alert(this.status);
+
       }
     }
     ,error => {

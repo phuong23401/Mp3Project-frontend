@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Playlist } from 'src/app/model/Playlist';
 import {PlaylistResponse} from "../../model/PlaylistResponse";
 import {Song} from "../../model/Song";
+import {HttpService} from "../http/http.service";
 
 const API_URL = `${environment.API_URL}`;
 @Injectable({
@@ -12,7 +13,8 @@ const API_URL = `${environment.API_URL}`;
 })
 export class PlaylistService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private httpService: HttpService) { }
 
   getAllPlaylist(): Observable<Playlist> {
     return this.httpClient.get<Playlist>(API_URL + "/home/getAll");
@@ -23,11 +25,15 @@ export class PlaylistService {
   }
 
   updatePlaylist(id: number, playlist: Playlist): Observable<Playlist> {
-    return this.httpClient.put<Playlist>(API_URL + "/playlist/edit" + id, playlist);
+    return this.httpClient.put<Playlist>(API_URL + "/playlist/" + id, playlist);
+  }
+
+  upPlaylist(playlist: Playlist): Observable<any> {
+    return this.httpClient.put(API_URL + '/playlist/update' , playlist  , this.httpService.getHttp());
   }
 
   deletePlaylist(id: number): Observable<Playlist> {
-    return this.httpClient.delete<Playlist>(API_URL + "/playlist/" + id);
+    return this.httpClient.post<Playlist>(API_URL + "/playlist/delete",id);
   }
 
   getPlaylistByUser(): Observable<PlaylistResponse[]> {
@@ -56,5 +62,8 @@ export class PlaylistService {
 
   getPlaylist(id:any): Observable<PlaylistResponse>{
     return this.httpClient.get<PlaylistResponse>(API_URL+"/playlist/get/" +id);
+  }
+  getPlaylistById(id: number): Observable<Playlist> {
+    return this.httpClient.get<Playlist>(API_URL + '/home/playlist/' + id);
   }
 }
