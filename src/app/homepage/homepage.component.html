@@ -3,17 +3,16 @@
     <div class="row">
       <div class="col-lg-12 col-md-12">
         <div class="ms_banner_img">
-          <img src="{{randomSong?.avatarUrl}}" style="width: 511px;height: 539px;
-  padding: 10px;
-  border-radius: 20px ;" alt="" class="img-fluid">
+          <img src="{{randomSong?.avatarUrl}}" style="width: 511px;height: 539px; padding: 10px;
+            border-radius: 20px ;" alt="" class="img-fluid">
         </div>
         <div class="ms_banner_text">
           <h1>{{randomSong?.name}}</h1>
           <h1 class="ms_color">{{randomSong?.description}}</h1>
           <p>{{randomSong?.lyric}}</p>
           <div class="ms_banner_btn">
-            <a href="#" class="ms_btn">Listen Now</a>
-            <a href="#" class="ms_btn">Add To Queue</a>
+            <a href="javascript:" class="ms_btn">Listen Now</a>
+            <a href="javascript:" class="ms_btn">Add To Favourites</a>
           </div>
         </div>
       </div>
@@ -30,10 +29,16 @@
   <app-two-most-listened></app-two-most-listened>
 </div>
 <br/>
+<!---TOP Most Listened--->
+<div class="ms_rcnt_slider">
+  <app-top-like-songs></app-top-like-songs>
+</div>
+<br/>
 <!---Weekly Top 15--->
 <div class="ms_weekly_wrapper">
   <app-weekly-top></app-weekly-top>
 </div>
+<br/>
 <!---Featured Artists Music--->
 <div class="ms_featured_slider">
   <app-featured-artists></app-featured-artists>
@@ -44,29 +49,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <a href="#"><img src="../../../assets/images/adv.jpg" alt="" class="img-fluid" /></a>
+        <a href="javascript:"><img src="https://firebasestorage.googleapis.com/v0/b/mp3-project2.appspot.com/o/adv.jpg?alt=media&token=48331f76-f9bd-4da7-9f77-5dbf11acdb03" alt="" class="img-fluid" /></a>
       </div>
     </div>
   </div>
 </div>
+<br/>
 <!----New Releases Section Start---->
 <div class="ms_releases_wrapper">
   <app-new-release></app-new-release>
 </div>
 <br/>
-<!----New Releases Section Start---->
+<!----Top Listen Playlist Start---->
 <app-top-listened-playlist></app-top-listened-playlist>
-<!----Add Section Start---->
 <br/>
-<!----New Releases Section Start---->
-<!--<app-top-like-playlist></app-top-like-playlist>-->
-<!----Add Section Start---->
-<div class="ms_advr_wrapper ms_advr2">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <a href="#"><img src="../../assets/images/adv1.jpg" alt="" class="img-fluid" /></a>
-      </div>
-    </div>
-  </div>
-</div>
+<!----Top Like PlayList Start---->
+<app-top-like-playlist></app-top-like-playlist>
+<br/>
+<!----New PlayList Start---->
+<app-latest-playlist></app-latest-playlist>
+<br/>
+
