@@ -37,16 +37,19 @@ import { SearchfilterPipe } from './share/searchfilter.pipe';
 import { PlaySongComponent } from "./song/play-song/play-song.component";
 import { CommonModule } from '@angular/common';
 import { UpdateSongComponent } from './song/update-song/update-song.component';
-import { TopListenedPlaylistComponent } from './top-listened-playlist/top-listened-playlist.component';
+import { TopListenedPlaylistComponent } from './playlist/top-listened-playlist/top-listened-playlist.component';
 import { MyplaylistComponent } from './myplaylist/myplaylist.component';
 import { PlaylistdetailsComponent } from './myplaylist/playlistdetails/playlistdetails.component';
 import { CreatepPlaylistComponent } from './myplaylist/createp-playlist/createp-playlist.component';
 import { CommentComponent } from './share/comment/comment-song/comment.component';
 import { DetailSongComponent } from './song/detail-song/detail-song.component';
-import { TestplayerComponent } from './testplayer/testplayer.component';
 import { CommentPlayListComponent } from './share/comment/comment-play-list/comment-play-list.component';
-import {AngMusicPlayerModule} from "ang-music-player";
 import { AddSongDialogComponent } from './share/add-song-dialog/add-song-dialog.component';
+import { TestplayerComponent } from "./testplayer/testplayer.component";
+import { AngMusicPlayerModule } from "ang-music-player";
+import { LatestPlaylistComponent } from './playlist/latest-playlist/latest-playlist.component';
+import { TopLikePlaylistComponent } from './playlist/top-like-playlist/top-like-playlist.component';
+import { TopLikeSongsComponent } from './song/top-like-songs/top-like-songs.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +90,9 @@ import { AddSongDialogComponent } from './share/add-song-dialog/add-song-dialog.
     TestplayerComponent,
     CommentPlayListComponent,
     AddSongDialogComponent,
+    LatestPlaylistComponent,
+    TopLikePlaylistComponent,
+    TopLikeSongsComponent
   ],
   imports: [
     BrowserModule,

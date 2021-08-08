@@ -64,6 +64,4 @@ export class AddSongDialogComponent implements OnInit {
       alert(data.message);
     });
   }
-
-
 }
