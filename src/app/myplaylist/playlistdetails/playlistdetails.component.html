@@ -12,9 +12,10 @@
         <h1><a>Playlist :  {{playList.name}}</a></h1>
       </div>
     </div>
+    <div class="ms_divider" style="width: 100%"></div>
     <div *ngIf="!check">
       <div *ngFor="let item of listSong, let i = index">
-        <div class="col-lg-4 col-md-12 padding_right40">
+        <div class="row col-md-12" style="margin: 10px 0px 20px 0px">
           <div class="ms_weekly_box">
             <div class="weekly_left">
                     <span class="w_top_no">
@@ -60,7 +61,7 @@
 
           </div>
           <div class="ms_divider"></div>
-          <div class="ms_weekly_box">
+<!--          <div class="ms_weekly_box">-->
           </div>
         </div>
       </div>
@@ -70,7 +71,7 @@
     </div>
     <!--    <br>-->
   </div>
-</div>
+<!--</div>-->
 
 <app-comment-play-list></app-comment-play-list>
 
