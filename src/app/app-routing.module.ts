@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'img', component: UploadImgComponent },
   { path: 'url', component: UploadUrlComponent },
   { path: 'search', component: ListSongSearchComponent },
-  {path: 'song/:id', component: DetailSongComponent  },
+  { path: 'song/:id', component: DetailSongComponent  },
   { path: 'changepassword', component: ChangepasswordComponent},
   { path: 'song', component: SongComponent},
   { path: 'updatesong/:id', component: UpdateSongComponent},

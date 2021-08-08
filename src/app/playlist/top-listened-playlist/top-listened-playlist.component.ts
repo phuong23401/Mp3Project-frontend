@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Playlist } from '../model/Playlist';
-import { PlaylistService } from '../service/playlist/playlist.service';
+import { Playlist } from '../../model/Playlist';
+import { PlaylistService } from '../../service/playlist/playlist.service';
 
 @Component({
   selector: 'app-top-listened-playlist',
@@ -9,9 +9,7 @@ import { PlaylistService } from '../service/playlist/playlist.service';
 })
 export class TopListenedPlaylistComponent implements OnInit {
   playlistList: Playlist[] = [];
-
-  countSong = 0;
-
+  
   constructor(private playlistService: PlaylistService) { 
     this.playlistService.getTopListened().subscribe(res => {
       this.playlistList = res;

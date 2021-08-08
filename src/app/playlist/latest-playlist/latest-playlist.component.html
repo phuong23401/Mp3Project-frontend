@@ -3,12 +3,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="ms_heading">
-                    <h1>Top Listened Playlist</h1>
+                    <h1>New Playlist</h1>
+                    <span class="veiw_all"><a href="javascript:">view more</a></span>
                 </div>
             </div>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="col-lg-2 col-md-6" *ngFor="let playlist of playlistList, let i = index">
+                    <div class="col-lg-2 col-md-6" *ngFor="let playlist of playlists, let i = index">
                         <div class="ms_rcnt_box marger_bottom30">
                             <div class="ms_rcnt_box_img">
                                 <img src="{{playlist.avatarUrl}}" alt="" class="img-fluid">
@@ -20,7 +21,7 @@
                             </div>
                             <div class="ms_rcnt_box_text">
                                 <h3><a href="javascript:">{{playlist.name}}</a></h3>
-                                <p>{{playlistList[i].songs.length}} songs</p>
+                                <p>{{playlists[i].songs.length}} songs</p>
                             </div>
                         </div>
                     </div>

@@ -52,7 +52,6 @@ export class AddSongDialogComponent implements OnInit {
     this.playlistService.creatPlaylist(this.playlist).subscribe(next => {
       this.getAllPlaylistByUser();
     })
-
   }
 
   addSongToPlaylist(id: number) {
