@@ -63,6 +63,7 @@ export class PlaylistService {
   getPlaylist(id:any): Observable<PlaylistResponse>{
     return this.httpClient.get<PlaylistResponse>(API_URL+"/playlist/get/" +id);
   }
+  
   getPlaylistById(id: number): Observable<Playlist> {
     return this.httpClient.get<Playlist>(API_URL + '/home/playlist/' + id);
   }
