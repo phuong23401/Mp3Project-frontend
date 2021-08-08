@@ -9,12 +9,11 @@ declare var music: any;
   styleUrls: ['./testplayer.component.css']
 })
 export class TestplayerComponent implements OnInit {
-  // audioList: AudioPlay[] = [];
+  audioList: AudioPlay[] = [];
   songList: Song[] = [];
   randomSong: Song;
 
   constructor(private songService: SongService) {
-
 
   }
 
@@ -23,16 +22,10 @@ export class TestplayerComponent implements OnInit {
   ngOnInit(): void {
     this.songService.getAllSongs().subscribe(res => {
       this.songList = res;
-      // this.randomSong = this.songList[Math.floor(Math.random() * this.songList.length)]
-      console.log("song list ",this.songList)
-      console.log("song url ",this.randomSong.fileUrl)
-      // this.audioList = res
-      // this.songList = this.audioList
-
+      this.randomSong = this.songList[Math.floor(Math.random() * this.songList.length)]
     });
-
+    this.setAudio();
   }
-
 
   setAudio() {
     // for (let i = 0; i < this.songList.length; i++) {
@@ -47,7 +40,23 @@ export class TestplayerComponent implements OnInit {
 
 
     // console.log("list au diooooo",this.audioList);
-
-
+// console.log(this.randomSong.fileUrl)
+    this.audioList = [
+      {
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        title: "Smaple 1",
+        cover: "https://i1.sndcdn.com/artworks-000249294066-uow7s0-t500x500.jpg"
+      },
+      {
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3",
+        title: "Sample 2",
+        cover: "https://i1.sndcdn.com/artworks-000249294066-uow7s0-t500x500.jpg"
+      },
+      {
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3",
+        title: "Sample 3",
+        cover: "https://i1.sndcdn.com/artworks-000249294066-uow7s0-t500x500.jpg"
+      }
+    ];
   }
 }
