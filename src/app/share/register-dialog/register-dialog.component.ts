@@ -26,8 +26,8 @@ export class RegisterDialogComponent implements OnInit {
   message: string;
   newUser: ResgisterUser;
   errorRegis: string;
-  error1: string = "Tài khoản đã tồn tại!";
-  error2: string = "Email đã được sử dụng!";
+  error1: string ="Username is existed !";
+  error2: string ="Email is existed!";
   check:boolean =false;
   check1:boolean = false;
   check2:boolean = false;

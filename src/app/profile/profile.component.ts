@@ -8,6 +8,7 @@ import { EditProfile } from '../model/EditProfile';
 import Swal from 'sweetalert2';
 import { TokenService } from '../service/token/token.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
