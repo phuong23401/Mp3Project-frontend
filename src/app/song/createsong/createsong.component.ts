@@ -9,6 +9,7 @@ import {Singers} from "../../model/Singers";
 import {Message} from "../../model/Message";
 import {Router} from "@angular/router";
 import Swal from 'sweetalert2';
+import {FormControl, FormGroup} from "@angular/forms";
 
 
 @Component({
@@ -17,11 +18,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./createsong.component.css']
 })
 export class CreatesongComponent implements OnInit {
-  searchValue: string;
+  searchValue: any;
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
   formavt: any = {};
+  conditsion: boolean;
+  listFilterResult: Singers[];
+  songList: Singers[];
+  isCheck = true;
   error1: any = {
     message: "noavatar"
   }
@@ -46,7 +51,7 @@ export class CreatesongComponent implements OnInit {
     singer: [
       {id: 0}
     ],
-    author: ""
+    author:""
   };
   mes: Message = {}
   form: any = {};
@@ -55,22 +60,31 @@ export class CreatesongComponent implements OnInit {
   user: User = {};
   singgersOnchage: Singers[] = [];
   newSinger: Singers;
+  searchForm: FormGroup;
 
 
   constructor(private songService: SongService,
               private categorySv: CategoryService,
               private singer: SingerService, private router: Router) {
+    this.searchForm = new FormGroup({
+      name: new FormControl(),
+    });
     this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
       this.categoriess = categorySv;
     })
+
     this.singer.getAllSinger().subscribe((singerSv: Singers[]) => {
       this.singgers = singerSv;
 
     })
 
+
   }
 
   ngOnInit(): void {
+    this.singer.getAllSinger().subscribe(res => {
+      this.songList = res;
+    })
   }
 
   ngSubmit() {
@@ -158,9 +172,35 @@ export class CreatesongComponent implements OnInit {
       })
     })
   }
-  Search(){
-    this.singgers = this.singgers.filter(res =>{
-      return res.name.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase());
+
+  Search() {
+    this.singgers = this.singgers.filter(res => {
+      return res.name.toLowerCase().match(this.searchValue.toLowerCase());
     })
+  }
+
+  filterKeyWord() {
+    let filterResult = [];
+    this.conditsion = true;
+    this.isCheck = false;
+    console.log(this.searchValue)
+    if (this.searchValue.length === 0) {
+      this.isCheck = true;
+    } else {
+      this.listFilterResult = this.songList;
+      let keyWord = this.searchValue.toLowerCase();
+      this.listFilterResult.map(item => {
+        let name = item.name.toLowerCase();
+        if (name.includes(keyWord)) {
+          filterResult.push(item);
+        }
+      });
+    }
+    this.listFilterResult = filterResult;
+    if (this.listFilterResult.length !== 0) {
+      this.conditsion = true;
+    } else {
+      this.conditsion = false;
+    }
   }
 }

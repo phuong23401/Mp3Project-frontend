@@ -63,15 +63,16 @@ export class PlaylistdetailsComponent implements OnInit {
     this.playListService.getPlaylistById(this.id).subscribe(res => {
       this.songlist = res.songs;
       this.playlist = res;
-      console.log("songlist : "+ this.songlist , this.playlist);
+
     })
-    // this.getSongOfPlaylist();
-    // this.getPlayList();
+
+    this.getSongOfPlaylist();
+    this.getPlayList();
     this.isPlaying = false;
     this.formCreatePlaylist = this.formBuilder.group({
       name: ['', [Validators.required]],
-    })
 
+    })
   }
   getPlayList(){
     this.playListService.getPlaylist(this.id).subscribe(data=>{
