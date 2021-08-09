@@ -14,6 +14,8 @@ import {MyplaylistComponent} from "./myplaylist/myplaylist.component";
 import {PlaylistdetailsComponent} from "./myplaylist/playlistdetails/playlistdetails.component";
 import {CreatepPlaylistComponent} from "./myplaylist/createp-playlist/createp-playlist.component";
 import {TestplayerComponent} from "./testplayer/testplayer.component";
+import { ToastGlobalComponent } from './share/toast-global/toast-global.component';
+import {ToastContainerComponent} from "./share/toast-container/toast-container.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -31,6 +33,8 @@ const routes: Routes = [
   { path: 'myplaylist/details/:id', component: PlaylistdetailsComponent},
   { path: 'createplaylist', component: CreatepPlaylistComponent},
   { path: 'check', component: TestplayerComponent},
+  { path: 'test', component: ToastContainerComponent},
+
 ];
 
 @NgModule({

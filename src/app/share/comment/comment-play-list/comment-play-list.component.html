@@ -30,24 +30,34 @@
 </div> -->
 
 
+<div class="row">
 
- <div class="container mt-5 mb-5">
-  <div class="d-flex justify-content-center row">
-    <div class="col-md-8">
+  <div class="col-6">
 
-      <div class="p-3 bg-white mt-2 rounded" *ngFor="let comment of commentPlayList">
-        <div class="d-flex justify-content-between">
-          <div class="d-flex flex-row user"><img class="rounded-circle img-fluid img-responsive" src="{{comment.user.avatarUrl}}" width="40">
-            <div class="d-flex flex-column ml-2"><span class="font-weight-bold">{{comment.user.name}}</span><span class="day">{{comment.createdTime}}</span></div>
-          </div>
-        </div>
-        <div class="comment-text text-justify mt-2">
-          <p>{{comment.content}}</p>
+    <div class="p-3 bg-white mt-2 rounded" *ngFor="let comment of commentPlayList">
+      <div class="d-flex justify-content-between">
+        <div class="d-flex flex-row user"><img class="rounded-circle img-fluid img-responsive"
+                                               src="{{comment.user.avatarUrl}}" width="40">
+          <div class="d-flex flex-column ml-2"><span class="font-weight-bold"><i
+            class="far fa-user"></i> {{comment.user.name}}</span> <span class="day"> <i
+            class="far fa-clock"></i> {{comment.createdTime | date:'hh-mm/dd/MM/yyyy'}}</span></div>
         </div>
       </div>
-      <form [formGroup]="form" (ngSubmit)="onEnter()">
-        <div   class="d-flex flex-row align-items-center add-comment p-2 bg-white rounded"><img class="rounded-circle" src="https://firebasestorage.googleapis.com/v0/b/kara-20aaa.appspot.com/o/me.jpg?alt=media&token=060ce5ae-deac-4059-b013-1267c7660635" width="40"><input formControlName="comment" type="text" class="form-control border-0 no-box-shadow ml-1" placeholder="Leave a constructive comment..."></div>
-      </form>
+      <div class="comment-text text-justify mt-2">
+        <p>{{comment.content}}</p>
+      </div>
     </div>
+  </div>
+  <div class="col-6">
+    <form [formGroup]="form">
+      <div class="d-flex flex-row align-items-center add-comment p-2 bg-white rounded">
+        <img class="rounded-circle" src="https://firebasestorage.googleapis.com/v0/b/kara-20aaa.appspot.com/o/me.jpg?alt=media&token=060ce5ae-deac-4059-b013-1267c7660635" width="40">
+        <textarea
+        formControlName="comment" type="textarea" class="form-control border-0 no-box-shadow ml-1"
+        placeholder="Leave a constructive comment..." style="height:100px">
+        </textarea>
+        <button class="ms_btn" (click)="onEnter()">Send</button>
+      </div>
+    </form>
   </div>
 </div>
