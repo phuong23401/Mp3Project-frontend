@@ -106,10 +106,9 @@ export class CreatesongComponent implements OnInit {
           title: this.status,
           icon: "success",
           confirmButtonColor: "#3bc8e7"
-        }).then(function (){
-          this.router.navigate(['/song']);
-        });
-        // alert(this.status);
+        })
+        this.form = null;
+        this.singgersOnchage = null;
 
       }
     }

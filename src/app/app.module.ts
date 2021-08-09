@@ -44,10 +44,12 @@ import { CreatepPlaylistComponent } from './myplaylist/createp-playlist/createp-
 import { CommentComponent } from './share/comment/comment-song/comment.component';
 import { DetailSongComponent } from './song/detail-song/detail-song.component';
 import { CommentPlayListComponent } from './share/comment/comment-play-list/comment-play-list.component';
+import { AddSongDialogComponent } from './share/add-song-dialog/add-song-dialog.component';
 import { TestplayerComponent } from "./testplayer/testplayer.component";
 import { AngMusicPlayerModule } from "ang-music-player";
 import { LatestPlaylistComponent } from './playlist/latest-playlist/latest-playlist.component';
 import { TopLikePlaylistComponent } from './playlist/top-like-playlist/top-like-playlist.component';
+import { TopLikeSongsComponent } from './song/top-like-songs/top-like-songs.component';
 
 @NgModule({
   declarations: [
@@ -87,8 +89,10 @@ import { TopLikePlaylistComponent } from './playlist/top-like-playlist/top-like-
     DetailSongComponent,
     TestplayerComponent,
     CommentPlayListComponent,
+    AddSongDialogComponent,
     LatestPlaylistComponent,
-    TopLikePlaylistComponent
+    TopLikePlaylistComponent,
+    TopLikeSongsComponent
   ],
   imports: [
     BrowserModule,
