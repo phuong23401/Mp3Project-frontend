@@ -19,7 +19,7 @@
                     </span>
             <div class="w_top_song">
               <div class="w_tp_song_img">
-                <img src="{{item?.avatarUrl}}" alt="">
+                <img src="{{item?.avatarUrl}}"  alt="">
                 <div class="ms_song_overlay">
                 </div>
                 <div class="ms_play_icon" *ngIf="!isPlaying"
@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="w_tp_song_name">
-                <h3><a href="javascript:">{{item.name}}</a></h3>
+                <h3><a [routerLink]="['/song',item.id]"  >{{item.name}}</a></h3>
                 <div *ngFor="let s of item.singer">
                   <p>{{s.name}}</p>
                 </div>
@@ -47,7 +47,7 @@
           </div>
           <ul class="more_option">
             <li>
-              <a href="javascript:" [routerLink]="['/updatesong',item.id]"><i class="fas fa-edit"></i> update
+              <a href="javascript:" [routerLink]="['/updatesong',item.id]"><i class="fas fa-edit"></i> Update
               </a>
             </li>
             <li>
