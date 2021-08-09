@@ -28,29 +28,38 @@
 <!--    </div>-->
 <!--  </section>-->
 <!--</div>-->
-<div class="row">
-  <div class="col-6">
-      <div class="p-3 bg-white mt-2 rounded" *ngFor="let comment of commentSong">
-        <div class="d-flex justify-content-between">
-          <div class="d-flex flex-row user"><img class="rounded-circle img-fluid img-responsive" src="{{comment.user.avatarUrl}}" width="40">
-            <div class="d-flex flex-column ml-2"><span class="font-weight-bold"><i class="far fa-user"></i>{{comment.user.name}}</span><span class="day"> <i class="far fa-clock"></i> {{comment.createdTime | date:'hh-mm/dd/MM/yyyy' }}</span></div>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 col-md-6 col-12 pb-4">
+        <div>
+          <h1>Comments</h1>
+          <div *ngFor="let comment of commentSong" class="comment mt-4 text-justify float-left"><img
+            src="{{comment.user.avatarUrl}}" alt="" class="rounded-circle" width="40" height="40">
+            <h4><i class="far fa-user"></i> {{comment.user.name}}</h4>
+            <span>&nbsp; <i class="far fa-clock"></i> {{comment.createdTime | date:'hh-mm/dd/MM/yyyy' }}</span> <br>
+            <p style="margin-left: 50px">{{comment.content}}</p>
           </div>
         </div>
-        <div class="comment-text text-justify mt-2">
-          <p>{{comment.content}}</p>
-        </div>
       </div>
+      <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+        <form [formGroup]="form">
+          <form id="algin-form">
+            <div class="form-group">
+              <h4></h4> <label>Message</label> <textarea name="msg" id="" msg cols="30" rows="5" class="form-control"
+                                                         style="background-color: #f8f9fa; height: 100px"></textarea>
+            </div>
+            <div class="form-group">
+              <button formControlName="comment" type="button" id="post" class="ms_btn" href="javascript:"
+                      (click)="onEnter()">Post
+              </button>
+            </div>
+          </form>
+        </form>
       </div>
-      <div class="col-6">
-      <form [formGroup]="form" >
-        <div   class="d-flex flex-row align-items-center add-comment p-2 bg-white rounded"><img class="rounded-circle" src="https://firebasestorage.googleapis.com/v0/b/kara-20aaa.appspot.com/o/me.jpg?alt=media&token=060ce5ae-deac-4059-b013-1267c7660635" width="40"><textarea  formControlName="comment" type="textarea" class="form-control border-0 no-box-shadow ml-1" placeholder="Leave a constructive comment..." style="height:100px">
-        </textarea>
-          <button class="ms_btn" (click)="onEnter()">Send</button>
-        </div>
-      </form>
     </div>
-</div>
-
+  </div>
+</section>
 
 
 
