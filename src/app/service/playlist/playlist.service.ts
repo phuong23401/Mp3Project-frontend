@@ -3,10 +3,10 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Playlist } from 'src/app/model/Playlist';
-import {PlaylistResponse} from "../../model/PlaylistResponse";
-import {Song} from "../../model/Song";
-import {AddSongToPlaylistReq} from "../../model/AddSongToPlaylistReq";
-import {HttpService} from "../http/http.service";
+import { PlaylistResponse } from "../../model/PlaylistResponse";
+import { Song } from "../../model/Song";
+import { AddSongToPlaylistReq } from "../../model/AddSongToPlaylistReq";
+import { HttpService } from "../http/http.service";
 
 const API_URL = `${environment.API_URL}`;
 @Injectable({
