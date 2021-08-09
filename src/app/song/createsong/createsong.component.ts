@@ -22,11 +22,11 @@ export class CreatesongComponent implements OnInit {
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
+  formavt: any = {};
   conditsion: boolean;
   listFilterResult: Singers[];
   songList: Singers[];
   isCheck = true;
-  formavt: any = {};
   error1: any = {
     message: "noavatar"
   }
@@ -51,7 +51,7 @@ export class CreatesongComponent implements OnInit {
     singer: [
       {id: 0}
     ],
-    author: ""
+    author:""
   };
   mes: Message = {}
   form: any = {};
@@ -61,6 +61,7 @@ export class CreatesongComponent implements OnInit {
   singgersOnchage: Singers[] = [];
   newSinger: Singers;
   searchForm: FormGroup;
+
 
   constructor(private songService: SongService,
               private categorySv: CategoryService,
@@ -121,9 +122,16 @@ export class CreatesongComponent implements OnInit {
             icon: "success",
             confirmButtonColor: "#3bc8e7"
           })
-          this.form = null;
+          this.form.name = null;
+          this.form.description = null;
+          this.formavt.avatarUrl = null;
+          this.form.fileUrl = null;
+          this.form.lyric = null;
+          this.form.categories = null;
           this.singgersOnchage = null;
-
+          this.form.author = null;
+          this.isCheckUploadFile = false;
+          this.isCheckUploadAvatar = false;
         }
       }
       , error => {
@@ -140,12 +148,12 @@ export class CreatesongComponent implements OnInit {
 
   onChangeAvatar(event: any) {
     this.formavt.avatarUrl = event;
-    // this.isCheckUploadAvatar = true;
+    this.isCheckUploadAvatar = true;
   }
 
   onChangeFile(event: any) {
     this.form.fileUrl = event;
-    // this.isCheckUploadFile = true;
+    this.isCheckUploadFile = true;
   }
 
   onchage(value: any) {
