@@ -1,11 +1,45 @@
-
-
 <br><br>
 <h2 style="text-align: center"> Create New Song </h2>
 
 
 <br>
-
+<!--<div class="row">-->
+<div style="text-align: center">
+  <div *ngIf="isCheckUploadAvatar ; then img else img1"></div>
+  <ng-template #img><img style="width: 150px ;height: 150px; margin-bottom: 20px" src="{{formavt.avatarUrl}}" alt=""
+                         class="img-fluid"></ng-template>
+  <ng-template #img1><img style=" margin-bottom: 20px;width: 150px ;height: 150px"
+                          src="https://cdn3.vectorstock.com/i/1000x1000/26/62/runner-avatar-figure-with-mp3-player-music-block-vector-32312662.jpg"
+                          alt=""></ng-template>
+</div>
+<div *ngIf="isCheckUploadFile ; then case else case1"></div>
+<div style="margin-bottom: 20px ;text-align: center">
+  <ng-template #case >
+    <div style="text-align: center">
+      <audio controls disabled="" style="text-align: center">
+        <source [src]="form.fileUrl" style="width: 350px; height: auto">
+      </audio>
+  </div>
+  </ng-template>
+  <ng-template #case1></ng-template>
+</div>
+<!--  </div>-->
+<div>
+  <div style="text-align: center;margin-bottom: 20px">
+    <div style="margin-bottom: 20px">
+      <h6 *ngIf="!isCheckUploadAvatar">Please Upload Avatar Song</h6>
+      <div style="text-align: center">
+        <app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>
+      </div>
+    </div>
+    <div>
+      <h6 *ngIf="!isCheckUploadFile">Please Upload FileSong</h6>
+      <div style="text-align: center">
+        <app-upload-url (giveURLtoCreate)="onChangeFile($event)"></app-upload-url>
+      </div>
+    </div>
+  </div>
+</div>
 <form #f="ngForm" (ngSubmit)="f.form.valid" novalidate style="margin-bottom: 50px">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -14,7 +48,7 @@
              placeholder="Name-Song">
     </div>
     <div class="form-group col-md-6">
-      <label>Category: </label><span style="color:#ef8989;"  *ngIf="categories.hasError('required')"> *The categories is required!</span>
+      <label>Category: </label><span style="color:#ef8989;" *ngIf="categories.hasError('required')"> *The categories is required!</span>
       <select class="form-control" name="categories" [(ngModel)]="form.categories" #categories="ngModel" required>
         <option selected>Choose...</option>
         <option *ngFor="let cate of categoriess" [value]="cate.id">{{cate.name}}</option>
@@ -23,7 +57,7 @@
   </div>
   <div class="row">
     <div class="form-group col-md-6">
-      <label>Lyric: </label><span style="color:#ef8989;"  *ngIf="lyric.hasError('required')"> *The Lyric Song is required!</span>
+      <label>Lyric: </label><span style="color:#ef8989;" *ngIf="lyric.hasError('required')"> *The Lyric Song is required!</span>
       <textarea type="text" class="form-control" placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric"
                 #lyric="ngModel" required></textarea>
     </div>
@@ -35,37 +69,37 @@
   </div>
 
   <div class="form-row">
-          <div class="form-group col-md-6">
-            <label >Singers</label>
-            <div>
-              <input #Value type="text" class="form-control" (change)="onchage(Value.value)"  aria-label="Username" aria-describedby="basic-addon1" placeholder="Singer">
-            </div>
-            <div *ngFor="let item of singgersOnchage">
-              <p>{{ item.name }}</p>
-            </div>
-          </div>
+    <div class="form-group col-md-6">
+      <label>Singers</label>
+      <div>
+        <input #Value type="text" class="form-control" (change)="onchage(Value.value)" aria-label="Username"
+               aria-describedby="basic-addon1" placeholder="Singer">
+      </div>
+      <div *ngFor="let item of singgersOnchage">
+        <p>{{ item.name }}</p>
+      </div>
+    </div>
     <div class="form-group col-md-6">
       <label>Author: </label>
       <input type="text" class="form-control" name="author" [(ngModel)]="form.author" #author="ngModel"
-             placeholder="Author"  aria-describedby="basic-addon1">
+             placeholder="Author" aria-describedby="basic-addon1">
     </div>
 
   </div>
-  <div class="row">
-    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">
-      <h6 *ngIf="!isCheckUploadFile">Please Upload FileSong</h6>
-      <app-upload-url (giveURLtoCreate)="onChangeFile($event)"></app-upload-url>
-    </div>
-    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">
-      <h6 *ngIf="!isCheckUploadAvatar">Please Upload Avatar Song</h6>
-      <app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>
-    </div>
+  <!--  <div class="row">-->
+  <!--    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">-->
+  <!--      <h6 *ngIf="!isCheckUploadFile">Please Upload FileSong</h6>-->
+  <!--      <app-upload-url (giveURLtoCreate)="onChangeFile($event)"></app-upload-url>-->
+  <!--    </div>-->
+  <!--    <div class="form-group col-md-6" style="padding: 10px 0px 0px 200px">-->
+  <!--      <h6 *ngIf="!isCheckUploadAvatar">Please Upload Avatar Song</h6>-->
+  <!--      <app-upload-img (giveURLtoCreate)="onChangeAvatar($event)"></app-upload-img>-->
+  <!--    </div>-->
 
-  </div>
-
+  <!--  </div>-->
   <br>
   <div style="text-align: center">
-    <a href="javascript:" class="ms_btn"  (click)="ngSubmit()">Create</a>
+    <a href="javascript:" class="ms_btn" (click)="ngSubmit()">Create</a>
   </div>
 </form>
 

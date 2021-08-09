@@ -56,6 +56,7 @@ export class CreatesongComponent implements OnInit {
   singgersOnchage: Singers[] = [];
   newSinger: Singers;
 
+
   constructor(private songService: SongService,
               private categorySv: CategoryService,
               private singer: SingerService, private router: Router) {
@@ -115,6 +116,8 @@ export class CreatesongComponent implements OnInit {
           this.form.categories = null;
           this.singgersOnchage = null;
           this.form.author = null;
+          this.isCheckUploadFile = false;
+          this.isCheckUploadAvatar = false;
         }
       }
       , error => {
@@ -131,12 +134,12 @@ export class CreatesongComponent implements OnInit {
 
   onChangeAvatar(event: any) {
     this.formavt.avatarUrl = event;
-    // this.isCheckUploadAvatar = true;
+    this.isCheckUploadAvatar = true;
   }
 
   onChangeFile(event: any) {
     this.form.fileUrl = event;
-    // this.isCheckUploadFile = true;
+    this.isCheckUploadFile = true;
   }
 
   onchage(value: any) {

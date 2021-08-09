@@ -8,7 +8,7 @@ import {AddSongDialogService} from "../../service/dialogsong/add-song-dialog.ser
 import {SongService} from "../../service/song/song.service";
 import {AddSongToPlaylistReq} from "../../model/AddSongToPlaylistReq";
 import {BsModalService} from "ngx-bootstrap/modal";
-
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-add-song-dialog',
   templateUrl: './add-song-dialog.component.html',
@@ -23,7 +23,7 @@ export class AddSongDialogComponent implements OnInit {
   song: Song = {};
   id: any;
   addSongToPlaylists: AddSongToPlaylistReq = {}
-
+  status="";
   constructor(private playlistService: PlaylistService,
               private formBuilder: FormBuilder,
               private dialogService: AddSongDialogService,
@@ -62,6 +62,15 @@ export class AddSongDialogComponent implements OnInit {
       idPlaylist: id
     }
     this.playlistService.addSongToPlaylist(this.addSongToPlaylists).subscribe(data => {
+      this.status = 'Create success!';
+      Swal.fire({
+        title: this.status,
+        icon: "success",
+        confirmButtonColor: "#3bc8e7"
+      })
+      localStorage.setItem("message","Success");
+      this.status = localStorage.getItem("message");
+      console.log("status: "+this.status)
       document.querySelector('.modal-backdrop').remove()
       document.body.classList.remove('modal-open')
       // @ts-ignore
