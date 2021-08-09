@@ -81,8 +81,11 @@ export class Header1Component implements OnInit {
       this.listFilterResult = this.songList;
       var keyWord = this.searchValue.toLowerCase();
       this.listFilterResult.map(item => {
+        var username = item.user.name.toLowerCase();
+        // var singer = item.singer.name.toLowerCase();
         var name = item.name.toLowerCase();
-        if (name.includes(keyWord)) {
+        var author = item.author.toLowerCase();
+        if (name.includes(keyWord) || username.includes(keyWord) || author.includes(keyWord)) {
           filterResult.push(item);
         }
       });

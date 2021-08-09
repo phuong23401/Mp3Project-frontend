@@ -1,8 +1,8 @@
+import { AudioPlay } from './../model/AudioPlay';
 import {Component, OnInit} from '@angular/core';
 import {SongService} from "../service/song/song.service";
 import {Song} from "../model/Song";
-import {AudioPlay} from "../model/AudioPlay";
-
+declare var music: any;
 @Component({
   selector: 'app-testplayer',
   templateUrl: './testplayer.component.html',

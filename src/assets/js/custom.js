@@ -121,9 +121,10 @@ Assigned to: Theme Forest
                 },
               observer:true,
               observeParents:true,
-
-
-            });
+            })
+          observer:true
+            observeParents:true
+          ;
             // Recent Slider
             var newRecentSwiper = new Swiper('.ms_rcnt_slider .swiper-container', {
                 slidesPerView: 6,
@@ -164,7 +165,9 @@ Assigned to: Theme Forest
                 },
               observer:true,
               observeParents:true,
-            });
+            })
+          observer:true
+          observeParents:true;
             // Featured Slider
             var newFeateuredSwiper = new Swiper('.ms_feature_slider.swiper-container', {
                 slidesPerView: 6,
@@ -204,7 +207,9 @@ Assigned to: Theme Forest
                 },
               observer:true,
               observeParents:true,
-            });
+            })
+          observer:true
+          observeParents:true;
             // New released Slider
             var newReleasedSwiper = new Swiper('.ms_release_slider.swiper-container', {
                 slidesPerView: 4,
@@ -244,7 +249,9 @@ Assigned to: Theme Forest
                 },
               observer:true,
               observeParents:true,
-            });
+            })
+          observer:true
+          observeParents:true;
             // Featured Album Slider
             var newFeaturedAlbumSwiper = new Swiper('.ms_album_slider.swiper-container', {
                 slidesPerView: 6,
@@ -324,7 +331,7 @@ Assigned to: Theme Forest
                 },
               observer:true,
               observeParents:true,
-            });
+            })
             // Testimonial Slider
             var newTestimonialSwiper = new Swiper('.ms_test_slider.swiper-container', {
                 slidesPerView: 4,
@@ -352,7 +359,8 @@ Assigned to: Theme Forest
             });
 
 
-        },
+        }, observer:true,
+      observeParents:true,
 
         // More
         More: function() {
@@ -475,9 +483,4 @@ Assigned to: Theme Forest
         }, 600);
         return false
     });
-
-
-  // $(document).ready(function(){ jQuery(document).ready(function(){jQuery("#jquery-accordion-menu").jqueryAccordionMenu(); jQuery(".colors a").click(function(){if($(this).attr("class") !="default"){$("#jquery-accordion-menu").removeClass(); $("#jquery-accordion-menu").addClass("jquery-accordion-menu").addClass($(this).attr("class"));}else{$("#jquery-accordion-menu").removeClass(); $("#jquery-accordion-menu").addClass("jquery-accordion-menu");}});}); });
 })(jQuery);
-
-

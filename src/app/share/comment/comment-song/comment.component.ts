@@ -40,7 +40,8 @@ export class CommentComponent implements OnInit {
               private httpService: HttpService,
               private router: ActivatedRoute,
               private songService: SongService,
-              private userService: UserService,) {
+              private userService: UserService,
+              private router1: Router) {
     this.tokenUser = token.getToken();
     if (this.tokenUser != null) {
       this.checkLogin = true;
@@ -50,16 +51,16 @@ export class CommentComponent implements OnInit {
       comment: ['']
     });
     this.userId = Number(this.httpService.getID());
-    console.log("user id ", this.userId)
+
     this.router.paramMap.subscribe(paramMap => {
       this.id = +paramMap.get('id')
-      this.songService.getSongById(this.id).subscribe(res => {
+      this.songService.getSongsById(this.id).subscribe(res => {
         this.song = res;
       });
     })
-    this.songService.getSongById(this.id).subscribe(res => {
+    this.songService.getSongsById(this.id).subscribe(res => {
       this.song = res;
-      console.log("day la song", this.song)
+
     });
     this.userService.getUserById(this.httpService.getID()).subscribe(res => {
       this.user = res;
@@ -67,16 +68,12 @@ export class CommentComponent implements OnInit {
     this.commentSongService.getCommentBySong(this.id).subscribe(res => {
       this.commentSong = res;
     });
-
     this.profile.getUserCurrent().subscribe(res => {
       this.user = res;
-      console.log(this.user)
     })
   }
 
   ngOnInit(): void {
-
-
   }
   login(){
     this.modalService.show(LoginDialogComponent)
@@ -88,13 +85,11 @@ export class CommentComponent implements OnInit {
       user: this.user,
       song: this.song
     };
-
     this.commentSongService.createCommentSong(cmt).subscribe(res => {
-      this.commentSongService.getCommentBySong(this.song.id).subscribe(data => {
-        console.log("this song id", this.song.id)
-        this.commentSong = data;
+      this.commentSongService.getCommentBySong(this.id).subscribe(res => {
+        this.commentSong = res;
         this.form.reset();
-      })
+      });
       Swal.fire({
         title: "Comment Success",
         icon: 'success',

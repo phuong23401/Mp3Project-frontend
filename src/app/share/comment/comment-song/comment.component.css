@@ -1,39 +1,76 @@
-.post-comments {
-  padding-bottom: 9px;
-  margin: 5px 0 5px;
-  background: #14182a;
+/*.post-comments {*/
+/*  padding-bottom: 9px;*/
+/*  margin: 5px 0 5px;*/
+/*  background: #14182a;*/
+/*}*/
+
+/*.comments-nav {*/
+/*  border-bottom: 1px solid #eee;*/
+/*  margin-bottom: 5px;*/
+/*  background: #14182a;*/
+/*}*/
+
+/*.post-comments .comment-meta {*/
+/*  border-bottom: 1px solid #eee;*/
+/*  margin-bottom: 5px;*/
+/*  background: #14182a;*/
+/*}*/
+
+/*.post-comments .media {*/
+/*  border-left: 1px dotted #000;*/
+/*  border-bottom: 1px dotted #000;*/
+/*  margin-bottom: 5px;*/
+/*  padding-left: 10px;*/
+/*  background: #14182a;*/
+/*}*/
+
+/*.post-comments .media-heading {*/
+/*  font-size: 12px;*/
+/*  color: grey;*/
+/*  background: #14182a;*/
+/*}*/
+
+/*.post-comments .comment-meta a {*/
+/*  font-size: 12px;*/
+/*  color: grey;*/
+/*  font-weight: bolder;*/
+/*  margin-right: 5px;*/
+/*  background: #14182a;*/
+/*}*/
+
+
+
+body {
+  background: #C8E6C9
 }
 
-.comments-nav {
-  border-bottom: 1px solid #eee;
-  margin-bottom: 5px;
-  background: #14182a;
+.no-box-shadow {
+  box-shadow: none
 }
 
-.post-comments .comment-meta {
-  border-bottom: 1px solid #eee;
-  margin-bottom: 5px;
-  background: #14182a;
+.no-box-shadow:focus {
+  box-shadow: none
 }
 
-.post-comments .media {
-  border-left: 1px dotted #000;
-  border-bottom: 1px dotted #000;
-  margin-bottom: 5px;
-  padding-left: 10px;
-  background: #14182a;
+.day {
+  font-size: 9px
 }
 
-.post-comments .media-heading {
-  font-size: 12px;
-  color: grey;
-  background: #14182a;
+.heart {
+  border: 1px soild green !important;
+  border-color: green !important;
+  border-radius: 22px
 }
 
-.post-comments .comment-meta a {
-  font-size: 12px;
-  color: grey;
-  font-weight: bolder;
-  margin-right: 5px;
-  background: #14182a;
+.heart-icon {
+  color: green
+}
+
+.comment-text {
+  font-size: 12px
+}
+
+.delete {
+  font-size: 13px;
+  cursor: pointer
 }
