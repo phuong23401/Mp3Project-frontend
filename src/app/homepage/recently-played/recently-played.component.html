@@ -27,12 +27,8 @@
               <img src="../../../assets/images/svg/more.svg" alt="" />
             </div>
             <ul class="more_option">
-              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong">
-                <a href="javascrip:">
-                  <span class="opt_icon"
-                    ><span class="icon icon_fav"></span></span
-                  >Add To Favourites</a
-                >
+              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascrip:"><span class="opt_icon"><span
+                class="icon icon_fav"></span></span>Add To Favourites</a>
               </li>
               <li (click)="likeCount(song)" *ngIf="isCheckLikeSong"><a><span class="opt_icon"><span
                 class="icon icon_fav"></span></span>Add to Favourites</a>
@@ -40,8 +36,8 @@
               <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To
                 Playlist</a>
               </li>
-              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>
-              </li>
+<!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>-->
+<!--              </li>-->
             </ul>
             <!-- <div style="display: none">
               <audio controls loop id="track">
