@@ -21,7 +21,7 @@ export class CreatesongComponent implements OnInit {
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
- formavt:any={};
+  formavt: any = {};
   error1: any = {
     message: "noavatar"
   }
@@ -46,7 +46,7 @@ export class CreatesongComponent implements OnInit {
     singer: [
       {id: 0}
     ],
-    author:""
+    author: ""
   };
   mes: Message = {}
   form: any = {};
@@ -83,54 +83,62 @@ export class CreatesongComponent implements OnInit {
     this.song.author = this.form.author;
     console.log(this.song);
     this.songService.createSong(this.song).subscribe(data => {
-      if (JSON.stringify(this.error1) == JSON.stringify(data)) {
-        this.status = 'The avatar is required! Please select upload avatar';
-        Swal.fire({
-          title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
+        if (JSON.stringify(this.error1) == JSON.stringify(data)) {
+          this.status = 'The avatar is required! Please select upload avatar';
+          Swal.fire({
+            title: this.status,
+            icon: "error",
+            confirmButtonColor: "#3bc8e7"
+          });
 
-      }
-      if (JSON.stringify(this.error2) == JSON.stringify(data)) {
-        this.status = 'The file is required! Please select upload file';
-        Swal.fire({
-          title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
-        });
-      }
-      if (JSON.stringify(this.success) == JSON.stringify(data)) {
-        this.status = 'Create success!';
-        Swal.fire({
-          title: this.status,
-          icon: "success",
-          confirmButtonColor: "#3bc8e7"
-        })
-        this.form = null;
-        this.singgersOnchage = null;
-
-      }
-    }
-    ,error => {
-      this.status = 'Fill in the form!';
-      Swal.fire({
-        title: this.status,
-        icon: "error",
-        confirmButtonColor: "#3bc8e7"
-      });
         }
-        )
+        if (JSON.stringify(this.error2) == JSON.stringify(data)) {
+          this.status = 'The file is required! Please select upload file';
+          Swal.fire({
+            title: this.status,
+            icon: "error",
+            confirmButtonColor: "#3bc8e7"
+          });
+        }
+        if (JSON.stringify(this.success) == JSON.stringify(data)) {
+          this.status = 'Create success!';
+          Swal.fire({
+            title: this.status,
+            icon: "success",
+            confirmButtonColor: "#3bc8e7"
+          })
+          this.form.name = null;
+          this.form.description = null;
+          this.formavt.avatarUrl = null;
+          this.form.fileUrl = null;
+          this.form.lyric = null;
+          this.form.categories = null;
+          this.singgersOnchage = null;
+          this.form.author = null;
+        }
+      }
+      , error => {
+        this.status = 'Fill in the form!';
+        Swal.fire({
+          title: this.status,
+          icon: "error",
+          confirmButtonColor: "#3bc8e7"
+        });
+      }
+    )
     console.log(this.form);
   }
+
   onChangeAvatar(event: any) {
     this.formavt.avatarUrl = event;
     // this.isCheckUploadAvatar = true;
   }
+
   onChangeFile(event: any) {
     this.form.fileUrl = event;
     // this.isCheckUploadFile = true;
   }
+
   onchage(value: any) {
 
     this.singer.findSingerByName(value).subscribe(data => {

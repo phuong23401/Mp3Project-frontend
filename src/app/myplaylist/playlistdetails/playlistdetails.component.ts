@@ -14,12 +14,15 @@ import {User} from "../../model/User";
 import {SongService} from "../../service/song/song.service";
 import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
 import {SongComponent} from "../../song/song-manager/song.component";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 @Component({
   selector: 'app-playlistdetails',
   templateUrl: './playlistdetails.component.html',
   styleUrls: ['./playlistdetails.component.css']
 })
 export class PlaylistdetailsComponent implements OnInit {
+  formCreatePlaylist: FormGroup = new FormGroup({});
+
   isPlaying = false;
   audio : any;
   song: Song;
@@ -46,7 +49,8 @@ export class PlaylistdetailsComponent implements OnInit {
               private httpService: HttpService,
               private songService:SongService,
               private router:Router,
-              private songSv:SongService) {
+              private songSv:SongService,
+              private formBuilder: FormBuilder,) {
     this.sub =this.active.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id')
     });
@@ -64,6 +68,9 @@ export class PlaylistdetailsComponent implements OnInit {
     this.getSongOfPlaylist();
     this.getPlayList();
     this.isPlaying = false;
+    this.formCreatePlaylist = this.formBuilder.group({
+      name: ['', [Validators.required]],
+    })
 
   }
   getPlayList(){

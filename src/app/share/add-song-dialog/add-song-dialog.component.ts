@@ -7,6 +7,7 @@ import {Song} from "../../model/Song";
 import {AddSongDialogService} from "../../service/dialogsong/add-song-dialog.service";
 import {SongService} from "../../service/song/song.service";
 import {AddSongToPlaylistReq} from "../../model/AddSongToPlaylistReq";
+import {BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-add-song-dialog',
@@ -26,7 +27,8 @@ export class AddSongDialogComponent implements OnInit {
   constructor(private playlistService: PlaylistService,
               private formBuilder: FormBuilder,
               private dialogService: AddSongDialogService,
-              private songService: SongService) {
+              private songService: SongService,
+              private modalService: BsModalService) {
     this.getAllPlaylistByUser();
     this.formCreatePlaylist = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -60,7 +62,10 @@ export class AddSongDialogComponent implements OnInit {
       idPlaylist: id
     }
     this.playlistService.addSongToPlaylist(this.addSongToPlaylists).subscribe(data => {
-      alert(data.message);
+      document.querySelector('.modal-backdrop').remove()
+      document.body.classList.remove('modal-open')
+      // @ts-ignore
+      document.querySelector('.login_dialog').remove()
     });
   }
 
