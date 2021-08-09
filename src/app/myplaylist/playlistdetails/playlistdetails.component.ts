@@ -58,11 +58,9 @@ export class PlaylistdetailsComponent implements OnInit {
     this.userService.getUserById(this.httpService.getID()).subscribe(res => {
       this.user = res;
       console.log("user la ",this.user);
-      console.log("like playlist", this.likeplaylist)
+
     });
     this.playListService.getPlaylistById(this.id).subscribe(res => {
-      this.songlist = res.songs;
-      this.playlist = res;
 
     })
 
@@ -77,7 +75,6 @@ export class PlaylistdetailsComponent implements OnInit {
   getPlayList(){
     this.playListService.getPlaylist(this.id).subscribe(data=>{
       this.playList = data;
-      console.log("playlist: " +this.playList)
     })
 
   }
@@ -85,7 +82,6 @@ export class PlaylistdetailsComponent implements OnInit {
   getSongOfPlaylist(){
     this.playListService.getSongOfPlaylist(this.id).subscribe(data =>{
       this.listSong = data;
-      console.log("listSong: "+ this.listSong)
       if(this.listSong.length == 0){
         this.check = true;
       }
