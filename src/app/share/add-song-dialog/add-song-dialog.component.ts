@@ -9,6 +9,7 @@ import {SongService} from "../../service/song/song.service";
 import {AddSongToPlaylistReq} from "../../model/AddSongToPlaylistReq";
 import {BsModalService} from "ngx-bootstrap/modal";
 import Swal from "sweetalert2";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-add-song-dialog',
   templateUrl: './add-song-dialog.component.html',
@@ -28,7 +29,8 @@ export class AddSongDialogComponent implements OnInit {
               private formBuilder: FormBuilder,
               private dialogService: AddSongDialogService,
               private songService: SongService,
-              private modalService: BsModalService) {
+              private modalService: BsModalService,
+              private router:Router) {
     this.getAllPlaylistByUser();
     this.formCreatePlaylist = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -68,6 +70,7 @@ export class AddSongDialogComponent implements OnInit {
         icon: "success",
         confirmButtonColor: "#3bc8e7"
       })
+      // this.router.navigate(['/home']);
       localStorage.setItem("message","Success");
       this.status = localStorage.getItem("message");
       console.log("status: "+this.status)
@@ -77,6 +80,4 @@ export class AddSongDialogComponent implements OnInit {
       document.querySelector('.login_dialog').remove()
     });
   }
-
-
 }

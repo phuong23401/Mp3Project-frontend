@@ -63,10 +63,10 @@ export class PlaylistdetailsComponent implements OnInit {
     this.playListService.getPlaylistById(this.id).subscribe(res => {
       this.songlist = res.songs;
       this.playlist = res;
-      console.log("songlist ",this.songlist , this.playlist);
+      console.log("songlist : "+ this.songlist , this.playlist);
     })
-    this.getSongOfPlaylist();
-    this.getPlayList();
+    // this.getSongOfPlaylist();
+    // this.getPlayList();
     this.isPlaying = false;
     this.formCreatePlaylist = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -76,6 +76,7 @@ export class PlaylistdetailsComponent implements OnInit {
   getPlayList(){
     this.playListService.getPlaylist(this.id).subscribe(data=>{
       this.playList = data;
+      console.log("playlist: " +this.playList)
     })
 
   }
@@ -83,6 +84,7 @@ export class PlaylistdetailsComponent implements OnInit {
   getSongOfPlaylist(){
     this.playListService.getSongOfPlaylist(this.id).subscribe(data =>{
       this.listSong = data;
+      console.log("listSong: "+ this.listSong)
       if(this.listSong.length == 0){
         this.check = true;
       }

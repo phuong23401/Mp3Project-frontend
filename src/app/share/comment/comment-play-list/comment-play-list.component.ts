@@ -53,7 +53,7 @@ export class CommentPlayListComponent implements OnInit {
     })
     this.playlistService.getPlaylist(this.id).subscribe(res =>{
       this.playlist = res;
-      console.log("day la song", this.playlist)
+
     });
     this.songSerive.getAllSongs().subscribe(res =>{
       this.songList =res;
@@ -83,7 +83,7 @@ export class CommentPlayListComponent implements OnInit {
       playlist: this.playlist
     };
     this.commentPlayListService.createCommentPlayList(cmt).subscribe(res =>{
-      this.commentPlayListService.getCommentPlayListByPlayList(this.playlist.id).subscribe(data =>{
+      this.commentPlayListService.getCommentPlayListByPlayList(this.id).subscribe(data =>{
         this.commentPlayList = data;
         this.form.reset();
       })
