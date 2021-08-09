@@ -76,6 +76,9 @@
           <h3>
             <a [routerLink]="['/song', song.id]">{{ song.name }}</a>
           </h3>
+          <div *ngFor="let s of song.singer">
+            <p>{{s.name}}</p>
+          </div>
         </div>
       </div>
     </div>

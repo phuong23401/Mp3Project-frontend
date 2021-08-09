@@ -34,45 +34,21 @@
                   >Add To Favourites</a
                 >
               </li>
-              <li (click)="likeCount(song)" *ngIf="isCheckLikeSong">
-                <a
-                  ><span class="opt_icon"
-                    ><span class="icon icon_fav"></span></span
-                  >Add to Favourites</a
-                >
+              <li (click)="likeCount(song)" *ngIf="isCheckLikeSong"><a><span class="opt_icon"><span
+                class="icon icon_fav"></span></span>Add to Favourites</a>
               </li>
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_queue"></span></span
-                  >Add To Queue</a
-                >
+<!--              <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_queue"></span></span>Add To-->
+<!--                Queue</a>-->
+<!--              </li>-->
+              <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To
+                Playlist</a>
               </li>
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_dwn"></span></span
-                  >Download Now</a
-                >
-              </li>
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_playlst"></span></span
-                  >Add To Playlist</a
-                >
-              </li>
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_share"></span></span
-                  >Share</a
-                >
+              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>
               </li>
             </ul>
             <!--                        <div class="ms_play_icon" *ngIf="isPlaying; then img else audio"></div>-->
-            <!--                        <ng-template javascript:img><img (click)="play()" src="../../../assets/images/svg/play.svg" alt=""></ng-template>-->
-            <!--                        <ng-template javascript:audio><audio controls>-->
+            <!--                        <ng-template #img><img (click)="play()" src="../../../assets/images/svg/play.svg" alt=""></ng-template>-->
+            <!--                        <ng-template #audio><audio controls>-->
             <!--                          <source src="{{song.fileUrl}}" type="audio/mpeg">-->
             <!--                          <source src="{{song.fileUrl}}" type="audio/ogg">-->
             <!--                        </audio></ng-template>-->
@@ -99,7 +75,9 @@
           <h3>
             <a [routerLink]="['/song', song.id]">{{ song.name }}</a>
           </h3>
-          <!-- <p>{{song.singer}}</p> -->
+          <div *ngFor="let s of song.singer">
+            <p>{{s.name}}</p>
+          </div>
         </div>
       </div>
     </div>

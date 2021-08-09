@@ -880,7 +880,7 @@ ul.ms_lang_box:after {
 /*====Recent Music Slider====*/
 .ms_rcnt_slider {
 	position: relative;
-	
+
 }
 .ms_heading {
 	width: 100%;
@@ -926,11 +926,19 @@ ul.ms_lang_box:after {
 .ms_rcnt_box_img {
 	position: relative;
 	overflow: hidden;
+  background-image: none;
+  background-repeat: no-repeat;
 	border-radius: 10px;
+  background-position: center;
+  background-size: cover;
 }
 .ms_rcnt_box_img img {
 	width: 100%;
 	border-radius: 10px;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .ms_rcnt_box_text {
 	text-align: left;

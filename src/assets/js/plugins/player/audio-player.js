@@ -26,8 +26,6 @@ $(function () {
     
     const mp3Url = currentSong.mp3;
 
-    // $('#jquery_jplayer_1').jPlayer();
-
     $(".jp-now-playing").html(
       `<div class='jp-track-name'>
         <span class='que_img'>
@@ -43,8 +41,6 @@ $(function () {
     $('#jquery_jplayer_1').jPlayer('setMedia', {
       mp3: mp3Url,
     });
-
-
 
     $('#jquery_jplayer_1').jPlayer('play');
   })

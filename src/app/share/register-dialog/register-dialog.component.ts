@@ -26,16 +26,17 @@ export class RegisterDialogComponent implements OnInit {
   message: string;
   newUser: ResgisterUser;
   errorRegis: string;
-  error1: string = "Tài khoản đã tồn tại!";
-  error2: string = "Email đã được sử dụng!";
+  error1: string ="Username is existed !";
+  error2: string ="Email is existed!";
   check:boolean =false;
   check1:boolean = false;
   check2:boolean = false;
+  check3:boolean = false;
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
-    private modalService: BsModalService) { 
+    private modalService: BsModalService) {
       this.registerForm = this.formBuilder.group({
         name: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
@@ -94,7 +95,10 @@ export class RegisterDialogComponent implements OnInit {
       username: this.registerForm.value.username,
       password: this.registerForm.value.password
     };
-    if(this.confirmPassword.value == this.password.value) {
+    if(!this.newUser.name.match('^[\\D]+')) {
+      this.check3 = true;
+    };
+    if(this.confirmPassword.value == this.password.value && this.check3 == false) {
       this.loginService.register(this.newUser).subscribe(res => {
         this.message = res.message;
         Swal.fire({

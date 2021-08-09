@@ -20,7 +20,7 @@ export class DetailSongComponent implements OnInit {
     private routes: ActivatedRoute,) {
       this.routes.paramMap.subscribe(paramMap =>{
         const id = +paramMap.get('id')
-        this.songService.getSongById(id).subscribe(res =>{
+        this.songService.getSongsById(id).subscribe(res =>{
         this.song = res;
       });
       })
@@ -47,5 +47,10 @@ export class DetailSongComponent implements OnInit {
      this.audio.pause();
    }
 
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    music.Slider();
+  }
 
 }

@@ -7,6 +7,10 @@ import Swal from 'sweetalert2';
 import { LikeSong } from 'src/app/model/LikeSong';
 import * as $ from 'jquery';
 import jPlayer from 'jplayer';
+import {BsModalService} from "ngx-bootstrap/modal";
+import {AddSongDialogComponent} from "../../share/add-song-dialog/add-song-dialog.component";
+import {PlaylistResponse} from "../../model/PlaylistResponse";
+import {AddSongDialogService} from "../../service/dialogsong/add-song-dialog.service";
 
 @Component({
   selector: 'app-recently-played',
@@ -22,12 +26,17 @@ export class RecentlyPlayedComponent implements OnInit {
   name: string;
   isCheckLikeSong = false;
   isCheckInfoLike = false;
+  id:any;
+  playlistSongCurrent:PlaylistResponse;
+
 
   constructor(
     private songService: SongService,
     private data: DataService,
-    private likeSongService: LikeService
-  ) {}
+    private likeSongService: LikeService,
+              private modalService:BsModalService,
+              private addSongDialog:AddSongDialogService
+              ) { }
 
   ngOnInit(): void {
     this.isPlaying = false;
@@ -108,4 +117,12 @@ export class RecentlyPlayedComponent implements OnInit {
     this.isPlaying = !this.isPlaying;
     this.audio.pause();
   }
+
+  getModal(id:number){
+    this.id = id;
+    this.addSongDialog.id = this.id;
+    console.log(this.id)
+    this.modalService.show(AddSongDialogComponent);
+  }
+
 }

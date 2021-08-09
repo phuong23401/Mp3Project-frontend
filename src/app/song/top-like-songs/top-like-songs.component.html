@@ -12,9 +12,10 @@
             <div class="ms_box_overlay"></div>
             <div class="ms_more_icon">
               <img src="../../../assets/images/svg/more.svg" alt="" />
-              <i class="fas fa-headphones" style="font-size: 20px">{{
-                song.numberOfView
-              }}</i>
+            </div>
+            <div style="color: #3bc8e7">
+              <i class="fa fa-heart" aria-hidden="true"></i>
+              {{song.countLike}}
             </div>
             <ul class="more_option">
               <li>
@@ -75,6 +76,9 @@
           <h3>
             <a [routerLink]="['/song', song.id]">{{ song.name }}</a>
           </h3>
+          <div *ngFor="let s of song.singer">
+            <p>{{s.name}}</p>
+          </div>
         </div>
       </div>
     </div>
