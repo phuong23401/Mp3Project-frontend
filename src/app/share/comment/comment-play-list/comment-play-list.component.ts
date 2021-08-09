@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Song} from "../../../model/Song";
 import {User} from "../../../model/User";
 import {Commentsong} from "../../../model/CommentSong";
@@ -28,35 +28,36 @@ export class CommentPlayListComponent implements OnInit {
   username: any;
   commentPlayList: CommentPlayList[];
   form: FormGroup;
-  songList : Playlist[] ;
+  songList: Playlist[];
   userId: number;
   id: number;
-  constructor( private  profile: ProfileService,
-               private token:TokenService,
-               private commentPlayListService: CommentPlayListService,
-               private formbuild: FormBuilder,
-               private httpService: HttpService,
-               private router: ActivatedRoute,
-               private playlistService: PlaylistService,
-               private userService: UserService,
-               private songSerive: SongService) {
+
+  constructor(private profile: ProfileService,
+              private token: TokenService,
+              private commentPlayListService: CommentPlayListService,
+              private formbuild: FormBuilder,
+              private httpService: HttpService,
+              private router: ActivatedRoute,
+              private playlistService: PlaylistService,
+              private userService: UserService,
+              private songSerive: SongService) {
     this.form = this.formbuild.group({
       comment: ['']
     });
     this.userId = Number(this.httpService.getID());
     console.log("user id ", this.userId)
-    this.router.paramMap.subscribe(paramMap =>{
+    this.router.paramMap.subscribe(paramMap => {
       this.id = +paramMap.get('id')
-      this.playlistService.getPlaylist(this.id).subscribe(res =>{
+      this.playlistService.getPlaylist(this.id).subscribe(res => {
         this.playlist = res;
       });
     })
-    this.playlistService.getPlaylist(this.id).subscribe(res =>{
+    this.playlistService.getPlaylist(this.id).subscribe(res => {
       this.playlist = res;
 
     });
-    this.songSerive.getAllSongs().subscribe(res =>{
-      this.songList =res;
+    this.songSerive.getAllSongs().subscribe(res => {
+      this.songList = res;
 
     })
     this.userService.getUserById(this.httpService.getID()).subscribe(res => {
@@ -66,7 +67,7 @@ export class CommentPlayListComponent implements OnInit {
       this.commentPlayList = res;
     });
 
-    this.profile.getUserCurrent().subscribe(res =>{
+    this.profile.getUserCurrent().subscribe(res => {
       this.user = res;
       console.log(this.user)
     })
@@ -76,14 +77,15 @@ export class CommentPlayListComponent implements OnInit {
 
 
   }
-  onEnter(){
-    const  cmt = {
+
+  onEnter() {
+    const cmt = {
       content: this.form.value.comment,
       user: this.user,
       playlist: this.playlist
     };
-    this.commentPlayListService.createCommentPlayList(cmt).subscribe(res =>{
-      this.commentPlayListService.getCommentPlayListByPlayList(this.id).subscribe(data =>{
+    this.commentPlayListService.createCommentPlayList(cmt).subscribe(res => {
+      this.commentPlayListService.getCommentPlayListByPlayList(this.id).subscribe(data => {
         this.commentPlayList = data;
         this.form.reset();
       })
@@ -93,7 +95,7 @@ export class CommentPlayListComponent implements OnInit {
         showCancelButton: true,
 
       })
-    },error => {
+    }, error => {
       Swal.fire({
         title: "Comment Fails",
         icon: 'warning',
@@ -102,7 +104,6 @@ export class CommentPlayListComponent implements OnInit {
     })
 
   }
-
 
 
 }

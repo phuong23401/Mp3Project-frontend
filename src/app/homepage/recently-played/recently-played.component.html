@@ -5,24 +5,30 @@
 <div class="alert alert-success" role="alert" *ngIf="isCheckInfoLike">
   Like Success
 </div>
-<input type="text" class="form-control" placeholder="Search Music Here.." [(ngModel)]="name" hidden>
+<input
+  type="text"
+  class="form-control"
+  placeholder="Search Music Here.."
+  [(ngModel)]="name"
+  hidden
+/>
 <div class="swiper-container">
   <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let song of songList|searchfilter:name">
+    <div
+      class="swiper-slide"
+      *ngFor="let song of songList | searchfilter: name"
+    >
       <div class="ms_rcnt_box">
         <div class="ms_rcnt_box_img">
-          <img src="{{song.avatarUrl}}" alt="">
+          <img src="{{ song.avatarUrl }}" alt="" />
           <div class="ms_main_overlay">
             <div class="ms_box_overlay"></div>
             <div class="ms_more_icon">
-              <img src="../../../assets/images/svg/more.svg" alt="">
+              <img src="../../../assets/images/svg/more.svg" alt="" />
             </div>
             <ul class="more_option">
-
-              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascrip:">
-
-                <span class="opt_icon"><span class="icon icon_fav"></span></span>Add To
-                Favourites</a>
+              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascrip:"><span class="opt_icon"><span
+                class="icon icon_fav"></span></span>Add To Favourites</a>
               </li>
               <li (click)="likeCount(song)" *ngIf="isCheckLikeSong"><a><span class="opt_icon"><span
                 class="icon icon_fav"></span></span>Add to Favourites</a>
@@ -33,8 +39,8 @@
               <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To
                 Playlist</a>
               </li>
-              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>
-              </li>
+<!--              <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>-->
+<!--              </li>-->
             </ul>
             <!--                        <div class="ms_play_icon" *ngIf="isPlaying; then img else audio"></div>-->
             <!--                        <ng-template #img><img (click)="play()" src="../../../assets/images/svg/play.svg" alt=""></ng-template>-->
@@ -44,27 +50,30 @@
             <!--                        </audio></ng-template>-->
             <div style="display: none">
               <audio controls loop id="track">
-                <source src="{{song.fileUrl}}" type="audio/mpeg">
-                <source src="{{song.fileUrl}}" type="audio/ogg">
+                <source src="{{ song.fileUrl }}" type="audio/mpeg" />
+                <source src="{{ song.fileUrl }}" type="audio/ogg" />
               </audio>
             </div>
-            <div class="ms_play_icon" *ngIf="!isPlaying"
-                 (click)="listenCount(song)">
-
-              <img src="assets/images/svg/play.svg" alt="">
-
+            <div
+              class="ms_play_icon btn_play"
+              *ngIf="!isPlaying"
+              (click)="listenCount(song)"
+              attr.data-mp3="{{ song.fileUrl }}"
+            >
+              <img src="assets/images/svg/play.svg" alt="" />
             </div>
-            <div class="ms_play_icon" *ngIf="isPlaying"
-                 (click)="changePause()">
-              <img src="assets/images/svg/pause.svg" alt="">
+            <div class="ms_play_icon" *ngIf="isPlaying" (click)="changePause()">
+              <img src="assets/images/svg/pause.svg" alt="" />
             </div>
-
           </div>
         </div>
         <div class="ms_rcnt_box_text">
-          <h3><a [routerLink]="['/song',song.id]">{{song.name}}</a></h3>
-          <!-- <p>{{song.singer}}</p> -->
-
+          <h3>
+            <a [routerLink]="['/song', song.id]">{{ song.name }}</a>
+          </h3>
+          <div *ngFor="let s of song.singer">
+            <p>{{s.name}}</p>
+          </div>
         </div>
       </div>
     </div>
