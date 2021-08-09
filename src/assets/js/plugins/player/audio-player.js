@@ -4,63 +4,106 @@ $(function () {
     : [];
 
   ("use strict");
-  if ($(".audio-player").length) {
-    var myPlaylist = new jPlayerPlaylist(
-      {
-        jPlayer: "#jquery_jplayer_1",
-        cssSelectorAncestor: "#jp_container_1",
-      },
-      playlist,
-      {
-        swfPath: "js/plugins",
-        supplied: "oga, mp3",
-        wmode: "window",
-        useStateClassSkin: true,
-        autoBlur: false,
-        smoothPlayBar: true,
-        keyEnabled: true,
-        playlistOptions: {
-          autoPlay: false,
-        },
-      }
+
+  $('#jquery_jplayer_1').jPlayer({
+    play: function(event) {
+		},
+		pause: function(event) {
+			my_playState.text(opt_text_selected);
+		},
+  });
+
+  $(document).on('click', '.btn_play', function() {
+    const currentSong = localStorage.getItem("currentSong")
+      ? JSON.parse(localStorage.getItem("currentSong"))
+      : {
+          id: 0,
+          image: "",
+          title: "",
+          artist: "",
+          mp3: "",
+        };
+    
+    const mp3Url = currentSong.mp3;
+
+    // $('#jquery_jplayer_1').jPlayer();
+
+    $(".jp-now-playing").html(
+      `<div class='jp-track-name'>
+        <span class='que_img'>
+          <img src='${currentSong.image}'>
+        </span>
+        <div class='que_data'>
+          ${currentSong.title}
+          <div class='jp-artist-name'>${currentSong.artist}</div>
+        </div>
+      </div>`
     );
 
-    $("#jquery_jplayer_1").on($.jPlayer.event.play,
-      function (event) {
-        const currentSong = localStorage.getItem("currentSong")
-          ? JSON.parse(localStorage.getItem("currentSong"))
-          : {
-              id: 0,
-              image: "",
-              title: "",
-              artist: "",
-              mp3: "",
-            };
-        const _songList = localStorage.getItem("playlist")
-          ? JSON.parse(localStorage.getItem("playlist"))
-          : [];
-        const songIndex = _songList.findIndex((s) => s.id === currentSong.id);
-        const current = songIndex ?? myPlaylist.current;
-        const playlist = _songList;
-        $("#jquery_jplayer_1").jPlayer("setMedia", {
-          mp3: _songList[songIndex].mp3,
-          autoPlay: true,
-        });
+    $('#jquery_jplayer_1').jPlayer('setMedia', {
+      mp3: mp3Url,
+    });
 
-        console.log(current);
-        $.each(playlist, function (index, obj) {
-          if (index == current) {
-            $(".jp-now-playing").html(
-              "<div class='jp-track-name'><span class='que_img'><img src='" +
-                obj.image +
-                "'></span><div class='que_data'>" +
-                obj.title +
-                " <div class='jp-artist-name'>" +
-                obj.artist +
-                "</div></div></div>"
-            );
-          }
-        });
+
+
+    $('#jquery_jplayer_1').jPlayer('play');
+  })
+
+  if ($(".audio-player").length) {
+    // var myPlaylist = new jPlayerPlaylist(
+    //   {
+    //     jPlayer: "#jquery_jplayer_1",
+    //     cssSelectorAncestor: "#jp_container_1",
+    //   },
+    //   playlist,
+    //   {
+    //     swfPath: "js/plugins",
+    //     supplied: "oga, mp3",
+    //     wmode: "window",
+    //     useStateClassSkin: true,
+    //     autoBlur: false,
+    //     smoothPlayBar: true,
+    //     keyEnabled: true,
+    //     playlistOptions: {
+    //       autoPlay: false,
+    //     },
+    //   }
+    // );
+
+    $("#jquery_jplayer_1").on($.jPlayer.event.play, function (event) {
+        // const currentSong = localStorage.getItem("currentSong")
+        //   ? JSON.parse(localStorage.getItem("currentSong"))
+        //   : {
+        //       id: 0,
+        //       image: "",
+        //       title: "",
+        //       artist: "",
+        //       mp3: "",
+        //     };
+        // const _songList = localStorage.getItem("playlist")
+        //   ? JSON.parse(localStorage.getItem("playlist"))
+        //   : [];
+        // const songIndex = _songList.findIndex((s) => s.id === currentSong.id);
+        // const current = songIndex ?? myPlaylist.current;
+        // const playlist = _songList;
+        // $("#jquery_jplayer_1").jPlayer("setMedia", {
+        //   mp3: _songList[songIndex].mp3,
+        //   autoPlay: true,
+        // });
+
+        // $.each(playlist, function (index, obj) {
+        //   if (index == current) {
+        //     $(".jp-now-playing").html(
+        //       "<div class='jp-track-name'><span class='que_img'><img src='" +
+        //         obj.image +
+        //         "'></span><div class='que_data'>" +
+        //         obj.title +
+        //         " <div class='jp-artist-name'>" +
+        //         obj.artist +
+        //         "</div></div></div>"
+        //     );
+        //   }
+        // });
 
         $(".knob-wrapper")
           .mousedown(function () {

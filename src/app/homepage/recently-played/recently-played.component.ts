@@ -5,6 +5,8 @@ import { Song } from '../../model/Song';
 import { DataService } from 'src/app/share/dataTrans/data.service';
 import Swal from 'sweetalert2';
 import { LikeSong } from 'src/app/model/LikeSong';
+import * as $ from 'jquery';
+import jPlayer from 'jplayer';
 
 @Component({
   selector: 'app-recently-played',
@@ -100,9 +102,6 @@ export class RecentlyPlayedComponent implements OnInit {
       playlist.unshift(currentSong);
       localStorage.setItem('playlist', JSON.stringify(playlist));
     }
-    document
-      .getElementById('jquery_jplayer_1')
-      .dispatchEvent(new Event('jPlayer_play'));
   }
 
   changePause() {
