@@ -1,65 +1,32 @@
-<!--<div style="background-color: #14182a">-->
-<!--  <section class="bg-light p-3 my-4" style="border-radius: 5px">-->
-<!--    <div>-->
-<!--      <div class="px-5">-->
-<!--        <h3 class="mb-3">Comment Songs</h3>-->
-<!--        <div>-->
-<!--          <ul class="list-group br-1"-->
-<!--              *ngFor="let comment of commentSong">-->
-<!--            <li class="list-group-item pb-1">-->
-<!--              <div class="name-of-song">-->
-<!--                <img src="{{comment.user.avatarUrl}}" width="40" height="40" style="float: left"-->
-<!--                     class="img thumbnail pull-left mr-2"/>-->
-<!--              </div>-->
-<!--              <span>-->
-<!--                <h6 class="mb-1 text-dark"><b>{{user.name}} at {{comment.createdTime}}</b></h6>-->
-<!--                <p>{{comment.content}}</p>-->
-<!--              </span>-->
-<!--            </li>-->
-<!--          </ul>-->
-<!--          <div class="text-center">-->
-<!--          </div>-->
-<!--          <form [formGroup]="form" (ngSubmit)="onEnter()">-->
-<!--            <input class="input-group" type="text" formControlName="comment" placeholder="Viết bình luận...">-->
-<!--            <button href="javascript:" class="ms_btn">Send</button>-->
-<!--          </form>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </section>-->
-<!--</div>-->
+
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-sm-5 col-md-6 col-12 pb-4">
-        <div>
-          <h1>Comments</h1>
-          <div *ngFor="let comment of commentSong" class="comment mt-4 text-justify float-left"><img
-            src="{{comment.user.avatarUrl}}" alt="" class="rounded-circle" width="40" height="40">
-            <h4><i class="far fa-user"></i> {{comment.user.name}}</h4>
-            <span>&nbsp; <i class="far fa-clock"></i> {{comment.createdTime | date:'hh-mm/dd/MM/yyyy' }}</span> <br>
-            <p style="margin-left: 50px">{{comment.content}}</p>
-          </div>
+      <div class="col-sm-5 col-md-6 col-12 pb-4" >
+        <h1 style="font-size: 13px; margin-top: 20px">Comments</h1>
+        <div class="comment mt-4 text-justify float-left" *ngFor="let comment of commentSong" style="width: 500px">
+          <img src="{{comment.user.avatarUrl}}" alt="" class="rounded-circle" width="40" height="40">
+          <h4 style="font-size: 14px"><i class="far fa-user"></i>{{comment.user.name}}</h4> <span>- <i class="far fa-clock"></i> {{comment.createdTime | date:'hh-mm/dd/MM/yyyy'}}</span> <br>
+          <p style="margin-left: 50px">{{comment.content}}</p>
         </div>
       </div>
-      <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-        <form [formGroup]="form">
-          <form id="algin-form">
-            <div class="form-group">
-              <h4></h4> <label>Message</label> <textarea name="msg" id="" msg cols="30" rows="5" class="form-control"
-                                                         style="background-color: #f8f9fa; height: 100px"></textarea>
-            </div>
-            <div class="form-group">
-              <button formControlName="comment" type="button" id="post" class="ms_btn" href="javascript:"
-                      (click)="onEnter()">Post
-              </button>
-            </div>
-          </form>
+      <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4" >
+        <form id="algin-form" [formGroup]="form" style="margin-top: 36px" >
+          <div class="form-group">
+            <h4 >Leave a comment</h4> <label for="message">Message</label> <textarea formControlName="comment" name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+          </div>
+          <div class="form-group">
+            <p class="text-secondary">If you have a <a href="#" class="alert-link">gravatar account</a> your address will be used to display your profile picture.</p>
+          </div>
+          <div class="form-inline"> <input type="checkbox" name="check" id="checkbx" class="mr-1"> <label for="subscribe">Subscribe me to the newlettter</label> </div>
+          <div class="form-group" > <button id="post" class="ms_btn" (click)="onEnter()" >Post Comment</button> </div>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+
 
 
 
