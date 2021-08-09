@@ -5,7 +5,6 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HttpService {
-
   token = sessionStorage.getItem('token');
   // tslint:disable-next-line:variable-name
   headers_object = new HttpHeaders().set('Authorization', 'Bearer ' + this.token);

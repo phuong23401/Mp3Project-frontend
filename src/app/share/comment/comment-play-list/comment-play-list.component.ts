@@ -1,19 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import {Song} from "../../../model/Song";
-import {User} from "../../../model/User";
-import {Commentsong} from "../../../model/CommentSong";
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {ProfileService} from "../../../service/profile/profile.service";
-import {TokenService} from "../../../service/token/token.service";
-import {CommentSongService} from "../../../service/comment/comment-song/comment-song.service";
-import {HttpService} from "../../../service/http/http.service";
-import {ActivatedRoute} from "@angular/router";
-import {SongService} from "../../../service/song/song.service";
-import {UserService} from "../../../service/user/user.service";
-import {CommentPlayList} from "../../../model/CommentPlayList";
-import {CommentPlayListService} from "../../../service/comment/comment-play-list/comment-play-list.service";
-import {Playlist} from "../../../model/Playlist";
-import {PlaylistService} from "../../../service/playlist/playlist.service";
+import { User } from "../../../model/User";
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { ProfileService } from "../../../service/profile/profile.service";
+import { HttpService } from "../../../service/http/http.service";
+import { ActivatedRoute } from "@angular/router";
+import { SongService } from "../../../service/song/song.service";
+import { UserService } from "../../../service/user/user.service";
+import { CommentPlayList } from "../../../model/CommentPlayList";
+import { CommentPlayListService } from "../../../service/comment/comment-play-list/comment-play-list.service";
+import { Playlist } from "../../../model/Playlist";
+import { PlaylistService } from "../../../service/playlist/playlist.service";
 import Swal from 'sweetalert2';
 
 @Component({
@@ -22,7 +18,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./comment-play-list.component.css']
 })
 export class CommentPlayListComponent implements OnInit {
-
   playlist: Playlist;
   user: User;
   username: any;
@@ -31,8 +26,8 @@ export class CommentPlayListComponent implements OnInit {
   songList : Playlist[] ;
   userId: number;
   id: number;
+
   constructor( private  profile: ProfileService,
-               private token:TokenService,
                private commentPlayListService: CommentPlayListService,
                private formbuild: FormBuilder,
                private httpService: HttpService,
@@ -43,39 +38,40 @@ export class CommentPlayListComponent implements OnInit {
     this.form = this.formbuild.group({
       comment: ['']
     });
+
     this.userId = Number(this.httpService.getID());
-    console.log("user id ", this.userId)
     this.router.paramMap.subscribe(paramMap =>{
       this.id = +paramMap.get('id')
       this.playlistService.getPlaylist(this.id).subscribe(res =>{
         this.playlist = res;
       });
     })
+
     this.playlistService.getPlaylist(this.id).subscribe(res =>{
       this.playlist = res;
 
     });
+
     this.songSerive.getAllSongs().subscribe(res =>{
       this.songList =res;
-
     })
+
     this.userService.getUserById(this.httpService.getID()).subscribe(res => {
       this.user = res;
     });
+
     this.commentPlayListService.getCommentPlayListByPlayList(this.id).subscribe(res => {
       this.commentPlayList = res;
     });
 
     this.profile.getUserCurrent().subscribe(res =>{
       this.user = res;
-      console.log(this.user)
     })
   }
 
   ngOnInit(): void {
-
-
   }
+
   onEnter(){
     const  cmt = {
       content: this.form.value.comment,
@@ -88,21 +84,16 @@ export class CommentPlayListComponent implements OnInit {
         this.form.reset();
       })
       Swal.fire({
-        title: "Comment Success",
+        title: "Comment success !",
         icon: 'success',
-        showCancelButton: true,
-
+        confirmButtonColor: '#3bc8e7'
       })
     },error => {
       Swal.fire({
-        title: "Comment Fails",
-        icon: 'warning',
-        showCancelButton: true,
+        title: "Comment failed !",
+        icon: 'error',
+        confirmButtonColor: '#3bc8e7'
       })
     })
-
   }
-
-
-
 }

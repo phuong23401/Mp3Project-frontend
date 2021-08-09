@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {PlaylistResponse} from "../../model/PlaylistResponse";
-import {SongService} from "../song/song.service";
+import { PlaylistResponse } from "../../model/PlaylistResponse";
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +7,7 @@ import {SongService} from "../song/song.service";
 export class AddSongDialogService {
   playlistSongCurrent:PlaylistResponse;
   id:any;
+
   constructor() {
   }
-
-
 }

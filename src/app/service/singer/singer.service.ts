@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {environment} from "../../../environments/environment";
-import {Observable} from "rxjs";
-import {Singers} from "../../model/Singers";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "../../../environments/environment";
+import { Observable } from "rxjs";
+import { Singers } from "../../model/Singers";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class SingerService {
   API_URL = `${environment.API_URL}`;
 
   constructor(private httpClient:HttpClient) { }
+  
   getAllSinger():Observable<Singers[]>{
     return this.httpClient.get<Singers[]>(this.API_URL+"/singers/singer")
   }

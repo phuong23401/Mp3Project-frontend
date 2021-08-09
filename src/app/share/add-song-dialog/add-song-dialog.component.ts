@@ -1,15 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {PlaylistService} from "../../service/playlist/playlist.service";
-import {PlaylistResponse} from "../../model/PlaylistResponse";
-import {PlaylistReq} from "../../model/PlaylistReq";
-import {Song} from "../../model/Song";
-import {AddSongDialogService} from "../../service/dialogsong/add-song-dialog.service";
-import {SongService} from "../../service/song/song.service";
-import {AddSongToPlaylistReq} from "../../model/AddSongToPlaylistReq";
-import {BsModalService} from "ngx-bootstrap/modal";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { PlaylistService } from "../../service/playlist/playlist.service";
+import { PlaylistResponse } from "../../model/PlaylistResponse";
+import { PlaylistReq } from "../../model/PlaylistReq";
+import { Song } from "../../model/Song";
+import { AddSongDialogService } from "../../service/dialogsong/add-song-dialog.service";
+import { SongService } from "../../service/song/song.service";
+import { AddSongToPlaylistReq } from "../../model/AddSongToPlaylistReq";
+import { BsModalService } from "ngx-bootstrap/modal";
 import Swal from "sweetalert2";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-add-song-dialog',
   templateUrl: './add-song-dialog.component.html',
@@ -25,12 +25,10 @@ export class AddSongDialogComponent implements OnInit {
   id: any;
   addSongToPlaylists: AddSongToPlaylistReq = {}
   status="";
+
   constructor(private playlistService: PlaylistService,
               private formBuilder: FormBuilder,
-              private dialogService: AddSongDialogService,
-              private songService: SongService,
-              private modalService: BsModalService,
-              private router:Router) {
+              private dialogService: AddSongDialogService) {
     this.getAllPlaylistByUser();
     this.formCreatePlaylist = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -70,10 +68,8 @@ export class AddSongDialogComponent implements OnInit {
         icon: "success",
         confirmButtonColor: "#3bc8e7"
       })
-      // this.router.navigate(['/home']);
       localStorage.setItem("message","Success");
       this.status = localStorage.getItem("message");
-      console.log("status: "+this.status)
       document.querySelector('.modal-backdrop').remove()
       document.body.classList.remove('modal-open')
       // @ts-ignore
