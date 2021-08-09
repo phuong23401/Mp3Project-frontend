@@ -67,5 +67,4 @@ export class HomepageComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }
