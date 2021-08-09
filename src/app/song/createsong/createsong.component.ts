@@ -17,7 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./createsong.component.css']
 })
 export class CreatesongComponent implements OnInit {
-
+  searchValue: string;
   status = 'Please fill in the form to create Song!'
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
@@ -146,6 +146,11 @@ export class CreatesongComponent implements OnInit {
         this.singgersOnchage.push(obj);
         console.log(this.newSinger)
       })
+    })
+  }
+  Search(){
+    this.singgers = this.singgers.filter(res =>{
+      return res.name.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase());
     })
   }
 }

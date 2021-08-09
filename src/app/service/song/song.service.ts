@@ -11,7 +11,7 @@ import {environment} from "../../../environments/environment";
 export class SongService {
   API_URL = `${environment.API_URL}`;
   private API_Count_Listen_Song = this.API_URL+'/home/count-listen-song';
-  private API_Song = this.API_URL+'/song/songs';
+  private API_Song = this.API_URL+'/home/songs';
   private API_Song_Like_Up = environment.API_URL+'/home/song-like-up';
 
   constructor(private http: HttpClient,

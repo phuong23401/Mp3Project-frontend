@@ -20,7 +20,7 @@ export class DetailSongComponent implements OnInit {
     private routes: ActivatedRoute,) {
       this.routes.paramMap.subscribe(paramMap =>{
         const id = +paramMap.get('id')
-        this.songService.getSongById(id).subscribe(res =>{
+        this.songService.getSongsById(id).subscribe(res =>{
         this.song = res;
       });
       })

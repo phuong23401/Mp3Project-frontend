@@ -6,13 +6,12 @@ export const environment = {
  production: false,
   API_URL:"http://localhost:8080",
   firebaseConfig : {
-    apiKey: "AIzaSyBI6eWtEV5oMvxt_YPwNOMSxsxTA0-cNDE",
-    authDomain: "fir-mp3-4d181.firebaseapp.com",
-    projectId: "fir-mp3-4d181",
-    storageBucket: "fir-mp3-4d181.appspot.com",
-    messagingSenderId: "945716977621",
-    appId: "1:945716977621:web:7742c2cb7c21805b8fe75c",
-    measurementId: "G-P3MFB4ZE31"
+    apiKey: "AIzaSyBNAMK-KNV0E5DqSV62mSCzIh7zAvicyHg",
+    authDomain: "kara-20aaa.firebaseapp.com",
+    projectId: "kara-20aaa",
+    storageBucket: "kara-20aaa.appspot.com",
+    messagingSenderId: "780712695595",
+    appId: "1:780712695595:web:08871ba60fa0704cbb976e"
   }
 };
 

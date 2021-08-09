@@ -25,6 +25,8 @@ export class HeaderComponent implements OnInit {
   listFilterResult : Song[];
   listFilterUserResult : User[];
   listFilterSingerResult : Singers[];
+  nameSinger = [];
+
 
   searchForm: FormGroup;
 
@@ -63,17 +65,38 @@ export class HeaderComponent implements OnInit {
     if (this.searchValue.length === 0) {
       this.isCheck = true;
     } else {
+
+
       this.listFilterResult = this.songList;
       var keyWord = this.searchValue.toLowerCase();
       this.listFilterResult.map(item => {
+        var username = item.user.name.toLowerCase();
         var name = item.name.toLowerCase();
-        if (name.includes(keyWord)) {
+        var author = item.author.toLowerCase();
+        var singer = item.singer.filter(res =>{
+          return res.name.toLowerCase().match(keyWord)
+
+        }) ;
+        //   item.singer.filter(res =>{
+        //   return res.name.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase());
+        // })
+        for (let i = 0; i < this.songList.length; i++) {
+          var singer_1 = this.songList[i].singer;
+          for (let j = 0; j < singer_1.length; j++) {
+            let name = singer_1[j].name;
+            if (!this.nameSinger.includes(name)){
+              this.nameSinger.push(name);
+            }
+          }
+        }
+        console.log("name singer ",this.nameSinger)
+
+        if (name.includes(keyWord) || username.includes(keyWord)|| author.includes(keyWord) || singer.includes(keyWord)) {
           filterResult.push(item);
         }
       });
     }
     this.listFilterResult = filterResult;
-    console.log(this.listFilterResult)
     if (this.listFilterResult.length !== 0) {
       this.conditsion = true;
     } else {
