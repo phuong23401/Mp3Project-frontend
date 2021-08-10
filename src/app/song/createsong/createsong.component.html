@@ -58,13 +58,13 @@
   <div class="row">
     <div class="form-group col-md-6">
       <label>Lyric: </label><span style="color:#ef8989;" *ngIf="lyric.hasError('required')"> *The Lyric Song is required!</span>
-      <textarea  style="width: 637px;" type="text" class="form-control" placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric"
-                #lyric="ngModel" required></textarea>
+      <input  style="width: 825px;" type="text" class="form-control" placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric"
+                #lyric="ngModel" required>
     </div>
     <div class="form-group col-md-6">
       <label >Description</label>
-      <textarea style="width: 637px;" type="text" class="form-control" placeholder="Description" name="description"
-                [(ngModel)]="form.description" #description="ngModel"></textarea>
+      <input style="width: 825px;" type="text" class="form-control" placeholder="Description" name="description"
+                [(ngModel)]="form.description" #description="ngModel">
     </div>
   </div>
 
