@@ -1,9 +1,14 @@
+
 import { Component, OnInit } from '@angular/core';
 import { SongService } from '../../service/song/song.service';
 import { Song } from '../../model/Song';
 import { ActivatedRoute } from '@angular/router';
 import {Singers} from "../../model/Singers";
 import {SingerService} from "../../service/singer/singer.service";
+import { HttpService } from 'src/app/service/http/http.service';
+import { Commentsong } from 'src/app/model/CommentSong';
+import { CommentSongService } from 'src/app/service/comment/comment-song/comment-song.service';
+
 
 @Component({
   selector: 'app-detail-song',
@@ -18,17 +23,24 @@ export class DetailSongComponent implements OnInit {
   audio: any;
   isPlaying = false;
   singer : Singers[];
+  userId: number;
+  commentSong: Commentsong[];
 
   constructor(
     private songService: SongService,
     private routes: ActivatedRoute,
     private singerService: SingerService,
+    private httpService: HttpService,
+    private commentSongService: CommentSongService
   ) {
     this.routes.paramMap.subscribe((paramMap) => {
-      const id = +paramMap.get('id');
-      this.songService.getSongsById(id).subscribe((res) => {
+      this.id = +paramMap.get('id');
+      this.songService.getSongsById(this.id).subscribe((res) => {
         this.song = res;
       });
+    });
+    this.commentSongService.getCommentBySong(this.id).subscribe((res) => {
+      this.commentSong = res;
     });
     this.songService.getAllSongs().subscribe((res) => {
       this.songList = res;
@@ -39,6 +51,7 @@ export class DetailSongComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
     this.audio = new Audio();

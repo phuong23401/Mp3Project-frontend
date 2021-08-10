@@ -10,13 +10,7 @@ import { environment } from 'src/environments/environment';
 export class DowloadServiceService {
 
   constructor(private http: HttpClient) { }
-  download(file: string | undefined): Observable<Blob> {
-    return this.http.get(`${environment.API_URL}/home/files/${file}`, {
-      responseType: 'blob'
-    });
-  }
-
-  list(): Observable<Song[]> {
-    return this.http.get<Song[]>(`${environment.API_URL}/home/files`);
+  downloadFile(): any {
+		return this.http.get('http://localhost:8080/home/employees/download', {responseType: 'blob'});
   }
 }

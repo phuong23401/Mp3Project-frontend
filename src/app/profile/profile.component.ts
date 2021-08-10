@@ -21,6 +21,8 @@ export class ProfileComponent implements OnInit {
   form: File;
   ref?: AngularFireStorageReference;
   downloadURL?: string;
+  formGroup: FormGroup;
+ 
 
   get name() {
     return this.userForm.get('name');
@@ -32,6 +34,8 @@ export class ProfileComponent implements OnInit {
     return this.userForm.get('hobbies');
   }
 
+
+
   userCurrent: EditProfile = {};
   userRequest: EditProfile = {};
   messageResponse: Message;
@@ -39,6 +43,9 @@ export class ProfileComponent implements OnInit {
   checkAvt: boolean;
   messageAlert: string;
   checkName: any;
+  genders: any;
+
+ 
 
   constructor(
     private profileService: ProfileService,
@@ -80,8 +87,13 @@ export class ProfileComponent implements OnInit {
         console.log(`Failed to upload avatar and get link ${error}`);
       });
   }
+   
+  
+
+
 
   updateProfile() {
+   
     const data = this.userForm.value;
     this.userRequest = {
       name: data.name,
@@ -131,4 +143,6 @@ export class ProfileComponent implements OnInit {
   backHome() {
     this.router.navigate(['']);
   }
+
+
 }

@@ -75,21 +75,7 @@ export class HeaderComponent implements OnInit {
         let username = item.user.name.toLowerCase();
         let name = item.name.toLowerCase();
         let author = item.author.toLowerCase();
-        let singer = item.singer.filter(res => {
-          return res.name.toLowerCase().match(keyWord)
-        });
-
-        for (let i = 0; i < this.songList.length; i++) {
-          let singer_1 = this.songList[i].singer;
-          for (let j = 0; j < singer_1.length; j++) {
-            let name = singer_1[j].name;
-            if (!this.nameSinger.includes(name)) {
-              this.nameSinger.push(name);
-            }
-          }
-        }
-
-        if (name.includes(keyWord) || username.includes(keyWord) || author.includes(keyWord) || singer.includes(keyWord)) {
+        if (name.includes(keyWord) || username.includes(keyWord) || author.includes(keyWord)) {
           filterResult.push(item);
         }
       });

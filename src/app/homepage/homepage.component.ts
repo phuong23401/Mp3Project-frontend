@@ -46,6 +46,17 @@ export class HomepageComponent implements OnInit, OnDestroy {
       });
   }
 
+  likeCount(song: Song) {
+    this.songService.getLikeSongUpById(song.id).subscribe(
+      (data) => {
+        this.song = data;
+      },
+      (error) => {
+        alert('Please login before click like!');
+      }
+    );
+  }
+
   getPlayList() {
     this.playlist.getPlaylist(this.id).subscribe((data) => {
       this.lisplaylists = data;

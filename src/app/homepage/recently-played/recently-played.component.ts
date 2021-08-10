@@ -9,7 +9,10 @@ import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dia
 import { PlaylistResponse } from '../../model/PlaylistResponse';
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
 import {DowloadServiceService} from "../../service/dowload/dowload-service.service";
-import * as saveAs from 'file-saver';
+import * as fileSaver from 'file-saver';
+import firebase from "firebase/app";
+import "firebase/storage";
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-recently-played',
   templateUrl: './recently-played.component.html',
@@ -33,7 +36,7 @@ export class RecentlyPlayedComponent implements OnInit {
     private likeSongService: LikeService,
     private modalService: BsModalService,
     private addSongDialog: AddSongDialogService,
-    private downloadService: DowloadServiceService,
+    private fileService: DowloadServiceService,
   ) {}
 
   ngOnInit(): void {
@@ -44,15 +47,17 @@ export class RecentlyPlayedComponent implements OnInit {
   }
 
   likeCount(song: Song) {
-    this.songService.getLikeSongUpById(song.id).subscribe(
-      (data) => {
+    this.songService.getLikeSongUpById(song.id).subscribe((data) => {
         this.song = data;
-        setTimeout(() => {
-          this.isCheckInfoLike = true;
-        }, 1000);
+        this.isCheckLikeSong = !this.isCheckLikeSong;
+
       },
       (error) => {
-        alert('Please login before click like!');
+        Swal.fire({
+          title: 'Comment failed !',
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
+        });
       }
     );
   }
@@ -110,17 +115,10 @@ export class RecentlyPlayedComponent implements OnInit {
     this.addSongDialog.id = this.id;
     this.modalService.show(AddSongDialogComponent);
   }
-  getFileList(): void {
-    this.downloadService.list().subscribe(result => {
-      this.songList = result;
-    });
-  }
 
-  downloadFile(fileData: Song): void {
-    this.downloadService
-      .download(fileData.fileUrl)
-      .subscribe(blob =>saveAs(blob, fileData.fileUrl));
-  }
+
+
+
 }
 
 
