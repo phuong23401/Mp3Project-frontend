@@ -15,7 +15,7 @@
                                 <img src="{{playlist.avatarUrl}}" alt="" class="img-fluid">
                                 <div class="ms_main_overlay">
                                     <div class="ms_box_overlay"></div>
-                                    <div class="ms_play_icon btn_play">
+                                    <div class="ms_play_icon btn_playlist" (click)="listenCount(playlist)" attr.data-playlist-id="{{playlist.id}}">
                                         <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
                                         <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
                                     </div>

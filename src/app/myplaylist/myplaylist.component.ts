@@ -42,6 +42,7 @@ export class MyplaylistComponent implements OnInit {
           this.status = 'Successfully !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -52,6 +53,7 @@ export class MyplaylistComponent implements OnInit {
         this.status = 'Error server !';
         Swal.fire({
           title: this.status,
+          text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });

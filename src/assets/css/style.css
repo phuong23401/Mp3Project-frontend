@@ -1056,6 +1056,22 @@ ul.ms_lang_box:after {
 .ms_genres_box .btn_play.is_playing .icon_pause {
 	display : block;
 }
+.ms_rcnt_box .btn_playlist .icon_play,
+.ms_genres_box .btn_playlist .icon_play {
+	display : block;
+}
+.ms_rcnt_box .btn_playlist .icon_pause,
+.ms_genres_box .btn_playlist .icon_pause {
+	display : none;
+}
+.ms_rcnt_box .btn_playlist.is_playing .icon_play,
+.ms_genres_box .btn_playlist.is_playing .icon_play {
+	display : none;
+}
+.ms_rcnt_box .btn_playlist.is_playing .icon_pause,
+.ms_genres_box .btn_playlist.is_playing .icon_pause {
+	display : block;
+}
 .ms_rcnt_box .ms_play_icon:after,
 .ms_genres_box .ms_play_icon:after {
 	position: absolute;
@@ -6633,4 +6649,6 @@ h2.widget-title:after {
 		-ms-flex-preferred-size: 190px;
 		flex-basis: 190px;
 	}
+
+	
 }

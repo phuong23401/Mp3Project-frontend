@@ -62,9 +62,10 @@ export class AddSongDialogComponent implements OnInit {
       idPlaylist: id
     }
     this.playlistService.addSongToPlaylist(this.addSongToPlaylists).subscribe(data => {
-      this.status = 'Create success!';
+      this.status = 'Add song to playlist successfully !';
       Swal.fire({
         title: this.status,
+        text: ' ',
         icon: "success",
         confirmButtonColor: "#3bc8e7"
       })

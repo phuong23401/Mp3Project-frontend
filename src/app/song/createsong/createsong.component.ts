@@ -98,6 +98,7 @@ export class CreatesongComponent implements OnInit {
           this.status = 'Please upload avatar song !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'error',
             confirmButtonColor: '#3bc8e7',
           });
@@ -106,6 +107,7 @@ export class CreatesongComponent implements OnInit {
           this.status = 'Please select upload file mp3 !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'error',
             confirmButtonColor: '#3bc8e7',
           });
@@ -114,6 +116,7 @@ export class CreatesongComponent implements OnInit {
           this.status = 'Create successfully !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -133,7 +136,8 @@ export class CreatesongComponent implements OnInit {
         this.status = 'Fill in the form !';
         Swal.fire({
           title: this.status,
-          icon: 'error',
+            text: ' ',
+            icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });
       }
