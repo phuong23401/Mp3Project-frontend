@@ -4,6 +4,8 @@ import { SongService } from '../../service/song/song.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
 import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dialog.component';
+import {LoginDialogComponent} from "../../share/login-dialog/login-dialog.component";
+import {TokenService} from "../../service/token/token.service";
 
 @Component({
   selector: 'app-top-like-songs',
@@ -21,7 +23,8 @@ export class TopLikeSongsComponent implements OnInit {
   constructor(
     private songService: SongService,
     private modalService: BsModalService,
-    private addSongDialog: AddSongDialogService
+    private addSongDialog: AddSongDialogService,
+    private tokenService:TokenService
   ) {
     this.songService.getTopLikeSong().subscribe((res) => {
       this.songList = res;
@@ -32,6 +35,10 @@ export class TopLikeSongsComponent implements OnInit {
 
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
+    this.audio = new Audio();
+    this.audio.src = song.fileUrl;
+    this.audio.load();
+    this.audio.play();
     this.songService.getListenSongById(song.id).subscribe((data) => {
       this.song = data;
       this.songService.topSongsView().subscribe((songList) => {
@@ -58,8 +65,13 @@ export class TopLikeSongsComponent implements OnInit {
   }
 
   getModal(id: number) {
-    this.id = id;
-    this.addSongDialog.id = this.id;
-    this.modalService.show(AddSongDialogComponent);
+    if (this.tokenService.getToken()){
+      this.id = id;
+      this.addSongDialog.id = this.id;
+      this.modalService.show(AddSongDialogComponent);
+    }else {
+      this.modalService.show(LoginDialogComponent);
+    }
+
   }
 }

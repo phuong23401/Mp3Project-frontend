@@ -28,17 +28,25 @@ export class SongComponent implements OnInit {
     private songService: SongService,
     private profileService: ProfileService
   ) {
+    this.check = true;
     this.isPlaying = false;
-    this.songService.getMySong().subscribe((data) => {
-      this.songList = data;
-      this.check = true;
-    });
     this.profileService.getUserCurrent().subscribe((data) => {
       this.userCurrent = data;
     });
+    this.getMySong();
   }
 
   ngOnInit(): void {}
+
+
+  getMySong(){
+    this.songService.getMySong().subscribe((data) => {
+      this.songList = data;
+      if (this.songList==null){
+        this.check = false;
+      }
+    });
+  }
 
   listen(song: Song) {
     this.songService.getSongById(song.id).subscribe((data) => {
@@ -64,6 +72,7 @@ export class SongComponent implements OnInit {
           this.status = 'Delete successfully !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -74,9 +83,15 @@ export class SongComponent implements OnInit {
       },
       (error) => {
         this.status = "Delete failed !";
+        Swal.fire({
+          title: this.status,
+          text: ' ',
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
+        });
       }
     );
   }
-  
+
   updateSong(id: number) {}
 }

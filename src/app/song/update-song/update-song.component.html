@@ -52,7 +52,12 @@
                       [(ngModel)]="form.description" #description="ngModel">
               </textarea>
           </div>
-          <button class="ms_btn" (click)="ngSubmit()">Update</button>
+          <div class="row" style="text-align: center; margin-top: 30px;margin-bottom: 20px">
+            <button class="ms_btn" (click)="ngSubmit()" style="margin-left: 30px">Update</button>
+            <button class="ms_btn" [routerLink]="['/song']" routerLinkActive="$router_link-active$" style="margin-left: 90px">Cant</button>
+
+          </div>
+
         </div>
       </div>
     </form>

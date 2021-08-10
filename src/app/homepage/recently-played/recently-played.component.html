@@ -20,26 +20,29 @@
               <img src="../../../assets/images/svg/more.svg" alt="" />
             </div>
             <ul class="more_option">
-              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascript:"><span class="opt_icon"><span
-                class="icon icon_fav"></span></span>Add To Favourites</a>
+              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong">
+                <a href="javascrip:"
+                  ><span class="opt_icon"
+                    ><span class="icon icon_fav"></span></span
+                  >Add To Favourites</a
+                >
               </li>
-              <li (click)="likeCount(song)" *ngIf="isCheckLikeSong"><a href="javascript:"> <span class="opt_icon" > <i class="fas fa-heart-broken"></i></span>&nbsp;DisLike</a>
+              <li (click)="likeCount(song)" *ngIf="isCheckLikeSong">
+                <a
+                  ><span class="opt_icon"
+                    ><span class="icon icon_fav"></span></span
+                  >Add to Favourites</a
+                >
               </li>
-              <li (click)="getModal(song.id)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_playlst"></span></span>Add To
-                Playlist</a>
-
+              <li (click)="getModal(song.id)">
+                <a href="javascript:"
+                  ><span class="opt_icon"
+                    ><span class="icon icon_playlst"></span></span
+                  >Add To Playlist</a
+                >
               </li>
             </ul>
-            <!-- <div style="display: none">
-              <audio controls loop id="track">
-                <source src="{{ song.fileUrl }}" type="audio/mpeg" />
-                <source src="{{ song.fileUrl }}" type="audio/ogg" />
-              </audio>
-            </div> -->
-            <div
-              class="ms_play_icon btn_play"
-              (click)="listenCount(song)"
-            >
+            <div class="ms_play_icon btn_play" (click)="listenCount(song)">
               <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
               <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
             </div>
@@ -47,10 +50,10 @@
         </div>
         <div class="ms_rcnt_box_text">
           <h3>
-            <a [routerLink]="['/song', song.id]">{{song.name}}</a>
+            <a [routerLink]="['/song', song.id]">{{ song.name }}</a>
           </h3>
           <div *ngFor="let s of song.singer">
-            <p>{{s.name}}</p>
+            <p>{{ s.name }}</p>
           </div>
         </div>
       </div>

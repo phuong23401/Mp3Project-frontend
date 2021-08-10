@@ -8,9 +8,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dialog.component';
 import { PlaylistResponse } from '../../model/PlaylistResponse';
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
-import {DowloadServiceService} from "../../service/dowload/dowload-service.service";
-import * as fileSaver from 'file-saver';
-import firebase from "firebase/app";
+import {TokenService} from "../../service/token/token.service";
+import {LoginDialogComponent} from "../../share/login-dialog/login-dialog.component";
 import "firebase/storage";
 import Swal from "sweetalert2";
 @Component({
@@ -30,13 +29,12 @@ export class RecentlyPlayedComponent implements OnInit {
   id: any;
   playlistSongCurrent: PlaylistResponse;
 
-
   constructor(
     private songService: SongService,
     private likeSongService: LikeService,
     private modalService: BsModalService,
     private addSongDialog: AddSongDialogService,
-    private fileService: DowloadServiceService,
+    private tokenService:TokenService,
   ) {}
 
   ngOnInit(): void {
@@ -105,20 +103,14 @@ export class RecentlyPlayedComponent implements OnInit {
     }
   }
 
-  changePause() {
-    this.isPlaying = !this.isPlaying;
-    this.audio.pause();
-  }
-
   getModal(id: number) {
-    this.id = id;
-    this.addSongDialog.id = this.id;
-    this.modalService.show(AddSongDialogComponent);
+    if (this.tokenService.getToken()){
+      this.id = id;
+      this.addSongDialog.id = this.id;
+      this.modalService.show(AddSongDialogComponent);
+    }else {
+      this.modalService.show(LoginDialogComponent);
+    }
+
   }
-
-
-
-
 }
-
-

@@ -12,10 +12,11 @@
             <div class="ms_box_overlay"></div>
             <div class="ms_more_icon">
               <img src="../../../assets/images/svg/more.svg" alt="" />
-              <div>
-              <i class="fas fa-headphones" >
+            </div>
+            <div class="count-listen" style="color: #3bc8e7">
+              <i class="fas fa-headphones">
                 {{song.numberOfView}}
-              </i></div>
+              </i>
             </div>
             <ul class="more_option">
               <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascrip:"><span class="opt_icon"><span

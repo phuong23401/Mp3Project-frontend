@@ -88,7 +88,8 @@ export class CommentPlayListComponent implements OnInit {
             this.form.reset();
           });
         Swal.fire({
-          title: 'Comment success !',
+          title: 'Comment successfully !',
+          text: ' ',
           icon: 'success',
           confirmButtonColor: '#3bc8e7',
         });
@@ -96,6 +97,7 @@ export class CommentPlayListComponent implements OnInit {
       (error) => {
         Swal.fire({
           title: 'Comment failed !',
+          text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });

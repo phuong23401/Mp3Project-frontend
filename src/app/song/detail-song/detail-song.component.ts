@@ -16,6 +16,7 @@ import { CommentSongService } from 'src/app/service/comment/comment-song/comment
   styleUrls: ['./detail-song.component.css'],
 })
 export class DetailSongComponent implements OnInit {
+
   id: number;
   song: Song;
   songList: Song[];
@@ -45,13 +46,9 @@ export class DetailSongComponent implements OnInit {
     this.songService.getAllSongs().subscribe((res) => {
       this.songList = res;
     });
-    this.singerService.getAllSinger().subscribe(res =>{
-      this.singer = res;
-    })
   }
 
   ngOnInit(): void {}
-
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
     this.audio = new Audio();
@@ -71,5 +68,14 @@ export class DetailSongComponent implements OnInit {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
     music.Slider();
+    // music.RTL();
+    // music.Menu();
+    // music.Player_close();
+    // music.Popup();
+    // music.Slider();
+    // music.More();
+    // music.Nice_select();
+    // music.showPlayList();
+    // music.volume();
   }
 }
