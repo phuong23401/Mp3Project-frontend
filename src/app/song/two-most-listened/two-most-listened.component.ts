@@ -5,6 +5,8 @@ import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dia
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { LikeSong } from '../../model/LikeSong';
+import {LoginDialogComponent} from "../../share/login-dialog/login-dialog.component";
+import {TokenService} from "../../service/token/token.service";
 
 @Component({
   selector: 'app-two-most-listened',
@@ -34,7 +36,8 @@ export class TwoMostListenedComponent implements OnInit {
   constructor(
     private songService: SongService,
     private addSongDialog: AddSongDialogService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private tokenService:TokenService
   ) {}
 
   ngOnInit(): void {
@@ -65,27 +68,39 @@ export class TwoMostListenedComponent implements OnInit {
 
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
-    this.audio = new Audio();
-    this.audio.src = song.fileUrl;
-    this.audio.load();
-    this.audio.play();
     this.songService.getListenSongById(song.id).subscribe((data) => {
       this.song = data;
       this.songService.topSongsView().subscribe((songList) => {
         this.songList = songList;
       });
     });
-  }
 
-  changePause() {
-    this.isPlaying = !this.isPlaying;
-    this.audio.pause();
+    const playlist = localStorage.getItem('playlist')
+      ? JSON.parse(localStorage.getItem('playlist'))
+      : [];
+    const currentSong = {
+      id: song.id,
+      image: song.avatarUrl,
+      title: song.name,
+      artist: song.author,
+      mp3: song.fileUrl,
+    };
+    localStorage.setItem('currentSong', JSON.stringify(currentSong));
+
+    if (song !== undefined && !playlist.find((_song) => _song.id === song.id)) {
+      playlist.unshift(currentSong);
+      localStorage.setItem('playlist', JSON.stringify(playlist));
+    }
   }
 
   getModal(id: number) {
-    this.id = id;
-    this.addSongDialog.id = this.id;
-    console.log(this.id);
-    this.modalService.show(AddSongDialogComponent);
+    if (this.tokenService.getToken()){
+      this.id = id;
+      this.addSongDialog.id = this.id;
+      this.modalService.show(AddSongDialogComponent);
+    }else {
+      this.modalService.show(LoginDialogComponent);
+    }
+
   }
 }
