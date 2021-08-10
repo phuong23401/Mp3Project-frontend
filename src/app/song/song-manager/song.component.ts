@@ -28,17 +28,25 @@ export class SongComponent implements OnInit {
     private songService: SongService,
     private profileService: ProfileService
   ) {
+    this.check = true;
     this.isPlaying = false;
-    this.songService.getMySong().subscribe((data) => {
-      this.songList = data;
-      this.check = true;
-    });
     this.profileService.getUserCurrent().subscribe((data) => {
       this.userCurrent = data;
     });
+    this.getMySong();
   }
 
   ngOnInit(): void {}
+
+
+  getMySong(){
+    this.songService.getMySong().subscribe((data) => {
+      this.songList = data;
+      if (this.songList==null){
+        this.check = false;
+      }
+    });
+  }
 
   listen(song: Song) {
     this.songService.getSongById(song.id).subscribe((data) => {
@@ -77,6 +85,6 @@ export class SongComponent implements OnInit {
       }
     );
   }
-  
+
   updateSong(id: number) {}
 }
