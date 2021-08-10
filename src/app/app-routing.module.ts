@@ -34,7 +34,6 @@ const routes: Routes = [
   { path: 'createplaylist', component: CreatepPlaylistComponent},
   { path: 'check', component: TestplayerComponent},
   { path: 'test', component: ToastContainerComponent},
-
 ];
 
 @NgModule({
