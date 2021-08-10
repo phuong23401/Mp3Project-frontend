@@ -12,7 +12,7 @@
              [hidden]="isCheck">
           <p [hidden]="conditsion" style="background:#14182a; border-radius: 20px 10px; color: #e95c5c; ">No matching
             songs found!</p>
-          <div [routerLink]="['/song',song.id]" class="row" style="width: 100%"
+          <div [routerLink]="['/homesongguest',song.id]" class="row" style="width: 100%"
                *ngFor="let song of listFilterResult ">
             <div class="col-4">
               <img [src]="song.avatarUrl" *ngIf="song.avatarUrl != null" alt="">

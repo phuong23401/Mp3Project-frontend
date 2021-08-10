@@ -17,6 +17,7 @@ import {TestplayerComponent} from "./testplayer/testplayer.component";
 import { ToastGlobalComponent } from './share/toast-global/toast-global.component';
 import {ToastContainerComponent} from "./share/toast-container/toast-container.component";
 import {AuthGuardGuard} from "./service/authguard/auth-guard.guard";
+import {HomeguestComponent} from "./homepage/homeguest/homeguest.component";
 import {ComentPlaylistAthomeComponent} from "./playlist/coment-playlist-athome/coment-playlist-athome.component";
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'check', component: TestplayerComponent},
   { path: 'test', component: ToastContainerComponent},
   { path: 'comment/playlist/home/:id', component: ComentPlaylistAthomeComponent},
+  { path: 'homesongguest/:id', component: HomeguestComponent},
 ];
 
 @NgModule({
