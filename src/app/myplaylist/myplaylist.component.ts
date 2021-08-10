@@ -14,9 +14,11 @@ export class MyplaylistComponent implements OnInit {
     message: 'successfully!',
   };
   status = '';
+  check = true;
 
   constructor(private playListService: PlaylistService) {
     this.getPlaylist();
+    this.check = false;
   }
 
   ngOnInit(): void {}
@@ -24,6 +26,9 @@ export class MyplaylistComponent implements OnInit {
   getPlaylist() {
     this.playListService.getPlaylistByUser().subscribe((data) => {
       this.listPlaylist = data;
+      if (this.listPlaylist.length>0){
+        this.check = true;
+      }
     });
   }
 
