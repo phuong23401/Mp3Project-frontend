@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { PlaylistService } from '../../service/playlist/playlist.service';
-import { Song } from '../../model/Song';
-import { PlaylistResponse } from '../../model/PlaylistResponse';
+import {Component, OnInit} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {PlaylistService} from '../../service/playlist/playlist.service';
+import {Song} from '../../model/Song';
+import {PlaylistResponse} from '../../model/PlaylistResponse';
 import Swal from 'sweetalert2';
-import { LikePlayListService } from '../../service/like-playlist/like-play-list.service';
-import { Playlist } from '../../model/Playlist';
-import { LikePlayList } from '../../model/LikePlayList';
-import { UserService } from '../../service/user/user.service';
-import { HttpService } from '../../service/http/http.service';
-import { User } from '../../model/User';
-import { SongService } from '../../service/song/song.service';
+import {LikePlayListService} from '../../service/like-playlist/like-play-list.service';
+import {Playlist} from '../../model/Playlist';
+import {LikePlayList} from '../../model/LikePlayList';
+import {UserService} from '../../service/user/user.service';
+import {HttpService} from '../../service/http/http.service';
+import {User} from '../../model/User';
+import {SongService} from '../../service/song/song.service';
 import {
   AngularFireStorage,
   AngularFireStorageReference,
 } from '@angular/fire/storage';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-playlistdetails',
@@ -28,6 +28,7 @@ export class PlaylistdetailsComponent implements OnInit {
   isPlaying = false;
   audio: any;
   song: Song;
+  isCheckLikeSong = false;
   sub: Subscription;
   id: any;
   user: User;
@@ -63,7 +64,8 @@ export class PlaylistdetailsComponent implements OnInit {
       this.user = res;
     });
 
-    this.playListService.getPlaylistById(this.id).subscribe((res) => {});
+    this.playListService.getPlaylistById(this.id).subscribe((res) => {
+    });
 
     this.getSongOfPlaylist();
     this.getPlayList();
@@ -73,7 +75,8 @@ export class PlaylistdetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   getPlayList() {
     this.playListService.getPlaylist(this.id).subscribe((data) => {
@@ -206,8 +209,9 @@ export class PlaylistdetailsComponent implements OnInit {
   likePlayListCount(playlist: Playlist) {
     this.likePlayListService.getLikeSongUpById(playlist.id).subscribe(
       (data) => {
-        console.log('data', data);
+
         this.playlist = data;
+        this.isCheckLikeSong = !this.isCheckLikeSong;
         Swal.fire({
           title: 'Like Success',
           icon: 'success',

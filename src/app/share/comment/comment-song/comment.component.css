@@ -21,7 +21,7 @@
   padding-top: 2px;
   padding-bottom: 2px;
   text-align: center;
-  background-color: #2ec8e6;
+  background-color: white;
   border-color: #a88734 #9c7e31 #846a29;
   color: black;
   border-width: 1px;
@@ -31,14 +31,14 @@
 }
 
 body {
-  background-color: black
+  background-color: white
 }
 
 #nav-items li a,
 #profile {
   text-decoration: none;
   color: rgb(224, 219, 219);
-  background-color: black
+  background-color: white
 }
 
 .comments {
@@ -47,7 +47,7 @@ body {
 }
 
 .darker {
-  background-color: black;
+  background-color: #3ec8e7;
   float: right;
   border-radius: 5px;
   padding-left: 40px;
@@ -56,8 +56,8 @@ body {
 }
 
 .comment {
-  border: 1px solid rgba(16, 46, 46, 1);
-  background-color: rgba(16, 46, 46, 0.973);
+  border: 1px solid #3bc8e7;
+  background-color: #3bc8e7;
   float: left;
   border-radius: 5px;
   padding-left: 40px;
@@ -98,7 +98,7 @@ label {
 }
 
 #checkbx {
-  background-color: black
+  background-color: white;
 }
 
 #darker img {
@@ -108,14 +108,14 @@ label {
 
 .form-group input,
 .form-group textarea {
-  background-color: black;
-  border: 1px solid rgba(16, 46, 46, 1);
+  background-color: white !important;
+  border: 1px solid white;
   border-radius: 12px
 }
 
 form {
-  border: 1px solid rgba(16, 46, 46, 1);
-  background-color: rgba(16, 46, 46, 0.973);
+  border: 1px solid #3bc8e7;
+  background-color: #3bc8e7;
   border-radius: 5px;
   padding: 20px
 }
