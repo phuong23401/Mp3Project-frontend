@@ -16,6 +16,8 @@ import {CreatepPlaylistComponent} from "./myplaylist/createp-playlist/createp-pl
 import {TestplayerComponent} from "./testplayer/testplayer.component";
 import { ToastGlobalComponent } from './share/toast-global/toast-global.component';
 import {ToastContainerComponent} from "./share/toast-container/toast-container.component";
+import {SingerComponent} from "./singer/singer.component";
+
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -34,6 +36,7 @@ const routes: Routes = [
   { path: 'createplaylist', component: CreatepPlaylistComponent},
   { path: 'check', component: TestplayerComponent},
   { path: 'test', component: ToastContainerComponent},
+  { path: 'singer', component: SingerComponent},
 
 ];
 
