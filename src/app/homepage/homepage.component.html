@@ -12,7 +12,8 @@
           <p>{{randomSong?.lyric}}</p>
           <div class="ms_banner_btn">
             <a  href="javascript:" class="ms_btn">Listen Now</a>
-            <a  (click)="likeCount(song)" href="javascript:" class="ms_btn">Add To Favourites</a>
+            <a (click)="likeCount(randomSong)" *ngIf="!isCheckLikeSong" href="javascript:" class="ms_btn">Add To Favourites</a>
+            <a (click)="likeCount(randomSong)" *ngIf="isCheckLikeSong" href="javascript:" class="ms_btn">DisLike</a>
           </div>
         </div>
       </div>

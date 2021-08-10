@@ -30,7 +30,7 @@ export class PlaylistdetailsComponent implements OnInit {
   song: Song;
   isCheckLikeSong = false;
   sub: Subscription;
-  id: any;
+  id: number;
   user: User;
   songlist: Song[];
   listSong: Song[] = [];
@@ -56,7 +56,7 @@ export class PlaylistdetailsComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.sub = this.active.paramMap.subscribe((paramMap: ParamMap) => {
-      this.id = paramMap.get('id');
+      this.id = +paramMap.get('id');
     });
 
     this.userId = Number(this.httpService.getID());
@@ -65,6 +65,7 @@ export class PlaylistdetailsComponent implements OnInit {
     });
 
     this.playListService.getPlaylistById(this.id).subscribe((res) => {
+      this.playlist = res;
     });
 
     this.getSongOfPlaylist();
@@ -110,7 +111,6 @@ export class PlaylistdetailsComponent implements OnInit {
         this.isPlaying = !this.isPlaying;
         this.audio = new Audio();
         this.audio.src = song.fileUrl;
-        // this.audio.load();
         this.audio.play();
       }
     });
@@ -123,9 +123,7 @@ export class PlaylistdetailsComponent implements OnInit {
 
   deleteSong(i: number) {
     this.listSong.splice(i, 1);
-    console.log("listSong "+this.listSong)
     this.playList.songs = this.listSong;
-    console.log("playlist "+ this.playList)
     this.playListService.updatePlaylist(this.id, this.playList).subscribe(data=>{
       this.status = 'Delete Song Successfully !';
       Swal.fire({
@@ -209,7 +207,6 @@ export class PlaylistdetailsComponent implements OnInit {
   likePlayListCount(playlist: Playlist) {
     this.likePlayListService.getLikeSongUpById(playlist.id).subscribe(
       (data) => {
-
         this.playlist = data;
         this.isCheckLikeSong = !this.isCheckLikeSong;
         Swal.fire({

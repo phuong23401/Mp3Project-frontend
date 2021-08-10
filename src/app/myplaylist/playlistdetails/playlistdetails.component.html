@@ -70,7 +70,7 @@
                 <li (click)="likePlayListCount(playlist)" *ngIf="!isCheckLikeSong"><a href="javascript:"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add
                   To
                   Favourites</a></li>
-                <li (click)="likePlayListCount(song)" *ngIf="isCheckLikeSong"><a href="javascript:"> <span class="opt_icon" > <i class="fas fa-heart-broken"></i></span>&nbsp;DisLike</a>
+                <li (click)="likePlayListCount(playlist)" *ngIf="isCheckLikeSong"><a href="javascript:"> <span class="opt_icon" > <i class="fas fa-heart-broken"></i></span>&nbsp;DisLike</a>
                 </li>
                 <li><a href="javascript:" (click)="deleteSong(i)"><span class="opt_icon"><i
                   class="far fa-trash-alt"></i></span>Delete</a></li>
@@ -101,6 +101,6 @@
     <!--    <br>-->
   </div>
 </div>
-<app-comment-play-list></app-comment-play-list>
+<!--<app-comment-play-list></app-comment-play-list>-->
 
 

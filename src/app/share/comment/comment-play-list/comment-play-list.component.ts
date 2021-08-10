@@ -11,6 +11,7 @@ import { CommentPlayListService } from '../../../service/comment/comment-play-li
 import { Playlist } from '../../../model/Playlist';
 import { PlaylistService } from '../../../service/playlist/playlist.service';
 import Swal from 'sweetalert2';
+import {TokenService} from "../../../service/token/token.service";
 
 @Component({
   selector: 'app-comment-play-list',
@@ -26,6 +27,9 @@ export class CommentPlayListComponent implements OnInit {
   songList: Playlist[];
   userId: number;
   id: number;
+  isLogin = false;
+
+  token: string;
 
   constructor(
     private profile: ProfileService,
@@ -35,8 +39,13 @@ export class CommentPlayListComponent implements OnInit {
     private router: ActivatedRoute,
     private playlistService: PlaylistService,
     private userService: UserService,
-    private songSerive: SongService
+    private songSerive: SongService,
+    private tokenService: TokenService
   ) {
+    this.token = this.tokenService.getToken();
+    if(this.token != null) {
+      this.isLogin = true;
+    }
     this.form = this.formbuild.group({
       comment: [''],
     });
@@ -88,8 +97,7 @@ export class CommentPlayListComponent implements OnInit {
             this.form.reset();
           });
         Swal.fire({
-          title: 'Comment successfully !',
-          text: ' ',
+          title: 'Comment success !',
           icon: 'success',
           confirmButtonColor: '#3bc8e7',
         });
@@ -97,7 +105,6 @@ export class CommentPlayListComponent implements OnInit {
       (error) => {
         Swal.fire({
           title: 'Comment failed !',
-          text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });

@@ -17,6 +17,7 @@ import {TestplayerComponent} from "./testplayer/testplayer.component";
 import { ToastGlobalComponent } from './share/toast-global/toast-global.component';
 import {ToastContainerComponent} from "./share/toast-container/toast-container.component";
 import {AuthGuardGuard} from "./service/authguard/auth-guard.guard";
+import {HomeguestComponent} from "./homepage/homeguest/homeguest.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'createplaylist', component: CreatepPlaylistComponent,canActivate: [AuthGuardGuard]},
   { path: 'check', component: TestplayerComponent},
   { path: 'test', component: ToastContainerComponent},
+  { path: 'homesongguest/:id', component: HomeguestComponent},
 ];
 
 @NgModule({
