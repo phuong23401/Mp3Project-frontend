@@ -19,6 +19,7 @@ import {ToastContainerComponent} from "./share/toast-container/toast-container.c
 import {SingerComponent} from "./singer/singer.component";
 
 import {AuthGuardGuard} from "./service/authguard/auth-guard.guard";
+import {ComentPlaylistAthomeComponent} from "./playlist/coment-playlist-athome/coment-playlist-athome.component";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'test', component: ToastContainerComponent},
   { path: 'singer', component: SingerComponent},
 
+  { path: 'comment/playlist/home/:id', component: ComentPlaylistAthomeComponent},
 ];
 
 @NgModule({
