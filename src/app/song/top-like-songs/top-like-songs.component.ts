@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../../model/Song';
 import { SongService } from '../../service/song/song.service';
+import {AddSongDialogComponent} from "../../share/add-song-dialog/add-song-dialog.component";
+import {AddSongDialogService} from "../../service/dialogsong/add-song-dialog.service";
+import {BsModalService} from "ngx-bootstrap/modal";
 
 @Component({
   selector: 'app-top-like-songs',
@@ -15,7 +18,10 @@ export class TopLikeSongsComponent implements OnInit {
 
   audio: any;
 
-  constructor(private songService: SongService) {
+  id:any;
+  constructor(private songService: SongService,
+              private addSongDialog:AddSongDialogService,
+              private modalService:BsModalService) {
     this.songService.getTopLikeSong().subscribe((res) => {
       this.songList = res;
     });
@@ -40,5 +46,13 @@ export class TopLikeSongsComponent implements OnInit {
   changePause() {
     this.isPlaying = !this.isPlaying;
     this.audio.pause();
+  }
+
+
+  getModal(id:number){
+    this.id = id;
+    this.addSongDialog.id = this.id;
+    console.log(this.id)
+    this.modalService.show(AddSongDialogComponent);
   }
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Song} from "../../model/Song";
 import {SongService} from "../../service/song/song.service";
 import {Router} from "@angular/router";
+import {AddSongDialogComponent} from "../../share/add-song-dialog/add-song-dialog.component";
+import {BsModalService} from "ngx-bootstrap/modal";
+import {AddSongDialogService} from "../../service/dialogsong/add-song-dialog.service";
 
 @Component({
   selector: 'app-two-most-listened',
@@ -26,7 +29,9 @@ export class TwoMostListenedComponent implements OnInit {
 
   id: any;
   audio: any;
-  constructor(private songService: SongService, private router: Router) { }
+  constructor(private songService: SongService, private router: Router,
+              private modalService:BsModalService,
+              private addSongDialog:AddSongDialogService) { }
 
   ngOnInit(): void {
     this.topSongsView();
@@ -63,6 +68,13 @@ export class TwoMostListenedComponent implements OnInit {
   changePause(){
     this.isPlaying = !this.isPlaying;
     this.audio.pause();
+  }
+
+  getModal(id:number){
+    this.id = id;
+    this.addSongDialog.id = this.id;
+    console.log(this.id)
+    this.modalService.show(AddSongDialogComponent);
   }
 
 }
