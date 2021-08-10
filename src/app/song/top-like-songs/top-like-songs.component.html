@@ -12,62 +12,23 @@
             <div class="ms_box_overlay"></div>
             <div class="ms_more_icon">
               <img src="../../../assets/images/svg/more.svg" alt="" />
-              <i class="fas fa-headphones" style="font-size: 20px">{{
-                song.numberOfView
-              }}</i>
+            </div>
+            <div style="color: #3bc8e7">
+              <i class="fa fa-heart" aria-hidden="true"></i>
+              {{song.countLike}}
             </div>
             <ul class="more_option">
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_fav"></span></span
-                  >Add To Favourites</a
-                >
-              </li>
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_queue"></span></span
-                  >Add To Queue</a
-                >
-              </li>
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_dwn"></span></span
-                  >Download Now</a
-                >
-              </li>
-              <li>
+              <li (click)="getModal(song.id)">
                 <a href="javascript:"
                   ><span class="opt_icon"
                     ><span class="icon icon_playlst"></span></span
                   >Add To Playlist</a
                 >
               </li>
-              <li>
-                <a href="javascript:"
-                  ><span class="opt_icon"
-                    ><span class="icon icon_share"></span></span
-                  >Share</a
-                >
-              </li>
             </ul>
-            <div style="display: none">
-              <audio controls loop id="track">
-                <source src="{{ song.fileUrl }}" type="audio/mpeg" />
-                <source src="{{ song.fileUrl }}" type="audio/ogg" />
-              </audio>
-            </div>
-            <div
-              class="ms_play_icon"
-              *ngIf="!isPlaying"
-              (click)="listenCount(song)"
-            >
-              <img src="assets/images/svg/play.svg" alt="" />
-            </div>
-            <div class="ms_play_icon" *ngIf="isPlaying" (click)="changePause()">
-              <img src="assets/images/svg/pause.svg" alt="" />
+            <div class="ms_play_icon btn_play" (click)="listenCount(song)">
+              <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
+              <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
             </div>
           </div>
         </div>
@@ -75,6 +36,9 @@
           <h3>
             <a [routerLink]="['/song', song.id]">{{ song.name }}</a>
           </h3>
+          <div *ngFor="let s of song.singer">
+            <p>{{s.name}}</p>
+          </div>
         </div>
       </div>
     </div>

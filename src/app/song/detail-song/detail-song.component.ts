@@ -1,3 +1,4 @@
+
 import {Component, OnInit} from '@angular/core';
 import {SongService} from "../../service/song/song.service";
 import {Song} from "../../model/Song";
@@ -6,10 +7,9 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-detail-song',
   templateUrl: './detail-song.component.html',
-  styleUrls: ['./detail-song.component.css']
+  styleUrls: ['./detail-song.component.css'],
 })
 export class DetailSongComponent implements OnInit {
-
   id: number;
   song: Song;
   songList: Song[];
@@ -47,11 +47,11 @@ export class DetailSongComponent implements OnInit {
     this.audio.src = song.fileUrl;
     this.audio.load();
     this.audio.play();
-    this.songService.getListenSongById(song.id).subscribe(data => {
-      this.song = data;
-    })
-  }
 
+    this.songService.getListenSongById(song.id).subscribe((data) => {
+      this.song = data;
+    });
+  }
   changePause() {
     this.isPlaying = !this.isPlaying;
     this.audio.pause();
@@ -71,5 +71,4 @@ export class DetailSongComponent implements OnInit {
     // music.showPlayList();
     // music.volume();
   }
-
 }
