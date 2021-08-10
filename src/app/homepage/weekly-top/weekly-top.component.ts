@@ -15,7 +15,7 @@ export class WeeklyTopComponent implements OnInit {
   song: Song;
   isCheckLikeSong = false;
   isCheckInfoLike = false;
-  
+
   constructor(
     private songService: SongService,
     private likeSongService: LikeService

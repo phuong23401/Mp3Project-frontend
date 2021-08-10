@@ -16,12 +16,13 @@ import {CreatepPlaylistComponent} from "./myplaylist/createp-playlist/createp-pl
 import {TestplayerComponent} from "./testplayer/testplayer.component";
 import { ToastGlobalComponent } from './share/toast-global/toast-global.component';
 import {ToastContainerComponent} from "./share/toast-container/toast-container.component";
+import {AuthGuardGuard} from "./service/authguard/auth-guard.guard";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomepageComponent },
   { path: 'updateProfile', component: ProfileComponent },
-  { path: 'createsong', component: CreatesongComponent },
+  { path: 'createsong', component: CreatesongComponent,canActivate: [AuthGuardGuard]},
   { path: 'img', component: UploadImgComponent },
   { path: 'url', component: UploadUrlComponent },
   { path: 'search', component: ListSongSearchComponent },
@@ -31,10 +32,9 @@ const routes: Routes = [
   { path: 'updatesong/:id', component: UpdateSongComponent},
   { path: 'myplaylist', component: MyplaylistComponent},
   { path: 'myplaylist/details/:id', component: PlaylistdetailsComponent},
-  { path: 'createplaylist', component: CreatepPlaylistComponent},
+  { path: 'createplaylist', component: CreatepPlaylistComponent,canActivate: [AuthGuardGuard]},
   { path: 'check', component: TestplayerComponent},
   { path: 'test', component: ToastContainerComponent},
-
 ];
 
 @NgModule({
