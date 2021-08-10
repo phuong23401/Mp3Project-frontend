@@ -1,4 +1,4 @@
-<div class="ms-banner">
+<div class="ms-banner" style="margin-left: 150px;">
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 col-md-12">
@@ -7,12 +7,14 @@
             border-radius: 100% ;" alt="" class="img-fluid">
         </div>
         <div class="ms_banner_text">
-          <h1 >{{randomSong?.name}}</h1>
-          <h1 class="ms_color">{{randomSong?.description}}</h1>
-          <p>{{randomSong?.lyric}}</p>
+          <h1>{{randomSong?.name}}</h1>
+          <div *ngFor="let s of randomSong.singer">
+            <h1 class="ms_color">{{s.name}}</h1>
+          </div>
+          <p>{{randomSong?.description}}</p>
           <div class="ms_banner_btn">
-            <a  href="javascript:" class="ms_btn">Listen Now</a>
-            <a  (click)="likeCount(song)" href="javascript:" class="ms_btn">Add To Favourites</a>
+            <a href="javascript:" class="ms_btn btn_play" (click)="listenCount(randomSong)">Listen Now</a>
+            <a href="javascript:" class="ms_btn">Add To Favourites</a>
           </div>
         </div>
       </div>

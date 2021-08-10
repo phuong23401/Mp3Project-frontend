@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from '../service/playlist/playlist.service';
 import { PlaylistResponse } from '../model/PlaylistResponse';
 import Swal from 'sweetalert2';
+import { Playlist } from '../model/Playlist';
 
 @Component({
   selector: 'app-myplaylist',
@@ -10,6 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class MyplaylistComponent implements OnInit {
   listPlaylist: PlaylistResponse[] = [];
+  playlist: Playlist;
   messageResponse: any = {
     message: 'successfully!',
   };
@@ -35,7 +37,6 @@ export class MyplaylistComponent implements OnInit {
   playListDetails($event: any) {}
 
   deletePlaylist(id: number) {
-    console.log('enter');
     this.playListService.deletePlaylist(id).subscribe(
       (data) => {
           this.status = 'Successfully !';
@@ -57,5 +58,11 @@ export class MyplaylistComponent implements OnInit {
         });
       }
     );
+  }
+
+  listenCount(_playlist: Playlist) {
+    // this.playListService.countListenPLaylistById(_playlist.id).subscribe((res) => {
+    //   this.playlist = res;
+    // });
   }
 }

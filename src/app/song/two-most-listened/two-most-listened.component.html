@@ -14,9 +14,8 @@
               <img src="../../../assets/images/svg/more.svg" alt="" />
             </div>
             <div class="count-listen" style="color: #3bc8e7">
-              <i class="fas fa-headphones">
-                {{song.numberOfView}}
-              </i>
+              <i class="fas fa-headphones"></i>
+              {{song.numberOfView}}
             </div>
             <ul class="more_option">
               <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascrip:"><span class="opt_icon"><span
