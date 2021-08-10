@@ -90,21 +90,23 @@ export class CommentPlayListComponent implements OnInit {
     };
     this.commentPlayListService.createCommentPlayList(cmt).subscribe(
       (res) => {
-        this.commentPlayListService
-          .getCommentPlayListByPlayList(this.id)
-          .subscribe((data) => {
-            this.commentPlayList = data;
-            this.form.reset();
+          this.commentPlayListService
+            .getCommentPlayListByPlayList(this.id)
+            .subscribe((data) => {
+              this.commentPlayList = data;
+              this.form.reset();
+            });
+          Swal.fire({
+            title: 'Comment successfully !',
+            text: ' ',
+            icon: 'success',
+            confirmButtonColor: '#3bc8e7',
           });
-        Swal.fire({
-          title: 'Comment success !',
-          icon: 'success',
-          confirmButtonColor: '#3bc8e7',
-        });
       },
       (error) => {
         Swal.fire({
-          title: 'Comment failed !',
+          title: 'You need to login before commenting!',
+          text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });

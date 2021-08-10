@@ -37,9 +37,12 @@ export class MyplaylistComponent implements OnInit {
   getPlaylist() {
     this.playListService.getPlaylistByUser().subscribe((data) => {
       this.listPlaylist = data;
-      if (this.listPlaylist.length>0){
-        this.check = true;
-      }
+
+      this.check = true;
+
+    }, error => {
+      this.check = false;
+      this.status = "The Playlists is Empty...!"
     });
   }
 
