@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from '../service/playlist/playlist.service';
 import { PlaylistResponse } from '../model/PlaylistResponse';
 import Swal from 'sweetalert2';
+import {TokenService} from "../service/token/token.service";
 import { Playlist } from '../model/Playlist';
 
 @Component({
@@ -15,10 +16,18 @@ export class MyplaylistComponent implements OnInit {
   messageResponse: any = {
     message: 'successfully!',
   };
+  isLogin = false;
+
+  token: string;
   status = '';
   check = true;
 
-  constructor(private playListService: PlaylistService) {
+  constructor(private playListService: PlaylistService,
+              private tokenService: TokenService) {
+    this.token = this.tokenService.getToken();
+    if(this.token != null) {
+      this.isLogin = true;
+    }
     this.getPlaylist();
     this.check = false;
   }
@@ -28,9 +37,12 @@ export class MyplaylistComponent implements OnInit {
   getPlaylist() {
     this.playListService.getPlaylistByUser().subscribe((data) => {
       this.listPlaylist = data;
-      if (this.listPlaylist.length>0){
-        this.check = true;
-      }
+
+      this.check = true;
+
+    }, error => {
+      this.check = false;
+      this.status = "The Playlists is Empty...!"
     });
   }
 

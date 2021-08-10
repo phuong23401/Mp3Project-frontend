@@ -11,9 +11,9 @@ export class SingerService {
   API_URL = `${environment.API_URL}`;
 
   constructor(private httpClient:HttpClient) { }
-  
+
   getAllSinger():Observable<Singers[]>{
-    return this.httpClient.get<Singers[]>(this.API_URL+"/singers/singer")
+    return this.httpClient.get<Singers[]>(this.API_URL+"/home/singer")
   }
 
   createSinger(singer:Singers):Observable<Singers>{
