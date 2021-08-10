@@ -9,6 +9,7 @@ import { PlaylistResponse } from '../../model/PlaylistResponse';
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
 import {TokenService} from "../../service/token/token.service";
 import {LoginDialogComponent} from "../../share/login-dialog/login-dialog.component";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recently-played',
@@ -51,7 +52,12 @@ export class RecentlyPlayedComponent implements OnInit {
         }, 1000);
       },
       (error) => {
-        alert('Please login before click like!');
+        Swal.fire({
+          title: 'Please login before click like !',
+          text: ' ',
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
+        })
       }
     );
   }
