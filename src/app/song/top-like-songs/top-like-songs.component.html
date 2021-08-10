@@ -26,21 +26,9 @@
                 >
               </li>
             </ul>
-            <div style="display: none">
-              <audio controls loop id="track">
-                <source src="{{ song.fileUrl }}" type="audio/mpeg" />
-                <source src="{{ song.fileUrl }}" type="audio/ogg" />
-              </audio>
-            </div>
-            <div
-              class="ms_play_icon"
-              *ngIf="!isPlaying"
-              (click)="listenCount(song)"
-            >
-              <img src="assets/images/svg/play.svg" alt="" />
-            </div>
-            <div class="ms_play_icon" *ngIf="isPlaying" (click)="changePause()">
-              <img src="assets/images/svg/pause.svg" alt="" />
+            <div class="ms_play_icon btn_play" (click)="listenCount(song)">
+              <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
+              <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
             </div>
           </div>
         </div>

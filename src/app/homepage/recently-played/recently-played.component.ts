@@ -1,13 +1,15 @@
+import { LikeSong } from 'src/app/model/LikeSong';
+
 import { LikeService } from './../../service/like/like.service';
 import { Component, OnInit } from '@angular/core';
 import { SongService } from '../../service/song/song.service';
 import { Song } from '../../model/Song';
-import { LikeSong } from 'src/app/model/LikeSong';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dialog.component';
 import { PlaylistResponse } from '../../model/PlaylistResponse';
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
-import { DowloadServiceService } from 'src/app/service/dowload/dowload-service.service';
+import {DowloadServiceService} from "../../service/dowload/dowload-service.service";
+import * as saveAs from 'file-saver';
 @Component({
   selector: 'app-recently-played',
   templateUrl: './recently-played.component.html',
@@ -117,7 +119,7 @@ export class RecentlyPlayedComponent implements OnInit {
   downloadFile(fileData: Song): void {
     this.downloadService
       .download(fileData.fileUrl)
-      .subscribe(blob => saveAs(blob, fileData.fileUrl));
+      .subscribe(blob =>saveAs(blob, fileData.fileUrl));
   }
 }
 
