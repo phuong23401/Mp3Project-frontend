@@ -27,6 +27,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   id: any;
   lisplaylists: Playlist;
   status = '';
+  isCheckInfoLike = false;
 
   constructor(
     private router: Router,
@@ -44,17 +45,6 @@ export class HomepageComponent implements OnInit, OnDestroy {
       .subscribe((playlistSv: PlaylistResponse[]) => {
         this.listPlaylist = playlistSv;
       });
-  }
-
-  likeCount(song: Song) {
-    this.songService.getLikeSongUpById(song.id).subscribe(
-      (data) => {
-        this.song = data;
-      },
-      (error) => {
-        alert('Please login before click like!');
-      }
-    );
   }
 
   getPlayList() {
@@ -79,5 +69,47 @@ export class HomepageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  listenCount(song: Song) {
+    this.songService.getListenSongById(song.id).subscribe((data) => {
+      this.song = data;
+    });
+
+    const playlist = localStorage.getItem('playlist')
+      ? JSON.parse(localStorage.getItem('playlist'))
+      : [];
+    const currentSong = {
+      id: song.id,
+      image: song.avatarUrl,
+      title: song.name,
+      artist: song.author,
+      mp3: song.fileUrl,
+    };
+    localStorage.setItem('currentSong', JSON.stringify(currentSong));
+
+    if (song !== undefined && !playlist.find((_song) => _song.id === song.id)) {
+      playlist.unshift(currentSong);
+      localStorage.setItem('playlist', JSON.stringify(playlist));
+    }
+  }
+
+  likeCount(song: Song) {
+    this.songService.getLikeSongUpById(song.id).subscribe(
+      (data) => {
+        this.song = data;
+        setTimeout(() => {
+          this.isCheckInfoLike = true;
+        }, 1000);
+      },
+      (error) => {
+        Swal.fire({
+          title: 'Please login before click like !',
+          text: ' ',
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
+        })
+      }
+    );
   }
 }

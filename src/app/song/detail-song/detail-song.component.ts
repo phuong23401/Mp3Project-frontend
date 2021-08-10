@@ -51,17 +51,26 @@ export class DetailSongComponent implements OnInit {
   ngOnInit(): void {}
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
-    this.audio = new Audio();
-    this.audio.src = song.fileUrl;
-    this.audio.load();
-    this.audio.play();
-    this.songService.getListenSongById(song.id).subscribe((data) => {
+    this.songService.getListenSongById(song.id).subscribe(data => {
       this.song = data;
-    });
-  }
-  changePause() {
-    this.isPlaying = !this.isPlaying;
-    this.audio.pause();
+    })
+
+    const playlist = localStorage.getItem('playlist')
+      ? JSON.parse(localStorage.getItem('playlist'))
+      : [];
+    const currentSong = {
+      id: song.id,
+      image: song.avatarUrl,
+      title: song.name,
+      artist: song.author,
+      mp3: song.fileUrl,
+    };
+    localStorage.setItem('currentSong', JSON.stringify(currentSong));
+
+    if (song !== undefined && !playlist.find((_song) => _song.id === song.id)) {
+      playlist.unshift(currentSong);
+      localStorage.setItem('playlist', JSON.stringify(playlist));
+    }
   }
 
   ngAfterViewInit(): void {
