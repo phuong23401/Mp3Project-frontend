@@ -51,11 +51,6 @@ export class RecentlyPlayedComponent implements OnInit {
 
       },
       (error) => {
-        Swal.fire({
-          title: 'Comment failed !',
-          icon: 'error',
-          confirmButtonColor: '#3bc8e7',
-        });
       }
     );
   }
