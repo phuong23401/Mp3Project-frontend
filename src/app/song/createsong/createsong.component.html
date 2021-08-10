@@ -58,43 +58,24 @@
   <div class="row">
     <div class="form-group col-md-6">
       <label>Lyric: </label><span style="color:#ef8989;" *ngIf="lyric.hasError('required')"> *The Lyric Song is required!</span>
-      <textarea  style="width: 637px;" type="text" class="form-control" placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric"
+      <textarea  style="width: 550px;" type="text" class="form-control" placeholder="Lyric-Song" name="lyric" [(ngModel)]="form.lyric"
                 #lyric="ngModel" required></textarea>
     </div>
     <div class="form-group col-md-6">
       <label >Description</label>
-      <textarea style="width: 637px;" type="text" class="form-control" placeholder="Description" name="description"
+      <textarea style="width: 550px;" type="text" class="form-control" placeholder="Description" name="description"
                 [(ngModel)]="form.description" #description="ngModel"></textarea>
     </div>
   </div>
 
   <div class="form-row">
 
-    <div class="form-group col-md-6" [formGroup]="searchForm">
-      <label>Singers</label>
-      <div>
-        <input #Value #myInput type="text" [(ngModel)]="searchValue" (keyup)="filterKeyWord()" class="form-control"
-               (change)="onchage(Value.value)" aria-label="Username" aria-describedby="basic-addon1" formControlName="name"
-               placeholder="Singer">
-      </div>
-      <div style="display: block;border-radius: 20px 20px;background: #14182a;" class="autocomplete-suggestions gotop"
-           [hidden]="isCheck">
-
-        <p [hidden]="conditsion" style="background:#14182a; border-radius: 20px 10px; color: #e95c5c; ">No matching
-          singers found!</p>
-        <div class="row" style="width: 100%"
-             *ngFor="let singer of listFilterResult">
-          <div class="col-8" style="margin-top: 15px">
-            <div style="display: inline-grid; position: relative">
-              <div class="product__discount__item__text" style="text-align: left; padding-top: 0px">
-                <option value=""><i class="fas fa-music"></i> {{singer.name}}</option>
-<!--                <input value="{{singer.name}}">-->
-<!--                <h5><a href=""></a><i class="fas fa-music"></i> {{singer.name}}</h5>-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="form-group col-md-6" >
+        <label style="margin-left: 10px;">Singers: </label>
+        <input  type="text" class="form-control" #Value (change)="onchage(Value.value)">
+      <ul *ngFor="let item of singgersOnchage">
+        <li>{{item.name}}</li>
+      </ul>
     </div>
     <div class="form-group col-md-6">
       <label style="margin-left: 10px;">Author: </label>
