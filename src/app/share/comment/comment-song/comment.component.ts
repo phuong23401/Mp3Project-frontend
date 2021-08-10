@@ -41,7 +41,7 @@ export class CommentComponent implements OnInit {
     private router: ActivatedRoute,
     private songService: SongService,
     private userService: UserService,
-    private router1: Router
+    private router1: Router,
   ) {
     this.tokenUser = token.getToken();
     if (this.tokenUser != null) {
@@ -99,7 +99,7 @@ export class CommentComponent implements OnInit {
         });
       }, (error) => {
         Swal.fire({
-          title: 'Comment failed !',
+          title: 'You need to login before commenting !',
           text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7'

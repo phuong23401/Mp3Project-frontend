@@ -11,6 +11,9 @@ import { CommentPlayListService } from '../../../service/comment/comment-play-li
 import { Playlist } from '../../../model/Playlist';
 import { PlaylistService } from '../../../service/playlist/playlist.service';
 import Swal from 'sweetalert2';
+import {TokenService} from "../../../service/token/token.service";
+import {BsModalService} from "ngx-bootstrap/modal";
+import {LoginDialogComponent} from "../../login-dialog/login-dialog.component";
 
 @Component({
   selector: 'app-comment-play-list',
@@ -35,7 +38,7 @@ export class CommentPlayListComponent implements OnInit {
     private router: ActivatedRoute,
     private playlistService: PlaylistService,
     private userService: UserService,
-    private songSerive: SongService
+    private songSerive: SongService,
   ) {
     this.form = this.formbuild.group({
       comment: [''],
@@ -81,22 +84,22 @@ export class CommentPlayListComponent implements OnInit {
     };
     this.commentPlayListService.createCommentPlayList(cmt).subscribe(
       (res) => {
-        this.commentPlayListService
-          .getCommentPlayListByPlayList(this.id)
-          .subscribe((data) => {
-            this.commentPlayList = data;
-            this.form.reset();
+          this.commentPlayListService
+            .getCommentPlayListByPlayList(this.id)
+            .subscribe((data) => {
+              this.commentPlayList = data;
+              this.form.reset();
+            });
+          Swal.fire({
+            title: 'Comment successfully !',
+            text: ' ',
+            icon: 'success',
+            confirmButtonColor: '#3bc8e7',
           });
-        Swal.fire({
-          title: 'Comment successfully !',
-          text: ' ',
-          icon: 'success',
-          confirmButtonColor: '#3bc8e7',
-        });
       },
       (error) => {
         Swal.fire({
-          title: 'Comment failed !',
+          title: 'You need to login before commenting!',
           text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
