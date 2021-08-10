@@ -64,7 +64,8 @@ export class CreatepPlaylistComponent implements OnInit {
     this.playlistService.creatPlaylist(this.playlistReq).subscribe(
       (mes) => {
         Swal.fire({
-          title: 'Compete',
+          title: 'Create new playlist successfully !',
+          text: ' ',
           icon: 'success',
           confirmButtonColor: '#3bc8e7',
         });
@@ -73,8 +74,8 @@ export class CreatepPlaylistComponent implements OnInit {
       (error) => {
         this.messageAlert = error.message;
         Swal.fire({
-          title: 'Error',
-          text: 'Please check your infor !',
+          title: 'Create new playlist failed !',
+          text: 'Please check playlist infor',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });

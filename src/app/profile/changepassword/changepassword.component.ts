@@ -69,6 +69,7 @@ export class ChangepasswordComponent implements OnInit {
           this.messageAlert = mes.message;
           Swal.fire({
             title: this.messageAlert,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -78,7 +79,7 @@ export class ChangepasswordComponent implements OnInit {
           this.messageAlert = error.error.message;
           Swal.fire({
             title: this.messageAlert,
-            text: 'Please check your infor !',
+            text: 'Please check your infor',
             icon: 'error',
             confirmButtonColor: '#3bc8e7',
           });

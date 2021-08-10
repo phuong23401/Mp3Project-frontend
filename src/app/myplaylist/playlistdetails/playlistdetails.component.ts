@@ -92,6 +92,7 @@ export class PlaylistdetailsComponent implements OnInit {
       (error) => {
         Swal.fire({
           title: 'Error!!!',
+          text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });
@@ -144,17 +145,19 @@ export class PlaylistdetailsComponent implements OnInit {
     this.playList.name = value;
     this.playListService.updatePlaylist(this.id, this.playList).subscribe(
       (data) => {
-        this.status = 'Successfully!';
+        this.status = "Update playlist's name successfully !";
         Swal.fire({
           title: this.status,
+          text: ' ',
           icon: 'success',
           confirmButtonColor: '#3bc8e7',
         });
       },
       (error) => {
-        this.status = 'Please check your infor !';
+        this.status = "Update playlist's name failed !";
         Swal.fire({
           title: this.status,
+          text: 'Please check your infor',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });
@@ -176,17 +179,19 @@ export class PlaylistdetailsComponent implements OnInit {
         this.playList.avatarUrl = downloadURL;
         this.playListService.updatePlaylist(this.id, this.playList).subscribe(
           (data) => {
-            this.status = 'Successfully!';
+            this.status = "Update playlist's avatar successfully !";
             Swal.fire({
               title: this.status,
+              text: ' ',
               icon: 'success',
               confirmButtonColor: '#3bc8e7',
             });
           },
           (error) => {
-            this.status = 'Please check your infor !';
+            this.status = "Update playlist's avatar failed !";
             Swal.fire({
               title: this.status,
+              text: ' ',
               icon: 'error',
               confirmButtonColor: '#3bc8e7',
             });
