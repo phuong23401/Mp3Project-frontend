@@ -11,6 +11,8 @@ import { Song } from 'src/app/model/Song';
 import { User } from 'src/app/model/User';
 import { Singers } from 'src/app/model/Singers';
 import { UserService } from 'src/app/service/user/user.service';
+import {PlaylistService} from "../../../service/playlist/playlist.service";
+import {Playlist} from "../../../model/Playlist";
 
 @Component({
   selector: 'app-header',
@@ -25,6 +27,9 @@ export class HeaderComponent implements OnInit {
   listFilterResult : Song[];
   listFilterUserResult : User[];
   listFilterSingerResult : Singers[];
+  listFilterPlayListResult: Playlist[];
+  listResult: Playlist;
+  playList: Playlist[];
   nameSinger = [];
 
 
@@ -36,10 +41,14 @@ export class HeaderComponent implements OnInit {
               private formBuilder: FormBuilder,
               private router: Router,
               private data: DataService,
-              private userService: UserService) {
+              private userService: UserService,
+              private playListService: PlaylistService) {
     this.searchForm = new FormGroup({
       name: new FormControl(),
     });
+    this.playListService.getAllPlaylist().subscribe(res =>{
+      this.listResult = res;
+    })
   }
 
   ngOnInit(): void {
@@ -66,22 +75,18 @@ export class HeaderComponent implements OnInit {
       this.isCheck = true;
     } else {
 
-
       this.listFilterResult = this.songList;
       var keyWord = this.searchValue.toLowerCase();
       this.listFilterResult.map(item => {
-        var username = item.user.name.toLowerCase();
-        var name = item.name.toLowerCase();
-        var author = item.author.toLowerCase();
-        var singer = item.singer.filter(res =>{
+        let username = item.user.name.toLowerCase();
+        let name = item.name.toLowerCase();
+        let author = item.author.toLowerCase();
+        let singer = item.singer.filter(res =>{
           return res.name.toLowerCase().match(keyWord)
 
         }) ;
-        //   item.singer.filter(res =>{
-        //   return res.name.toLocaleLowerCase().match(this.searchValue.toLocaleLowerCase());
-        // })
         for (let i = 0; i < this.songList.length; i++) {
-          var singer_1 = this.songList[i].singer;
+          let singer_1 = this.songList[i].singer;
           for (let j = 0; j < singer_1.length; j++) {
             let name = singer_1[j].name;
             if (!this.nameSinger.includes(name)){
@@ -95,9 +100,20 @@ export class HeaderComponent implements OnInit {
           filterResult.push(item);
         }
       });
+    }  if ( this.searchValue === 0){
+      this.isCheck = true;
+    }else {
+      this.listFilterPlayListResult = this.playList;
+      var keyWord = this.searchValue.toLowerCase();
+      this.listFilterPlayListResult.map(item => {
+        let name = item.name.toLowerCase();
+        if (name.includes(keyWord) ) {
+          filterResult.push(item);
+        }
+      });
     }
-    this.listFilterResult = filterResult;
-    if (this.listFilterResult.length !== 0) {
+    this.listFilterPlayListResult = filterResult;
+    if (this.listFilterPlayListResult.length !== 0) {
       this.conditsion = true;
     } else {
       this.conditsion = false;
