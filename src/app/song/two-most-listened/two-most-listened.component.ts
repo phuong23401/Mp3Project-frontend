@@ -20,6 +20,7 @@ export class TwoMostListenedComponent implements OnInit {
   isCheckInfoLike = false;
   isPlaying = false;
   i = 0;
+
   song: Song;
   songs: Song[];
   msbapDisplayTitle = false;
