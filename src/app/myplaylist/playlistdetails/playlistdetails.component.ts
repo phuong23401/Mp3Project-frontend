@@ -119,26 +119,25 @@ export class PlaylistdetailsComponent implements OnInit {
 
   deleteSong(i: number) {
     this.listSong.splice(i, 1);
+    console.log("listSong "+this.listSong)
     this.playList.songs = this.listSong;
-    this.playListService.updatePlaylist(this.id, this.playList).subscribe(
-      (data) => {
-        this.status = 'Delete Song Successfully !';
-        Swal.fire({
-          title: this.status,
-          icon: 'success',
-          confirmButtonColor: '#3bc8e7',
-        });
-      },
-      (error) => {
-        this.status = 'Delete Song Failed !';
-        Swal.fire({
-          title: this.status,
-          text: 'Please try again!',
-          icon: 'error',
-          confirmButtonColor: '#3bc8e7',
-        });
-      }
-    );
+    console.log("playlist "+ this.playList)
+    this.playListService.updatePlaylist(this.id, this.playList).subscribe(data=>{
+      this.status = 'Delete Song Successfully !';
+      Swal.fire({
+        title: this.status,
+        icon: 'success',
+        confirmButtonColor: '#3bc8e7',
+      });
+    },(error) => {
+      this.status = 'Delete Song Failed !';
+      Swal.fire({
+        title: this.status,
+        text: 'Please try again!',
+        icon: 'error',
+        confirmButtonColor: '#3bc8e7',
+      });
+    });
   }
 
   onChangeName(value: any) {
