@@ -66,12 +66,10 @@
               </div>
 
               <ul class="more_option">
-                <li (click)="likePlayListCount(playlist)">
-                  <a
-                    ><span class="opt_icon"
-                      ><span class="icon icon_fav"></span></span
-                    >Add To Favourites</a
-                  >
+                <li (click)="likePlayListCount(playlist)" *ngIf="!isCheckLikeSong"><a href="javascript:"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add
+                  To
+                  Favourites</a></li>
+                <li (click)="likePlayListCount(playlist)" *ngIf="isCheckLikeSong"><a href="javascript:"> <span class="opt_icon" > <i class="fas fa-heart-broken"></i></span>&nbsp;DisLike</a>
                 </li>
                 <li>
                   <a href="javascript:" (click)="deleteSong(i)"
@@ -87,8 +85,12 @@
         </div>
       </div>
     </div>
-    <div *ngIf="check">Not found Song!</div>
+    <div *ngIf="check">
+      Not found Song!
+    </div>
     <!--    <br>-->
   </div>
 </div>
-<app-comment-play-list></app-comment-play-list>
+<!--<app-comment-play-list></app-comment-play-list>-->
+
+

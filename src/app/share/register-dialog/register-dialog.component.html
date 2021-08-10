@@ -91,7 +91,6 @@
                         </div>
                       </div>
                       <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-
                         <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
                       </div>
                         <div class="text-danger" *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">

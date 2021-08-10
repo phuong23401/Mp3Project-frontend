@@ -12,8 +12,6 @@ import { Playlist } from '../../../model/Playlist';
 import { PlaylistService } from '../../../service/playlist/playlist.service';
 import Swal from 'sweetalert2';
 import {TokenService} from "../../../service/token/token.service";
-import {BsModalService} from "ngx-bootstrap/modal";
-import {LoginDialogComponent} from "../../login-dialog/login-dialog.component";
 
 @Component({
   selector: 'app-comment-play-list',
@@ -29,6 +27,9 @@ export class CommentPlayListComponent implements OnInit {
   songList: Playlist[];
   userId: number;
   id: number;
+  isLogin = false;
+
+  token: string;
 
   constructor(
     private profile: ProfileService,
@@ -39,7 +40,12 @@ export class CommentPlayListComponent implements OnInit {
     private playlistService: PlaylistService,
     private userService: UserService,
     private songSerive: SongService,
+    private tokenService: TokenService
   ) {
+    this.token = this.tokenService.getToken();
+    if(this.token != null) {
+      this.isLogin = true;
+    }
     this.form = this.formbuild.group({
       comment: [''],
     });

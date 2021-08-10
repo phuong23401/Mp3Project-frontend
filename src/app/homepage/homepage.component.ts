@@ -1,13 +1,13 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Song } from '../model/Song';
-import { SongService } from '../service/song/song.service';
-import { Subscription } from 'rxjs';
-import { Playlist } from '../model/Playlist';
-import { PlaylistService } from '../service/playlist/playlist.service';
-import { User } from '../model/User';
-import { ProfileService } from '../service/profile/profile.service';
-import { PlaylistResponse } from '../model/PlaylistResponse';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Song} from '../model/Song';
+import {SongService} from '../service/song/song.service';
+import {Subscription} from 'rxjs';
+import {Playlist} from '../model/Playlist';
+import {PlaylistService} from '../service/playlist/playlist.service';
+import {User} from '../model/User';
+import {ProfileService} from '../service/profile/profile.service';
+import {PlaylistResponse} from '../model/PlaylistResponse';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
 export class HomepageComponent implements OnInit, OnDestroy {
   name: any = '';
   songList: Song[] = [];
+  listSong: Song[];
   randomSong: Song;
   subscription: Subscription = new Subscription();
   songS: Song[] = [];
@@ -28,6 +29,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   lisplaylists: Playlist;
   status = '';
   isCheckInfoLike = false;
+  isCheckLikeSong = false;
 
   constructor(
     private router: Router,
@@ -39,13 +41,14 @@ export class HomepageComponent implements OnInit, OnDestroy {
     this.userCurent.getUserCurrent().subscribe((data) => {
       this.user = data;
     });
-
-    this.playlist
-      .getPlaylistByUser()
-      .subscribe((playlistSv: PlaylistResponse[]) => {
+    this.songService.getAllSongs().subscribe((res) => {
+      this.listSong = res;
+    });
+    this.playlist.getPlaylistByUser().subscribe((playlistSv: PlaylistResponse[]) => {
         this.listPlaylist = playlistSv;
       });
   }
+
 
   getPlayList() {
     this.playlist.getPlaylist(this.id).subscribe((data) => {
@@ -98,9 +101,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
     this.songService.getLikeSongUpById(song.id).subscribe(
       (data) => {
         this.song = data;
-        setTimeout(() => {
-          this.isCheckInfoLike = true;
-        }, 1000);
+        this.isCheckLikeSong = !this.isCheckLikeSong;
       },
       (error) => {
         Swal.fire({

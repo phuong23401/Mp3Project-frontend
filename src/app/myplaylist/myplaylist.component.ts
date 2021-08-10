@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {PlaylistService} from '../service/playlist/playlist.service';
-import {PlaylistResponse} from '../model/PlaylistResponse';
+import { Component, OnInit } from '@angular/core';
+import { PlaylistService } from '../service/playlist/playlist.service';
+import { PlaylistResponse } from '../model/PlaylistResponse';
 import Swal from 'sweetalert2';
-import {Playlist} from '../model/Playlist';
+import {TokenService} from "../service/token/token.service";
+import { Playlist } from '../model/Playlist';
 
 @Component({
   selector: 'app-myplaylist',
@@ -15,16 +16,23 @@ export class MyplaylistComponent implements OnInit {
   messageResponse: any = {
     message: 'successfully!',
   };
+  isLogin = false;
+
+  token: string;
   status = '';
   check = true;
 
-  constructor(private playListService: PlaylistService) {
+  constructor(private playListService: PlaylistService,
+              private tokenService: TokenService) {
+    this.token = this.tokenService.getToken();
+    if(this.token != null) {
+      this.isLogin = true;
+    }
     this.getPlaylist();
     this.check = false;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   getPlaylist() {
     this.playListService.getPlaylistByUser().subscribe((data) => {
@@ -38,22 +46,19 @@ export class MyplaylistComponent implements OnInit {
     });
   }
 
-  playListDetails($event: any) {
-  }
+  playListDetails($event: any) {}
 
   deletePlaylist(id: number) {
     this.playListService.deletePlaylist(id).subscribe(
-      (data: PlaylistResponse) => {
-        this.status = 'Successfully !';
-
-        Swal.fire({
-          title: this.status,
-          text: ' ',
-          icon: 'success',
-          confirmButtonColor: '#3bc8e7',
-        });
-        this.getPlaylist();
-        console.log("sau khi xoa" + this.listPlaylist)
+      (data) => {
+          this.status = 'Successfully !';
+          Swal.fire({
+            title: this.status,
+            text: ' ',
+            icon: 'success',
+            confirmButtonColor: '#3bc8e7',
+          });
+          this.getPlaylist();
       },
       (error) => {
         this.status = 'Error server !';

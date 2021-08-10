@@ -21,6 +21,7 @@ export class TwoMostListenedComponent implements OnInit {
   isCheckInfoLike = false;
   isPlaying = false;
   i = 0;
+
   song: Song;
   songs: Song[];
   msbapDisplayTitle = false;
@@ -46,13 +47,9 @@ export class TwoMostListenedComponent implements OnInit {
   }
 
   likeCount(song: Song) {
-    this.songService.getLikeSongUpById(song.id).subscribe(
-      (data) => {
-        console.log('data', data);
+    this.songService.getLikeSongUpById(song.id).subscribe((data) => {
+        this.isCheckLikeSong = !this.isCheckLikeSong;
         this.song = data;
-        setTimeout(() => {
-          this.isCheckInfoLike = true;
-        }, 1000);
       },
       (error) => {
         Swal.fire({
