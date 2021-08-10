@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { PlaylistService } from '../service/playlist/playlist.service';
-import { PlaylistResponse } from '../model/PlaylistResponse';
+import {Component, OnInit} from '@angular/core';
+import {PlaylistService} from '../service/playlist/playlist.service';
+import {PlaylistResponse} from '../model/PlaylistResponse';
 import Swal from 'sweetalert2';
-import { Playlist } from '../model/Playlist';
+import {Playlist} from '../model/Playlist';
 
 @Component({
   selector: 'app-myplaylist',
@@ -23,30 +23,37 @@ export class MyplaylistComponent implements OnInit {
     this.check = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   getPlaylist() {
     this.playListService.getPlaylistByUser().subscribe((data) => {
       this.listPlaylist = data;
-      if (this.listPlaylist.length>0){
-        this.check = true;
-      }
+
+      this.check = true;
+
+    }, error => {
+      this.check = false;
+      this.status = "The Playlists is Empty...!"
     });
   }
 
-  playListDetails($event: any) {}
+  playListDetails($event: any) {
+  }
 
   deletePlaylist(id: number) {
     this.playListService.deletePlaylist(id).subscribe(
-      (data) => {
-          this.status = 'Successfully !';
-          Swal.fire({
-            title: this.status,
-            text: ' ',
-            icon: 'success',
-            confirmButtonColor: '#3bc8e7',
-          });
-          this.getPlaylist();
+      (data: PlaylistResponse) => {
+        this.status = 'Successfully !';
+
+        Swal.fire({
+          title: this.status,
+          text: ' ',
+          icon: 'success',
+          confirmButtonColor: '#3bc8e7',
+        });
+        this.getPlaylist();
+        console.log("sau khi xoa" + this.listPlaylist)
       },
       (error) => {
         this.status = 'Error server !';
