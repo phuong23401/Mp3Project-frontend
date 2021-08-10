@@ -84,11 +84,7 @@ export class Header1Component implements OnInit {
         var username = item.user.name.toLowerCase();
         var name = item.name.toLowerCase();
         var author = item.author.toLowerCase();
-        if (
-          name.includes(keyWord) ||
-          username.includes(keyWord) ||
-          author.includes(keyWord)
-        ) {
+        if (name.includes(keyWord) || username.includes(keyWord) || author.includes(keyWord)) {
           filterResult.push(item);
         }
       });
