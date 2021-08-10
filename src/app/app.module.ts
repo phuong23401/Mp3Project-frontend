@@ -7,15 +7,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
-import { PlaymusicComponent } from './share/audio/playmusic/playmusic.component';
 import { SidemenuComponent } from './share/sidemenu/sidemenu/sidemenu.component';
 import { SongComponent } from './song/song-manager/song.component';
 import { CreatesongComponent } from './song/createsong/createsong.component';
-import { UploadImgComponent } from "./uploadfile/upload-img/upload-img.component";
-import { UploadUrlComponent } from "./uploadfile/upload-url/upload-url.component";
-import { AngularFireStorageModule } from "@angular/fire/storage";
-import { AngularFireModule } from "@angular/fire";
-import { environment } from "../environments/environment";
+import { UploadImgComponent } from './uploadfile/upload-img/upload-img.component';
+import { UploadUrlComponent } from './uploadfile/upload-url/upload-url.component';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 import { HeaderComponent } from './share/headerr/header/header.component';
 import { FooterComponent } from './share/footer/footer.component';
 import { PlayerComponent } from './share/player/player.component';
@@ -29,12 +28,11 @@ import { LoginDialogComponent } from './share/login-dialog/login-dialog.componen
 import { ListSongSearchComponent } from './song/list-song-search/list-song-search.component';
 import { RegisterDialogComponent } from './share/register-dialog/register-dialog.component';
 import { Header1Component } from './share/headerr/header1/header1.component';
-import { ListNewSongComponent } from './song/list-new-song/list-new-song.component';
 import { TwoMostListenedComponent } from './song/two-most-listened/two-most-listened.component';
-import { ChangepasswordComponent } from "./profile/changepassword/changepassword.component";
-import { httpInterceptorProviders } from "./service/auth/auth.interceptor";
+import { ChangepasswordComponent } from './profile/changepassword/changepassword.component';
+import { httpInterceptorProviders } from './service/auth/auth.interceptor';
 import { SearchfilterPipe } from './share/searchfilter.pipe';
-import { PlaySongComponent } from "./song/play-song/play-song.component";
+import { PlaySongComponent } from './song/play-song/play-song.component';
 import { CommonModule } from '@angular/common';
 import { UpdateSongComponent } from './song/update-song/update-song.component';
 import { TopListenedPlaylistComponent } from './playlist/top-listened-playlist/top-listened-playlist.component';
@@ -45,8 +43,8 @@ import { CommentComponent } from './share/comment/comment-song/comment.component
 import { DetailSongComponent } from './song/detail-song/detail-song.component';
 import { CommentPlayListComponent } from './share/comment/comment-play-list/comment-play-list.component';
 import { AddSongDialogComponent } from './share/add-song-dialog/add-song-dialog.component';
-import { TestplayerComponent } from "./testplayer/testplayer.component";
-import { AngMusicPlayerModule } from "ang-music-player";
+import { TestplayerComponent } from './testplayer/testplayer.component';
+import { AngMusicPlayerModule } from 'ang-music-player';
 import { LatestPlaylistComponent } from './playlist/latest-playlist/latest-playlist.component';
 import { TopLikePlaylistComponent } from './playlist/top-like-playlist/top-like-playlist.component';
 import { TopLikeSongsComponent } from './song/top-like-songs/top-like-songs.component';
@@ -54,50 +52,48 @@ import { ToastGlobalComponent } from './share/toast-global/toast-global.componen
 import { ToastContainerComponent } from './share/toast-container/toast-container.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        HomepageComponent,
-        SongComponent,
-        CreatesongComponent,
-        ProfileComponent,
-        PlaymusicComponent,
-        SidemenuComponent,
-        UploadImgComponent,
-        UploadUrlComponent,
-        HeaderComponent,
-        FooterComponent,
-        PlayerComponent,
-        RecentlyPlayedComponent,
-        WeeklyTopComponent,
-        FeaturedArtistsComponent,
-        NewReleaseComponent,
-        LoginDialogComponent,
-        ListSongSearchComponent,
-        RegisterDialogComponent,
-        Header1Component,
-        ListNewSongComponent,
-        TwoMostListenedComponent,
-        ChangepasswordComponent,
-        SearchfilterPipe,
-        PlayerComponent,
-        PlaySongComponent,
-        UpdateSongComponent,
-        TopListenedPlaylistComponent,
-        MyplaylistComponent,
-        PlaylistdetailsComponent,
-        CreatepPlaylistComponent,
-        UpdateSongComponent,
-        CommentComponent,
-        DetailSongComponent,
-        TestplayerComponent,
-        CommentPlayListComponent,
-        AddSongDialogComponent,
-        LatestPlaylistComponent,
-        TopLikePlaylistComponent,
-        TopLikeSongsComponent,
-        ToastContainerComponent,
-        ToastGlobalComponent,
-    ],
+  declarations: [
+    AppComponent,
+    HomepageComponent,
+    SongComponent,
+    CreatesongComponent,
+    ProfileComponent,
+    SidemenuComponent,
+    UploadImgComponent,
+    UploadUrlComponent,
+    HeaderComponent,
+    FooterComponent,
+    PlayerComponent,
+    RecentlyPlayedComponent,
+    WeeklyTopComponent,
+    FeaturedArtistsComponent,
+    NewReleaseComponent,
+    LoginDialogComponent,
+    ListSongSearchComponent,
+    RegisterDialogComponent,
+    Header1Component,
+    TwoMostListenedComponent,
+    ChangepasswordComponent,
+    SearchfilterPipe,
+    PlayerComponent,
+    PlaySongComponent,
+    UpdateSongComponent,
+    TopListenedPlaylistComponent,
+    MyplaylistComponent,
+    PlaylistdetailsComponent,
+    CreatepPlaylistComponent,
+    UpdateSongComponent,
+    CommentComponent,
+    DetailSongComponent,
+    TestplayerComponent,
+    CommentPlayListComponent,
+    AddSongDialogComponent,
+    LatestPlaylistComponent,
+    TopLikePlaylistComponent,
+    TopLikeSongsComponent,
+    ToastContainerComponent,
+    ToastGlobalComponent,
+  ],
   imports: [
     BrowserModule,
     CommonModule,
@@ -112,6 +108,6 @@ import { ToastContainerComponent } from './share/toast-container/toast-container
     AngMusicPlayerModule,
   ],
   providers: [httpInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

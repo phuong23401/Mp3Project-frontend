@@ -9,11 +9,16 @@ $(function () {
     play: function(event) {
 		},
 		pause: function(event) {
-			my_playState.text(opt_text_selected);
 		},
+    swfPath: "js/plugins",
+    cssSelectorAncestor: "#jp_container_1",
+    supplied: "oga, mp3",
+    wmode: "window"
   });
 
   $(document).on('click', '.btn_play', function() {
+    const _this = $(this);
+    
     const currentSong = localStorage.getItem("currentSong")
       ? JSON.parse(localStorage.getItem("currentSong"))
       : {
@@ -25,6 +30,19 @@ $(function () {
         };
     
     const mp3Url = currentSong.mp3;
+    
+    if(!_this.hasClass('is_playing')) {
+      $(document).find('.btn_play').removeClass('is_playing')
+      _this.addClass('is_playing')
+
+      $('#jquery_jplayer_1').jPlayer('setMedia', {
+        mp3: mp3Url,
+      });
+      $('#jquery_jplayer_1').jPlayer('play');
+    } else {
+      _this.removeClass('is_playing')
+      $('#jquery_jplayer_1').jPlayer('pause');
+    }
 
     $(".jp-now-playing").html(
       `<div class='jp-track-name'>
@@ -37,12 +55,6 @@ $(function () {
         </div>
       </div>`
     );
-
-    $('#jquery_jplayer_1').jPlayer('setMedia', {
-      mp3: mp3Url,
-    });
-
-    $('#jquery_jplayer_1').jPlayer('play');
   })
 
   if ($(".audio-player").length) {

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {LikePlayList} from "../../model/LikePlayList";
-import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {HttpService} from "../http/http.service";
-import {environment} from "../../../environments/environment";
-import {Song} from "../../model/Song";
+import { LikePlayList } from "../../model/LikePlayList";
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { HttpService } from "../http/http.service";
+import { environment } from "../../../environments/environment";
+import { Song } from "../../model/Song";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class LikePlayListService {
 
   constructor(private http: HttpClient,
               private httpService: HttpService) { }
+
   createLikePlayList(likeplaylist: LikePlayList): Observable<any> {
     return this.http.post(this.API_URL + '/like-play-list', likeplaylist, this.httpService.getHttp());
   }
