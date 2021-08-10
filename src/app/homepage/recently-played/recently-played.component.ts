@@ -1,16 +1,17 @@
+import { LikeSong } from 'src/app/model/LikeSong';
+
 import { LikeService } from './../../service/like/like.service';
 import { Component, OnInit } from '@angular/core';
 import { SongService } from '../../service/song/song.service';
 import { Song } from '../../model/Song';
-import { LikeSong } from 'src/app/model/LikeSong';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dialog.component';
 import { PlaylistResponse } from '../../model/PlaylistResponse';
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
 import {TokenService} from "../../service/token/token.service";
 import {LoginDialogComponent} from "../../share/login-dialog/login-dialog.component";
-import Swal from 'sweetalert2';
-
+import "firebase/storage";
+import Swal from "sweetalert2";
 @Component({
   selector: 'app-recently-played',
   templateUrl: './recently-played.component.html',
@@ -44,20 +45,18 @@ export class RecentlyPlayedComponent implements OnInit {
   }
 
   likeCount(song: Song) {
-    this.songService.getLikeSongUpById(song.id).subscribe(
-      (data) => {
+    this.songService.getLikeSongUpById(song.id).subscribe((data) => {
         this.song = data;
-        setTimeout(() => {
-          this.isCheckInfoLike = true;
-        }, 1000);
+        this.isCheckLikeSong = !this.isCheckLikeSong;
+
       },
       (error) => {
         Swal.fire({
-          title: 'Please login before click like !',
+          title: 'Comment failed !',
           text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
-        })
+        });
       }
     );
   }
@@ -79,6 +78,10 @@ export class RecentlyPlayedComponent implements OnInit {
 
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
+    this.audio = new Audio();
+    this.audio.src = song.fileUrl;
+    // this.audio.load();
+    // this.audio.play();
     this.songService.getListenSongById(song.id).subscribe((data) => {
       this.song = data;
     });

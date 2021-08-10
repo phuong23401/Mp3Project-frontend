@@ -39,7 +39,6 @@ export class MyplaylistComponent implements OnInit {
   deletePlaylist(id: number) {
     this.playListService.deletePlaylist(id).subscribe(
       (data) => {
-        if (JSON.stringify(this.messageResponse) == JSON.stringify(data)) {
           this.status = 'Successfully !';
           Swal.fire({
             title: this.status,
@@ -48,7 +47,6 @@ export class MyplaylistComponent implements OnInit {
             confirmButtonColor: '#3bc8e7',
           });
           this.getPlaylist();
-        }
       },
       (error) => {
         this.status = 'Error server !';

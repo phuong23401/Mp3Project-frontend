@@ -74,6 +74,10 @@ export class TwoMostListenedComponent implements OnInit {
 
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
+    this.audio = new Audio();
+    this.audio.src = song.fileUrl;
+    this.audio.load();
+    this.audio.play();
     this.songService.getListenSongById(song.id).subscribe((data) => {
       this.song = data;
       this.songService.topSongsView().subscribe((songList) => {

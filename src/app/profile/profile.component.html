@@ -19,13 +19,15 @@
                 <div class="form-group">
 
                     <label>Your Gender</label>
+                    <form [formGroup]="userForm">
                     <!-- <input type="text" value={{userCurrent.gender}} class="form-control" formControlName="gender"> -->
-                    <input type="radio" id="male" name="fav_language" value="male" >
-                  <label for="male">Male</label><br>
-                  <input type="radio" id="female" name="fav_language" value="female">
-                 <label for="female">Female</label><br>
-                  <input type="radio" id="other" name="fav_language" value="other">
-                  <label for="other">Other</label>
+                      <input  type="radio" id="male" name="gender"  formControlName="gender" value="male" >
+                      <label for="male">Male</label><br>
+                      <input  type="radio" id="female" name="gender" formControlName="gender" value="female">
+                      <label for="female">Female</label>
+                      <input  type="radio" id="other" name="other" formControlName="gender" value="female">
+                      <label for="female">Other</label>
+                   </form>
                 </div>
                 <br>
                 <div class="form-group">

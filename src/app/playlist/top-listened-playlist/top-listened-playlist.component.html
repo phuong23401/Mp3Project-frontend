@@ -15,15 +15,13 @@
                                 <img src="{{playlist.avatarUrl}}" alt="" class="img-fluid">
                                 <div class="ms_main_overlay">
                                     <div class="ms_box_overlay"></div>
-                                    <div class="ms_play_icon btn_playlist" (click)="listenCount(playlist)" attr.data-playlist-id="{{playlist.id}}">
-                                        <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
-                                        <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
+                                    <div class="ms_play_icon">
                                     </div>
                                 </div>
                             </div>
                             <div class="ms_rcnt_box_text">
                                 <h3>
-                                    <a href="javascript:" [routerLink]="['/myplaylist/details',playlist.id]">{{playlist.name}}</a>
+                                    <a href="javascript:" [routerLink]="['/comment/playlist/home',playlist.id]">{{playlist.name}}</a>
                                 </h3>
                                 <p>{{playlistList[i].songs.length}} songs</p>
                             </div>

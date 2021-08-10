@@ -1,12 +1,19 @@
-import {Component, OnInit} from '@angular/core';
-import {SongService} from "../../service/song/song.service";
-import {Song} from "../../model/Song";
-import {ActivatedRoute} from '@angular/router';
+
+import { Component, OnInit } from '@angular/core';
+import { SongService } from '../../service/song/song.service';
+import { Song } from '../../model/Song';
+import { ActivatedRoute } from '@angular/router';
+import {Singers} from "../../model/Singers";
+import {SingerService} from "../../service/singer/singer.service";
+import { HttpService } from 'src/app/service/http/http.service';
+import { Commentsong } from 'src/app/model/CommentSong';
+import { CommentSongService } from 'src/app/service/comment/comment-song/comment-song.service';
+
 
 @Component({
   selector: 'app-detail-song',
   templateUrl: './detail-song.component.html',
-  styleUrls: ['./detail-song.component.css']
+  styleUrls: ['./detail-song.component.css'],
 })
 export class DetailSongComponent implements OnInit {
 
@@ -16,30 +23,32 @@ export class DetailSongComponent implements OnInit {
   playlist = [];
   audio: any;
   isPlaying = false;
-  constructor(private songService: SongService,
-              private routes: ActivatedRoute,) {
-  }
+  singer : Singers[];
+  userId: number;
+  commentSong: Commentsong[];
 
-  getSong() {
-    this.routes.paramMap.subscribe(paramMap => {
-      const id = +paramMap.get('id')
-      this.songService.getSongsById(id).subscribe(res => {
+  constructor(
+    private songService: SongService,
+    private routes: ActivatedRoute,
+    private singerService: SingerService,
+    private httpService: HttpService,
+    private commentSongService: CommentSongService
+  ) {
+    this.routes.paramMap.subscribe((paramMap) => {
+      this.id = +paramMap.get('id');
+      this.songService.getSongsById(this.id).subscribe((res) => {
         this.song = res;
       });
-    })
-  }
-
-  getAllSong(){
-    this.songService.getAllSongs().subscribe(res => {
+    });
+    this.commentSongService.getCommentBySong(this.id).subscribe((res) => {
+      this.commentSong = res;
+    });
+    this.songService.getAllSongs().subscribe((res) => {
       this.songList = res;
-    })
+    });
   }
 
-  ngOnInit(): void {
-    this.getSong();
-    this.getAllSong();
-  }
-
+  ngOnInit(): void {}
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
     this.songService.getListenSongById(song.id).subscribe(data => {

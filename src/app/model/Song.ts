@@ -21,4 +21,6 @@ export interface Song {
   playlist?: Playlist[];
   numberOfView?: number;
   author?:string;
+  contentType?: string;
+  size?: number;
 }
