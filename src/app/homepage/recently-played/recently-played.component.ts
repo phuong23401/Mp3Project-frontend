@@ -70,10 +70,6 @@ export class RecentlyPlayedComponent implements OnInit {
 
   listenCount(song: Song) {
     this.isPlaying = !this.isPlaying;
-    this.audio = new Audio();
-    this.audio.src = song.fileUrl;
-    // this.audio.load();
-    // this.audio.play();
     this.songService.getListenSongById(song.id).subscribe((data) => {
       this.song = data;
     });
@@ -94,11 +90,6 @@ export class RecentlyPlayedComponent implements OnInit {
       playlist.unshift(currentSong);
       localStorage.setItem('playlist', JSON.stringify(playlist));
     }
-  }
-
-  changePause() {
-    this.isPlaying = !this.isPlaying;
-    this.audio.pause();
   }
 
   getModal(id: number) {
