@@ -5,6 +5,8 @@ import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dia
 import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { LikeSong } from '../../model/LikeSong';
+import {LoginDialogComponent} from "../../share/login-dialog/login-dialog.component";
+import {TokenService} from "../../service/token/token.service";
 
 @Component({
   selector: 'app-two-most-listened',
@@ -34,7 +36,8 @@ export class TwoMostListenedComponent implements OnInit {
   constructor(
     private songService: SongService,
     private addSongDialog: AddSongDialogService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private tokenService:TokenService
   ) {}
 
   ngOnInit(): void {
@@ -91,8 +94,13 @@ export class TwoMostListenedComponent implements OnInit {
   }
 
   getModal(id: number) {
-    this.id = id;
-    this.addSongDialog.id = this.id;
-    this.modalService.show(AddSongDialogComponent);
+    if (this.tokenService.getToken()){
+      this.id = id;
+      this.addSongDialog.id = this.id;
+      this.modalService.show(AddSongDialogComponent);
+    }else {
+      this.modalService.show(LoginDialogComponent);
+    }
+
   }
 }

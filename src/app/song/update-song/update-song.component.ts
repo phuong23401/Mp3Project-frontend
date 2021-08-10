@@ -76,6 +76,7 @@ export class UpdateSongComponent implements OnInit {
 
     this.songService.getSongById(this.id).subscribe((data: Song) => {
       this.songImage = data;
+      this.form = this.songImage;
     });
   }
 
