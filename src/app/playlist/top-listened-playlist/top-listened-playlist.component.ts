@@ -25,15 +25,5 @@ export class TopListenedPlaylistComponent implements OnInit {
     // this.playlistService.countListenPLaylistById(_playlist.id).subscribe((res) => {
     //   this.playlist = res;
     // })
-
-    // this.playlistService.getSongOfPlaylist(_playlist.id).subscribe((res) => {
-    //   this.songs = res.map((s) => {
-    //     return {
-    //       ...s,
-    //       mp3: s.fileUrl
-    //     }
-    //   })
-    //   localStorage.setItem('playlist', JSON.stringify(this.songs));
-    // });
   }
 }
