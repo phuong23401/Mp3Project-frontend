@@ -51,18 +51,24 @@ export class SongComponent implements OnInit {
   listen(song: Song) {
     this.songService.getSongById(song.id).subscribe((data) => {
       this.song = data;
-      if (this.song != null) {
-        this.isPlaying = !this.isPlaying;
-        this.audio = new Audio();
-        this.audio.src = song.fileUrl;
-        // this.audio.load();
-        this.audio.play();
-      }
     });
-  }
-  changePause() {
-    this.isPlaying = !this.isPlaying;
-    this.audio.pause();
+
+    const playlist = localStorage.getItem('playlist')
+      ? JSON.parse(localStorage.getItem('playlist'))
+      : [];
+    const currentSong = {
+      id: song.id,
+      image: song.avatarUrl,
+      title: song.name,
+      artist: song.author,
+      mp3: song.fileUrl,
+    };
+    localStorage.setItem('currentSong', JSON.stringify(currentSong));
+
+    if (song !== undefined && !playlist.find((_song) => _song.id === song.id)) {
+      playlist.unshift(currentSong);
+      localStorage.setItem('playlist', JSON.stringify(playlist));
+    }
   }
 
   deleteSong(id: number) {

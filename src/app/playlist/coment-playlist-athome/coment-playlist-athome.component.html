@@ -45,13 +45,9 @@
                     <img src="{{item.avatarUrl}}" alt="" class="img-fluid">
                     <div class="ms_song_overlay">
                     </div>
-                    <div class="ms_play_icon" *ngIf="!isPlaying"
-                         (click)="listen(item)">
-                      <img src="assets/images/svg/play.svg" alt="">
-                    </div>
-                    <div class="ms_play_icon" *ngIf="isPlaying"
-                         (click)="changePause()">
-                      <img src="assets/images/svg/pause.svg" alt="">
+                    <div class="ms_play_icon btn_play" (click)="listen(item)">
+                         <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
+                         <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
                     </div>
                   </div>
                   <div class="w_tp_song_name">
