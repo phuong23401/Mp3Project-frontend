@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from 'src/app/model/User';
 import { EditProfile } from 'src/app/model/EditProfile';
 
 const API_URL = `${environment.API_URL}`;

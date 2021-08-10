@@ -10,70 +10,79 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login-dialog',
   templateUrl: './login-dialog.component.html',
-  styleUrls: ['./login-dialog.component.scss']
+  styleUrls: ['./login-dialog.component.scss'],
 })
 export class LoginDialogComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({});
 
-  get username(){ return this.loginForm.get('username')}
-  get password(){ return this.loginForm.get('password')}
+  get username() {
+    return this.loginForm.get('username');
+  }
+  get password() {
+    return this.loginForm.get('password');
+  }
 
-  message:string;
+  message: string;
   name: string;
-  // check:boolean =false;
-  constructor(private router: Router,
+
+  constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private tokenService: TokenService,
-    private modalService: BsModalService) {
-      this.loginForm = this.formBuilder.group({
-        username: ['',[ Validators.required]],
-        password: ['',[ Validators.required]]
-      });
-    }
+    private modalService: BsModalService
+  ) {
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
+  }
 
   ngOnInit(): void {}
 
   login() {
     const data = this.loginForm.value;
     let checkName = data.name;
-    this.loginService.login(data).subscribe(res => {
-      // tslint:disable-next-line:triple-equals
-      if (res.token != undefined) {
-        this.tokenService.setToken(res.token);
-        this.tokenService.setId(res.id);
-        this.tokenService.setUsername(res.username);
+    this.loginService.login(data).subscribe(
+      (res) => {
+        // tslint:disable-next-line:triple-equals
+        if (res.token != undefined) {
+          this.tokenService.setToken(res.token);
+          this.tokenService.setId(res.id);
+          this.tokenService.setUsername(res.username);
 
-        this.router.navigate(['']).then(() => {
-          window.location.reload();
+          this.router.navigate(['']).then(() => {
+            window.location.reload();
+          });
+        }
+      },
+      (error) => {
+        this.message = 'Login failed !';
+        console.log(error.error.message);
+        Swal.fire({
+          title: this.message,
+          text: error.error.message,
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
         });
       }
-    }, error =>{
-      this.message = "LOGIN FAILED";
-      console.log(error.error.message);
-      Swal.fire({
-        title: this.message,
-        text: error.error.message,
-        icon: "error",
-        confirmButtonColor: "#3bc8e7"
-      });
-    });
+    );
   }
 
   transferRegister() {
     // @ts-ignore
-    document.querySelector('.modal-backdrop').remove()
-    document.body.classList.remove('modal-open')
+    document.querySelector('.modal-backdrop').remove();
+    document.body.classList.remove('modal-open');
     // @ts-ignore
-    document.querySelector('.login_dialog').remove()
+    document.querySelector('.login_dialog').remove();
     this.modalService.show(RegisterDialogComponent);
   }
 
   closeModal() {
     // @ts-ignore
-    document.querySelector('.modal-backdrop').remove()
-    document.body.classList.remove('modal-open')
+    document.querySelector('.modal-backdrop').remove();
+    document.body.classList.remove('modal-open');
     // @ts-ignore
-    document.querySelector('.login_dialog').remove()
+    document.querySelector('.login_dialog').remove();
   }
 }
