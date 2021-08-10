@@ -16,7 +16,6 @@ export class DetailSongComponent implements OnInit {
   playlist = [];
   audio: any;
   isPlaying = false;
-
   constructor(private songService: SongService,
               private routes: ActivatedRoute,) {
   }
@@ -71,5 +70,4 @@ export class DetailSongComponent implements OnInit {
     // music.showPlayList();
     // music.volume();
   }
-
 }
