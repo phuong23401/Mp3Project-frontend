@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Playlist } from '../../model/Playlist';
 import { PlaylistService } from '../../service/playlist/playlist.service';
-import { AddSongDialogComponent } from '../../share/add-song-dialog/add-song-dialog.component';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.service';
+import { Song } from 'src/app/model/Song';
 
 @Component({
   selector: 'app-top-listened-playlist',
@@ -12,13 +10,10 @@ import { AddSongDialogService } from '../../service/dialogsong/add-song-dialog.s
 })
 export class TopListenedPlaylistComponent implements OnInit {
   playlistList: Playlist[] = [];
-  id: any;
+  playlist: Playlist;
+  songs: Song[] = [];
 
-  constructor(
-    private playlistService: PlaylistService,
-    private modalService: BsModalService,
-    private addSongDialog: AddSongDialogService
-  ) {
+  constructor(private playlistService: PlaylistService) {
     this.playlistService.getTopListened().subscribe((res) => {
       this.playlistList = res;
     });
@@ -26,10 +21,19 @@ export class TopListenedPlaylistComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  getModal(id: number) {
-    this.id = id;
-    this.addSongDialog.id = this.id;
-    console.log(this.id);
-    this.modalService.show(AddSongDialogComponent);
+  listenCount(_playlist: Playlist) {
+    // this.playlistService.countListenPLaylistById(_playlist.id).subscribe((res) => {
+    //   this.playlist = res;
+    // })
+
+    // this.playlistService.getSongOfPlaylist(_playlist.id).subscribe((res) => {
+    //   this.songs = res.map((s) => {
+    //     return {
+    //       ...s,
+    //       mp3: s.fileUrl
+    //     }
+    //   })
+    //   localStorage.setItem('playlist', JSON.stringify(this.songs));
+    // });
   }
 }

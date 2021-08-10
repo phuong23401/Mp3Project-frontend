@@ -58,7 +58,6 @@ export class LoginDialogComponent implements OnInit {
       },
       (error) => {
         this.message = 'Login failed !';
-        console.log(error.error.message);
         Swal.fire({
           title: this.message,
           text: error.error.message,

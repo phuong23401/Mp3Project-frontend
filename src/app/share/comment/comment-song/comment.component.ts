@@ -92,13 +92,15 @@ export class CommentComponent implements OnInit {
           this.form.reset();
         });
         Swal.fire({
-          title: 'Comment Success',
+          title: 'Comment successfully !',
+          text: ' ',
           icon: 'success',
           confirmButtonColor: '#3bc8e7'
         });
       }, (error) => {
         Swal.fire({
-          title: 'Comment Fails',
+          title: 'Comment failed !',
+          text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7'
         });

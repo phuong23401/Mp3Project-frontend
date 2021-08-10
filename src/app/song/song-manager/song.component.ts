@@ -64,6 +64,7 @@ export class SongComponent implements OnInit {
           this.status = 'Delete successfully !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -74,6 +75,12 @@ export class SongComponent implements OnInit {
       },
       (error) => {
         this.status = "Delete failed !";
+        Swal.fire({
+          title: this.status,
+          text: ' ',
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
+        });
       }
     );
   }
