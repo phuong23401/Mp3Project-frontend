@@ -35,7 +35,6 @@ export class MyplaylistComponent implements OnInit {
   playListDetails($event: any) {}
 
   deletePlaylist(id: number) {
-    console.log('enter');
     this.playListService.deletePlaylist(id).subscribe(
       (data) => {
           this.status = 'Successfully !';
