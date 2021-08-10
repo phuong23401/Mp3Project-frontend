@@ -100,7 +100,7 @@ export class ProfileComponent implements OnInit {
     if (!this.checkName.match('^[\\D]+')) {
       Swal.fire({
         title: "Name can't has number !",
-        text: 'Please check your infor !',
+        text: 'Please check your infor',
         icon: 'error',
         confirmButtonColor: '#3bc8e7',
       });
@@ -110,6 +110,7 @@ export class ProfileComponent implements OnInit {
           this.messageAlert = mes.message;
           Swal.fire({
             title: this.messageAlert,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -119,7 +120,7 @@ export class ProfileComponent implements OnInit {
           this.messageAlert = error.message;
           Swal.fire({
             title: this.messageAlert,
-            text: 'Please check your infor !',
+            text: 'Please check your infor',
             icon: 'error',
             confirmButtonColor: '#3bc8e7',
           });

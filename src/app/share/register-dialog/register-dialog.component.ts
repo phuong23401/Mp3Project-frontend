@@ -114,10 +114,10 @@ export class RegisterDialogComponent implements OnInit {
     ) {
       this.loginService.register(this.newUser).subscribe(
         (res) => {
-          this.message = res.message;
+          this.message = "Please check email to verify your account !";
           Swal.fire({
             title: this.message,
-            text: 'Login and enjoy !',
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -140,8 +140,8 @@ export class RegisterDialogComponent implements OnInit {
             this.check2 = true;
           }
           Swal.fire({
-            title: 'REGISTER FAILED',
-            text: 'Please check your infor !',
+            title: 'Register failed !',
+            text: 'Please check your infor',
             icon: 'error',
             confirmButtonColor: '#3bc8e7',
           });

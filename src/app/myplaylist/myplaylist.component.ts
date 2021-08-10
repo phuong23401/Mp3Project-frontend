@@ -14,9 +14,11 @@ export class MyplaylistComponent implements OnInit {
     message: 'successfully!',
   };
   status = '';
+  check = true;
 
   constructor(private playListService: PlaylistService) {
     this.getPlaylist();
+    this.check = false;
   }
 
   ngOnInit(): void {}
@@ -24,6 +26,9 @@ export class MyplaylistComponent implements OnInit {
   getPlaylist() {
     this.playListService.getPlaylistByUser().subscribe((data) => {
       this.listPlaylist = data;
+      if (this.listPlaylist.length>0){
+        this.check = true;
+      }
     });
   }
 
@@ -33,20 +38,20 @@ export class MyplaylistComponent implements OnInit {
     console.log('enter');
     this.playListService.deletePlaylist(id).subscribe(
       (data) => {
-        if (JSON.stringify(this.messageResponse) == JSON.stringify(data)) {
           this.status = 'Successfully !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
           this.getPlaylist();
-        }
       },
       (error) => {
         this.status = 'Error server !';
         Swal.fire({
           title: this.status,
+          text: ' ',
           icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });

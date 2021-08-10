@@ -76,6 +76,7 @@ export class UpdateSongComponent implements OnInit {
 
     this.songService.getSongById(this.id).subscribe((data: Song) => {
       this.songImage = data;
+      this.form = this.songImage;
     });
   }
 
@@ -97,6 +98,7 @@ export class UpdateSongComponent implements OnInit {
           this.status = 'Create successfully !';
           Swal.fire({
             title: this.status,
+            text: ' ',
             icon: 'success',
             confirmButtonColor: '#3bc8e7',
           });
@@ -107,7 +109,8 @@ export class UpdateSongComponent implements OnInit {
         this.status = 'Please fill in the form to update song!';
         Swal.fire({
           title: this.status,
-          icon: 'error',
+            text: ' ',
+            icon: 'error',
           confirmButtonColor: '#3bc8e7',
         });
       }

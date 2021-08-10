@@ -55,7 +55,6 @@ export class SongService {
   }
 
   getListenSongById(id: number): Observable<Song>{
-    console.log('id service',id)
     return this.http.get<Song>(`${this.API_Count_Listen_Song}/${id}`)
   }
 
