@@ -39,9 +39,9 @@
           <div class="col-md-12 padding_right20">
             <div class="ms_weekly_box">
               <div class="weekly_left">
-                    <span class="w_top_no">
-                        {{i + 1}}
-                    </span>
+                <span class="w_top_no">
+                  {{ i + 1 }}
+                </span>
                 <div class="w_top_song">
                   <div class="w_tp_song_img">
                     <img src="{{ item.avatarUrl }}" alt="" class="img-fluid" />
@@ -79,12 +79,6 @@
                   >
                 </li>
               </ul>
-              <div style="display: none">
-                <audio controls loop id="track">
-                  <source src="{{item.fileUrl}}" type="audio/mpeg">
-                  <source src="{{item.fileUrl}}" type="audio/ogg">
-                </audio>
-              </div>
             </div>
             <div class="ms_divider"></div>
           </div>
