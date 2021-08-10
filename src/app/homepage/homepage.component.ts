@@ -28,6 +28,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   id: any;
   lisplaylists: Playlist;
   status = '';
+  isCheckInfoLike = false;
   isCheckLikeSong = false;
 
   constructor(
@@ -48,21 +49,6 @@ export class HomepageComponent implements OnInit, OnDestroy {
       });
   }
 
-  likeCount(song: Song) {
-    this.songService.getLikeSongUpById(song.id).subscribe((data) => {
-        this.song = data;
-        this.isCheckLikeSong = !this.isCheckLikeSong;
-
-      },
-      (error) => {
-        Swal.fire({
-          title: 'Comment failed !',
-          icon: 'error',
-          confirmButtonColor: '#3bc8e7',
-        });
-      }
-    );
-  }
 
   getPlayList() {
     this.playlist.getPlaylist(this.id).subscribe((data) => {
@@ -86,5 +72,45 @@ export class HomepageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  listenCount(song: Song) {
+    this.songService.getListenSongById(song.id).subscribe((data) => {
+      this.song = data;
+    });
+
+    const playlist = localStorage.getItem('playlist')
+      ? JSON.parse(localStorage.getItem('playlist'))
+      : [];
+    const currentSong = {
+      id: song.id,
+      image: song.avatarUrl,
+      title: song.name,
+      artist: song.author,
+      mp3: song.fileUrl,
+    };
+    localStorage.setItem('currentSong', JSON.stringify(currentSong));
+
+    if (song !== undefined && !playlist.find((_song) => _song.id === song.id)) {
+      playlist.unshift(currentSong);
+      localStorage.setItem('playlist', JSON.stringify(playlist));
+    }
+  }
+
+  likeCount(song: Song) {
+    this.songService.getLikeSongUpById(song.id).subscribe(
+      (data) => {
+        this.song = data;
+        this.isCheckLikeSong = !this.isCheckLikeSong;
+      },
+      (error) => {
+        Swal.fire({
+          title: 'Please login before click like !',
+          text: ' ',
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
+        })
+      }
+    );
   }
 }

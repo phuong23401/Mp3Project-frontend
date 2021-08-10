@@ -7,6 +7,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { LikeSong } from '../../model/LikeSong';
 import {LoginDialogComponent} from "../../share/login-dialog/login-dialog.component";
 import {TokenService} from "../../service/token/token.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-two-most-listened',
@@ -51,7 +52,12 @@ export class TwoMostListenedComponent implements OnInit {
         this.song = data;
       },
       (error) => {
-        alert('Please login before click like!');
+        Swal.fire({
+          title: 'Please login before click like !',
+          text: ' ',
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
+        })
       }
     );
   }
@@ -102,6 +108,5 @@ export class TwoMostListenedComponent implements OnInit {
     }else {
       this.modalService.show(LoginDialogComponent);
     }
-
   }
 }

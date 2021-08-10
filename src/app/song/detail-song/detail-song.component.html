@@ -1,18 +1,15 @@
-s<br/>
+<br/>
 <div class="ms_heading">
   <h1>Details Songs</h1>
-  <span class="veiw_all"><a href="#">view more</a></span>
 </div>
 <div class="swiper-container">
   <div class="swiper-wrapper">
-<!--    <div class="swiper-slide">-->
       <div class="ms_rcnt_box">
-        <div class="ms_rcnt_box_img">
+        <div class="ms_rcnt_box_img" style="width: 240px; height: 240;">
           <img src="{{song.avatarUrl}}" alt="">
           <div class="ms_main_overlay">
             <div class="ms_box_overlay"></div>
             <div class="ms_more_icon">
-<!--              <img src="{{song.user.avatarUrl}}" alt="">-->
               <i class="fas fa-headphones" style="font-size: 20px">{{song.numberOfView}}</i>
             </div>
             <ul class="more_option">
@@ -29,26 +26,10 @@ s<br/>
               <li><a href="#"><span class="opt_icon"><span class="icon icon_share"></span></span>Share</a>
               </li>
             </ul>
-
-            <div style="display: none">
-              <audio controls  id="track">
-                <source src="{{song.fileUrl}}" type="audio/mpeg">
-                <source src="{{song.fileUrl}}" type="audio/mp3">
-                <source src="{{song.fileUrl}}" type="audio/ogg">
-              </audio>
+            <div class="ms_play_icon btn_play" (click)="listenCount(song)" >
+              <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
+              <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
             </div>
-            <div class="ms_play_icon" *ngIf="!isPlaying"
-                 (click)="listenCount(song)" >
-
-              <img src="assets/images/svg/play.svg" alt="">
-
-            </div>
-            <div class="ms_play_icon" *ngIf="isPlaying"
-                 (click)="changePause()" >
-              <img src="assets/images/svg/pause.svg" alt="">
-            </div>
-
-
           </div>
         </div>
         <div class="ms_rcnt_box_text">
@@ -58,7 +39,6 @@ s<br/>
           <h3 *ngFor="let singer of singer"> {{singer.name}}</h3>
 
         </div>
-<!--      </div>-->
     </div>
   </div>
 </div>

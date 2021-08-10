@@ -51,6 +51,7 @@ import { TopLikeSongsComponent } from './song/top-like-songs/top-like-songs.comp
 import { ToastGlobalComponent } from './share/toast-global/toast-global.component';
 import { ToastContainerComponent } from './share/toast-container/toast-container.component';
 import { HomeguestComponent } from './homepage/homeguest/homeguest.component';
+import { ComentPlaylistAthomeComponent } from './playlist/coment-playlist-athome/coment-playlist-athome.component';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { HomeguestComponent } from './homepage/homeguest/homeguest.component';
     TopLikeSongsComponent,
     ToastContainerComponent,
     ToastGlobalComponent,
+    ComentPlaylistAthomeComponent,
     HomeguestComponent,
 
   ],
