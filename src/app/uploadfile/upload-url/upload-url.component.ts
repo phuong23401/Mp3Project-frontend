@@ -1,9 +1,12 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {AngularFireStorage, AngularFireStorageReference} from "@angular/fire/storage";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  AngularFireStorage,
+  AngularFireStorageReference,
+} from '@angular/fire/storage';
 @Component({
   selector: 'app-upload-url',
   templateUrl: './upload-url.component.html',
-  styleUrls: ['./upload-url.component.css']
+  styleUrls: ['./upload-url.component.css'],
 })
 export class UploadUrlComponent implements OnInit {
   selectedFile?: File;
@@ -12,55 +15,32 @@ export class UploadUrlComponent implements OnInit {
   checkUploadAvatar = false;
   @Output()
   giveURLtoCreate = new EventEmitter<string>();
-  constructor(
-    private afStorage: AngularFireStorage
-  ) { }
 
-  ngOnInit(): void {
-  }
+  constructor(private afStorage: AngularFireStorage) {}
+
+  ngOnInit(): void {}
   //Khi upload file qua the input dưới dạng 1 hoặc nhiều file thì tệp đó thông qua sự kiện (change)$event được kích hoạt. Và tất cả file upload sẽ lưu trữ
   //trong $event.target.files
 
-  onFileChaged(event:any){
+  onFileChaged(event: any) {
     this.selectedFile = event.target.files[0];
     // this.checkUploadAvatar = true;
-    const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
+    const id = Math.random().toString(36).substring(2); //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
     this.ref = this.afStorage.ref(id);
-    this.ref.put(this.selectedFile)
-      .then(snapshot => {
+    this.ref
+      .put(this.selectedFile)
+      .then((snapshot) => {
         return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
       })
-      .then(downloadURL => { //cHUYEN Value tu component cha sang con
+      .then((downloadURL) => {
+        //cHUYEN Value tu component cha sang con
         this.downloadURL = downloadURL;
         this.giveURLtoCreate.emit(this.downloadURL);
         // this.checkUploadAvatar = false;
         return downloadURL;
       })
-      .catch(error=>{
+      .catch((error) => {
         console.log(`Failed to upload avatar and get link ${error}`);
-      })
-    console.log(this.downloadURL)
-
+      });
   }
-  onUpLoad(){
-    // // this.checkUploadAvatar = true;
-    // const id = Math.random().toString(36).substring(2) //Tạo ra 1 cái name riêng để hiển thị trên DB của FB
-    // this.ref = this.afStorage.ref(id);
-    // this.ref.put(this.selectedFile)
-    //   .then(snapshot => {
-    //     return snapshot.ref.getDownloadURL(); //Tra ve  1 cai chuoi sieu van ban luu tren FB
-    //   })
-    //   .then(downloadURL => { //cHUYEN Value tu component cha sang con
-    //     this.downloadURL = downloadURL;
-    //     this.giveURLtoCreate.emit(this.downloadURL);
-    //     // this.checkUploadAvatar = false;
-    //     return downloadURL;
-    //   })
-    //   .catch(error=>{
-    //     console.log(`Failed to upload avatar and get link ${error}`);
-    //   })
-    // console.log(this.downloadURL)
-
-  }
-
 }

@@ -8,9 +8,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LikeService {
+  private API_List_LikeSong_By_Username = environment.API_URL+'like-song-by-user';
 
   constructor(private http: HttpClient) { }
-  private API_List_LikeSong_By_Username = environment.API_URL+'like-song-by-user';
+  
   getListLikeSongByUser(): Observable<LikeSong[]>{
     return this.http.get<LikeSong[]>(this.API_List_LikeSong_By_Username)
   }

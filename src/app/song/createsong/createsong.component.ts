@@ -1,25 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {SongService} from "../../service/song/song.service";
-import {Song} from "../../model/Song";
-import {User} from "../../model/User";
-import {CategoryService} from "../../service/category/category.service";
-import {Icategory} from "../../model/Icategory";
-import {SingerService} from "../../service/singer/singer.service";
-import {Singers} from "../../model/Singers";
-import {Message} from "../../model/Message";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { SongService } from '../../service/song/song.service';
+import { Song } from '../../model/Song';
+import { User } from '../../model/User';
+import { CategoryService } from '../../service/category/category.service';
+import { Icategory } from '../../model/Icategory';
+import { SingerService } from '../../service/singer/singer.service';
+import { Singers } from '../../model/Singers';
+import { Message } from '../../model/Message';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import {FormControl, FormGroup} from "@angular/forms";
-
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-createsong',
   templateUrl: './createsong.component.html',
-  styleUrls: ['./createsong.component.css']
+  styleUrls: ['./createsong.component.css'],
 })
 export class CreatesongComponent implements OnInit {
   searchValue: any;
-  status = 'Please fill in the form to create Song!'
+  status = 'Please fill in the form to create new song !';
   isCheckUploadAvatar = false;
   isCheckUploadFile = false;
   formavt: any = {};
@@ -28,32 +27,30 @@ export class CreatesongComponent implements OnInit {
   songList: Singers[];
   isCheck = true;
   error1: any = {
-    message: "noavatar"
-  }
-  error2: any = {
-    message: "nomp3url"
-  }
-  error3: any = {
-    message: "noObj"
-  }
-  success: any = {
-    message: "Done"
-  }
-  song: Song = {
-    name: "",
-    description: "",
-    avatarUrl: "",
-    fileUrl: "",
-    lyric: "",
-    categories: {
-      id: 0
-    },
-    singer: [
-      {id: 0}
-    ],
-    author:""
+    message: 'noavatar',
   };
-  mes: Message = {}
+  error2: any = {
+    message: 'nomp3url',
+  };
+  error3: any = {
+    message: 'noObj',
+  };
+  success: any = {
+    message: 'Done',
+  };
+  song: Song = {
+    name: '',
+    description: '',
+    avatarUrl: '',
+    fileUrl: '',
+    lyric: '',
+    categories: {
+      id: 0,
+    },
+    singer: [{ id: 0 }],
+    author: '',
+  };
+  mes: Message = {};
   form: any = {};
   categoriess: Icategory[] = [];
   singgers: Singers[] = [];
@@ -62,29 +59,27 @@ export class CreatesongComponent implements OnInit {
   newSinger: Singers;
   searchForm: FormGroup;
 
-
-  constructor(private songService: SongService,
-              private categorySv: CategoryService,
-              private singer: SingerService, private router: Router) {
+  constructor(
+    private songService: SongService,
+    private categorySv: CategoryService,
+    private singer: SingerService,
+  ) {
     this.searchForm = new FormGroup({
       name: new FormControl(),
     });
     this.categorySv.getAllCategory().subscribe((categorySv: Icategory[]) => {
       this.categoriess = categorySv;
-    })
+    });
 
     this.singer.getAllSinger().subscribe((singerSv: Singers[]) => {
       this.singgers = singerSv;
-
-    })
-
-
+    });
   }
 
   ngOnInit(): void {
-    this.singer.getAllSinger().subscribe(res => {
+    this.singer.getAllSinger().subscribe((res) => {
       this.songList = res;
-    })
+    });
   }
 
   ngSubmit() {
@@ -96,32 +91,32 @@ export class CreatesongComponent implements OnInit {
     this.song.categories.id = this.form.categories;
     this.song.singer = this.singgersOnchage;
     this.song.author = this.form.author;
-    console.log(this.song);
-    this.songService.createSong(this.song).subscribe(data => {
+
+    this.songService.createSong(this.song).subscribe(
+      (data) => {
         if (JSON.stringify(this.error1) == JSON.stringify(data)) {
-          this.status = 'The avatar is required! Please select upload avatar';
+          this.status = 'Please upload avatar song !';
           Swal.fire({
             title: this.status,
-            icon: "error",
-            confirmButtonColor: "#3bc8e7"
+            icon: 'error',
+            confirmButtonColor: '#3bc8e7',
           });
-
         }
         if (JSON.stringify(this.error2) == JSON.stringify(data)) {
-          this.status = 'The file is required! Please select upload file';
+          this.status = 'Please select upload file mp3 !';
           Swal.fire({
             title: this.status,
-            icon: "error",
-            confirmButtonColor: "#3bc8e7"
+            icon: 'error',
+            confirmButtonColor: '#3bc8e7',
           });
         }
         if (JSON.stringify(this.success) == JSON.stringify(data)) {
-          this.status = 'Create success!';
+          this.status = 'Create successfully !';
           Swal.fire({
             title: this.status,
-            icon: "success",
-            confirmButtonColor: "#3bc8e7"
-          })
+            icon: 'success',
+            confirmButtonColor: '#3bc8e7',
+          });
           this.form.name = null;
           this.form.description = null;
           this.formavt.avatarUrl = null;
@@ -133,17 +128,16 @@ export class CreatesongComponent implements OnInit {
           this.isCheckUploadFile = false;
           this.isCheckUploadAvatar = false;
         }
-      }
-      , error => {
-        this.status = 'Fill in the form!';
+      },
+      (error) => {
+        this.status = 'Fill in the form !';
         Swal.fire({
           title: this.status,
-          icon: "error",
-          confirmButtonColor: "#3bc8e7"
+          icon: 'error',
+          confirmButtonColor: '#3bc8e7',
         });
       }
-    )
-    console.log(this.form);
+    );
   }
 
   onChangeAvatar(event: any) {
@@ -157,39 +151,39 @@ export class CreatesongComponent implements OnInit {
   }
 
   onchage(value: any) {
-
-    this.singer.findSingerByName(value).subscribe(data => {
-      this.singgersOnchage.push(data);
-      console.log(this.newSinger)
-    }, error => {
-      this.newSinger = {
-        name: value,
-        description: "Ca sỹ"
+    this.singer.findSingerByName(value).subscribe(
+      (data) => {
+        this.singgersOnchage.push(data);
+      },
+      (error) => {
+        this.newSinger = {
+          name: value,
+          description: 'Ca sỹ',
+        };
+        this.singer.createSinger(this.newSinger).subscribe((obj) => {
+          this.singgersOnchage.push(obj);
+        });
       }
-      this.singer.createSinger(this.newSinger).subscribe((obj) => {
-        this.singgersOnchage.push(obj);
-        console.log(this.newSinger)
-      })
-    })
+    );
   }
 
   Search() {
-    this.singgers = this.singgers.filter(res => {
+    this.singgers = this.singgers.filter((res) => {
       return res.name.toLowerCase().match(this.searchValue.toLowerCase());
-    })
+    });
   }
 
   filterKeyWord() {
     let filterResult = [];
     this.conditsion = true;
     this.isCheck = false;
-    console.log(this.searchValue)
+
     if (this.searchValue.length === 0) {
       this.isCheck = true;
     } else {
       this.listFilterResult = this.songList;
       let keyWord = this.searchValue.toLowerCase();
-      this.listFilterResult.map(item => {
+      this.listFilterResult.map((item) => {
         let name = item.name.toLowerCase();
         if (name.includes(keyWord)) {
           filterResult.push(item);
@@ -197,6 +191,7 @@ export class CreatesongComponent implements OnInit {
       });
     }
     this.listFilterResult = filterResult;
+    
     if (this.listFilterResult.length !== 0) {
       this.conditsion = true;
     } else {
