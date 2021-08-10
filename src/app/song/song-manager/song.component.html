@@ -23,13 +23,9 @@
                 <img src="{{item?.avatarUrl}}"  alt="">
                 <div class="ms_song_overlay">
                 </div>
-                <div class="ms_play_icon" *ngIf="!isPlaying"
-                     (click)="listen(item)">
-                  <img src="assets/images/svg/play.svg" alt="">
-                </div>
-                <div class="ms_play_icon" *ngIf="isPlaying"
-                     (click)="changePause()">
-                  <img src="assets/images/svg/pause.svg" alt="">
+                <div class="ms_play_icon btn_play" (click)="listen(item)">
+                     <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
+                     <img class="icon_play" src="assets/images/svg/play.svg" alt="" />
                 </div>
               </div>
               <div class="w_tp_song_name">
@@ -51,28 +47,15 @@
               <a href="javascript:" [routerLink]="['/updatesong',item.id]"><i class="fas fa-edit"></i> Update
               </a>
             </li>
-<!--            <li>-->
-<!--              <a href="javascript:" [routerLink]="['/my/song/detail',item.id]"><i class="fas fa-edit"></i> Update-->
-<!--              </a>-->
-<!--            </li>-->
             <li>
               <a href="javascript:" (click)="deleteSong(item.id)"><span class="opt_icon"><i
                 class="far fa-trash-alt"></i></span>Delete
               </a>
             </li>
             <br>
-
           </ul>
-
-<!--          <div style="display: none">-->
-<!--            <audio controls loop id="track">-->
-<!--              <source src="{{item.fileUrl}}" type="audio/mpeg">-->
-<!--              <source src="{{item.fileUrl}}" type="audio/ogg">-->
-<!--            </audio>-->
-<!--          </div>-->
         </div>
         <div class="ms_divider"></div>
       </div>
-
   </div>
 </div>
