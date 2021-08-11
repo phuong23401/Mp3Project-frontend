@@ -3,15 +3,13 @@
   <h1>Details Songs</h1>
 </div>
 <div class="swiper-container">
-  <div class="swiper-wrapper">
+<!--  <div class="swiper-wrapper">-->
       <div class="ms_rcnt_box">
-        <div class="ms_rcnt_box_img" style="width: 240px; height: 240;">
+        <div class="ms_rcnt_box_img" style="width: 240px; height: 240px;">
           <img src="{{song.avatarUrl}}" alt="">
           <div class="ms_main_overlay">
             <div class="ms_box_overlay"></div>
-            <div class="ms_more_icon">
-              <i class="fas fa-headphones" style="font-size: 20px">{{song.numberOfView}}</i>
-            </div>
+            <div class="ms_more_icon"></div>
             <ul class="more_option">
               <li><a href="#"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To
                 Favourites</a>
@@ -35,12 +33,12 @@
         <div class="ms_rcnt_box_text">
           <h3><a [routerLink]="['/song',song.id]">{{song.name}}</a></h3>
           <h3>{{song.author}}</h3>
-          <h3>{{song.lyric}}</h3>
           <h3 *ngFor="let singer of singer"> {{singer.name}}</h3>
-
         </div>
     </div>
-  </div>
+<!--  </div>-->
 </div>
-
-<!--<app-comment></app-comment>-->
+<div class="col-9" style="width: 100%; margin-left: 350px; margin-top: -300px; text-align: justify">
+  <p >{{song.lyric}}</p>
+</div>
+<app-comment></app-comment>

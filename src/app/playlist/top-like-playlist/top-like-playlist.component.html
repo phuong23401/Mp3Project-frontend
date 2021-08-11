@@ -15,6 +15,24 @@
                 <img src="{{playlist.avatarUrl}}" alt="" class="img-fluid">
                 <div class="ms_main_overlay">
                   <div class="ms_box_overlay"></div>
+                  <div class="ms_more_icon">
+                    <img src="../../../assets/images/svg/more.svg" alt="" />
+                  </div>
+                  <div class="like-count" style="color: #3bc8e7">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    {{playlist.countLike}}
+                  </div>
+                  <ul class="more_option">
+                    <div *ngIf="isCheckLikeSong; then text else text1"></div>
+                    <ng-template #text1>
+                      <li (click)="likeCount(playlist)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_fav"></span>
+                                        </span>Add to favourites</a></li>
+                    </ng-template>
+                    <ng-template #text>
+                      <li (click)="likeCount(playlist)"><a href="javascript:"> <span class="opt_icon" ><i class="fas fa-heart-broken"></i>
+                                        </span>Remove from favourites</a></li>
+                    </ng-template>
+                  </ul>
                   <div class="ms_play_icon btn_playlist" (click)="listenCount(playlist)" attr.data-playlist-id="{{playlist.id}}">
                     <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
                     <img class="icon_play" src="assets/images/svg/play.svg" alt="" />

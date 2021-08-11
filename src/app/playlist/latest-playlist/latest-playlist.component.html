@@ -12,9 +12,23 @@
                     <div class="col-lg-2 col-md-6" *ngFor="let playlist of playlists, let i = index">
                         <div class="ms_rcnt_box marger_bottom30">
                             <div class="ms_rcnt_box_img">
-                                <img src="{{playlist.avatarUrl}}" alt="" class="img-fluid">
+                                <img src="{{playlist.avatarUrl}}" alt="" class="img-fluid" style="width: 240px; height:240px">
                                 <div class="ms_main_overlay">
                                     <div class="ms_box_overlay"></div>
+                                  <div class="ms_more_icon">
+                                    <img src="../../../assets/images/svg/more.svg" alt="" />
+                                  </div>
+                                  <ul class="more_option">
+                                    <div *ngIf="isCheckLikeSong; then text else text1"></div>
+                                    <ng-template #text1>
+                                      <li (click)="likeCount(playlist)"><a href="javascript:"><span class="opt_icon"><span class="icon icon_fav"></span>
+                                        </span>Add to favourites</a></li>
+                                    </ng-template>
+                                    <ng-template #text>
+                                      <li (click)="likeCount(playlist)"><a href="javascript:"> <span class="opt_icon" ><i class="fas fa-heart-broken"></i>
+                                        </span>Remove from favourites</a></li>
+                                    </ng-template>
+                                  </ul>
                                     <div class="ms_play_icon btn_playlist" (click)="listenCount(playlist)" attr.data-playlist-id="{{playlist.id}}">
                                         <img class="icon_pause" src="assets/images/svg/pause.svg" alt="" />
                                         <img class="icon_play" src="assets/images/svg/play.svg" alt="" />

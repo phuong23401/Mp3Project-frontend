@@ -76,4 +76,9 @@ export class PlaylistService {
   countListenPLaylistById(id: number): Observable<Playlist> {
     return this.httpClient.get<Playlist>(API_URL + '/home/countListenPlaylist/' + id);
   }
+
+  countLikePLaylistById(id: number): Observable<Playlist> {
+    return this.httpClient.get<Playlist>(API_URL + '/home/countLikedPlaylist/' + id);
+  }
+
 }

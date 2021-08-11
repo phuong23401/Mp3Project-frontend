@@ -18,15 +18,15 @@
               {{song.numberOfView}}
             </div>
             <ul class="more_option">
-              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascript:"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add To Favourites</a>
+              <li (click)="likeCount(song)" *ngIf="!isCheckLikeSong"><a href="javascript:"><span class="opt_icon"><span class="icon icon_fav"></span></span>Add to favourites</a>
               </li>
-              <li (click)="likeCount(song)" *ngIf="isCheckLikeSong"><a href="javascript:"> <span class="opt_icon" ><i class="fas fa-heart-broken"></i></span>&nbsp;DisLike</a>
+              <li (click)="likeCount(song)" *ngIf="isCheckLikeSong"><a href="javascript:"> <span class="opt_icon" ><i class="fas fa-heart-broken"></i></span>&nbsp;Remove form favourites</a>
               </li>
               <li (click)="getModal(song.id)">
                 <a href="javascript:"
                   ><span class="opt_icon"
                     ><span class="icon icon_playlst"></span></span
-                  >Add To Playlist</a
+                  >Add to playlist</a
                 >
               </li>
             </ul>
